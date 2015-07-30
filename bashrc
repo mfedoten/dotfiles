@@ -17,3 +17,4 @@ shopt -s nocaseglob
 export EDITOR=vim
 export VISUAL=mvim
 export PAGER=less
+export LESS=-R
