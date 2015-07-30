@@ -1,0 +1,8 @@
+# Ignore case while completing
+set completion-ignore-case on
+# Show all ambiguous matches for tab-completion 
+set show-all-if-ambiguous on
+# Tab through matches
+TAB: menu-complete
+# S-Tab to complete in reverse
+"\e[Z": "\e-1\C-i"
