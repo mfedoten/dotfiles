@@ -35,6 +35,20 @@ alias mvim='/Applications/MacVim.app/Contents/MacOS/MacVim'
 alias g="git"
 alias spyder="open /Applications/Spyder.app/"
 
+# Get week number
+alias week='date +%V'
+
+# Update MacPorts, installed packages and locateDB
+alias update='sudo port selfubdate; sudo port -v upgrade installed; sudo port clean -all; updatedb'
+
+# Empty the Trash on all mounted volumes and the main HDD
+# Also, clear Apple’s System Logs to improve shell startup speed
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
 
 #############
 # Functions #

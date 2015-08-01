@@ -7,7 +7,7 @@ export EDITOR='vim';
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
-# Highlight section titles in manual pages.
+# Set less as default pagerm highlight section titles in manual pages.
 export PAGER=less
 export LESS=-R
 export LESS_TERMCAP_md="${IPurple}";
