@@ -10,7 +10,6 @@ export LC_ALL='en_US.UTF-8';
 # Set less as default pagerm highlight section titles in manual pages.
 export PAGER=less
 export LESS=-R
-export LESS_TERMCAP_md="${IPurple}";
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell
