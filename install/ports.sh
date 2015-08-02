@@ -29,7 +29,7 @@ else
     if [[ -f /opt/local/bin/port ]]; then
         echo "MacPorts successfully installed."
     else
-        echo "Something went wrong. Not installed"
+        echo "Something went wrong. Not installed."
     fi
 fi
 

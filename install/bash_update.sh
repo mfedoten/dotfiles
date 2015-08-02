@@ -11,12 +11,12 @@ set -ex
 SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SRC_DIR"
 
-# Install bash via MacPorts
-sudo port install bash @4.3.39_0
-# Add it to the list of shells
 if grep "/opt/local/bin/bash" /private/etc/shells &>/dev/null; then
     echo "MacPorts version of bash is already added to the list of standard shells."
 else
+    # Install bash via MacPorts
+    sudo port install bash @4.3.39_0
+    # Add it to the list of shells
     sudo echo /opt/local/bin/bash >> /private/etc/shells
     chsh -s /opt/local/bin/bash
 fi

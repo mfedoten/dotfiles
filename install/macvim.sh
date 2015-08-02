@@ -31,10 +31,12 @@ else
 fi
 
 # Install Vundle and plugins listed in ~/.vimrc
-if [[ ! -d $HOME/.vim/bundle/neobundle.vim ]]; then
+if [[ ! -d $HOME/.vim/bundle/vundle ]]; then
     echo "Installing Vundle..."
     git clone https://github.com/VundleVim/Vundle.vim $HOME/.vim/bundle/vundle
     vim +PluginInstall +qall
+else
+    echo 'Vundle is already installed'
 fi
 
 # Install Powerline fonts

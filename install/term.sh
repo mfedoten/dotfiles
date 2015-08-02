@@ -29,12 +29,3 @@ else
         rm -r iTerm.app
     fi
 fi
-
-# # Instal Powerline fonts
-echo 'Installing Powerline fonts'
-git clone https://github.com/powerline/fonts
-cd "$SRC_DIR/fonts"
-./install.sh
-cd "$SRC_DIR"
-sudo rm -r fonts
-
