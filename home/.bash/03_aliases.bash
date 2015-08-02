@@ -6,9 +6,9 @@ shopt -s expand_aliases
 # Aliases #
 ###########
 # use GNU ls if installed
-if command -v gls >/dev/null; then
-    eval `gdircolors ~/.dir_colors`
-    alias ls='gls --color'
+if ls --version | grep -q GNU; then
+    eval `dircolors ~/.dir_colors`
+    alias ls='ls --color=auto'
     alias ld='ls -lA --group-directories-first'
     alias ll='ls -lAX'
 else
