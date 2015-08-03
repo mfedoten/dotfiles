@@ -55,3 +55,4 @@ Install Mac version of TexLive. I prefer manual installation from [here](https:/
 
 ## Other programs I have installed
 * [Google Chrome](https://www.google.com/chrome/browser/desktop/)
+* [Acrobat Reader](https://get.adobe.com/reader/) to view `pdf` files and [Skim](http://skim-app.sourceforge.net/) to work with latex: latexmk constant preview + Skim is a killer.
