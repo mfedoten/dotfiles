@@ -25,7 +25,6 @@ else
     sudo make install
     cd "$SRC_DIR"
     sudo rm -r MacPorts-2.3.3 MacPorts-2.3.3.tar.bz2
-    export PATH=/opt/local/bin:/opt/local/sbin:$PATH
     if [[ -f /opt/local/bin/port ]]; then
         echo "MacPorts successfully installed."
     else
@@ -35,10 +34,12 @@ fi
 
 # Install all requested ports
 cd "$SRC_DIR"
+# Export path to work with the command
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Update ports
 sudo port selfupdate
 # Upgrade outdated packages (if any)
-sudo port -v upgrade installed 
+sudo port -v upgrade outdated
 # Install requested ports
 while read -r line; do sudo port install "$line"; done <portnames.txt
 # Clean up

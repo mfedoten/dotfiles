@@ -39,7 +39,7 @@ alias spyder="open /Applications/Spyder.app/"
 alias week='date +%V'
 
 # Update MacPorts, installed packages and locateDB
-alias update='sudo port selfupdate; sudo port -v upgrade installed; sudo port clean --all installed; sudo port uninstall --follow-dependencies inactive; updatedb'
+alias update='sudo port selfupdate; sudo port -v upgrade outdated; sudo port clean --all installed; sudo port uninstall --follow-dependencies inactive; updatedb'
 
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed
