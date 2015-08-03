@@ -11,22 +11,31 @@ set -ex
 SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SRC_DIR"
 
+# Find where Python is installed
+PY_DIR=$(dirname "$(dirname "$(command -v python)")")
+echo "Fouond Python in $PY_DIR"
+
+# Find Python's config dir (the one which contains config.c)
+CONFIG_DIR=$(dirname "$(find -L $PY_DIR -name "*config.c")")
+echo "Fouond config.c in $CONFIG_DIR"
+
 # Compile MacVim from source
 if [[ -d /Applications/MacVim.app/ ]]; then
-    echo "MacVim is already installed"
+    echo "MacVim is already installed."
 else
     git clone https://github.com/macvim-dev/macvim
     cd macvim/src
+    # export LDFLAGS=-L/usr/lib
     ./configure \
         --with-features=huge \
         --enable-rubyinterp \
         --enable-perlinterp \
         --enable-cscope \
         --enable-pythoninterp \
-        --with-python-config-dir=/opt/local/Library/Frameworks/Python.framework/Versions/Current/lib/python2.7/config
+        --with-python-config-dir=$CONFIG_DIR
     make
-    mv -r MacVim/build/Release/MacVim.app /Applications
-    cd $"SRC_DIR"
+    mv MacVim/build/Release/MacVim.app /Applications
+    cd "$SRC_DIR"
     sudo rm -r macvim/src
 fi
 
@@ -40,9 +49,9 @@ else
 fi
 
 # Install Powerline fonts
-cd $"SRC_DIR"
+cd "$SRC_DIR"
 git clone https://github.com/powerline/fonts
 cd fonts
 ./install.sh
-cd $"SRC_DIR"
+cd "$SRC_DIR"
 sudo rm -r fonts
