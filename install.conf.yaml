@@ -1,0 +1,70 @@
+- clean: ['~', '~/.config', '~/.vim']
+
+- shell:
+    -
+      - "mkdir -p ~/.bash ~/.vim/{after,dictionaries} ~/.config/git"
+      - "Creating directories"
+
+- link:
+    ~/.bashrc:
+        force: true
+        path: home/.bashrc
+    ~/.bash/01_path.bash:
+        force: true
+        path: home/.bash/01_path.bash
+    ~/.bash/02_colors.bash:
+        force: true
+        path: home/.bash/02_colors.bash
+    ~/.bash/03_aliases.bash:
+        force: true
+        path: home/.bash/03_aliases.bash
+    ~/.bash/04_git-completion.bash:
+        force: true
+        path: home/.bash/04_git-completion.bash
+    ~/.bash/05_completion:
+        force: true
+        path: home/.bash/05_completion.bash
+    ~/.bash/06_theme.bash:
+        force: true
+        path: home/.bash/06_theme.bash
+    ~/.bash/07_bookmarks.bash:
+        force: true
+        path: home/.bash/07_bookmarks.bash
+    ~/.bash/08_env.bash:
+        force: true
+        path: home/.bash/08_env.bash
+    ~/.profile:
+        force: true
+        path: home/.profile
+    ~/.vimrc:
+        force: true
+        path: home/.vimrc
+    ~/.vim/after:
+        force: true
+        path: home/.vim/after/
+    ~/.vim/dictionaries:
+        force: true
+        path: home/.vim/dictionaries/
+    ~/.vimrc:
+        force: true
+        path: home/.vimrc
+    ~/.inputrc:
+        force: true
+        path: home/.inputrc
+    ~/.dir_colors:
+        force: true
+        path: home/.dir_colors
+    ~/.latexmkrc:
+        force: true
+        path: home/.latexmkrc
+    ~/.config/flake8:
+        force: true
+        path: home/.config/flake8
+    ~/.config/git:
+        force: true
+        path: home/.config/git/
+
+- shell:
+    -
+      - "git submodule update --init --recursive"
+      - "Installing/updating submodules"
