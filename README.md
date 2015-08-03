@@ -47,7 +47,7 @@ Next, we need to symlink all files in `home` directory
 Normally, I prefer to set up appearance and defaults manually, but this script sets some nice defaults which I am too lazy to search for in system preferences. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized)
 
 ## MacTex
-Instal MacTex to `/usr/local`
+Install Mac version of TexLive. I prefer manual installation from [here](https://tug.org/mactex/mactex-download.html). It will install TexLive to `/usr/local/` and add `/Applications/TeX` with some GUI programs like BibDesk, TeXShop etc., which can be uninstalled if not needed.
 
 ## Other programs I have installed
 * [Google Chrome](https://www.google.com/chrome/browser/desktop/)
