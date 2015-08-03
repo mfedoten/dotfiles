@@ -209,6 +209,9 @@ EOD
 open "${DOTFILES_DIR}/term_colors/Solarized Dark.itermcolors"
 open "${DOTFILES_DIR}/term_colors/Solarized Light"
 
+# Don’t display the annoying prompt when quitting iTerm
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
 # Always reopen windows from last session
 defaults write com.apple.Terminal NSQuitAlwaysKeepsWindows -bool true
 defaults write com.googlecode.iterm2 NSQuitAlwaysKeepsWindows -bool true
