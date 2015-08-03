@@ -17,6 +17,6 @@ else
     # Install bash via MacPorts
     sudo port install bash @4.3.39_0
     # Add it to the list of shells
-    sudo echo /opt/local/bin/bash >> /private/etc/shells
+    sudo bash -c "echo /opt/local/bin/bash >> /private/etc/shells"
     chsh -s /opt/local/bin/bash
 fi
