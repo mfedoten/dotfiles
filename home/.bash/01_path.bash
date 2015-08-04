@@ -18,3 +18,8 @@ fi
 if [ -d /opt/local/libexec/gnubin ]; then
     export PATH=/opt/local/libexec/gnubin:$PATH
 fi
+
+# Git 
+if [ -d /usr/local/git/bin ]; then
+    export PATH=/usr/local/git/bin:$PATH
+fi
