@@ -16,5 +16,5 @@ fi
 # GNU utils installed with MacPorts
 # http://www.lorrin.org/blog/2013/08/09/gnu-find-on-os-x/
 if [ -d /opt/local/libexec/gnubin ]; then
-    export PATH=/opt/local/libexec/gnubin
+    export PATH=/opt/local/libexec/gnubin:$PATH
 fi
