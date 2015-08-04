@@ -51,6 +51,8 @@ The script is mostly based on Simon Eskildsen's [linker.sh script](https://githu
 
 First one is files backup. And second is that this script copies files recursively, instead of just linking the whole folder and overwriting its contents. I decided to do so because I prefer to have some "local" configuration, specific to each machine (e.g. `PATH` might be different). To do so I keep them locally on each machine, append `_local` to the names and add this suffix to `.gitignore`, that way they are still linked, but not overwritten. Ok, I understand that it's not the best way to do version control and that there are more [sophisticated ways](http://www.anishathalye.com/2014/08/03/managing-your-dotfiles/#local-customization). Maybe later I'll fix this, one day, I guess.. Another fix I want to do is to think of the way how to create backup directories at the moment of backup. For now it creates `backups` directory with all subfolders in the very beginning. It's done so that structure of `~` would be preserved and dotfiles wouldn't just be scattered over `backups` dir.
 
+Before linking files from you repository the scripts first checks dotfiles in your home `~/` directory for broken links and deletes them.
+
 To link all dotfiles in your repository just type in:
 ```
 ./install.sh
@@ -77,9 +79,11 @@ Normally, I prefer to set up appearance and defaults manually, but this script s
 ### MacTex
 Install Mac version of TexLive. I prefer manual installation from [here](https://tug.org/mactex/mactex-download.html). It will install TexLive to `/usr/local/` and add `/Applications/TeX` with some GUI programs like BibDesk, TeXShop etc., which can be uninstalled if not needed.
 
+### Warning
+All this scripts worked fine for me, but might not work on your machine, so proceed with care. Never copy anything blindly, check what is inside and adjust to your needs. And once again: **be careful!**
 
 ## Other programs I have installed
-* [Google Chrome](https://www.google.com/chrome/browser/desktop/)
+* [Google Chrome](https://www.google.com/chrome/browser/desktop/) and [Firefox](https://www.mozilla.org/en-US/firefox/new/).
 * [Acrobat Reader](https://get.adobe.com/reader/) to view `pdf` files and [Skim](http://skim-app.sourceforge.net/) to work with latex: latexmk constant preview + Skim is a killer.
 * [Dropbox](https://www.dropbox.com/install) for quick shares.
 
@@ -87,4 +91,5 @@ Install Mac version of TexLive. I prefer manual installation from [here](https:/
 ## TODO
 - Add possibility of update in `macmvim.sh`.
 - Fix directories installation for backups in `install.sh`.
-- More sophisticated way of managing local configuration.
+- Make cleaning in `install.sh` more flexible, e.g. add possibility to specify directories to clean, make it as a separate command.
+- More 'sophisticated' way of managing local configuration.

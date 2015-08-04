@@ -31,6 +31,11 @@ done
 # name of the home directory in dotfiles repo (where to copy from)
 homedir=home
 
+
+# Remove broken links in dotfiles in home directory
+gfind ~/.[^.]* -xtype l -delete
+
+
 # make hidden files visible
 for file in $(find -L $homedir -type f | cut -sd / -f 2-); do
   path="$srcdir/$homedir/$file"
