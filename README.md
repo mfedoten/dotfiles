@@ -80,7 +80,17 @@ Normally, I prefer to set up appearance and defaults manually, but this script s
 Install Mac version of TexLive. I prefer manual installation from [here](https://tug.org/mactex/mactex-download.html). It will install TexLive to `/usr/local/` and add `/Applications/TeX` with some GUI programs like BibDesk, TeXShop etc., which can be uninstalled if not needed.
 
 ### Warning
-All this scripts worked fine for me, but might not work on your machine, so proceed with care. Never copy anything blindly, check what is inside and adjust to your needs. And once again: **be careful!**
+All this scripts worked fine for me, but might not work on your machine, so proceed with care. Never copy anything blindly, check what is inside and adjust to your needs. Each script will exit if as soon as any command in the scrip fails. If you want to see what it's doing, in the beginning of each script (around `line 8`) you should find the following:
+```
+set -e
+```
+change it to:
+```
+set -ex
+```
+Like that the script will output each command it's executing prepended with pluses.
+
+And once again: **be careful!**
 
 ## Other programs I have installed
 * [Google Chrome](https://www.google.com/chrome/browser/desktop/) and [Firefox](https://www.mozilla.org/en-US/firefox/new/).
