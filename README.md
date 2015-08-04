@@ -39,14 +39,17 @@ Below is description of the installation steps, listed in the order as they shou
 `python.sh` will set up Python and pip to run MacPorts version and install all packages from `packages.txt`.
 
 ### Dotfiles
-Next, we need to symlink all files in `home` directory. To do so I am using [Dotbot](https://github.com/anishathalye/dotbot#configuration), which is just great: it's clean, lightweight and simple. Detailed information can be found on the page of the project, but in few words the idea is the following:
-- you add it as a submodule to your repo;
-- you define which files in your repo should be lined to which files in your home repository in `install.conf.yaml`;
-- you run `./install` script;
+Next, we need to symlink all files in `home` directory. To do so I at first was using [Dotbot](https://github.com/anishathalye/dotbot#configuration), which is just great: it's clean, lightweight and simple. For more information visit [Dotbot page](https://github.com/anishathalye/dotbot#configuration).
 
-Now, you're all set but there are some details to keep in mind, for instance you want to keep your home directory clean from broken links, [Dotbot](https://github.com/anishathalye/dotbot#configuration) can do that for you, just go and check their page.
+The problem with Dotbot is that it doesn't backup dotfiles in home directory. Instead I decided to use custom script, which always links files but ask user for backup. There are several scenarios:
+- file already exist and is linked to a dotfile in your repository -> nothing happens.
+- file exists and it is identical to your dotfiles -> file is replaced with symlink, no backup.
+- file exist and differs from your dotfile -> file is symlinked to your dotfile, user is prompted to confirm backup.
+- file doesn't exist -> symbolic link is created. 
 
-I also prefer to have some "local" configuration, specific to each machine (e.g. `PATH` might be different). To do so I keep them locally on each machine, append `_local` to the names and add this suffix to `.gitignore`, that way they are still linked, but not overwritten. Ok, I understand that it's not the best way to do version control and that there are more [sophisticated ways](http://www.anishathalye.com/2014/08/03/managing-your-dotfiles/#local-customization). Maybe later I'll fix this.
+The script is mostly based on Simon Eskildsen's [linker.sh script](https://github.com/Sirupsen/dotfiles/blob/master/linker.sh), which is totally great. I just added two modifications.
+
+First one is files backup. And second is that this script copies files recursively, instead of just linking the whole folder and overwriting its contents. I decided to do so because I prefer to have some "local" configuration, specific to each machine (e.g. `PATH` might be different). To do so I keep them locally on each machine, append `_local` to the names and add this suffix to `.gitignore`, that way they are still linked, but not overwritten. Ok, I understand that it's not the best way to do version control and that there are more [sophisticated ways](http://www.anishathalye.com/2014/08/03/managing-your-dotfiles/#local-customization). Maybe later I'll fix this, one day, I guess.. Another fix I want to do is to think of the way how to create backup directories at the moment of backup. For now it creates `backups` directory with all subfolders in the very beginning. It's done so that structure of `~` would be preserved and dotfiles wouldn't just be scattered over `backups` dir.
 
 ### MacVim
 `macvim.sh`: compiles MacVim with Python support, installs [Vundle](https://github.com/VundleVim/Vundle.vim) and all plugins listed in `~/.vimrc`. That's why it's better to symlink dotfiles first, otherwise you can afterwards install the plugins from Vim with `:PluginInstall`. The script also installs [pre-patched fonts for Powerline](https://github.com/powerline/fonts) to work with [vim-airline](https://github.com/bling/vim-airline), you just have to specify the right font in your terminal settings after installation. I'm using a plugin to toggle mouse between vim and Terminal, but it won't work anyway because of known issues of Terminal. To fix it [MouseTerm](https://bitheap.org/mouseterm/) should be installed.
