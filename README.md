@@ -114,6 +114,7 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
     - [Mathias Bynens](https://github.com/mathiasbynens/dotfiles)
     - [Steve Losh](https://bitbucket.org/sjl/dotfiles/src)
     - [Lars Kappert](https://github.com/webpro/dotfiles)
+
 ## TODO
 - Add possibility of update in `macmvim.sh`.
 - Fix directories installation for backups in `install.sh`.
