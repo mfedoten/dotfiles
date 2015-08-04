@@ -92,12 +92,28 @@ Like that the script will output each command it's executing prepended with plus
 
 And once again: **be careful!**
 
-## Other programs I have installed
+## Other programs
+Here are some other programs I have on my machine. They require mostly manual installation, which pretty straightforward. I also included links to download pages / instructions how to install.
+
 * [Google Chrome](https://www.google.com/chrome/browser/desktop/) and [Firefox](https://www.mozilla.org/en-US/firefox/new/).
 * [Acrobat Reader](https://get.adobe.com/reader/) to view `pdf` files and [Skim](http://skim-app.sourceforge.net/) to work with latex: latexmk constant preview + Skim is a killer.
 * [Dropbox](https://www.dropbox.com/install) for quick shares.
+* To work with LaTex document normally I use Vim + [LaTeX-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) + [Skim](http://skim-app.sourceforge.net/), but if I need GUI I prefer [TexStudio](http://www.texstudio.org/) or [TexMaker](http://www.xm1math.net/texmaker/download.html#macosx).
+* [Zotero](https://www.zotero.org/download/) as bibliography manager **+** [Better Bib(La)TeX](https://github.com/ZotPlus/zotero-better-bibtex) for decent citation export.
+* [Jumpcut](http://jumpcut.sourceforge.net/) is a small but useful tool to keep your Cut/Copy history.
+* [TexMate](http://macromates.com/download) as alternative to Vim.
+* [DefaltApp](http://www.rubicode.com/Software/Bundles.html#RCDefaultApp) very usefull if you want to set default app for a group of different files, instead of "Get info" for each specific filetype you can configure all filetypes, which should be open with a particular app.
 
-
+## Further reading
+If you don't know where to start, what all this mean, what the hell dotfiles are etc. Here are some resources and examples:
+* [A nice introduction on dotfiles.](https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789)
+* [A good post on managing your dotfiles.](http://www.anishathalye.com/2014/08/03/managing-your-dotfiles)
+* [Github's huge collection of resources.](https://dotfiles.github.io/)
+* Here are some dotfiles repositories which inspired this repo:
+    - [Simon Eskildsen](https://github.com/Sirupsen/dotfiles/)
+    - [Mathias Bynens](https://github.com/mathiasbynens/dotfiles)
+    - [Steve Losh](https://bitbucket.org/sjl/dotfiles/src)
+    - [Lars Kappert](https://github.com/webpro/dotfiles)
 ## TODO
 - Add possibility of update in `macmvim.sh`.
 - Fix directories installation for backups in `install.sh`.
