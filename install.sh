@@ -17,10 +17,15 @@ set -e
 srcdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # backup directory
 backdir="$srcdir/backups"
-# create directoree tree inside backup folder
+# create directoree tree inside backup directory
 # TODO find a way to create dirs at the moment of backup
 for dir in $(find home -type d | cut -sd / -f 2-); do
     mkdir -p "$backdir/$dir"
+done
+# create directoree tree inside home (~) directory
+# TODO find a way to create dirs at the moment of backup
+for dir in $(find home -type d | cut -sd / -f 2-); do
+    mkdir -p "$HOME/$dir"
 done
 # name of the home directory in dotfiles repo (where to copy from)
 homedir=home
