@@ -78,8 +78,10 @@ Install Mac version of TexLive. I prefer manual installation from [here](https:/
 ## Other programs I have installed
 * [Google Chrome](https://www.google.com/chrome/browser/desktop/)
 * [Acrobat Reader](https://get.adobe.com/reader/) to view `pdf` files and [Skim](http://skim-app.sourceforge.net/) to work with latex: latexmk constant preview + Skim is a killer.
+* [Dropbox](https://www.dropbox.com/install) for quick shares.
 
 
 ## TODO
 - Add possibility of update in `macmvim.sh`.
+- Fix directories installation for backups in `install.sh`.
 - More sophisticated way of managing local configuration.
