@@ -9,4 +9,4 @@ fi
 # BASH_ENV #
 ############
 # allows using aliases in non-login non-interactive shells
-export BASH_ENV="$HOME/.bash/03_aliases.bash:$BASH_ENV"
+export BASH_ENV="$HOME/.bash/aliases.bash:$BASH_ENV"
