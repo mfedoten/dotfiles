@@ -60,6 +60,11 @@ To link all dotfiles in your repository just type in:
 
 The script searches for location of config directory of current python's version and passes it `--with-python-config-dir` switch during the installation of MacVim, but it might fail. Also if MacVim is already installed it does not update it, it just proceed to Vundle installation (I have to fix this).
 
+If you get clang error try uncommenting line 28:
+```
+export LDFLAGS=-L/usr/lib
+```
+
 ### iTerm2
 `term.sh` will install [iTerm2](https://www.iterm2.com/).
 

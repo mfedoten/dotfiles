@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Links everything in home/ to ~/, does backups.
 # Modified script by Simon Eskildsen (github.com/Sirupsen).
+# Mariia Fedotenkova.
 
 function symlink {
   ln -nsf $1 $2
