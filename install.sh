@@ -33,7 +33,7 @@ homedir=home
 
 
 # Remove broken links in dotfiles in home directory
-gfind ~/.[^.]* -xtype l -delete
+sudo gfind ~/.[^.]* -xtype l -delete
 
 
 # make hidden files visible
