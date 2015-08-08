@@ -3,23 +3,28 @@
 ############
 # Set PATH #
 ############
+# http://superuser.com/a/39995
+path_append() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$1"
+    fi
+}
+path_prepend() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="$1${PATH:+":$PATH"}"
+    fi
+}
 
 # Add user specific path
-export PATH=/usr/local:$PATH
+path_prepend /usr/local
 
-# MacPorts 
-if [ -d /opt/local/bin ]; then
-    export PATH=/opt/local/bin:$PATH
-    export PATH=$PATH:/opt/local/sbin
-fi
+# MacPorts
+path_append /opt/local/sbin
+path_prepend /opt/local/bin
 
 # GNU utils installed with MacPorts
 # http://www.lorrin.org/blog/2013/08/09/gnu-find-on-os-x/
-if [ -d /opt/local/libexec/gnubin ]; then
-    export PATH=/opt/local/libexec/gnubin:$PATH
-fi
+path_prepend /opt/local/libexec/gnubin
 
-# Git 
-if [ -d /usr/local/git/bin ]; then
-    export PATH=/usr/local/git/bin:$PATH
-fi
+# Git
+path_prepend /usr/local/git/bin
