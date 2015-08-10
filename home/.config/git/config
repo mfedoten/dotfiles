@@ -10,3 +10,10 @@
 
 [core]
 	excludesfile = /Users/mariia/.config/git/gitignore_global
+    editor = vim
+
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
