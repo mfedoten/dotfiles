@@ -1,3 +1,12 @@
 [user]
 	name = Mariia Fedotenkova
 	email = maria.fedotenkova@gmail.com
+
+[credential]
+	helper = osxkeychain
+
+[alias]
+	alias = config --get-regexp ^alias\\.
+
+[core]
+	excludesfile = /Users/mariia/.config/git/gitignore_global
