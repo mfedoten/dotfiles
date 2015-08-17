@@ -9,7 +9,7 @@ export LC_ALL='en_US.UTF-8';
 
 # Set less as default pagerm highlight section titles in manual pages.
 export PAGER=less
-export LESS=-i -R
+export LESS=-iR
 man() {
     env LESS_TERMCAP_mb=$'\E[01;31m' \
     LESS_TERMCAP_md=$'\E[01;38;5;74m' \
