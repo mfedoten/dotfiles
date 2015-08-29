@@ -545,6 +545,9 @@ inoremap <c-v> <c-r>"
 " Map Ctrl+C to to copy in Visual mode
 vnoremap <c-c> "+y
 
+" Search visually selected text
+vnoremap // y/<C-R>"<CR>
+
 " Let Enter accept matches
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Map CTRL-X function in insert mode
