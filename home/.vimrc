@@ -715,7 +715,7 @@ augroup ft_tex
     " autocmd FileType tex setlocal foldmethod=syntax foldnestmax=2
     autocmd BufWinEnter *.tex :lcd %:p:h
     autocmd BufWinLeave *.tex :lcd -
-    autocmd FileType tex setlocal ft=tex
+    autocmd BufRead *.tex setlocal ft=tex
     autocmd FileType tex setlocal dictionary=~/.vim/dictionaries/tex
     autocmd FileType tex setlocal complete+=k
 augroup END
