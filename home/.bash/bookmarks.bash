@@ -8,6 +8,5 @@ rec=~/Documents/PhD/Codes
 rep=~/Documents/PhD/Reports
 lit=~/Documents/PhD/Lit/
 doc=~/Documents/Docs
-spec=~/Documents/PhD/Recurrence/DataSpectra
 phd=~/Documents/PhD
 papers=~/Documents/PhD/Papers/
