@@ -64,8 +64,12 @@ prompt_git() {
 PCT="\`if [[ \$EUID -eq 0 ]]; then T='$Red' ; else T='$IYellow'; fi; 
 echo \$T \`"
 
-PS1="\[$Blue\]\h: "; # host
-PS1+="\[$IRed\]\u "; #user
+PS1="\[$IRed\]\u\[$White\]@"; #user
+if [ -n "$SSH_CLIENT" ]; then
+    PS1+="\[$IRed\]\h: "; # host
+else
+    PS1+="\[$Blue\]\h: "; # host
+fi
 PS1+="\[$White\]in \[$IPurple\]\w "; # working directory
 PS1+="\$(prompt_git \"\[$White\]on \[$Green\]\")"; # Git repository details
 PS1+="\n";  # new line
