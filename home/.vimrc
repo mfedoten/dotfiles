@@ -716,8 +716,10 @@ augroup ft_tex
     autocmd BufWinEnter *.tex :lcd %:p:h
     autocmd BufWinLeave *.tex :lcd -
     autocmd BufRead *.tex setlocal ft=tex
+    autocmd BufNewFile *.tex setlocal ft=tex
     autocmd FileType tex setlocal dictionary=~/.vim/dictionaries/tex
     autocmd FileType tex setlocal complete+=k
+    autocmd FileType tex setlocal spell
 augroup END
 " MATLAB
 augroup ft_mat
