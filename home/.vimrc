@@ -338,7 +338,6 @@ let g:LatexBox_fold_automatic = 0
 " let g:LatexBox_ignore_warnings
         " \ = ['Underfull', 'Overfull', 'specifier changed to']
 let g:LatexBox_ignore_warnings = ['']
-map <localleader>ls :!/Applications/Skim.app/Contents/SharedSupport/displayline <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
 " }}}
 
 " SnipMate: code snippts ------------------------------------------------- {{{
