@@ -31,7 +31,7 @@ alias oo='open .'
 alias ot="open -a /Applications/TextMate.app"
 
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-alias mvim='open /Applications/MacVim.app'
+# alias mvim='open /Applications/MacVim.app'
 alias g="git"
 alias spyder="open /Applications/Spyder.app/"
 
