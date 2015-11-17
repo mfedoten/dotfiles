@@ -536,7 +536,7 @@ nnoremap <silent> <leader>p :setlocal paste!<cr>
 " Toggle show/hide whitespaces
 nnoremap <silent> <leader>L :setlocal list!<cr>
 " remove trailing white spaces
-nnoremap <leader>W :%s/\s\+$//
+nnoremap <leader>W :%s/\s\+$//<CR>
 " Show difference between curent file and original state
 nnoremap <F10> :call ToggleDiffOrig()<cr>
 
