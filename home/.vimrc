@@ -333,7 +333,7 @@ let g:LatexBox_quickfix = 2
 let g:LatexBox_viewer = 'open -a Skim.app'
 let g:LatexBox_split_length = 10
 let g:LatexBox_Folding = 1
-let g:LatexBox_fold_text = 0
+let g:LatexBox_fold_text = 1
 let g:LatexBox_fold_automatic = 0
 " let g:LatexBox_ignore_warnings
         " \ = ['Underfull', 'Overfull', 'specifier changed to']
@@ -687,6 +687,9 @@ nnoremap <leader><right> <c-w>l
 nnoremap <leader><left> <c-w>h
 "Two splits scrolling together
 nnoremap <leader>sb :set scrollbind!<cr>
+" Jump to the next/previous error in quickfix window
+nnoremap <leader>ln :lne<cr>
+nnoremap <leader>lp :lp<cr>
 " }}}
 
 " File type specific options --------------------------------------------- {{{
@@ -712,7 +715,7 @@ augroup END
 " Latex
 augroup ft_tex
     au!
-    " autocmd FileType tex setlocal foldmethod=syntax foldnestmax=2
+    autocmd FileType tex setlocal foldmethod=expr
     autocmd BufWinEnter *.tex :lcd %:p:h
     autocmd BufWinLeave *.tex :lcd -
     autocmd BufRead *.tex setlocal ft=tex
