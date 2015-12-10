@@ -681,8 +681,8 @@ set splitright          " Open new vertical split on the right by default
 nnoremap <leader>vs :vsplit<space>
 nnoremap <leader>s  :split<space>
 " Make navigation between screens easier
-nnoremap <leader><down> <c-w>j
-nnoremap <leader><up> <c-w>k
+nnoremap <leader>j <c-w>j
+nnoremap <leader>k <c-w>k
 nnoremap <leader><right> <c-w>l
 nnoremap <leader><left> <c-w>h
 "Two splits scrolling together
