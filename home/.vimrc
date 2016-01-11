@@ -667,9 +667,7 @@ set confirm             " Reminds of unsaved buffers on quit
 nnoremap <leader>ls :ls<cr>
 nnoremap <Tab>      :bn<cr>
 nnoremap <S-Tab>    :bp<cr>
-nnoremap <leader>h  :bf<cr>
-nnoremap <leader>l  :bl<cr>
-nnoremap <leader>d :bd<cr>
+nnoremap <leader>d  :bd<cr>
 " Search open buffers with CtrlP
 nnoremap <leader>ll :CtrlPBuffer<cr>
 " }}}
@@ -683,6 +681,8 @@ nnoremap <leader>s  :split<space>
 " Make navigation between screens easier
 nnoremap <leader>j <c-w>j
 nnoremap <leader>k <c-w>k
+nnoremap <leader>h <c-w>h
+nnoremap <leader>l <c-w>l
 nnoremap <leader><right> <c-w>l
 nnoremap <leader><left> <c-w>h
 "Two splits scrolling together
