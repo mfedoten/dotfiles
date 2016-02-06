@@ -28,7 +28,8 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'ciaranm/securemodelines'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
@@ -210,7 +211,7 @@ if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
 
-" allows using bash aliases  
+" allows using bash aliases
 let $BASH_ENV = "~/.bash/03_aliases.bash"
 
 " }}}
