@@ -683,8 +683,6 @@ nnoremap <leader>j <c-w>j
 nnoremap <leader>k <c-w>k
 nnoremap <leader>h <c-w>h
 nnoremap <leader>l <c-w>l
-nnoremap <leader><right> <c-w>l
-nnoremap <leader><left> <c-w>h
 "Two splits scrolling together
 nnoremap <leader>sb :set scrollbind!<cr>
 " Jump to the next/previous error in quickfix window
