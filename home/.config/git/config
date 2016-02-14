@@ -11,9 +11,42 @@
 [core]
 	excludesfile = /Users/mariia/.config/git/gitignore_global
     editor = vim
+	legacyheaders = false # >git 1.5
+	quotepath = false
+	# http://stackoverflow.com/questions/136178/git-diff-handling-long-lines
+	pager = less -r
+	# if ↑ doesn’t work, try: pager = less -+$LESS -FRX
 
 [color]
     branch = auto
     diff = auto
     interactive = auto
     status = auto
+	ui = auto
+	interactive = auto
+
+[push]
+	default = simple # [ matching | simple ]
+
+[repack]
+	usedeltabaseoffset = true # >git 1.5
+
+[alias]
+	s = status
+	a = !git add . && git status
+	au = !git add -u . && git status
+	aa = !git add . && git add -u . && git status
+	c = commit
+	cm = commit -m
+	ca = commit --amend # careful
+	ac = !git add . && git commit
+	acm = !git add . && git commit -m
+	l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+	ll = log --stat --abbrev-commit
+	lg = log --color --graph --pretty=format:'%C(bold white)%h%Creset -%C(bold green)%d%Creset %s %C(bold green)(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	llg = log --color --graph --pretty=format:'%C(bold white)%H %d%Creset%n%s%n%+b%C(bold blue)%an <%ae>%Creset %C(bold green)%cr (%ci)' --abbrev-commit
+	d = diff
+	master = checkout master
+	spull = svn rebase
+	spush = svn dcommit
+	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
