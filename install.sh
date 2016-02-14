@@ -36,7 +36,7 @@ homedir=home
 sudo gfind ~/.[^.]* -xtype l -delete
 
 
-# make hidden files visible
+# Link the files
 for file in $(find -L $homedir -type f | cut -sd / -f 2-); do
   path="$srcdir/$homedir/$file"
   target="$HOME/$file"

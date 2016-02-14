@@ -58,6 +58,7 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && kil
 
 # Git updates under curent dir
 # alias upgit='find . -maxdepth 2 -mindepth 1 -name .git -type d -prune | while read d; do cd $d/..; gecho -e "${Cyan}$PWD ${Color_Off} git pull"; git pull; cd $OLDPWD; done'
+alias upgit="show_status"
 
 #############
 # Functions #
