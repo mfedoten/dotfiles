@@ -552,10 +552,10 @@ vnoremap // y/<C-R>"<CR>
 " Let Enter accept matches
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Map CTRL-X function in insert mode
-inoremap <c-k> <c-x><c-k>
-inoremap <c-]> <c-x>s
-inoremap <c-l> <c-x><c-l>
-inoremap <c-f> <c-x><c-f>
+inoremap <c-k> <c-x><c-k>  " dictionary
+inoremap <c-]> <c-x>s      " spelling
+inoremap <c-l> <c-x><c-l>  " line
+inoremap <c-f> <c-x><c-f>  " filename
 
 " I really miss home/end in insert mode
 inoremap <c-a> <Home>
