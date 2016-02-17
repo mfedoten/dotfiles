@@ -29,11 +29,11 @@
     usedeltabaseoffset = true # >git 1.5
 
 [alias]
-    s = status
+    st = status
     a = !git add . && git status
     au = !git add -u . && git status
     aa = !git add . && git add -u . && git status
-    c = commit
+    ci = commit
     cm = commit -m
     ca = commit --amend # careful
     ac = !git add . && git commit
@@ -47,3 +47,6 @@
     spull = svn rebase
     spush = svn dcommit
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+    co = checkout
+    br = branch
+    up = rebase
