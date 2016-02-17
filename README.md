@@ -25,7 +25,7 @@ Obviously, we will need [git](https://git-scm.com/book/en/v2/Getting-Started-Ins
 Next, copy the repository and run installation script:
 ```
 git clone https://github.com/mfedoten/dotfiles
-cd dotfiles/install
+cd dotfiles/bin
 ```
 Below is description of the installation steps, listed in the order as they should be executed. All scripts are in the `bin` directory.
 
@@ -71,7 +71,7 @@ export LDFLAGS=-L/usr/lib
 `term.sh` will install [iTerm2](https://www.iterm2.com/).
 
 ### OSX defaults
-Normally, I prefer to set up appearance and defaults manually, but this script sets some nice defaults which I am too lazy to search for in system preferences. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized), printing full path in jeading of Finder windows etc. Just:
+Normally, I prefer to set up appearance and defaults manually, but this script sets some nice defaults which I am too lazy to search for in system preferences. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized), printing full path in heading of Finder windows etc. Just:
 ```
 ./osx.sh
 ```

@@ -179,8 +179,10 @@ tell application "Terminal"
 	local allOpenedWindows
 	local initialOpenedWindows
 	local windowID
-	set themeNameL to "Solarized Light"
-	set themeNameD to "Solarized Dark"
+	set themeNameSL to "Solarized Light"
+	set themeNameSD to "Solarized Dark"
+    set themeNameHyb to "Hybrid"
+    set themeNameSea to "Seafoam"
 
 	(* Store the IDs of all the open terminal windows. *)
 	set initialOpenedWindows to id of every window
@@ -188,19 +190,25 @@ tell application "Terminal"
     (* Open the custom theme (light) so that it gets added to the list
 	   of available terminal themes (note: this will open two
 	   additional terminal windows). *)
-	do shell script "open '$DOTFILES_DIR/term_colors/" & themeNameL & ".terminal'"
+	do shell script "open '$DOTFILES_DIR/term_colors/" & themeNameSL & ".terminal'"
 
 	(* Wait a little bit to ensure that the custom theme is added. *)
 	delay 1
 
 	(* Now add dark theme. *)
-	do shell script "open '$DOTFILES_DIR/term_colors/" & themeNameD & ".terminal'"
+	do shell script "open '$DOTFILES_DIR/term_colors/" & themeNameSD & ".terminal'"
 
 	(* Wait a little bit to ensure that the custom theme is added. *)
 	delay 1
 
+    (* Repeat for the remaining themes*)
+	do shell script "open '$DOTFILES_DIR/term_colors/" & themeNameHyb & ".terminal'"
+	delay 1
+	do shell script "open '$DOTFILES_DIR/term_colors/" & themeNameSea & ".terminal'"
+	delay 1
+
 	(* Set the custom theme as the default terminal theme. *)
-	set default settings to settings set themeNameD
+	set default settings to settings set themeNameHyb
 
 	(* Get the IDs of all the currently opened terminal windows. *)
 	set allOpenedWindows to id of every window
@@ -227,7 +235,9 @@ EOD
 
 # Install the Solarized Dark theme for iTerm
 open "${DOTFILES_DIR}/term_colors/Solarized Dark.itermcolors"
-open "${DOTFILES_DIR}/term_colors/Solarized Light"
+open "${DOTFILES_DIR}/term_colors/Solarized Light.itermcolors"
+open "${DOTFILES_DIR}/term_colors/Seafoam Pastel.itermcolors"
+open "${DOTFILES_DIR}/term_colors/Dusk.itermcolors"
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false

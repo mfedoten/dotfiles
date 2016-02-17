@@ -4,10 +4,8 @@
 # Modification of bash appearance #
 ###################################
 # Cowsay
-# gecho -e "\e[36m$(whatis $(gls /bin) 2>/dev/null | gshuf -n 1)\e[00m" | \
-    # cowsay -f $(gls /opt/local/share/cowsay/cows | gshuf -n 1 | cut -d. -f1)
-gecho -e "\e[36m$(cowsay -f $(gls /opt/local/share/cowsay/cows | gshuf -n1 | \
-    cut -d. -f1) $(whatis $(gls /bin) 2>/dev/null | gshuf -n1))\e[00m"
+# gecho -e "\e[36m$(cowsay -f $(gls /opt/local/share/cowsay/cows | gshuf -n1 | \
+    # cut -d. -f1) $(whatis $(gls /bin) 2>/dev/null | gshuf -n1))\e[00m"
 
 # Customize bash promt. Slightly changed prom by Mathias Bynens
 # https://github.com/mathiasbynens/dotfiles/blob/master/.bash_prompt
@@ -61,16 +59,16 @@ prompt_git() {
     fi;
 }
 
-PCT="\`if [[ \$EUID -eq 0 ]]; then T='$Red' ; else T='$IYellow'; fi; 
+PCT="\`if [[ \$EUID -eq 0 ]]; then T='$IRed' ; else T='$White'; fi; 
 echo \$T \`"
 
-PS1="\[$IRed\]\u\[$White\]@"; #user
+PS1="\[$IYellow\]\u\[$White\]@"; #user
 if [ -n "$SSH_CLIENT" ]; then
     PS1+="\[$IRed\]\h: "; # host
 else
     PS1+="\[$Blue\]\h: "; # host
 fi
-PS1+="\[$White\]in \[$IPurple\]\w "; # working directory
-PS1+="\$(prompt_git \"\[$White\]on \[$Green\]\")"; # Git repository details
+PS1+="\[$White\]in \[$Purple\]\w "; # working directory
+PS1+="\$(prompt_git \"\[$White\]on \[$ICyan\]\")"; # Git repository details
 PS1+="\n";  # new line
 PS1+="\[$PCT\]\$ \[$Color_Off\]" # '$' and reset color
