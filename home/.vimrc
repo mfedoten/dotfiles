@@ -442,8 +442,11 @@ endif
 
 " Disserent settings for Terminal and GUI
 if !has("gui_running")
-    colorscheme solarized                " Color scheme in terminal
     set background=dark
+    let g:hybrid_custom_term_colors=1
+    let g:hybrid_reduced_contrast=1
+    colorscheme hybrid                " Color scheme in terminal
+    let g:airline_theme='tomorrow'
 else
     colorscheme flatlandia               " Color scheme
     set transparency=0                   " No transparency
@@ -552,10 +555,10 @@ vnoremap // y/<C-R>"<CR>
 " Let Enter accept matches
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Map CTRL-X function in insert mode
-inoremap <c-k> <c-x><c-k>  " dictionary
-inoremap <c-]> <c-x>s      " spelling
-inoremap <c-l> <c-x><c-l>  " line
-inoremap <c-f> <c-x><c-f>  " filename
+inoremap <c-k> <c-x><c-k>
+inoremap <c-]> <c-x>s
+inoremap <c-l> <c-x><c-l>
+inoremap <c-f> <c-x><c-f>
 
 " I really miss home/end in insert mode
 inoremap <c-a> <Home>
