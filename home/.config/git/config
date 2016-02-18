@@ -11,7 +11,7 @@
     legacyheaders = false # >git 1.5
     quotepath = false
     # http://stackoverflow.com/questions/136178/git-diff-handling-long-lines
-    pager = less -r
+	pager = less
     # if ↑ doesn’t work, try: pager = less -+$LESS -FRX
 
 [color]
@@ -50,3 +50,5 @@
     co = checkout
     br = branch
     up = rebase
+[diff]
+	tool = --list

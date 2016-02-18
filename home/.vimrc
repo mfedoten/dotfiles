@@ -50,6 +50,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'jordwalke/flatlandia'
 Plugin 'endel/vim-github-colorscheme'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'w0ng/vim-hybrid'
 Plugin 'antlypls/vim-colors-codeschool'
 call vundle#end()
 
@@ -100,30 +101,6 @@ augroup CheckForHilight
     autocmd BufWinLeave * let b:m=getmatches() | call clearmatches()
     autocmd BufWinEnter * if exists('b:ExcessHighlight')&&exists('b:m') | call setmatches(b:m) | endif
 augroup END
-" }}}
-
-" Toggle Background/Colorscheme ------------------------------------------ {{{
-    " Toggle between dark/light background colorschemes are different for gui
-    " and terminal
-function! ToggleColors()
-    if &background=="dark"
-        set background=light
-        if has("gui_running")
-            colorscheme github
-            let g:airline_theme='papercolor'
-            AirlineRefresh
-            AirlineRefresh
-        endif
-    else
-        set background=dark
-        if has("gui_running")
-            colorscheme flatlandia
-            let g:airline_theme='flatlandia'
-            AirlineRefresh
-            AirlineRefresh
-        endif
-    endif
-endfunction
 " }}}
 
 " DiffOrig --------------------------------------------------------------- {{{
@@ -440,22 +417,19 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-" Disserent settings for Terminal and GUI
+" Descent settings for Terminal and GUI
 if !has("gui_running")
-    set background=dark
     let g:hybrid_custom_term_colors=1
     let g:hybrid_reduced_contrast=1
-    colorscheme hybrid                " Color scheme in terminal
-    let g:airline_theme='tomorrow'
 else
-    colorscheme flatlandia               " Color scheme
     set transparency=0                   " No transparency
     set guicursor+=a:blinkon0            " No blinking cursor
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\:h12 " Fonts for powerline
 endif
+set background=dark
+colorscheme hybrid
+let g:airline_theme='tomorrow'
 
-" Toggle light/dark colors
-nnoremap <leader>bg :call ToggleColors()<cr>
 " Toggle highlighting of excessive characters
 nnoremap <leader>th :call ToggleHighlight()<cr>
 " Toggle colorcolumn display
