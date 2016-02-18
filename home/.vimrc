@@ -419,8 +419,11 @@ endif
 
 " Descent settings for Terminal and GUI
 if !has("gui_running")
+    set background=dark
     let g:hybrid_custom_term_colors=1
     let g:hybrid_reduced_contrast=1
+    colorscheme hybrid                " Color scheme in terminal
+    let g:airline_theme='tomorrow'
 else
     set transparency=0                   " No transparency
     set guicursor+=a:blinkon0            " No blinking cursor

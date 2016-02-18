@@ -122,11 +122,11 @@
 	<key>Ansi 7 Color</key>
 	<dict>
 		<key>Blue Component</key>
-		<real>0.49303916096687317</real>
+		<real>0.50442856550216675</real>
 		<key>Green Component</key>
-		<real>0.55464726686477661</real>
+		<real>0.56967920064926147</real>
 		<key>Red Component</key>
-		<real>0.58358794450759888</real>
+		<real>0.60562425851821899</real>
 	</dict>
 	<key>Ansi 8 Color</key>
 	<dict>
@@ -185,11 +185,11 @@
 	<key>Foreground Color</key>
 	<dict>
 		<key>Blue Component</key>
-		<real>0.49303916096687317</real>
+		<real>0.46578168869018555</real>
 		<key>Green Component</key>
-		<real>0.55464726686477661</real>
+		<real>0.54136878252029419</real>
 		<key>Red Component</key>
-		<real>0.58358794450759888</real>
+		<real>0.58329033851623535</real>
 	</dict>
 	<key>Selected Text Color</key>
 	<dict>
