@@ -50,7 +50,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'jordwalke/flatlandia'
 Plugin 'endel/vim-github-colorscheme'
 Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'w0ng/vim-hybrid'
+Plugin 'mfedoten/vim-hybrid'
 Plugin 'antlypls/vim-colors-codeschool'
 call vundle#end()
 
