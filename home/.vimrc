@@ -710,7 +710,7 @@ augroup ft_mat
     autocmd BufWinEnter matlab :lcd %:p:h
     autocmd BufWinLeave matlab :lcd -
     autocmd FileType matlab setlocal tw=80
-    autocmd FileType matlab setlocal fo=croqj
+    autocmd FileType matlab setlocal fo=crqj
 augroup END
 " Markdown
 augroup ft_md
