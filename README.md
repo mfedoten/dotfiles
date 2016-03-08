@@ -36,7 +36,7 @@ Below is description of the installation steps, listed in the order as they shou
 `bash_update.sh`: installs and sets the latest version of bash. It's not really necessary, but some useful features (like auto-completion), won't work on bash versions older than 4.
 
 ### Python
-`python.sh` will set up Python and pip to run MacPorts version and install all packages from `packages.txt`.
+`python.sh` will set up Python and pip to run MacPorts version and install all packages from `requirements.txt`.
 
 ### Dotfiles
 Next, we need to symlink all files in `home` directory. To do so I at first was using [Dotbot](https://github.com/anishathalye/dotbot#configuration), which is just great: it's clean, lightweight and simple. For more information visit [Dotbot page](https://github.com/anishathalye/dotbot#configuration).

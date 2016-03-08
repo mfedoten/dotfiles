@@ -19,6 +19,6 @@ sudo port select --set pip pip27
 # Install PyQt4
 sudo port install py27-pyqt4 swig-python
 # Install all required packages
-sudo pip install -r packages.txt
+sudo pip install -r requirements.txt
 # Updrade outdated
 pip list --outdated | grep -v '^\-e' | cut -d ' ' -f 1 | xargs -n1 sudo pip install -U
