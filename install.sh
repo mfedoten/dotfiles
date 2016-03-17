@@ -37,7 +37,7 @@ sudo gfind ~/.[^.]* -xtype l -delete
 
 
 # Link the files
-for file in $(find -L $homedir -type f | cut -sd / -f 2-); do
+for file in $(find -L $homedir -type f ! -name '.DS_Store' | cut -sd / -f 2-); do
   path="$srcdir/$homedir/$file"
   target="$HOME/$file"
 

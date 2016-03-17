@@ -30,13 +30,13 @@ cd dotfiles/bin
 Below is description of the installation steps, listed in the order as they should be executed. All scripts are in the `bin` directory.
 
 ### MacPorts and packages
-`ports.sh`: installs [MacPorts](https://www.macports.org/) and all packages listed in `portnames.txt`.
+`./bin/ports.sh`: installs [MacPorts](https://www.macports.org/) and all packages listed in `portnames.txt`.
 
 ### Upgrade bash
-`bash_update.sh`: installs and sets the latest version of bash. It's not really necessary, but some useful features (like auto-completion), won't work on bash versions older than 4.
+`./bin/bash_update.sh`: installs and sets the latest version of bash. It's not really necessary, but some useful features (like auto-completion), won't work on bash versions older than 4.
 
 ### Python
-`python.sh` will set up Python and pip to run MacPorts version and install all packages from `requirements.txt`.
+`./bin/python.sh` will set up Python and pip to run MacPorts version and install all packages from `requirements.txt`.
 
 ### Dotfiles
 Next, we need to symlink all files in `home` directory. To do so I at first was using [Dotbot](https://github.com/anishathalye/dotbot#configuration), which is just great: it's clean, lightweight and simple. For more information visit [Dotbot page](https://github.com/anishathalye/dotbot#configuration).
@@ -58,26 +58,27 @@ To link all dotfiles in your repository just type in:
 ./install.sh
 ```
 ### MacVim
-`macvim.sh`: compiles MacVim with Python support, installs [Vundle](https://github.com/VundleVim/Vundle.vim) and all plugins listed in `~/.vimrc`. That's why it's better to symlink dotfiles first, otherwise you can afterwards install the plugins from Vim with `:PluginInstall`. The script also installs [pre-patched fonts for Powerline](https://github.com/powerline/fonts) to work with [vim-airline](https://github.com/bling/vim-airline), you just have to specify the right font in your terminal settings after installation. I'm using a plugin to toggle mouse between vim and Terminal, but it won't work anyway because of known issues of Terminal. To fix it [MouseTerm](https://bitheap.org/mouseterm/) should be installed.
+`./bin/macvim.sh`: compiles MacVim with Python support, installs [Vundle](https://github.com/VundleVim/Vundle.vim) and all plugins listed in `~/.vimrc`. The script also installs [pre-patched fonts for Powerline](https://github.com/powerline/fonts) to work with [vim-airline](https://github.com/bling/vim-airline), you just have to specify the right font in your terminal settings after installation. I'm using a plugin to toggle mouse between vim and Terminal, but it won't work anyway because of known issues of Terminal. To fix it [MouseTerm](https://bitheap.org/mouseterm/) should be installed.
 
-The script searches for location of config directory of current python's version and passes it `--with-python-config-dir` switch during the installation of MacVim, but it might fail. Also if MacVim is already installed it does not update it, it just proceed to Vundle installation (I have to fix this).
+The script searches for location of config directory of current python's version and passes it `--with-python-config-dir` switch during the installation of MacVim, but it might fail. Also if MacVim is already installed it does not update it, it just proceeds to Vundle installation (I have to fix this).
 
-If you get clang error try uncommenting line 28:
+If you get clang error, try uncommenting line 28:
 ```
 export LDFLAGS=-L/usr/lib
 ```
 
 ### iTerm2
-`term.sh` will install [iTerm2](https://www.iterm2.com/).
+`./bin/term.sh` will install [iTerm2](https://www.iterm2.com/).
 
 ### OSX defaults
-Normally, I prefer to set up appearance and defaults manually, but this script sets some nice defaults which I am too lazy to search for in system preferences. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized), printing full path in heading of Finder windows etc. Just:
+Normally, I prefer to set up appearance and defaults manually, but this script sets some nice defaults which I am too lazy to search for in the system preferences. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized), printing full path in heading of Finder windows etc. Just:
 ```
-./osx.sh
+./bin/osx.sh
 ```
 
-### MacTex
-Install Mac version of TexLive. I prefer manual installation from [here](https://tug.org/mactex/mactex-download.html). It will install TexLive to `/usr/local/` and add `/Applications/TeX` with some GUI programs like BibDesk, TeXShop etc., which can be uninstalled if not needed.
+### Git status
+I found this amazing python script called [show_status](http://blog.mikepearce.net/2010/06/16/git-status-on-multiple-repos/). It will show git status of all git repositories under current dir. The script `./bin/git_show_status.sh` will download this script from its [github repo](https://github.com/MikePearce/Git-Status) and install it to `/usr/local/bin/`.
+
 
 ### Warning
 All this scripts worked fine for me, but might not work on your machine, so proceed with care. Never copy anything blindly, check what is inside and adjust to your needs. Each script will exit if as soon as any command in the scrip fails. If you want to see what it's doing, in the beginning of each script (around `line 8`) you should find the following:
@@ -95,6 +96,7 @@ And once again: **be careful!**
 ## Other programs
 Here are some other programs I have on my machine. They require mostly manual installation, which pretty straightforward. I also included links to download pages / instructions how to install.
 
+* [MacTex](https://tug.org/mactex/). I prefer manual installation from [here](https://tug.org/mactex/mactex-download.html). It will install TexLive to `/usr/local/` and add `/Applications/TeX` with some GUI programs like BibDesk, TeXShop etc., which can be uninstalled if not needed.
 * [Google Chrome](https://www.google.com/chrome/browser/desktop/) and [Firefox](https://www.mozilla.org/en-US/firefox/new/).
 * [Acrobat Reader](https://get.adobe.com/reader/) to view `pdf` files and [Skim](http://skim-app.sourceforge.net/) to work with latex: latexmk constant preview + Skim is a killer.
 * [Dropbox](https://www.dropbox.com/install) for quick shares.
