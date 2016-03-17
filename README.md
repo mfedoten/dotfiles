@@ -25,7 +25,7 @@ Obviously, we will need [git](https://git-scm.com/book/en/v2/Getting-Started-Ins
 Next, copy the repository and run installation script:
 ```
 git clone https://github.com/mfedoten/dotfiles
-cd dotfiles/bin
+cd dotfiles/
 ```
 Below is description of the installation steps, listed in the order as they should be executed. All scripts are in the `bin` directory.
 
