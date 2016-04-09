@@ -408,6 +408,8 @@ let g:airline_symbols.space = "\ua0"
 function! AirlineInit()
   let g:airline_section_y = airline#section#create_right(['ffenc'])
 endfunction
+" Hope to avoid this annoying paste
+:noremap <silent> <Plug>AirlineTablineRefresh :set mod!<CR>
 " }}}
 
 " Switch syntax highlighting on, when the terminal has colors.
