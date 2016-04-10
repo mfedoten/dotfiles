@@ -12,6 +12,7 @@ Pillow
 ## Plots etc.
 matplotlib
 palettable
+plotly
 mpld3
 bokeh
 ## Checkers
