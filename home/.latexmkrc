@@ -1,5 +1,5 @@
-$latex = "/usr/texbin/latex -synctex=1 -shell-escape %O %S";
-$pdflatex = "/usr/texbin/pdflatex -synctex=1 -shell-escape %O %S";
+$latex = "/usr/texbin/latex -synctex=1 -pvc -shell-escape %O %S";
+$pdflatex = "/usr/texbin/pdflatex -synctex=1 -pvc -shell-escape %O %S";
 $bibtex = "/usr/texbin/bibtex %O %B";
 $pdf_previewer = "open -a /Applications/Skim.app";
 $pdf_mode = 1;
