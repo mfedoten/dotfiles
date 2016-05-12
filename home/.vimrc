@@ -148,6 +148,7 @@ set backspace=indent,eol,start
 set ttyfast             " For better display
 set title               " Show name of the current document in terminal tabs
 set number              " Show line number
+set rnu                 " Relative line numbering
 set ruler               " Show the cursor position all the time
 set showmatch           " Set show matching parenthesis
 set tabstop=4           " Set Tab to 4 spaces
