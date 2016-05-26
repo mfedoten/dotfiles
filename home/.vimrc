@@ -699,6 +699,7 @@ augroup END
 augroup ft_tex
     au!
     autocmd FileType tex setlocal tw=80
+    autocmd FileType tex call ToggleBar()
     autocmd FileType tex setlocal foldmethod=expr
     autocmd BufWinEnter *.tex :lcd %:p:h
     autocmd BufWinLeave *.tex :lcd -
