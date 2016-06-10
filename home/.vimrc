@@ -503,6 +503,10 @@ onoremap g$ $
 vnoremap g0 0
 vnoremap g$ $
 
+" when searching center screen at each match
+noremap n nzz
+noremap N Nzz
+
 " <m-j> and <m-k> to drag lines in any mode
 " Thanks to Steve Losh
 noremap ∆ :m+<CR>
