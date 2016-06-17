@@ -702,16 +702,15 @@ augroup END
 " Latex
 augroup ft_tex
     au!
-    autocmd FileType tex setlocal tw=80
-    autocmd FileType tex call ToggleBar()
+    autocmd FileType tex setlocal tw=100
     autocmd FileType tex setlocal foldmethod=expr
     autocmd BufWinEnter *.tex :lcd %:p:h
     autocmd BufWinLeave *.tex :lcd -
-    autocmd BufRead *.tex setlocal ft=tex
-    autocmd BufNewFile *.tex setlocal ft=tex
+    autocmd BufRead,BufNewFile *.tex setlocal ft=tex
     autocmd FileType tex setlocal dictionary=~/.vim/dictionaries/tex
     autocmd FileType tex setlocal complete+=k
     autocmd FileType tex setlocal spell
+    autocmd BufNewFile,BufRead *.tex call ToggleBar()
 augroup END
 " MATLAB
 augroup ft_mat
