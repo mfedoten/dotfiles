@@ -12,7 +12,7 @@ SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SRC_DIR"
 
 # Install Python, pip
-sudo port install python27 py27-pip py27-pyqt4 swig-python
+sudo port install python27 py27-pip py27-pyqt4 py27-tkinter swig-python
 # Set Python and pip
 sudo port select --set python python27
 sudo port select --set pip pip27
