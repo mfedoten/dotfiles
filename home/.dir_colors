@@ -108,28 +108,28 @@ EXEC 0;38;5;2
 .scss            01;38;5;010
 
 # Data
-.json            01;38;5;054
-.yml             01;38;5;054
-.xml             01;38;5;054
-.csv             01;38;5;054
+# .json            01;38;5;012
+# .yml             01;38;5;054
+# .xml             01;38;5;054
+# .csv             01;38;5;054
 
 # Documents
-.txt             01;38;5;180
-.tex             01;38;5;180
-.rdf             01;38;5;180
-.nfo             01;38;5;180
-.markdown        01;38;5;180
-.md              01;38;5;180
-*README          01;38;5;180
-*README.txt      01;38;5;180
-*readme.txt      01;38;5;180
-*LICENSE         01;38;5;163
+# .txt             01;38;5;180
+# .tex             01;38;5;180
+# .rdf             01;38;5;180
+# .nfo             01;38;5;180
+# .markdown        01;38;5;180
+# .md              01;38;5;180
+# *README          01;38;5;180
+# *README.txt      01;38;5;180
+# *readme.txt      01;38;5;180
+# *LICENSE         01;38;5;174
 
 # Files of special interest
 .torrent         00;38;5;120
-*rc              01;38;5;141
-.cfg             01;38;5;005
-.conf            01;38;5;005
+*rc              01;38;5;246
+.cfg             01;38;5;246
+.conf            01;38;5;246
 
 # "transient" files as logs and backups (dark gray)
 .log             00;38;5;238

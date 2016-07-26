@@ -42,7 +42,8 @@ Plugin 'scrooloose/syntastic'
 " Plugin 'nvie/vim-flake8'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Rip-Rip/clang_complete'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
+" Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'lervag/vimtex'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
@@ -307,17 +308,20 @@ nnoremap <localleader>l :Errors<cr>
 " }}}
 
 " LaTeX-Box: Plugin for easier LaTeX compilation ------------------------- {{{
-let g:LatexBox_latexmk_preview_continuously = 1
-let g:LatexBox_quickfix = 2
-let g:LatexBox_viewer = 'open -a Skim.app'
-let g:LatexBox_split_length = 10
-let g:LatexBox_Folding = 1
-let g:LatexBox_fold_text = 1
-let g:LatexBox_fold_automatic = 0
-let g:LatexBox_latexmk_async = 0
-" let g:LatexBox_ignore_warnings
-        " \ = ['Underfull', 'Overfull', 'specifier changed to']
-let g:LatexBox_ignore_warnings = ['']
+" let g:LatexBox_latexmk_preview_continuously = 1
+" let g:LatexBox_quickfix = 2
+" let g:LatexBox_viewer = 'open -a Skim.app'
+" let g:LatexBox_split_length = 10
+" let g:LatexBox_Folding = 1
+" let g:LatexBox_fold_text = 1
+" let g:LatexBox_fold_automatic = 0
+" let g:LatexBox_latexmk_async = 0
+" " let g:LatexBox_ignore_warnings
+        " " \ = ['Underfull', 'Overfull', 'specifier changed to']
+" let g:LatexBox_ignore_warnings = ['']
+" }}}
+
+" Vimtex: Plugin for easier LaTeX compilation ------------------------- {{{
 " }}}
 
 " SnipMate: code snippts ------------------------------------------------- {{{
