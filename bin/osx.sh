@@ -181,7 +181,6 @@ tell application "Terminal"
 	local windowID
 	set themeNameSL to "Solarized Light"
 	set themeNameSD to "Solarized Dark"
-    set themeNameHyb to "Hybrid"
     set themeNameSea to "Seafoam"
 
 	(* Store the IDs of all the open terminal windows. *)
@@ -237,6 +236,7 @@ EOD
 open "${DOTFILES_DIR}/term_colors/Solarized Dark.itermcolors"
 open "${DOTFILES_DIR}/term_colors/Solarized Light.itermcolors"
 open "${DOTFILES_DIR}/term_colors/Seafoam Pastel.itermcolors"
+open "${DOTFILES_DIR}/term_colors/HybridDimmed.itermcolors"
 open "${DOTFILES_DIR}/term_colors/Hybrid.itermcolors"
 
 # Don’t display the annoying prompt when quitting iTerm
