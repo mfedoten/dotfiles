@@ -66,7 +66,7 @@ PS1="\[$Yellow\]\u\[$Color_Off\]@"; #user
 if [ -n "$SSH_CLIENT" ]; then
     PS1+="\[$Red\]\h: "; # host
 else
-    PS1+="\[$IBlue\]\h: "; # host
+    PS1+="\[$Blue\]\h: "; # host
 fi
 PS1+="\[$Color_Off\]in \[$IPurple\]\w "; # working directory
 PS1+="\$(prompt_git \"\[$Color_Off\]on \[$Green\]\")"; # Git repository details
