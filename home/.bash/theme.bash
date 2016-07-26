@@ -68,7 +68,12 @@ if [ -n "$SSH_CLIENT" ]; then
 else
     PS1+="\[$Blue\]\h: "; # host
 fi
-PS1+="\[$Color_Off\]in \[$IPurple\]\w "; # working directory
+PS1+="\[$Color_Off\]in \[$Purple\]\w "; # working directory
 PS1+="\$(prompt_git \"\[$Color_Off\]on \[$Green\]\")"; # Git repository details
 PS1+="\n";  # new line
 PS1+="\[$PCT\]\$ \[$Color_Off\]" # '$' and reset color
+
+# Dircolors
+if [[ -f ~/.dir_colors ]]; then
+    eval $(dircolors ~/.dir_colors)
+fi

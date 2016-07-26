@@ -44,6 +44,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'Rip-Rip/clang_complete'
 " Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'lervag/vimtex'
+Plugin 'wellle/targets.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
@@ -52,7 +53,9 @@ Plugin 'jordwalke/flatlandia'
 Plugin 'endel/vim-github-colorscheme'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'w0ng/vim-hybrid'
+Plugin 'nanotech/jellybeans.vim'
 Plugin 'antlypls/vim-colors-codeschool'
+Plugin 'mfedoten/BusyBee'
 call vundle#end()
 
 " Enable file type detection - required.
@@ -142,6 +145,18 @@ endfunction
 " First, set the leader keys
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
+
+" Fugitive {{{
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gco :Gcheckout<cr>
+nnoremap <leader>gci :Gcommit<cr>
+nnoremap <leader>gm :Gmove<cr>
+nnoremap <leader>gr :Gremove<cr>
+
+"}}}
 
 " Basic settings --------------------------------------------------------- {{{
 " Allow backspacing over everything in insert mode
@@ -426,22 +441,21 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " Descent settings for Terminal and GUI
-if !has("gui_running")
-    let g:hybrid_custom_term_colors=1
-    let g:hybrid_reduced_contrast=0
-else
+if has("gui_running")
     set transparency=0                   " No transparency
     set guicursor+=a:blinkon0            " No blinking cursor
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\:h12 " Fonts for powerline
 endif
 set background=dark
-colorscheme hybrid
-let g:airline_theme='tomorrow'
+colorscheme busybee
+let g:airline_theme='jellybeans'
 
 " Toggle highlighting of excessive characters
 nnoremap <leader>th :call ToggleHighlight()<cr>
 " Toggle colorcolumn display
 nnoremap <leader>tb :call ToggleBar()<cr>
+" Resize splits when the window is resized
+au VimResized * :wincmd =
 " }}}
 
 " Some useful mappings and functions ------------------------------------- {{{
@@ -504,6 +518,11 @@ onoremap g$ $
 vnoremap g0 0
 vnoremap g$ $
 
+" easier jumps to beginning/end of line
+noremap H ^
+noremap L $
+vnoremap L g_
+
 " when searching center screen at each match
 noremap n nzz
 noremap N Nzz
@@ -546,10 +565,6 @@ inoremap <c-]> <c-x>s
 inoremap <c-l> <c-x><c-l>
 inoremap <c-f> <c-x><c-f>
 
-" I really miss home/end in insert mode
-inoremap <c-a> <Home>
-inoremap <c-e> <End>
-
 " ToggleMouse ------------------------------------------------------------ {{{
 " After enabling mouse in vim (with set mouse=a) terminal doesn't control it
 " anymore.  To fix it has a look at this plugin. Mapped manually to <F9>.
@@ -591,22 +606,6 @@ let NERDCompactSexyComs=1       " make block comments more compact
 " <leader>+"/' to comment a word
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
-
-" Operator-pending mappings to delete within [],() etc. from any place in  {{{
-" the line and put cursor between them.
-" http://learnvimscriptthehardway.stevelosh.com/chapters/15.html
-onoremap in( :<c-u>normal! f(vi(<cr>
-onoremap il( :<c-u>normal! F)vi(<cr>
-onoremap in{ :<c-u>normal! f{vi{<cr>
-onoremap il{ :<c-u>normal! F{vi{<cr>
-onoremap in[ :<c-u>normal! f[vi[<cr>
-onoremap il[ :<c-u>normal! F[vi[<cr>
-onoremap in< :<c-u>normal! f<vi<<cr>
-onoremap il< :<c-u>normal! F<vi<<cr>
-onoremap in" :<c-u>normal! f"lvi"<cr>
-onoremap il" :<c-u>normal! F"hvi"<cr>
-onoremap in' :<c-u>normal! f'lvi'<cr>
-onoremap il' :<c-u>normal! F'hvi'<cr>
 " }}}
 
 " }}}
@@ -660,6 +659,11 @@ nnoremap <S-Tab>    :bp<cr>
 nnoremap <leader>d  :bd<cr>
 " Search open buffers with CtrlP
 nnoremap <leader>ll :CtrlPBuffer<cr>
+" Quickfix navigation
+nnoremap <left>  :cprev<cr>zvzz
+nnoremap <right> :cnext<cr>zvzz
+nnoremap <up>    :lprev<cr>zvzz
+nnoremap <down>  :lnext<cr>zvzz
 " }}}
 
 " Splits ----------------------------------------------------------------- {{{

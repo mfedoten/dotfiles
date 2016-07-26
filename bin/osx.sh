@@ -236,8 +236,8 @@ EOD
 open "${DOTFILES_DIR}/term_colors/Solarized Dark.itermcolors"
 open "${DOTFILES_DIR}/term_colors/Solarized Light.itermcolors"
 open "${DOTFILES_DIR}/term_colors/Seafoam Pastel.itermcolors"
-open "${DOTFILES_DIR}/term_colors/HybridDimmed.itermcolors"
-open "${DOTFILES_DIR}/term_colors/Hybrid.itermcolors"
+open "${DOTFILES_DIR}/term_colors/Monokai.itermcolors"
+open "${DOTFILES_DIR}/term_colors/Novel.itermcolors"
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
