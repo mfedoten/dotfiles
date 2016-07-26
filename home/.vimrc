@@ -334,6 +334,11 @@ nnoremap <localleader>l :Errors<cr>
 " " let g:LatexBox_ignore_warnings
         " " \ = ['Underfull', 'Overfull', 'specifier changed to']
 " let g:LatexBox_ignore_warnings = ['']
+" nnoremap <silent> <localleader>ls :silent
+                " \ !/Applications/Skim.app/Contents/SharedSupport/displayline
+                " \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>"
+                " \ "%:p" <CR>
+ 
 " }}}
 
 " Vimtex: Plugin for easier LaTeX compilation ------------------------- {{{
@@ -448,7 +453,7 @@ if has("gui_running")
 endif
 set background=dark
 colorscheme busybee
-let g:airline_theme='jellybeans'
+let g:airline_theme='base16_default'
 
 " Toggle highlighting of excessive characters
 nnoremap <leader>th :call ToggleHighlight()<cr>
