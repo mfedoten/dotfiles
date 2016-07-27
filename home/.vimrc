@@ -42,7 +42,6 @@ Plugin 'scrooloose/syntastic'
 " Plugin 'nvie/vim-flake8'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Rip-Rip/clang_complete'
-Plugin 'lervag/vimtex'
 " Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'lervag/vimtex'
 Plugin 'wellle/targets.vim'
@@ -147,7 +146,7 @@ endfunction
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-" Fugitive {{{
+" Fugitive ----------------------------------------------------------------{{{
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
@@ -156,7 +155,6 @@ nnoremap <leader>gco :Gcheckout<cr>
 nnoremap <leader>gci :Gcommit<cr>
 nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gr :Gremove<cr>
-
 "}}}
 
 " Basic settings --------------------------------------------------------- {{{
@@ -362,7 +360,6 @@ endfunction
 " let g:vimtex_quickfix_ignore_all_warnings = 1
 " let g:vimtex_latexmk_options = '-pdf -verbose -file-line-error -synctex=1 -interaction=nonstopmode'
 " let g:vimtex_complete_img_use_tail = 1
-=======
 " LaTeX-Box: Plugin for easier LaTeX compilation ------------------------- {{{
 " let g:LatexBox_latexmk_preview_continuously = 1
 " let g:LatexBox_quickfix = 2
