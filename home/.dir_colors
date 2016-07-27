@@ -1,238 +1,165 @@
-# 256 color jellybeans theme for the color GNU ls utility.
-# Used and tested with dircolors (GNU coreutils) 8.13
-#
-# @author  {@link http://c7.se Peter Hellberg}
-# @license http://opensource.org/licenses/MIT The MIT License (MIT)
-#
-# Heavily based on https://github.com/seebi/dircolors-solarized
-#
-# More Information at
-# https://github.com/peterhellberg/dircolors-jellybeans
-#
-#
-# Standard colors
-#
+# Install: `ln -s ~/.bash/dircolors ~/.dircolors`
+# Configuration file for the color ls utility
+# This file goes in the /etc directory, and must be world readable.
+# You can copy this file to .dir_colors in your $HOME directory to override
+# the system defaults.
+
+# COLOR needs one of these arguments: 'tty' colorizes output to ttys, but not
+# pipes. 'all' adds color characters to all output. 'none' shuts colorization
+# off.
+COLOR all
+
+# Extra command line options for ls go here.
+# Basically these ones are:
+#  -F = show '/' for dirs, '*' for executables, etc.
+#  -T 0 = don't trust tab spacing when formatting ls output.
+OPTIONS -F -T 0
+
+# EIGHTBIT, followed by '1' for on, '0' for off. (8-bit output)
+#EIGHTBIT 1
+
 # Below are the color init strings for the basic file types. A color init
 # string consists of one or more of the following numeric codes:
-# Attribute codes:
+# Attribute codes: 
 # 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
 # Text color codes:
 # 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
 # Background color codes:
 # 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
-#
-#
-# 256 color support
-# see here: http://www.mail-archive.com/bug-coreutils@gnu.org/msg11030.html)
-#
-# Text 256 color coding:
-# 38;5;COLOR_NUMBER
-# Background 256 color coding:
-# 48;5;COLOR_NUMBER
 
-## Special files
+NORMAL 00;38;5;244 # no color code at all
+FILE 00 # regular file: use no color at all
+RESET 0 # reset to "normal" color
+DIR 34 # directory (PINK)
+LINK 01;38;5;37 # symbolic link. (If you set this to 'target' instead of a
+ # numerical value, the color is as for the file pointed to.)
+MULTIHARDLINK 00 # regular file with more than one link
+FIFO 48;5;230;38;5;136;01 # pipe
+SOCK 48;5;230;38;5;136;01 # socket
+DOOR 48;5;230;38;5;136;01 # door
+BLK 48;5;230;38;5;244;01 # block device driver
+CHR 48;5;230;38;5;244;01 # character device driver
+ORPHAN 48;5;235;38;5;160 # symlink to nonexistent file, or non-stat'able file
+SETUID 48;5;160;38;5;230 # file that is setuid (u+s)
+SETGID 48;5;136;38;5;230 # file that is setgid (g+s)
+CAPABILITY 30;41 # file with capability
+STICKY_OTHER_WRITABLE 48;5;64;38;5;230 # dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE 48;5;235;38;5;33 # dir that is other-writable (o+w) and not sticky
+STICKY 48;5;33;38;5;230 # dir with the sticky bit set (+t) and not other-writable
+# This is for files with execute permission:
 
-# No color code at all
-NORMAL 00;38;5;15
-
-# Regular file: use no color at all
-FILE 00
-
-# Reset to "normal" color
-RESET 0
-
-# Directory
-DIR 01;38;5;67
-
-# Symbolic link. (If you set this to 'target' instead of a
-# numerical value, the color is as for the file pointed to.)
-LINK 00;38;5;80
-
-# Regular file with more than one link
-MULTIHARDLINK 00
-
-# Pipe
-FIFO 48;5;230;38;5;136;01
-
-# Socket
-SOCK 48;5;230;38;5;136;01
-
-# Block device driver
-BLK ;4;230;38;5;142;01
-
-# Character device driver
-CHR ;1;230;38;5;94;01
-
-# Symlink to nonexistent file, or non-stat'able file
-ORPHAN 38;5;239;48;5;052
-
-# File that is setuid (u+s)
-SETUID 48;5;160;38;5;230 
-
-# File that is setgid (g+s)
-SETGID 48;5;136;38;5;230
-
-# File with capability
-CAPABILITY 30;41
-
-# Dir with the sticky bit set (+t) and not other-writable
-STICKY 48;5;33;38;5;230 
-
-# Dir that is other-writable (o+w) and not sticky
-OTHER_WRITABLE 38;5;110
-
-# Dir that is sticky and other-writable (+t,o+w)
-STICKY_OTHER_WRITABLE 48;5;64;38;5;230
 
 # This is for files with execute permission:
-EXEC 0;38;5;2
 
-# Code
-.c               00;38;5;178
-.cpp             00;38;5;166
-.lua             00;38;5;025
-.sh              00;38;5;010
+# List any file extensions like '.gz' or '.tar' that you would like ls
+# to colorize below. Put the extension, a space, and the color init string.
+# (and any comments you want to add after a '#')
+.tar 01;31 # archives or compressed (bright red)
+.tgz 01;31
+.arj 01;31
+.taz 01;31
+.lzh 01;31
+.zip 01;31
+.z   01;31
+.Z   01;31
+.gz  01;31
 
-*Makefile        0;38;5;3
-*Rakefile        0;38;5;3
-*Gemfile         0;38;5;3
-*Gemfile.lock    0;38;5;239
-.gemspec         0;38;5;3
+# Executables (Bright Green:82)
+EXEC 01;92 # Files with exec flag
+.cmd 92
+.exe 92
+.com 92
+.btm 92
+.bat 92
 
-# Templates
-.erb             01;38;5;010
-.html            01;38;5;010
-.slim            01;38;5;010
-.haml            01;38;5;010
-.sass            01;38;5;010
-.scss            01;38;5;010
+# Image formats (Blue:37)
+.jpg 00;38;5;37
+.jpeg 00;38;5;37
+.png 00;38;5;37
+.gif 00;38;5;37
+.bmp 00;38;5;37
+.xbm 00;38;5;37
+.xpm 00;38;5;37
+.tif 00;38;5;37
+.tiff 00;38;5;37
 
-# Data
-.json            01;38;5;054
-.yml             01;38;5;054
-.xml             01;38;5;054
-.csv             01;38;5;054
+# Document formats (Molokai Purple: 98)
+.pdf 00;38;5;98
+.odf 00;38;5;98
+.doc 00;38;5;98
+.ppt 00;38;5;98
+.pptx 00;38;5;98
+.db 00;38;5;98
 
-# Documents
-.txt             01;38;5;180
-.tex             01;38;5;180
-.rdf             01;38;5;180
-.nfo             01;38;5;180
-.markdown        01;38;5;180
-.md              01;38;5;180
-*README          01;38;5;180
-*README.txt      01;38;5;180
-*readme.txt      01;38;5;180
-*LICENSE         01;38;5;163
+# Audio formats (Molokai Orange: 208)
+.aac    00;38;5;208
+.au     00;38;5;208
+.flac   00;38;5;208
+.mid    00;38;5;208
+.midi   00;38;5;208
+.mka    00;38;5;208
+.mp3    00;38;5;208
+.mpc    00;38;5;208
+.ogg    00;38;5;208
+.ra     00;38;5;208
+.wav    00;38;5;208
+.m4a    00;38;5;208
+# http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+.axa    00;38;5;208
+.oga    00;38;5;208
+.spx    00;38;5;208
+.xspf   00;38;5;208
+
+# Video formats (as audio + bold) (Molokai Orange: 208)
+.mov    01;38;5;208
+.mpg    01;38;5;208
+.mpeg   01;38;5;208
+.3gp    01;38;5;208
+.m2v    01;38;5;208
+.mkv    01;38;5;208
+.ogm    01;38;5;208
+.mp4    01;38;5;208
+.m4v    01;38;5;208
+.mp4v   01;38;5;208
+.vob    01;38;5;208
+.qt     01;38;5;208
+.nuv    01;38;5;208
+.wmv    01;38;5;208
+.asf    01;38;5;208
+.rm     01;38;5;208
+.rmvb   01;38;5;208
+.flc    01;38;5;208
+.avi    01;38;5;208
+.fli    01;38;5;208
+.flv    01;38;5;208
+.gl     01;38;5;208
+.m2ts   01;38;5;208
+.divx   01;38;5;208
+
+# "unimportant" files as logs and backups (base01)
+.log        00;38;5;241
+.bak        00;38;5;241
+.aux        00;38;5;241
+.bbl        00;38;5;241
+.blg        00;38;5;241
+*~          00;38;5;241
+*#          00;38;5;241
+.part       00;38;5;241
+.incomplete 00;38;5;241
+.swp        00;38;5;241
+.tmp        00;38;5;241
+.temp       00;38;5;241
+.o          00;38;5;241
+.pyc        00;38;5;241
+.class      00;38;5;241
+.cache      00;38;5;241
 
 # Files of special interest
 .torrent         00;38;5;120
-*rc              01;38;5;141
-.cfg             01;38;5;005
-.conf            01;38;5;005
-
-# "transient" files as logs and backups (dark gray)
-.log             00;38;5;238
-.bak             00;38;5;238
-.aux             00;38;5;238
-.out             00;38;5;238
-.toc             00;38;5;238
-*~               00;38;5;238
-*#               00;38;5;238
-.part            00;38;5;238
-.incomplete      00;38;5;238
-.swp             00;38;5;238
-.tmp             00;38;5;238
-.temp            00;38;5;238
-.o               00;38;5;238
-.pyc             00;38;5;238
-.class           00;38;5;238
-.cache           00;38;5;238
-
-# Audio formats (orange)
-.aac             00;38;5;166
-.au              00;38;5;166
-.flac            00;38;5;166
-.mid             00;38;5;166
-.midi            00;38;5;166
-.mka             00;38;5;166
-.mp3             00;38;5;166
-.ogg             00;38;5;166
-.wav             00;38;5;166
-.m4a             00;38;5;166
-
-# Video formats (darker orange + bold)
-.mov             01;38;5;202
-.mpg             01;38;5;202
-.mpeg            01;38;5;202
-.m2v             01;38;5;202
-.mkv             01;38;5;202
-.ogm             01;38;5;202
-.mp4             01;38;5;202
-.m4v             01;38;5;202
-.mp4v            01;38;5;202
-.vob             01;38;5;202
-.qt              01;38;5;202
-.nuv             01;38;5;202
-.wmv             01;38;5;202
-.asf             01;38;5;202
-.rm              01;38;5;202
-.rmvb            01;38;5;202
-.flc             01;38;5;202
-.avi             01;38;5;202
-.fli             01;38;5;202
-.flv             01;38;5;202
-.gl              01;38;5;202
-.m2ts            01;38;5;202
-.divx            01;38;5;202
-.webm            01;38;5;202
-
-# Image formats (yellow)
-.jpg             00;38;5;215
-.JPG             00;38;5;215 #stupid but needed
-.jpeg            00;38;5;215
-.gif             00;38;5;215
-.bmp             00;38;5;215
-.pbm             00;38;5;215
-.pgm             00;38;5;215
-.ppm             00;38;5;215
-.tga             00;38;5;215
-.xbm             00;38;5;215
-.xpm             00;38;5;215
-.tif             00;38;5;215
-.tiff            00;38;5;215
-.png             00;38;5;215
-.svg             00;38;5;215
-.svgz            00;38;5;215
-.mng             00;38;5;215
-.pcx             00;38;5;215
-.dl              00;38;5;215
-.xcf             00;38;5;215
-.xwd             00;38;5;215
-.yuv             00;38;5;215
-.cgm             00;38;5;215
-.emf             00;38;5;215
-.eps             00;38;5;215
-.CR2             00;38;5;215
-.ico             00;38;5;215
-
-# Archives or compressed (violet)
-.zip             01;38;5;61
-.tar             00;38;5;61
-.tgz             01;38;5;61
-.lzh             01;38;5;61
-.z               01;38;5;61
-.Z               01;38;5;61
-.7z              01;38;5;61
-.gz              01;38;5;61
-.bz2             01;38;5;61
-.bz              01;38;5;61
-.deb             01;38;5;61
-.rpm             01;38;5;61
-.jar             01;38;5;61
-.rar             01;38;5;61
-.apk             01;38;5;61
-.gem             01;38;5;61
+*rc              01;38;5;060
+*profile         01;38;5;060
+.cfg             01;38;5;060
+.conf            01;38;5;060
 
 # Term Section
 TERM Eterm
