@@ -416,7 +416,7 @@ let NERDTreeChDirMode = 2
     " Use <c-z> to mark/unmark multiple files and <c-o> to open them. }}}
 
 let g:ctrlp_cmd = 'CtrlPMRU'           " Start search with recently used files
-let g:ctrlp_by_filename = 1            " Start search with filenames
+let g:ctrlp_by_filename = 0            " Start search with filenames
 let g:ctrlp_working_path_mode = 'c'    " Start search with current directory
 let g:ctrlp_show_hidden = 1            " Search hidden files as well
 let g:ctrlp_follow_symlinks = 1        " Follow symbolic links
@@ -726,10 +726,8 @@ augroup END
 augroup ft_tex
     au!
     autocmd FileType tex setlocal tw=100
-    " autocmd FileType tex setlocal foldmethod=expr
     autocmd BufWinEnter *.tex :lcd %:p:h
     autocmd BufWinLeave *.tex :lcd -
-    " autocmd BufRead,BufNewFile *.tex setlocal ft=tex
     autocmd FileType tex setlocal dictionary=~/.vim/dictionaries/tex
     autocmd FileType tex setlocal complete+=k
     autocmd FileType tex setlocal spell
