@@ -327,8 +327,6 @@ let g:vimtex_complete_close_braces = 1
 let g:vimtex_format_enabled = 1
 let g:vimtex_fold_enabled = 1
 let g:vimtex_fold_manual = 1
-let g:vimtex_latexmk_continuous = 1
-let g:vimtex_latexmk_background = 0
 let g:vimtex_quickfix_ignored_warnings = [
             \ 'Underfull',
             \ 'Overfull',
@@ -338,7 +336,7 @@ let g:vimtex_view_general_viewer
             \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
 
-" This adds a callback hook that updates Skim after compilation
+" This adds a callback hook that updates Skim after compilation {{{
 let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
 function! UpdateSkim(status)
     if !a:status | return | endif
@@ -356,27 +354,12 @@ function! UpdateSkim(status)
     else
         call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
     endif
-endfunction
+endfunction "}}}
 " let g:vimtex_quickfix_ignore_all_warnings = 1
 " let g:vimtex_latexmk_options = '-pdf -verbose -file-line-error -synctex=1 -interaction=nonstopmode'
 " let g:vimtex_complete_img_use_tail = 1
-" LaTeX-Box: Plugin for easier LaTeX compilation ------------------------- {{{
-" let g:LatexBox_latexmk_preview_continuously = 1
-" let g:LatexBox_quickfix = 2
-" let g:LatexBox_viewer = 'open -a Skim.app'
-" let g:LatexBox_split_length = 10
-" let g:LatexBox_Folding = 1
-" let g:LatexBox_fold_text = 1
-" let g:LatexBox_fold_automatic = 0
-" let g:LatexBox_latexmk_async = 0
-" " let g:LatexBox_ignore_warnings
-        " " \ = ['Underfull', 'Overfull', 'specifier changed to']
-" let g:LatexBox_ignore_warnings = ['']
-" nnoremap <silent> <localleader>ls :silent
-                " \ !/Applications/Skim.app/Contents/SharedSupport/displayline
-                " \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>"
-                " \ "%:p" <CR>
- 
+" let g:vimtex_latexmk_continuous = 1
+" let g:vimtex_latexmk_background = 0
 " }}}
 
 " SnipMate: code snippts ------------------------------------------------- {{{

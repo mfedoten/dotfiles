@@ -1,0 +1,1 @@
+nnoremap <localleader>S :VimtexCompileSS
