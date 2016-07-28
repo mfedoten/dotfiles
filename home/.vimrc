@@ -175,6 +175,7 @@ set showcmd             " Display incomplete commands
 set history=500         " Keep 500 lines of command line history
 set undofile            " Undo even after closing and re-openninf a file
 set autoread            " Automatically re-read the file if it has changed
+set scrolloff=999       " Keep cursor centred vertically on the screen
 set incsearch           " Do incremental searching
 set ignorecase          " To make smart case work
 set smartcase           " Ignore case if search pattern is all lowercase,
@@ -545,10 +546,6 @@ vnoremap g$ $
 noremap H ^
 noremap L $
 vnoremap L g_
-
-" when searching center screen at each match
-noremap n nzz
-noremap N Nzz
 
 " <m-j> and <m-k> to drag lines in any mode
 " Thanks to Steve Losh
