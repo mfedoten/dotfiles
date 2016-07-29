@@ -325,7 +325,6 @@ nnoremap <localleader>l :Errors<cr>
 " vimtex: Plugin for easier LaTeX compilation ---------------------------- {{{
 let g:tex_flavor = 'latex' " to start .tex-files as latex
 let g:vimtex_complete_close_braces = 1
-let g:vimtex_format_enabled = 1
 let g:vimtex_fold_enabled = 1
 let g:vimtex_fold_manual = 1
 let g:vimtex_quickfix_ignored_warnings = [
