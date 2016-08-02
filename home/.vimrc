@@ -335,7 +335,16 @@ let g:vimtex_quickfix_ignored_warnings = [
 let g:vimtex_view_general_viewer
             \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
+augroup latexSurround
+     autocmd!
+     autocmd FileType tex call s:latexSurround()
+  augroup END
 
+  function! s:latexSurround()
+     let b:surround_{char2nr("e")}
+       \ = "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}"
+     let b:surround_{char2nr("c")} = "\\\1command: \1{\r}"
+  endfunction
 " This adds a callback hook that updates Skim after compilation {{{
 let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
 function! UpdateSkim(status)
