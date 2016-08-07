@@ -12,12 +12,12 @@ SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SRC_DIR"
 
 # Install Python, pip
-sudo port install python27 py27-pip py27-pyqt4 py27-tkinter swig-python
+sudo port install python27 py27-pip
 # Set Python and pip
 sudo port select --set python python27
 sudo port select --set pip pip27
 # Install PyQt4
-sudo port install py27-pyqt4 swig-python
+sudo port install py27-pyqt4 py27-tkinter swig-python
 # Install all required packages
 sudo pip install -r requirements.txt
 # Updrade outdated

@@ -6,7 +6,7 @@
     helper = osxkeychain
 
 [core]
-    excludesfile = /Users/mariia/.config/git/gitignore_global
+    excludesfile = ~/.config/git/gitignore_global
     editor = vim
     legacyheaders = false # >git 1.5
     quotepath = false
