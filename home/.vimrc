@@ -327,6 +327,14 @@ let g:tex_flavor = 'latex' " to start .tex-files as latex
 let g:vimtex_complete_close_braces = 1
 let g:vimtex_fold_enabled = 1
 let g:vimtex_fold_manual = 1
+let g:vimtex_fold_sections = [
+        \ "part",
+        \ "chapter",
+        \ "section",
+        \ "subsection",
+        \ "subsubsection",
+        \ "paragraph",
+        \ ]
 let g:vimtex_quickfix_ignored_warnings = [
             \ 'Underfull',
             \ 'Overfull',
