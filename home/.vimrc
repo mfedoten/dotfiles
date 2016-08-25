@@ -601,6 +601,11 @@ inoremap <c-]> <c-x>s
 inoremap <c-l> <c-x><c-l>
 inoremap <c-f> <c-x><c-f>
 
+" Formatting
+nnoremap Q gqip
+vnoremap Q gq
+
+
 " ToggleMouse ------------------------------------------------------------ {{{
 " After enabling mouse in vim (with set mouse=a) terminal doesn't control it
 " anymore.  To fix it has a look at this plugin. Mapped manually to <F9>.
