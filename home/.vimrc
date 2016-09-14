@@ -601,8 +601,8 @@ inoremap <c-]> <c-x>s
 inoremap <c-l> <c-x><c-l>
 inoremap <c-f> <c-x><c-f>
 
-" Formatting
-nnoremap Q gqip
+" Formatting with Q (remember cursor position in normal mode)
+nnoremap Q mlgqip`l
 vnoremap Q gq
 
 
