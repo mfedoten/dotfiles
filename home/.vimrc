@@ -604,6 +604,8 @@ inoremap <c-f> <c-x><c-f>
 " Formatting with Q (remember cursor position in normal mode)
 nnoremap Q mlgqip`l
 vnoremap Q gq
+" Reformat line.
+nnoremap ql gqq
 
 
 " ToggleMouse ------------------------------------------------------------ {{{
