@@ -607,6 +607,10 @@ vnoremap Q gq
 " Reformat line.
 nnoremap ql gqq
 
+" Some abbreviations for common typos
+iabbrev wiht with
+iabbrev teh the
+iabbrev adn and
 
 " ToggleMouse ------------------------------------------------------------ {{{
 " After enabling mouse in vim (with set mouse=a) terminal doesn't control it
