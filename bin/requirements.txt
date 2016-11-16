@@ -12,6 +12,8 @@ Pillow
 ## Plots etc.
 matplotlib
 palettable
+seaborn
+ggplot
 plotly
 mpld3
 bokeh
