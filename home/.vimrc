@@ -703,7 +703,8 @@ set confirm             " Reminds of unsaved buffers on quit
 nnoremap <leader>ls :ls<cr>
 nnoremap <Tab>      :bn<cr>
 nnoremap <S-Tab>    :bp<cr>
-nnoremap <leader>d  :bd<cr>
+" delete a buffer but keep the splits
+nnoremap <leader>d  :bn|bd<cr>
 " Search open buffers with CtrlP
 nnoremap <leader>ll :CtrlPBuffer<cr>
 " }}}
