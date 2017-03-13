@@ -7,6 +7,8 @@ The whole process consist of three parts:
 - Run scripts to install most of the important stuff, like MacPorts, Python etc.
 - Link dotfiles from this repository to dotfiles in my home folder.
 
+**Note:** branch `master` is for OSX, for linux check the corresponding branch.
+
 ## Start here
 First things first: install Xcode:
 ```
