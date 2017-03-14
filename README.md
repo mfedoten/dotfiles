@@ -38,7 +38,7 @@ Below is description of the installation steps, listed in the order as they shou
 `./init/bash_update.sh`: installs and sets the latest version of bash. It's not really necessary, but some useful features (like auto-completion), won't work on bash versions older than 4.
 
 ### Python
-`./init/python.sh` will set up Python and pip to run MacPorts version and install all packages from `requirements.txt`.
+`./init/python.sh` will set up Python and pip to run MacPorts version and install all packages (+ notebook extensions) from `requirements.txt`.
 
 ### Dotfiles
 Next, we need to symlink all files in `home` directory. To do so I at first was using [Dotbot](https://github.com/anishathalye/dotbot#configuration), which is just great: it's clean, lightweight and simple. For more information visit [Dotbot page](https://github.com/anishathalye/dotbot#configuration).
@@ -78,9 +78,12 @@ Normally, I prefer to set up appearance and defaults manually, but this script s
 ./init/osx.sh
 ```
 
-### Git status
+### Extras
+
+#### Git status
 I found this amazing python script called [show_status](http://blog.mikepearce.net/2010/06/16/git-status-on-multiple-repos/). It will show git status of all git repositories under current dir. The script `./init/git_show_status.sh` will download this script from its [github repo](https://github.com/MikePearce/Git-Status) and install it to `/usr/local/bin/`.
 
+#### The Fuck
 
 ### Warning
 All this scripts worked fine for me, but might not work on your machine, so proceed with care. Never copy anything blindly, check what is inside and adjust to your needs. Each script will exit if as soon as any command in the scrip fails. If you want to see what it's doing, in the beginning of each script (around `line 8`) you should find the following:
