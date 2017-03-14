@@ -17,11 +17,10 @@ ggplot
 plotly
 mpld3
 bokeh
+ipympl
 ## Checkers
 flake8
 pylint
-## Colorama 0.3.6 doesn't play nice with Jedi-Vim
-colorama==0.3.5
 ## Tests
 pytest
 mock

@@ -22,3 +22,7 @@ sudo port install py27-pyqt4 py27-tkinter swig-python
 sudo pip install -r requirements.txt
 # Updrade outdated
 pip list --outdated | grep -v '^\-e' | cut -d ' ' -f 1 | xargs -n1 sudo pip install -U
+# Install Notebook extensions
+sudo jupyter nbextension enable --py --sys-prefix ipympl
+sudo jupyter nbextension install https://bitbucket.org/ipre/calico/downloads/calico-spell-check-1.0.zip
+sudo jupyter nbextension enable calico-spell-check
