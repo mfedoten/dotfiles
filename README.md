@@ -29,16 +29,16 @@ Next, copy the repository and run installation script:
 git clone https://github.com/mfedoten/dotfiles
 cd dotfiles/
 ```
-Below is description of the installation steps, listed in the order as they should be executed. All scripts are in the `bin` directory.
+Below is description of the installation steps, listed in the order as they should be executed. All scripts are in the `init` directory.
 
 ### MacPorts and packages
-`./bin/ports.sh`: installs [MacPorts](https://www.macports.org/) and all packages listed in `portnames.txt`.
+`./init/ports.sh`: installs [MacPorts](https://www.macports.org/) and all packages listed in `portnames.txt`.
 
 ### Upgrade bash
-`./bin/bash_update.sh`: installs and sets the latest version of bash. It's not really necessary, but some useful features (like auto-completion), won't work on bash versions older than 4.
+`./init/bash_update.sh`: installs and sets the latest version of bash. It's not really necessary, but some useful features (like auto-completion), won't work on bash versions older than 4.
 
 ### Python
-`./bin/python.sh` will set up Python and pip to run MacPorts version and install all packages from `requirements.txt`.
+`./init/python.sh` will set up Python and pip to run MacPorts version and install all packages from `requirements.txt`.
 
 ### Dotfiles
 Next, we need to symlink all files in `home` directory. To do so I at first was using [Dotbot](https://github.com/anishathalye/dotbot#configuration), which is just great: it's clean, lightweight and simple. For more information visit [Dotbot page](https://github.com/anishathalye/dotbot#configuration).
@@ -60,7 +60,7 @@ To link all dotfiles in your repository just type in:
 ./install.sh
 ```
 ### MacVim
-`./bin/macvim.sh`: compiles MacVim with Python support, installs [Vundle](https://github.com/VundleVim/Vundle.vim) and all plugins listed in `~/.vimrc`. The script also installs [pre-patched fonts for Powerline](https://github.com/powerline/fonts) to work with [vim-airline](https://github.com/bling/vim-airline), you just have to specify the right font in your terminal settings after installation. I'm using a plugin to toggle mouse between vim and Terminal, but it won't work anyway because of known issues of Terminal. To fix it [MouseTerm](https://bitheap.org/mouseterm/) should be installed.
+`./init/macvim.sh`: compiles MacVim with Python support, installs [Vundle](https://github.com/VundleVim/Vundle.vim) and all plugins listed in `~/.vimrc`. The script also installs [pre-patched fonts for Powerline](https://github.com/powerline/fonts) to work with [vim-airline](https://github.com/bling/vim-airline), you just have to specify the right font in your terminal settings after installation. I'm using a plugin to toggle mouse between vim and Terminal, but it won't work anyway because of known issues of Terminal. To fix it [MouseTerm](https://bitheap.org/mouseterm/) should be installed.
 
 The script searches for location of config directory of current python's version and passes it `--with-python-config-dir` switch during the installation of MacVim, but it might fail. Also if MacVim is already installed it does not update it, it just proceeds to Vundle installation (I have to fix this).
 
@@ -70,16 +70,16 @@ export LDFLAGS=-L/usr/lib
 ```
 
 ### iTerm2
-`./bin/term.sh` will install [iTerm2](https://www.iterm2.com/).
+`./init/term.sh` will install [iTerm2](https://www.iterm2.com/).
 
 ### OSX defaults
 Normally, I prefer to set up appearance and defaults manually, but this script sets some nice defaults which I am too lazy to search for in the system preferences. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized), printing full path in heading of Finder windows etc. Just:
 ```
-./bin/osx.sh
+./init/osx.sh
 ```
 
 ### Git status
-I found this amazing python script called [show_status](http://blog.mikepearce.net/2010/06/16/git-status-on-multiple-repos/). It will show git status of all git repositories under current dir. The script `./bin/git_show_status.sh` will download this script from its [github repo](https://github.com/MikePearce/Git-Status) and install it to `/usr/local/bin/`.
+I found this amazing python script called [show_status](http://blog.mikepearce.net/2010/06/16/git-status-on-multiple-repos/). It will show git status of all git repositories under current dir. The script `./init/git_show_status.sh` will download this script from its [github repo](https://github.com/MikePearce/Git-Status) and install it to `/usr/local/bin/`.
 
 
 ### Warning
