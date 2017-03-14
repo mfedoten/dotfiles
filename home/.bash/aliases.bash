@@ -40,6 +40,9 @@ alias week='date +%V'
 # Update MacPorts, installed packages and locateDB
 alias update='sudo port selfupdate; sudo port upgrade outdated; sudo port clean --all installed; sudo port uninstall --follow-dependencies inactive; LC_ALL='C'; sudo updatedb'
 
+# Update pip packages
+alias uppip='pip list --outdated | grep -v '^\-e' | cut -d ' ' -f 1 | xargs -n1 sudo pip install -U'
+
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
