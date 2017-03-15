@@ -123,7 +123,6 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
     - [Lars Kappert](https://github.com/webpro/dotfiles)
 
 ## TODO
-- Add possibility of update in `macmvim.sh`.
+- Change to Python 3.x (+macvim)
+- switch to brew?
 - Fix directories installation for backups in `install.sh`.
-- Make cleaning in `install.sh` more flexible, e.g. add possibility to specify directories to clean, make it as a separate command.
-- More 'sophisticated' way of managing local configuration.
