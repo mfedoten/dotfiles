@@ -563,6 +563,9 @@ noremap H ^
 noremap L $
 vnoremap L g_
 
+" paste empty line with <leader>o
+nnoremap <leader>o o<Esc>
+
 " <m-j> and <m-k> to drag lines in any mode
 " Thanks to Steve Losh
 noremap ∆ :m+<CR>
