@@ -41,7 +41,7 @@ alias week='date +%V'
 alias update='sudo port selfupdate; sudo port upgrade outdated; sudo port clean --all installed; sudo port uninstall --follow-dependencies inactive; LC_ALL='C'; sudo updatedb'
 
 # Update pip packages
-alias uppip='pip list --outdated | grep -v '^\-e' | cut -d ' ' -f 1 | xargs -n1 sudo pip install -U'
+alias uppip='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1 | xargs -n1 sudo pip install -U'
 
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed
