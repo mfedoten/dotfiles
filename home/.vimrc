@@ -487,7 +487,7 @@ if has("gui_running")
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\:h12 " Fonts for powerline
 endif
 set background=dark
-colorscheme busybee
+colorscheme BusyBee
 let g:airline_theme='base16_default'
 
 " Toggle highlighting of excessive characters
@@ -704,7 +704,7 @@ nnoremap <leader>ls :ls<cr>
 nnoremap <Tab>      :bn<cr>
 nnoremap <S-Tab>    :bp<cr>
 " delete a buffer but keep the splits
-nnoremap <leader>d  :bn|bd<cr>
+nnoremap <leader>d  :bn\|bd<cr>
 " Search open buffers with CtrlP
 nnoremap <leader>ll :CtrlPBuffer<cr>
 " }}}
