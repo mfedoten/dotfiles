@@ -17,3 +17,4 @@ path_prepend() {
 
 # Add user specific path
 path_prepend /usr/local
+path_prepend /usr/local/bin

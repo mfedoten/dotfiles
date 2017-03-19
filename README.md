@@ -71,6 +71,26 @@ There are several ways to install Python:
 
 After finally installing Python and checking that it works without crashing your system, you can now run `./init/50_pip.sh` which will install all packages (+ notebook extensions) from `pip-packages.txt`.
 
+## Vim
+You can always find the latest(-ish) version of vim either through package manager or form official repo.
+In case you want to compile it manually, here's what you ought to do. Run either `./init/50_osx_vim.sh` or `./init/50_ubuntu_vim.sh` based on your system. **Don't forget to change Python's config dir to match your python**. More info on how to compile vim from source on OSX can be found [here](http://tartley.com/?p=1355), for Ubuntu check [here](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source) and [here](https://gist.github.com/odiumediae/3b22d09b62e9acb7788baf6fdbb77cf8). On Ubuntu it's a good idea to use `sudo checkinstall` instead of `sudo make install`, then you can easily deinstall your vim with `dpkg -r [compiled-vim]` and don't forget to change package's name to something meaningfull when checkinstall asks you to.
+
+**P.S.** when compiling vim with both python2 and python3, well [they don't play nicely](http://stackoverflow.com/a/23656675), so you'll probably have to choose either of them. Or [google it](http://unix.stackexchange.com/questions/305415/enabling-python3-on-vim-in-fedora-24).
+
+Now that you have your Vim/MacVim successfully installed, we should install all of our precious plugins through `./init/51_vundle.sh`. What it does, it installs [Vundle](https://github.com/VundleVim/Vundle.vim) and all plugins listed in `~/.vimrc`. The script also installs [pre-patched fonts for Powerline](https://github.com/powerline/fonts) to work with [vim-airline](https://github.com/bling/vim-airline), you just have to specify the right font in your terminal/iTerm/MacVim etc. settings after installation.
+
+
+## Extras
+
+### Git status
+I found this amazing python script called [show_status](http://blog.mikepearce.net/2010/06/16/git-status-on-multiple-repos/). It will show git status of all git repositories under current dir. The script `./init/60_git_show_status.sh` will download this script from its [github repo](https://github.com/MikePearce/Git-Status) and install it to `/usr/local/bin/`.
+
+### The Fuck
+Just type `sudo -H pip install thefuck`. Put `eval $(thefuck --alias)` in your `~/.bashrc` or `~/.bash/aliases.bash` or wherever you store your aliases. You can read more on the [GitHub page](https://github.com/nvbn/thefuck).
+
+### Terminal colors
+`term_colors/` contains different colors for Terminal, iTerm, and konsole.
+
 
 ### Dotfiles
 Next, we need to symlink all files in `home` directory. To do so I at first was using [Dotbot](https://github.com/anishathalye/dotbot#configuration), which is just great: it's clean, lightweight and simple. For more information visit [Dotbot page](https://github.com/anishathalye/dotbot#configuration).
@@ -91,29 +111,9 @@ To link all dotfiles in your repository just type in:
 ```
 ./install.sh
 ```
-### MacVim
-`./init/macvim.sh`: compiles MacVim with Python support, installs [Vundle](https://github.com/VundleVim/Vundle.vim) and all plugins listed in `~/.vimrc`. The script also installs [pre-patched fonts for Powerline](https://github.com/powerline/fonts) to work with [vim-airline](https://github.com/bling/vim-airline), you just have to specify the right font in your terminal settings after installation. I'm using a plugin to toggle mouse between vim and Terminal, but it won't work anyway because of known issues of Terminal. To fix it [MouseTerm](https://bitheap.org/mouseterm/) should be installed.
 
-The script searches for location of config directory of current python's version and passes it `--with-python-config-dir` switch during the installation of MacVim, but it might fail. Also if MacVim is already installed it does not update it, it just proceeds to Vundle installation (I have to fix this).
-
-If you get clang error, try uncommenting line 28:
-```
-export LDFLAGS=-L/usr/lib
-```
-
-
-
-### Extras
-
-#### Git status
-I found this amazing python script called [show_status](http://blog.mikepearce.net/2010/06/16/git-status-on-multiple-repos/). It will show git status of all git repositories under current dir. The script `./init/git_show_status.sh` will download this script from its [github repo](https://github.com/MikePearce/Git-Status) and install it to `/usr/local/bin/`.
-
-#### The Fuck
-Just type `sudo -H pip install thefuck`. Put `eval $(thefuck --alias)` in your `~/.bashrc` or `~/.bash/aliases.bash` or whereever you store your aliases. You can read more on the [GitHub page](https://github.com/nvbn/thefuck).
-
-
-### Warning
-All this scripts worked fine for me, but might not work on your machine, so proceed with care. Never copy anything blindly, check what is inside and adjust to your needs. Each script will exit if as soon as any command in the scrip fails. If you want to see what it's doing, in the beginning of each script (around `line 8`) you should find the following:
+## Warning
+All this scripts worked fine for me, but might not work on your machine, so proceed with care. Never copy anything blindly, check what is inside and adjust to your needs. Each script will exit as soon as any command in the scrip fails. If you want to see what it's doing, in the beginning of each script (around `line 8`) you should find the following:
 ```
 set -e
 ```
@@ -123,11 +123,10 @@ set -ex
 ```
 Like that the script will output each command it's executing prepended with pluses.
 
-And once again: **be careful!**
-
 ## Other programs
 Here are some other programs I have on my machine. They require mostly manual installation, which pretty straightforward. I also included links to download pages / instructions how to install.
 
+### OSX
 * [MacTex](https://tug.org/mactex/). I prefer manual installation from [here](https://tug.org/mactex/mactex-download.html). It will install TexLive to `/usr/local/` and add `/Applications/TeX` with some GUI programs like BibDesk, TeXShop etc., which can be uninstalled if not needed.
 * [Google Chrome](https://www.google.com/chrome/browser/desktop/) and [Firefox](https://www.mozilla.org/en-US/firefox/new/).
 * [Acrobat Reader](https://get.adobe.com/reader/) to view `pdf` files and [Skim](http://skim-app.sourceforge.net/) to work with latex: latexmk constant preview + Skim is a killer.
@@ -138,6 +137,13 @@ Here are some other programs I have on my machine. They require mostly manual in
 * [TexMate](http://macromates.com/download) as alternative to Vim.
 * [DefaltApp](http://www.rubicode.com/Software/Bundles.html#RCDefaultApp) very usefull if you want to set default app for a group of different files, instead of "Get info" for each specific filetype you can configure all filetypes, which should be open with a particular app.
 
+### Ubuntu
+* [Chromium](https://www.chromium.org/getting-involved/download-chromium)
+* [Okular](https://okular.kde.org/) to view `pdf` files.
+* [Dropbox](https://www.dropbox.com/install) for quick shares.
+* [Zotero](https://www.zotero.org/download/) as bibliography manager **+** [Better Bib(La)TeX](https://github.com/ZotPlus/zotero-better-bibtex) for decent citation export.
+* [PyCharm](https://www.jetbrains.com/pycharm/) as alternative to Vim, especially for debugging Python.
+
 ## Further reading
 If you don't know where to start, what all this mean, what the hell dotfiles are etc. Here are some resources and examples:
 * [A nice introduction on dotfiles.](https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789)
@@ -147,9 +153,8 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
     - [Simon Eskildsen](https://github.com/Sirupsen/dotfiles/)
     - [Mathias Bynens](https://github.com/mathiasbynens/dotfiles)
     - [Steve Losh](https://bitbucket.org/sjl/dotfiles/src)
+    - [cowboy](https://github.com/cowboy/dotfiles)
     - [Lars Kappert](https://github.com/webpro/dotfiles)
 
 ## TODO
-- Change to Python 3.x (+macvim)
-- switch to brew?
-- Fix directories installation for backups in `install.sh`.
+- tmux config

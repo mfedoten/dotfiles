@@ -34,6 +34,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'nvie/vim-togglemouse'
+Plugin 'qpkorr/vim-bufkill'
 Plugin 'scrooloose/nerdcommenter'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'ervandew/supertab'
@@ -206,7 +207,7 @@ if !isdirectory(expand(&directory))
 endif
 
 " allows using bash aliases
-let $BASH_ENV = "~/.bash/03_aliases.bash"
+" let $BASH_ENV = "$HOME/.bash/aliases.bash:$HOME/.bash/aliases_local.bash:$BASH_ENV"
 
 " }}}
 
@@ -275,6 +276,7 @@ let g:clang_user_options='|| exit 0'
     " - Usages <localleader>N (shows all the usages of a name)
     " Open module, e.g. :Pyimport os (opens the os module) }}}
 
+let g:jedi#force_py_version = 3
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_splits_not_buffers = "right"
@@ -617,7 +619,7 @@ iabbrev adn and
 
 " ToggleMouse ------------------------------------------------------------ {{{
 " After enabling mouse in vim (with set mouse=a) terminal doesn't control it
-" anymore.  To fix it has a look at this plugin. Mapped manually to <F9>.
+" anymore.  To fix it has a look at this plugin. Mapped manually to <F9>/<F12>.
 " To fix issues with mouse in Terminal.app see https://bitheap.org/mouseterm/
 " }}}
 
@@ -662,8 +664,8 @@ nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 
 " Spelling --------------------------------------------------------------- {{{
 " Enable spell check with F4"
-nnoremap <F4> :setlocal spell! spelllang=en_gb<CR>
-inoremap <F4> <c-o>:setlocal spell! spelllang=en_gb<CR>
+nnoremap <F4> :setlocal spell!<CR>
+inoremap <F4> <c-o>:setlocal spell!<CR>
 set dictionary=/usr/share/dict/words
 hi clear SpellBad
 hi SpellBad term=standout term=underline ctermfg=1
@@ -703,11 +705,13 @@ set foldtext=MyFoldText()
 set hidden              " Hides buffer instead of closing it
 set confirm             " Reminds of unsaved buffers on quit
 " Make work with buffers easier
-nnoremap <leader>ls :ls<cr>
+nnoremap <leader>ls :ls!<cr>
 nnoremap <Tab>      :bn<cr>
 nnoremap <S-Tab>    :bp<cr>
-" delete a buffer but keep the splits
-nnoremap <leader>d  :bn\|bd<cr>
+nnoremap <leader>d  :bd<cr>
+" Mapping for buffkill
+nnoremap <leader>D  :BD<cr>
+nnoremap <leader>ba :BA<cr>
 " Search open buffers with CtrlP
 nnoremap <leader>ll :CtrlPBuffer<cr>
 " }}}

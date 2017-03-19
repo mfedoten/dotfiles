@@ -6,7 +6,7 @@ shopt -s expand_aliases
 # Aliases #
 ###########
 # use GNU ls if installed
-if ls --version | grep -q GNU; then
+if `type -P ls` --version | grep -q GNU; then
     alias ls='ls --color=auto'
     alias ld='ls -lA --group-directories-first'
     alias ll='ls -lAX'
@@ -14,49 +14,63 @@ else
     alias ls='ls -G'
 fi
 alias la="ls -lA"
-alias lsg="ls -lA | grep"
+alias lag="ls -lA | grep"
 
 alias which='type -a'
 alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 alias gr='grep'
 alias mkdir="mkdir -p"
-alias pbc='pbcopy'
-
 alias ..='cd ..'
 alias ...='cd ../..'
 
-alias o='open'
-alias oo='open .'
-alias ot="open -a /Applications/TextMate.app"
-
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-# alias mvim='open /Applications/MacVim.app'
 alias g="git"
-alias spyder="open /Applications/Spyder.app/"
+
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+    alias pbc='pbcopy'
+    alias o='open'
+    alias oo='open .'
+    alias ot="open -a /Applications/TextMate.app"
+    alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+
+    # Update MacPorts, installed packages and locateDB
+    alias update='sudo port selfupdate; sudo port upgrade outdated; sudo port clean --all installed; sudo port uninstall --follow-dependencies inactive; LC_ALL='C'; sudo updatedb'
+
+    # Empty the Trash on all mounted volumes and the main HDD
+    # Also, clear Apple’s System Logs to improve shell startup speed
+    alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
+    # Flush Directory Service cache
+    alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+
+    # Hide/show all desktop icons (useful when presenting)
+    alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+    alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+    # Show/hide hidden files in Finder
+    alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+    alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+elif [[ "$OSTYPE" =~ ^linux ]]; then
+    alias pbc='xclip -selection clipboard'
+    alias pbp='xclip -selection clipboard -o'
+    alias o='xdg-open'
+    alias oo='nautilus .'
+    alias on='nautilus'
+    alias ge="gedit"
+
+    # Update APT, installed packages and locateDB
+    alias update='sudo apt-get -qq update; sudo apt-get -qq dist-upgrade; sudo apt autoremove; sudo apt-get autoclean; sudo updatedb'
+fi
 
 # Get week number
 alias week='date +%V'
 
-# Update MacPorts, installed packages and locateDB
-alias update='sudo port selfupdate; sudo port upgrade outdated; sudo port clean --all installed; sudo port uninstall --follow-dependencies inactive; LC_ALL='C'; sudo updatedb'
-
 # Update pip packages
 alias uppip='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1 | xargs -n1 sudo pip install -U'
 
-# Empty the Trash on all mounted volumes and the main HDD
-# Also, clear Apple’s System Logs to improve shell startup speed
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
 
-# Flush Directory Service cache
-alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
-
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
-# Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # Git updates under curent dir
 # alias upgit='find . -maxdepth 2 -mindepth 1 -name .git -type d -prune | while read d; do cd $d/..; gecho -e "${Cyan}$PWD ${Color_Off} git pull"; git pull; cd $OLDPWD; done'
@@ -103,3 +117,12 @@ function mkcd {
     mkdir $1 && cd $1
   fi
 }
+
+##################
+# shortcuts for cd
+##################
+#export CDPATH=".:$HOME/.symlinks:$CDPATH"
+doc=~/Documents
+dbx=~/Dropbox
+des=~/Desktop
+dow=~/Downloads

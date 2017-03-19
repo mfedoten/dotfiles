@@ -7,6 +7,9 @@ export EDITOR='vim';
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
 # Set less as default pagerm highlight section titles in manual pages.
 export PAGER=less
 export LESS=-iR
@@ -25,3 +28,6 @@ export LESSHISTFILE=/dev/null
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell
+
+# Notify immediatly on bg job completion
+set -o notify

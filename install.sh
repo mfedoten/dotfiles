@@ -43,7 +43,7 @@ for file in $(find -L $homedir -type f ! -name '.DS_Store' | cut -sd / -f 2-); d
 
   if [[ -h $target && ($(readlink $target) == $path)]]; then
     echo "~/$file is already symlinked to your dotfiles."
-  elif [[ -f $target && $(gsha256sum $path | awk '{print $2}') == $(gsha256sum $target | awk '{print $2}') ]]; then
+  elif cmp -s $path $target; then
     echo "~/$file exists and was identical to your dotfile. No need in backup. Overriding with symlink."
     symlink $path $target
   elif [[ -a $target ]]; then

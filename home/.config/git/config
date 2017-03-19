@@ -2,9 +2,6 @@
     name = Mariia Fedotenkova
     email = maria.fedotenkova@gmail.com
 
-[credential]
-    helper = osxkeychain
-
 [core]
     excludesfile = ~/.config/git/gitignore_global
     editor = vim
@@ -52,3 +49,6 @@
     up = rebase
 [diff]
 	tool = vimdiff
+
+[include]
+    path = config_local

@@ -16,3 +16,4 @@ dconf-editor
 ruby-full
 git
 tmux
+checkinstall

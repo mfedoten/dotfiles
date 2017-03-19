@@ -4,8 +4,19 @@
 # Modification of bash appearance #
 ###################################
 # Cowsay
-echo -e "\e[1;37m$(cowsay -f $(ls /opt/local/share/cowsay/cows | shuf -n1 | \
-    cut -d. -f1) $(whatis $(ls /bin) 2>/dev/null | shuf -n1))\e[00m"
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+  if [ -x /opt/local/share/cowsay -a -x /opt/local/share/games/fortune ]; then
+    # echo -e "\e[1;37m$(cowsay -f $(ls /opt/local/share/cowsay/cows | shuf -n1 | \
+      # cut -d. -f1) $(whatis $(ls /bin) 2>/dev/null | shuf -n1))\e[00m"
+      fortune | cowsay
+  fi
+elif [[ "$OSTYPE" =~ ^linux ]]; then
+  if [ -x /usr/games/cowsay -a -x /usr/games/fortune ]; then
+    # echo -e "$(cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1 | \
+      # cut -d. -f1) $(whatis $(ls /bin) 2>/dev/null | shuf -n1))"
+      fortune | cowsay
+  fi
+fi
 
 # Customize bash promt. Slightly changed prom by Mathias Bynens
 # https://github.com/mathiasbynens/dotfiles/blob/master/.bash_prompt
@@ -77,3 +88,20 @@ PS1+="\[$PCT\]\$ \[$Color_Off\]" # '$' and reset color
 if [[ -f ~/.dir_colors ]]; then
     eval $(dircolors ~/.dir_colors)
 fi
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If this is an xterm set the title to user@host:dir
+#case "$TERM" in
+#xterm*|rxvt*)
+#    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+#    ;;
+#*)
+#    ;;
+#esac
+
