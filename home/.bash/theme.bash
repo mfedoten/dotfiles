@@ -4,8 +4,8 @@
 # Modification of bash appearance #
 ###################################
 # Cowsay
-# gecho -e "\e[36m$(cowsay -f $(gls /opt/local/share/cowsay/cows | gshuf -n1 | \
-    # cut -d. -f1) $(whatis $(gls /bin) 2>/dev/null | gshuf -n1))\e[00m"
+echo -e "\e[1;37m$(cowsay -f $(ls /opt/local/share/cowsay/cows | shuf -n1 | \
+    cut -d. -f1) $(whatis $(ls /bin) 2>/dev/null | shuf -n1))\e[00m"
 
 # Customize bash promt. Slightly changed prom by Mathias Bynens
 # https://github.com/mathiasbynens/dotfiles/blob/master/.bash_prompt
