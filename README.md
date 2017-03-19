@@ -8,6 +8,9 @@ The whole process consist of three parts:
 - Link dotfiles from this repository to dotfiles in my home folder.
 
 ## Start here
+Download this repo and follow the instruction below to start setting your environment. These instructions differ slightly for Linux and OSX, so choose the one below.
+
+### OSX
 First things first: install Xcode:
 ```
 sudo softwareupdate -i -a
@@ -18,25 +21,56 @@ Or just install Xcode from Apple store and
 sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/
 ```
 
+#### MacPorts
+Next, download and install MacPorts from [here](https://www.macports.org/install.php). After that, run `./init/01_osx_ports.sh` to install all required ports listed in `portnames.txt`.
+
+#### Upgrade bash
+Depending on the bash shipped with your system, it might be outdated. In order to update it, set a desired version of bash in `./init/bash_update.sh` and then just run the script. It's not really necessary, but some useful features (like auto-completion in vim), won't work on bash versions older than 4.
+
+#### iTerm2
+Switching from Terminal to [iTerm2](https://www.iterm2.com/) is a good idea.
+
+#### OSX defaults
+`./init/03_osx_defaults.sh` sets some nice default settings. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized), printing full path in heading of Finder windows etc.
+
+### Ubuntu
+
+#### APT packages
+Running `./init/01_ubuntu_apt.sh` will update APT and installs all packages listed in `init/packages.txt`. Or you can always install the packages manually.
+
 ## Git
-Obviously, we will need [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to proceed.
+After all packages were installed, it's a good idea to configure git.
 
-## Installation scripts
-Next, copy the repository and run installation script:
+P.S. on Ubuntu you might want to install a more recent version of git via [PPA](https://launchpad.net/~git-core/+archive/ubuntu/ppa).
+
+Add your credentials:
 ```
-git clone https://github.com/mfedoten/dotfiles
-cd dotfiles/
+git config --global user.name "Your Name"
+git config --global user.email yourname@example.com
 ```
-Below is description of the installation steps, listed in the order as they should be executed. All scripts are in the `init` directory.
+Check if you have SSH installed:
+```
+ssh -V
+```
+Generate a new SSH key if you don't have one already:
+```
+ssh-keygen
+# on Linux
+cat ~/.ssh/id_rsa.pub | xclip -sel clip
+# on Mac
+cat ~/.ssh/id_rsa.pub | pbcopy
+```
+And now add it to the [list of recognized keys](https://github.com/settings/keys).
 
-### MacPorts and packages
-`./init/ports.sh`: installs [MacPorts](https://www.macports.org/) and all packages listed in `portnames.txt`.
 
-### Upgrade bash
-`./init/bash_update.sh`: installs and sets the latest version of bash. It's not really necessary, but some useful features (like auto-completion), won't work on bash versions older than 4.
+## Python
+There are several ways to install Python:
+* Install with [Anaconda](https://docs.continuum.io/anaconda/).
+* Install using package managers. **On Ubuntu** using `apt-get` (see [this example](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04). The problem here is that usually it contains older version of Python, but you can try to install it with PPA (an [example](http://askubuntu.com/questions/865554/how-do-i-install-python-3-6-using-apt-get)). **On OSX** you can easily install it with MacPorts. You can run `./init/40_osx_python.sh` to install Python 2.7 and Python 3.6, it also sets `python36` as default `python` and installs pip and PyQt5. **P.S** to check which Python version pip is using run `pip -V`.
+* **Ubuntu:** compile from source. Look [here](https://tecadmin.net/install-python-3-6-ubuntu-linuxmint/), [here](http://stackoverflow.com/questions/8097161/how-would-i-build-python-myself-from-source-code-on-ubuntu), and [here](https://docs.python.org/2/using/unix.html), good luck! **OSX:** install from official [Python's website](https://www.python.org/downloads/)
 
-### Python
-`./init/python.sh` will set up Python and pip to run MacPorts version and install all packages (+ notebook extensions) from `requirements.txt`.
+After finally installing Python and checking that it works without crashing your system, you can now run `./init/50_pip.sh` which will install all packages (+ notebook extensions) from `pip-packages.txt`.
+
 
 ### Dotfiles
 Next, we need to symlink all files in `home` directory. To do so I at first was using [Dotbot](https://github.com/anishathalye/dotbot#configuration), which is just great: it's clean, lightweight and simple. For more information visit [Dotbot page](https://github.com/anishathalye/dotbot#configuration).
@@ -67,14 +101,7 @@ If you get clang error, try uncommenting line 28:
 export LDFLAGS=-L/usr/lib
 ```
 
-### iTerm2
-`./init/term.sh` will install [iTerm2](https://www.iterm2.com/).
 
-### OSX defaults
-Normally, I prefer to set up appearance and defaults manually, but this script sets some nice defaults which I am too lazy to search for in the system preferences. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized), printing full path in heading of Finder windows etc. Just:
-```
-./init/osx.sh
-```
 
 ### Extras
 
