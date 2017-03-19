@@ -51,4 +51,4 @@
     br = branch
     up = rebase
 [diff]
-	tool = --list
+	tool = vimdiff

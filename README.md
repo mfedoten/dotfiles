@@ -4,10 +4,8 @@ Here are my dotfiles, an attempt to make process of setting up new machine less 
 
 The whole process consist of three parts:
 - Manually install some applications / set some defaults.
-- Run scripts to install most of the important stuff, like MacPorts, Python etc.
+- Run scripts to install some of the important stuff, like MacPorts/APT packages, Python etc.
 - Link dotfiles from this repository to dotfiles in my home folder.
-
-**Note:** branch `master` is for OSX, for linux check the corresponding branch.
 
 ## Start here
 First things first: install Xcode:
