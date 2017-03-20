@@ -33,7 +33,7 @@ homedir=home
 
 
 # Remove broken links in dotfiles in home directory
-sudo gfind ~/.[^.T]* -xtype l -delete
+sudo find ~/.[^.T]* -xtype l -delete
 
 
 # Link the files
