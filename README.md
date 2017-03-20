@@ -89,7 +89,7 @@ I found this amazing python script called [show_status](http://blog.mikepearce.n
 Just type `sudo -H pip install thefuck`. Put `eval $(thefuck --alias)` in your `~/.bashrc` or `~/.bash/aliases.bash` or wherever you store your aliases. You can read more on the [GitHub page](https://github.com/nvbn/thefuck).
 
 ### Terminal colors
-`term_colors/` contains different colors for Terminal, iTerm, and konsole.
+`term_colors/` contains different colors for Terminal, iTerm.
 
 
 ### Dotfiles
@@ -158,4 +158,7 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 
 ## TODO
 - tmux config
-- install local files from here
+- install local files from this repo
+- fins a good substitute for default terminal
+- g bash-completion
+- jupyter execute command on startup
