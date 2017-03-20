@@ -158,7 +158,6 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 
 ## TODO
 - tmux config
-- install local files from this repo
-- fins a good substitute for default terminal
+- find a good substitute for default terminal
 - g bash-completion
 - jupyter execute command on startup
