@@ -38,7 +38,3 @@ _pip_completion()
                    PIP_AUTO_COMPLETE=1 $1 ) )
 }
 complete -o default -F _pip_completion pip
-
-# git completion when git is aliased to g
-complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
-    || complete -o default -o nospace -F _git g
