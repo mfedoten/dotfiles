@@ -26,10 +26,11 @@
     usedeltabaseoffset = true # >git 1.5
 
 [alias]
+    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
     st = status
-    a = !git add . && git status
-    au = !git add -u . && git status
-    aa = !git add . && git add -u . && git status
+    sti = status --ignored
+    a = add
+    aa = !git add . && git status
     ci = commit
     cm = commit -m
     ca = commit --amend # careful
@@ -38,15 +39,16 @@
     l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
     ll = log --stat --abbrev-commit
     lg = log --color --graph --pretty=format:'%C(bold white)%h%Creset -%C(bold green)%d%Creset %s %C(bold green)(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    llg = log --color --graph --pretty=format:'%C(bold white)%H %d%Creset%n%s%n%+b%C(bold blue)%an <%ae>%Creset %C(bold green)%cr (%ci)' --abbrev-commit
+    lsg = log --color --stat --graph --pretty=format:'%C(bold white)%h%Creset -%C(bold green)%d%Creset %s %C(bold green)(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     d = diff
     master = checkout master
-    spull = svn rebase
-    spush = svn dcommit
-    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
     co = checkout
     br = branch
     up = rebase
+    apply-ignore = !git ls-files -ci --exclude-standard -z | xargs -0r git rm --cached
+    checki = check-ignore -v --no-index
+    spull = svn rebase
+    spush = svn dcommit
 [diff]
 	tool = vimdiff
 
