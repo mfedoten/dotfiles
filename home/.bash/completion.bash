@@ -42,7 +42,7 @@ complete -o default -F _pip_completion pip
 if [ -f /opt/local/share/bash-completion/completions/git ]; then
     . /opt/local/share/bash-completion/completions/git
     __git_complete g __git_main
-elif [-f /usr/share/bash-completion/completions/git ]; then
+elif [ -f /usr/share/bash-completion/completions/git ]; then
     . /usr/share/bash-completion/completions/git
     __git_complete g __git_main
 fi
