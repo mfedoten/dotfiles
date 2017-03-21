@@ -484,9 +484,13 @@ endif
 
 " Descent settings for Terminal and GUI
 if has("gui_running")
+  if has('macunix')
     set transparency=0                   " No transparency
-    set guicursor+=a:blinkon0            " No blinking cursor
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\:h12 " Fonts for powerline
+  elseif has('unix')
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10 " Fonts for powerline
+  endif
+    set guicursor+=a:blinkon0            " No blinking cursor
 endif
 set background=dark
 colorscheme BusyBee
@@ -503,6 +507,8 @@ au VimResized * :wincmd =
 " Some useful mappings and functions ------------------------------------- {{{
 " Write a file anyway, even if forgot to sudo
 cmap w!! w !sudo tee % >/dev/null
+" Execute selection in vim command line
+vnoremap <silent> <leader>ex "xy:@x<cr>
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U or CR after inserting a line break.
@@ -566,7 +572,7 @@ noremap L $
 vnoremap L g_
 
 " paste empty line with <leader>o
-nnoremap <leader>o o<Esc>
+nnoremap <leader>o o<Esc>k
 
 " <m-j> and <m-k> to drag lines in any mode
 " Thanks to Steve Losh

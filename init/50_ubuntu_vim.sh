@@ -28,10 +28,17 @@ cd vim
             --enable-multibyte \
             --enable-rubyinterp=yes \
             --enable-python3interp=yes \
-            --with-python3-config-dir=/usr/lib/python3.5/config \
+            --with-python3-config-dir=$HOME/anaconda/lib/python3.6/config-3.6m-x86_64-linux-gnu \
             --enable-perlinterp=yes \
             --enable-luainterp=yes \
-            --enable-gui=gtk2 --enable-cscope --prefix=/usr
+            --enable-cscope \
+            --enable-gui=auto \
+            --enable-gtk2-check \
+            --enable-gnome-check \
+            --with-x \
+            --with-compiledby="Mariia Fedotenkova <maria.fedotenkova@gmail.com>" \
+            --prefix=/usr
+
 make VIMRUNTIMEDIR=/usr/share/vim/vim80    
 # it creates vim into package which you can later remve via dpkg -r
 # (don't forger to change name to smth meaningful, e.g. vim-mfe)
