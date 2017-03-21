@@ -159,5 +159,3 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 ## TODO
 - tmux config
 - find a good substitute for default terminal
-- g bash-completion
-- jupyter execute command on startup
