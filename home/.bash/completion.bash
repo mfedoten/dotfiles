@@ -38,3 +38,11 @@ _pip_completion()
                    PIP_AUTO_COMPLETE=1 $1 ) )
 }
 complete -o default -F _pip_completion pip
+
+if [ -f /opt/local/share/bash-completion/completions/git ]; then
+    . /opt/local/share/bash-completion/completions/git
+    __git_complete g __git_main
+elif [-f /usr/share/bash-completion/completions/git ]; then
+    . /usr/share/bash-completion/completions/git
+    __git_complete g __git_main
+fi
