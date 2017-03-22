@@ -631,6 +631,7 @@ iabbrev adn and
 
 " Gundo: visualize undo tree --------------------------------------------- {{{
 nnoremap <F3> :GundoToggle<CR>
+let g:gundo_prefer_python3 = 1
 let g:gundo_width = 40
 let g:gundo_preview_height = 15
 " }}}
@@ -786,6 +787,13 @@ augroup ft_md
     au!
     autocmd FileType markdown setlocal spell
     autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+augroup END
+" Markdown
+augroup ft_vim
+    au!
+    autocmd FileType vim setlocal spell
+    autocmd FileType vim setlocal fo=tcq
+    autocmd FileType vim setlocal sw=2
 augroup END
 " }}}
 
