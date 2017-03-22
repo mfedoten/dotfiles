@@ -32,8 +32,7 @@ cd vim
             --enable-perlinterp=yes \
             --enable-luainterp=yes \
             --enable-cscope \
-            --enable-gui=auto \
-            --enable-gtk2-check \
+            --enable-gui=gtk2 \
             --enable-gnome-check \
             --with-x \
             --with-compiledby="Mariia Fedotenkova <maria.fedotenkova@gmail.com>" \
