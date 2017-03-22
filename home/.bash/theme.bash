@@ -8,13 +8,13 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   if [ -x /opt/local/share/cowsay -a -x /opt/local/share/games/fortune ]; then
     # echo -e "\e[1;37m$(cowsay -f $(ls /opt/local/share/cowsay/cows | shuf -n1 | \
       # cut -d. -f1) $(whatis $(ls /bin) 2>/dev/null | shuf -n1))\e[00m"
-      fortune | cowsay
+    fortune | cowsay -f $(ls /opt/local/share/cowsay/cows | shuf -n1 | cut -d. -f1)
   fi
 elif [[ "$OSTYPE" =~ ^linux ]]; then
   if [ -x /usr/games/cowsay -a -x /usr/games/fortune ]; then
     # echo -e "$(cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1 | \
       # cut -d. -f1) $(whatis $(ls /bin) 2>/dev/null | shuf -n1))"
-      fortune | cowsay
+    fortune | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1 | cut -d. -f1)
   fi
 fi
 
