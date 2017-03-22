@@ -625,7 +625,7 @@ iabbrev adn and
 
 " ToggleMouse ------------------------------------------------------------ {{{
 " After enabling mouse in vim (with set mouse=a) terminal doesn't control it
-" anymore.  To fix it has a look at this plugin. Mapped manually to <F9>/<F12>.
+" anymore.  To fix it has a look at this plugin. Mapped manually to <F9>.
 " To fix issues with mouse in Terminal.app see https://bitheap.org/mouseterm/
 " }}}
 
