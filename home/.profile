@@ -5,7 +5,7 @@
 # the files are located in the bash-doc package.
 
 # tmux path troubles
-if [[ -n $TMUX ]] && [ -f /etc/profile ]; then
+if [[ -n $TMUX ]] && [ -f /etc/profile ] && [[ "$OSTYPE" =~ ^darwin ]]; then
     PATH=""
     . /etc/profile
 fi
