@@ -40,12 +40,13 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'ervandew/supertab'
 Plugin 'ervandew/snipmate.vim'
 Plugin 'scrooloose/syntastic'
-" Plugin 'nvie/vim-flake8'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Rip-Rip/clang_complete'
-" Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'lervag/vimtex'
+" Plugin 'lervag/vimtex'
+Plugin 'tmhedberg/SimpylFold'
 Plugin 'wellle/targets.vim'
+Plugin 'FooSoft/vim-argwrap'
+Plugin 'vim-scripts/ReplaceWithRegister'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
@@ -325,60 +326,60 @@ nnoremap <localleader>l :Errors<cr>
 " }}}
 
 " vimtex: Plugin for easier LaTeX compilation ---------------------------- {{{
-let g:tex_flavor = 'latex' " to start .tex-files as latex
-let g:vimtex_complete_close_braces = 1
-let g:vimtex_fold_enabled = 1
-let g:vimtex_fold_manual = 1
-let g:vimtex_fold_sections = [
-        \ "part",
-        \ "chapter",
-        \ "section",
-        \ "subsection",
-        \ "subsubsection",
-        \ "paragraph",
-        \ ]
-let g:vimtex_quickfix_ignored_warnings = [
-            \ 'Underfull',
-            \ 'Overfull',
-            \ 'Package etoolbox',
-            \ ]
-let g:vimtex_view_general_viewer
-            \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-let g:vimtex_view_general_options = '-r @line @pdf @tex'
-augroup latexSurround
-     autocmd!
-     autocmd FileType tex call s:latexSurround()
-  augroup END
+" let g:tex_flavor = 'latex' " to start .tex-files as latex
+" let g:vimtex_complete_close_braces = 1
+" let g:vimtex_fold_enabled = 1
+" let g:vimtex_fold_manual = 1
+" let g:vimtex_fold_sections = [
+        " \ "part",
+        " \ "chapter",
+        " \ "section",
+        " \ "subsection",
+        " \ "subsubsection",
+        " \ "paragraph",
+        " \ ]
+" let g:vimtex_quickfix_ignored_warnings = [
+            " \ 'Underfull',
+            " \ 'Overfull',
+            " \ 'Package etoolbox',
+            " \ ]
+" let g:vimtex_view_general_viewer
+            " \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+" let g:vimtex_view_general_options = '-r @line @pdf @tex'
+" augroup latexSurround
+     " autocmd!
+     " autocmd FileType tex call s:latexSurround()
+  " augroup END
 
-  function! s:latexSurround()
-     let b:surround_{char2nr("e")}
-       \ = "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}"
-     let b:surround_{char2nr("c")} = "\\\1command: \1{\r}"
-  endfunction
-" This adds a callback hook that updates Skim after compilation {{{
-let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
-function! UpdateSkim(status)
-    if !a:status | return | endif
+  " function! s:latexSurround()
+     " let b:surround_{char2nr("e")}
+       " \ = "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}"
+     " let b:surround_{char2nr("c")} = "\\\1command: \1{\r}"
+  " endfunction
+" " This adds a callback hook that updates Skim after compilation {{{
+" let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
+" function! UpdateSkim(status)
+    " if !a:status | return | endif
 
-    let l:out = b:vimtex.out()
-    let l:tex = expand('%:p')
-    let l:cmd = [g:vimtex_view_general_viewer, '-r']
-    if !empty(system('pgrep Skim'))
-        call extend(l:cmd, ['-g'])
-    endif
-    if has('nvim')
-        call jobstart(l:cmd + [line('.'), l:out, l:tex])
-    elseif has('job')
-        call job_start(l:cmd + [line('.'), l:out, l:tex])
-    else
-        call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
-    endif
-endfunction "}}}
-" let g:vimtex_quickfix_ignore_all_warnings = 1
-" let g:vimtex_latexmk_options = '-pdf -verbose -file-line-error -synctex=1 -interaction=nonstopmode'
-" let g:vimtex_complete_img_use_tail = 1
-" let g:vimtex_latexmk_continuous = 1
-" let g:vimtex_latexmk_background = 0
+    " let l:out = b:vimtex.out()
+    " let l:tex = expand('%:p')
+    " let l:cmd = [g:vimtex_view_general_viewer, '-r']
+    " if !empty(system('pgrep Skim'))
+        " call extend(l:cmd, ['-g'])
+    " endif
+    " if has('nvim')
+        " call jobstart(l:cmd + [line('.'), l:out, l:tex])
+    " elseif has('job')
+        " call job_start(l:cmd + [line('.'), l:out, l:tex])
+    " else
+        " call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
+    " endif
+" endfunction "}}}
+" " let g:vimtex_quickfix_ignore_all_warnings = 1
+" " let g:vimtex_latexmk_options = '-pdf -verbose -file-line-error -synctex=1 -interaction=nonstopmode'
+" " let g:vimtex_complete_img_use_tail = 1
+" " let g:vimtex_latexmk_continuous = 1
+" " let g:vimtex_latexmk_background = 0
 " }}}
 
 " SnipMate: code snippts ------------------------------------------------- {{{
@@ -393,9 +394,10 @@ set completeopt=menuone,longest
 
 " }}}
 
-" File navigation -------------------------------------------------------- {{{
+" Files navigation ------------------------------------------------------- {{{
 " Enhanced command-line completion
 set wildmenu
+set wildignorecase
 " Ignore list
 set wildignore+=*.so,*.swp,*.pyc,*.o,*.obj
 set wildignore+=*.png,*.pdf,*.jpg,*.jpeg,*.bmp,*.gif
@@ -443,7 +445,7 @@ let g:ctrlp_clear_cache_on_exit = 0    " Keep cash from prev. sessions
 " }}}
 
 " Rename file from vim
-nnoremap <leader>r :call RenameFile()<cr>
+nnoremap <leader>R :call RenameFile()<cr>
 " }}}
 
 " Set appearance --------------------------------------------------------- {{{
@@ -574,6 +576,10 @@ vnoremap L g_
 " paste empty line with <leader>o
 nnoremap <leader>o o<Esc>k
 
+" remap <c-i> (go to newer position in jump list) to <c-n> (anyway, it's
+" duplicated by j)
+nnoremap <c-n> <c-i>
+
 " <m-j> and <m-k> to drag lines in any mode
 " Thanks to Steve Losh
 noremap ∆ :m+<CR>
@@ -636,9 +642,24 @@ let g:gundo_width = 40
 let g:gundo_preview_height = 15
 " }}}
 
+" ReplaceWithRegister: don't overwrite a register when replacing text ---- {{{
+    " Cheat sheet -------------------------------------------------------- {{{
+    " ["x]gr{motion} Replace {motion} text with the contents of register x.
+    " ["x]gR         Replace lines with the contents of register x.
+    " ["x]gr$        Replace from the cursor position to the end of the line.
+    " {Visual}["x]v  Replace the selection with the contents of register x
+    " }}}
+" xnoremap p <Plug>ReplaceWithRegisterVisual
+" }}}
+
+" argwrap: wrap/unwrap arguments ---- {{{
+nnoremap <silent> <leader>ar :ArgWrap<CR>
+let g:argwrap_wrap_closing_brace=0 "also available as per buffer (b:)
+" }}}
+
+" When editing a file, always jump to the last known cursor position ----- {{{
 augroup vimrcEx
     au!
-    " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid or when inside an event handler
     " (happens when dropping a file on gvim).  Also don't do it when the mark
     " is in the first line, that is the default position when opening a file.
@@ -648,9 +669,11 @@ augroup vimrcEx
     \ endif
 
     " For all text and python files set 'textwidth' to 80 characters.
-    autocmd FileType text,python setlocal textwidth=80
-
+    autocmd FileType text,python,matlab,vim setlocal textwidth=80
+    autocmd FileType text,python,tex,markdown,vim setlocal spell
+    autocmd BufNewFile,BufRead * call ToggleBar()
 augroup END
+"}}}
 
 " }}}
 
@@ -662,7 +685,7 @@ let NERDSpaceDelims=1           " adds extra spaces to comment
 let NERDCompactSexyComs=1       " make block comments more compact
 " }}}
 
-" <leader>+"/' to comment a word
+" <leader>+"/' to comment a word ----------------------------------------- {{{
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 " }}}
@@ -706,6 +729,8 @@ function! MyFoldText() " Author: Steve Losh {{{
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
 set foldtext=MyFoldText()
+" SimpylFold settings 
+" let g:SimpylFold_docstring_preview=1
 " }}}
 
 " Buffers ---------------------------------------------------------------- {{{
@@ -713,11 +738,10 @@ set hidden              " Hides buffer instead of closing it
 set confirm             " Reminds of unsaved buffers on quit
 " Make work with buffers easier
 nnoremap <leader>ls :ls!<cr>
-nnoremap <Tab>      :bn<cr>
-nnoremap <S-Tab>    :bp<cr>
-nnoremap <leader>d  :bd<cr>
+nnoremap <silent> <Tab>      :bn<cr>
+nnoremap <silent> <S-Tab>    :bp<cr>
 " Mapping for buffkill
-nnoremap <leader>D  :BD<cr>
+nnoremap <leader>d  :BD<cr>
 nnoremap <leader>ba :BA<cr>
 " Search open buffers with CtrlP
 nnoremap <leader>ll :CtrlPBuffer<cr>
@@ -748,18 +772,15 @@ augroup ft_c
     autocmd FileType c setlocal foldmethod=syntax foldnestmax=2
     autocmd FileType c setlocal formatoptions=croq1j
     autocmd FileType c setlocal comments-=:// comments+=fb://
-    autocmd FileType c call ToggleBar()
     autocmd BufWinEnter *.c :lcd %:p:h
     autocmd BufWinLeave *.c :lcd -
 augroup END
 " Python
 augroup ft_py
     au!
-    autocmd FileType python setlocal foldmethod=indent foldnestmax=2
     autocmd FileType python setlocal formatoptions=cqj
     autocmd BufWinEnter *.py :lcd %:p:h
     autocmd BufWinLeave *.py :lcd -
-    autocmd FileType python call ToggleBar()
 augroup END
 " Latex
 augroup ft_tex
@@ -769,29 +790,16 @@ augroup ft_tex
     autocmd BufWinLeave *.tex :lcd -
     autocmd FileType tex setlocal dictionary=~/.vim/dictionaries/tex
     autocmd FileType tex setlocal complete+=k
-    autocmd FileType tex setlocal spell
     autocmd FileType tex setlocal fo+=j
-    autocmd BufNewFile,BufRead *.tex call ToggleBar()
-augroup END
-" MATLAB
-augroup ft_mat
-    au!
-    autocmd FileType matlab setlocal foldmethod=syntax foldnestmax=2
-    autocmd BufWinEnter matlab :lcd %:p:h
-    autocmd BufWinLeave matlab :lcd -
-    autocmd FileType matlab setlocal tw=80
-    autocmd FileType matlab setlocal fo=crqj
 augroup END
 " Markdown
 augroup ft_md
     au!
-    autocmd FileType markdown setlocal spell
     autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 augroup END
 " Markdown
 augroup ft_vim
     au!
-    autocmd FileType vim setlocal spell
     autocmd FileType vim setlocal fo=tcq
     autocmd FileType vim setlocal sw=2
 augroup END
