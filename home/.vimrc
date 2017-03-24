@@ -57,7 +57,9 @@ Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'antlypls/vim-colors-codeschool'
+Plugin 'tomasr/molokai'
 Plugin 'mfedoten/BusyBee'
+Plugin 'chrisbra/Colorizer'
 call vundle#end()
 
 " Enable file type detection - required.
@@ -670,7 +672,7 @@ augroup vimrcEx
 
     " For all text and python files set 'textwidth' to 80 characters.
     autocmd FileType text,python,matlab,vim setlocal textwidth=80
-    autocmd FileType text,python,tex,markdown,vim setlocal spell
+    autocmd FileType python,tex,markdown,vim setlocal spell
     autocmd BufNewFile,BufRead * call ToggleBar()
 augroup END
 "}}}
@@ -697,9 +699,6 @@ nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 nnoremap <F4> :setlocal spell!<CR>
 inoremap <F4> <c-o>:setlocal spell!<CR>
 set dictionary=/usr/share/dict/words
-hi clear SpellBad
-hi SpellBad term=standout term=underline ctermfg=1
-            \ cterm=underline gui=undercurl guisp=Red
 " }}}
 
 " Foldings --------------------------------------------------------------- {{{
