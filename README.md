@@ -158,4 +158,7 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 
 ## TODO
 - tmux config
-- find a good substitute for default terminal
+- change vim colorscheme (check how to run test colors script)
+- vim plugins
+- find a good todo tool
+
