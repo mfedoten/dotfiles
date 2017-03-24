@@ -3,20 +3,20 @@
 ###################################
 # Modification of bash appearance #
 ###################################
-# Cowsay
-if [[ "$OSTYPE" =~ ^darwin ]]; then
-  if [ -x /opt/local/share/cowsay -a -x /opt/local/share/games/fortune ]; then
-    # echo -e "\e[1;37m$(cowsay -f $(ls /opt/local/share/cowsay/cows | shuf -n1 | \
-      # cut -d. -f1) $(whatis $(ls /bin) 2>/dev/null | shuf -n1))\e[00m"
-    fortune | cowsay -f $(ls /opt/local/share/cowsay/cows | shuf -n1 | cut -d. -f1)
-  fi
-elif [[ "$OSTYPE" =~ ^linux ]]; then
-  if [ -x /usr/games/cowsay -a -x /usr/games/fortune ]; then
-    # echo -e "$(cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1 | \
-      # cut -d. -f1) $(whatis $(ls /bin) 2>/dev/null | shuf -n1))"
-    fortune | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1 | cut -d. -f1)
-  fi
-fi
+# Uncomment if you want Cowsay
+# if [[ "$OSTYPE" =~ ^darwin ]]; then
+  # cow_dir=/opt/local/share/cowsay/cows
+  # fort_dir=/opt/local/share/games/fortune
+# elif [[ "$OSTYPE" =~ ^linux ]]; then
+  # cow_dir=/usr/share/cowsay/cows
+  # fort_dir=/usr/games/fortune
+# fi
+
+# if [ -x $cow_dir -a -x $fort_dir ]; then
+  # # echo -e "\e[1;37m$(cowsay -f $(ls $cow_dir | shuf -n1 | \
+    # # cut -d. -f1) $(whatis $(ls /bin) 2>/dev/null | shuf -n1))\e[00m"
+  # fortune | cowsay -f $(ls $cow_dir | shuf -n1 | cut -d. -f1)
+# fi
 
 # Customize bash promt. Slightly changed prom by Mathias Bynens
 # https://github.com/mathiasbynens/dotfiles/blob/master/.bash_prompt
