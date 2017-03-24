@@ -44,6 +44,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'Rip-Rip/clang_complete'
 " Plugin 'lervag/vimtex'
 Plugin 'tmhedberg/SimpylFold'
+Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'wellle/targets.vim'
 Plugin 'FooSoft/vim-argwrap'
 Plugin 'vim-scripts/ReplaceWithRegister'
@@ -497,7 +498,7 @@ if has("gui_running")
     set guicursor+=a:blinkon0            " No blinking cursor
 endif
 set background=dark
-colorscheme BusyBee
+colorscheme busybee
 let g:airline_theme='base16_default'
 
 " Toggle highlighting of excessive characters
@@ -576,7 +577,8 @@ noremap L $
 vnoremap L g_
 
 " paste empty line with <leader>o
-nnoremap <leader>o o<Esc>k
+nnoremap <leader>o o<Esc>
+nnoremap <leader>O O<Esc>
 
 " remap <c-i> (go to newer position in jump list) to <c-n> (anyway, it's
 " duplicated by j)
@@ -709,7 +711,7 @@ set foldmarker={{{,}}}
 nnoremap zv zvzz
 " Close all folds except current and center it in the window
 nnoremap z, zMzvzz
-" Close all folds and center coursor
+" Close all folds and center cursor
 nnoremap zM zMzz
 " Function to change text displayed in folds, much cleaner.
 function! MyFoldText() " Author: Steve Losh {{{
@@ -728,8 +730,12 @@ function! MyFoldText() " Author: Steve Losh {{{
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
 set foldtext=MyFoldText()
+
 " SimpylFold settings 
 " let g:SimpylFold_docstring_preview=1
+
+" Markdown folding settings
+let g:markdown_fold_style = 'nested'
 " }}}
 
 " Buffers ---------------------------------------------------------------- {{{
