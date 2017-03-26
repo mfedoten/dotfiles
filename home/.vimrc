@@ -14,7 +14,7 @@
 set nocompatible
 
 " Installed plugins ------------------------------------------------------ {{{
-" Install Vungle first:
+" Install Vundle first:
 " $ mkdir ~/.vim/bundle/Vundle.vim
 " $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
@@ -38,7 +38,8 @@ Plugin 'qpkorr/vim-bufkill'
 Plugin 'scrooloose/nerdcommenter'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'ervandew/supertab'
-Plugin 'ervandew/snipmate.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'scrooloose/syntastic'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Rip-Rip/clang_complete'
@@ -60,7 +61,7 @@ Plugin 'w0ng/vim-hybrid'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'antlypls/vim-colors-codeschool'
 Plugin 'tomasr/molokai'
-Plugin 'mfedoten/BusyBee'
+Plugin 'mfedoten/vimberry'
 " Plugin 'chrisbra/Colorizer'
 call vundle#end()
 
@@ -300,7 +301,7 @@ let g:jedi#rename_command = "<localleader>r"
     " $ pip install flake8
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 2
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = 'E>'
 let g:syntastic_warning_symbol = 'W>'
@@ -483,7 +484,7 @@ if has("gui_running")
     set guicursor+=a:blinkon0            " No blinking cursor
 endif
 set background=dark
-colorscheme busybee
+colorscheme vimberry
 let g:airline_theme='custom'
 
 " Toggle highlighting of excessive characters
