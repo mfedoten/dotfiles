@@ -43,10 +43,11 @@ Plugin 'scrooloose/syntastic'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Rip-Rip/clang_complete'
 " Plugin 'lervag/vimtex'
+Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'wellle/targets.vim'
-Plugin 'FooSoft/vim-argwrap'
 Plugin 'vim-scripts/ReplaceWithRegister'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
@@ -60,7 +61,7 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'antlypls/vim-colors-codeschool'
 Plugin 'tomasr/molokai'
 Plugin 'mfedoten/BusyBee'
-Plugin 'chrisbra/Colorizer'
+" Plugin 'chrisbra/Colorizer'
 call vundle#end()
 
 " Enable file type detection - required.
@@ -293,23 +294,6 @@ let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<localleader>N"
 let g:jedi#rename_command = "<localleader>r"
 "}}}
-
-" Vim-Flake8: checks python syntax --------------------------------------- {{{
-    " Called by <F7>. Requires $ pip install flake8
-    " To avoid certain
-
-" let g:flake8_quickfix_height=5  " Set nr. of warnings displayed in quickfix
-" let g:flake8_show_in_gutter=1   " Show markers in gutter
-" let g:flake8_show_quickfix=0    " Open quikfix window
-" " Toggle the "gutter"
-" nnoremap <leader>G :call flake8#Flake8UnplaceMarkers()<cr>
-" " to use colors defined in the colorscheme
-" highlight link Flake8_Error Special
-" highlight link Flake8_Warning Type
-" highlight link Flake8_Complexity Type
-" highlight link Flake8_Nameing Type
-" highlight link Flake8_PyFlake Type
-" }}}
 
 " Syntastic: syntax check -------- --------------------------------------- {{{
     " Called by <F7>. To enable check in python:
@@ -658,7 +642,10 @@ let g:gundo_preview_height = 15
 " }}}
 
 " argwrap: wrap/unwrap arguments ---- {{{
-nnoremap <silent> <leader>ar :ArgWrap<CR>
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+nnoremap <silent> <leader>as :SplitjoinSplit<cr>
+nnoremap <silent> <leader>aj :SplitjoinJoin<cr>
 let g:argwrap_wrap_closing_brace=0 "also available as per buffer (b:)
 " }}}
 
