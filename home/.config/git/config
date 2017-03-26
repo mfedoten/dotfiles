@@ -4,7 +4,7 @@
 
 [core]
     excludesfile = ~/.config/git/gitignore_global
-    editor = vim
+    editor = "vim"
     legacyheaders = false # >git 1.5
     quotepath = false
     # http://stackoverflow.com/questions/136178/git-diff-handling-long-lines
