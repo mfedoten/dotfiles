@@ -316,6 +316,7 @@ let g:jedi#rename_command = "<localleader>r"
     " $ pip install flake8
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 2
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = 'E>'
 let g:syntastic_warning_symbol = 'W>'
@@ -324,7 +325,7 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_tex_checkers = ['chktex']
 let g:syntastic_python_checkers = ['flake8']
 nnoremap <F7> :SyntasticCheck<cr>
-nnoremap <leader>G :SyntasticToggleMode<cr>
+nnoremap <localleader>G :SyntasticToggleMode<cr>
 nnoremap <localleader>l :Errors<cr>
 " }}}
 
@@ -499,7 +500,7 @@ if has("gui_running")
 endif
 set background=dark
 colorscheme busybee
-let g:airline_theme='base16_default'
+let g:airline_theme='custom'
 
 " Toggle highlighting of excessive characters
 nnoremap <leader>th :call ToggleHighlight()<cr>
@@ -674,7 +675,7 @@ augroup vimrcEx
 
     " For all text and python files set 'textwidth' to 80 characters.
     autocmd FileType text,python,matlab,vim setlocal textwidth=80
-    autocmd FileType python,tex,markdown,vim setlocal spell
+    autocmd FileType tex,markdown setlocal spell
     autocmd BufNewFile,BufRead * call ToggleBar()
 augroup END
 "}}}
@@ -805,7 +806,7 @@ augroup END
 " Markdown
 augroup ft_vim
     au!
-    autocmd FileType vim setlocal fo=tcq
+    autocmd FileType vim setlocal fo=cq
     autocmd FileType vim setlocal sw=2
 augroup END
 " }}}
