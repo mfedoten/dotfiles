@@ -53,6 +53,7 @@ Plugin 'vim-scripts/ReplaceWithRegister'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-python/python-syntax'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'jordwalke/flatlandia'
 Plugin 'endel/vim-github-colorscheme'
@@ -493,6 +494,13 @@ nnoremap <leader>th :call ToggleHighlight()<cr>
 nnoremap <leader>tb :call ToggleBar()<cr>
 " Resize splits when the window is resized
 au VimResized * :wincmd =
+
+" python syntax highlight
+let g:python_highlight_all = 1
+let g:python_highlight_operators = 0
+let g:python_highlight_file_headers_as_comments=1
+let g:python_highlight_space_errors = 0
+let g:python_highlight_indent_errors = 0
 " }}}
 
 " Some useful mappings and functions ------------------------------------- {{{
@@ -665,6 +673,7 @@ augroup vimrcEx
     autocmd FileType text,python,matlab,vim setlocal textwidth=100
     autocmd FileType tex,markdown setlocal spell
     autocmd BufNewFile,BufRead * call ToggleBar()
+    autocmd BufEnter * silent! lcd %:p:h
 augroup END
 "}}}
 
@@ -766,22 +775,16 @@ augroup ft_c
     autocmd FileType c setlocal foldmethod=syntax foldnestmax=2
     autocmd FileType c setlocal formatoptions=croq1j
     autocmd FileType c setlocal comments-=:// comments+=fb://
-    autocmd BufWinEnter *.c :lcd %:p:h
-    autocmd BufWinLeave *.c :lcd -
 augroup END
 " Python
 augroup ft_py
     au!
     autocmd FileType python setlocal formatoptions=cqj
-    autocmd BufWinEnter *.py :lcd %:p:h
-    autocmd BufWinLeave *.py :lcd -
 augroup END
 " Latex
 augroup ft_tex
     au!
     autocmd FileType tex setlocal tw=100
-    autocmd BufWinEnter *.tex :lcd %:p:h
-    autocmd BufWinLeave *.tex :lcd -
     autocmd FileType tex setlocal dictionary=~/.vim/dictionaries/tex
     autocmd FileType tex setlocal complete+=k
     autocmd FileType tex setlocal fo+=j
