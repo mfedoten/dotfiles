@@ -662,7 +662,7 @@ augroup vimrcEx
     \ endif
 
     " For all text and python files set 'textwidth' to 80 characters.
-    autocmd FileType text,python,matlab,vim setlocal textwidth=80
+    autocmd FileType text,python,matlab,vim setlocal textwidth=100
     autocmd FileType tex,markdown setlocal spell
     autocmd BufNewFile,BufRead * call ToggleBar()
 augroup END
