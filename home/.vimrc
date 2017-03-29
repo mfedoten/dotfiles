@@ -68,6 +68,7 @@ call vundle#end()
 
 " Enable file type detection - required.
 " Also load indent files, to automatically do language-dependent indenting.
+syntax on
 filetype plugin indent on
 " }}}
 
