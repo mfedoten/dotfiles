@@ -673,6 +673,7 @@ augroup vimrcEx
     autocmd FileType text,python,matlab,vim setlocal textwidth=100
     autocmd FileType tex,markdown setlocal spell
     autocmd BufNewFile,BufRead * call ToggleBar()
+    " autocmd BufNewFile * let b:dir=expand('%:p:h')
     autocmd BufEnter * silent! lcd %:p:h
 augroup END
 "}}}
