@@ -654,6 +654,7 @@ let g:argwrap_wrap_closing_brace=0 "also available as per buffer (b:)
 " File options (cursor position, format options, cwd) -------------------- {{{
 augroup vimrcEx
     au!
+    " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid or when inside an event handler
     " (happens when dropping a file on gvim).  Also don't do it when the mark
     " is in the first line, that is the default position when opening a file.
@@ -661,6 +662,11 @@ augroup vimrcEx
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
+
+    if v:version >= 700
+      au BufLeave * if !&diff | let b:winview = winsaveview() | endif
+      au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
+    endif
 
     " For all text and python files set 'textwidth' to 80 characters.
     autocmd FileType text,python,matlab,vim setlocal textwidth=100
