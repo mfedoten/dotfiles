@@ -110,4 +110,4 @@ endif
 let g:airline#themes#custom#palette.ctrlp = airline#extensions#ctrlp#generate_color_map(
       \ [ s:gui07, s:gui01, s:cterm07, s:cterm01, '' ],
       \ [ s:gui00, s:gui0B, s:cterm00, s:cterm0B, '' ],
-      \ [ s:gui09, s:gui09, s:cterm01, s:cterm09, 'bold' ])
+      \ [ s:gui01, s:gui09, s:cterm01, s:cterm09, 'bold' ])

@@ -53,14 +53,13 @@ Plugin 'vim-scripts/ReplaceWithRegister'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
 Plugin 'vim-python/python-syntax'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'jordwalke/flatlandia'
 Plugin 'endel/vim-github-colorscheme'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'antlypls/vim-colors-codeschool'
 Plugin 'tomasr/molokai'
 Plugin 'mfedoten/vimberry'
 " Plugin 'chrisbra/Colorizer'
@@ -68,7 +67,6 @@ call vundle#end()
 
 " Enable file type detection - required.
 " Also load indent files, to automatically do language-dependent indenting.
-syntax on
 filetype plugin indent on
 " }}}
 
@@ -164,6 +162,7 @@ nnoremap <leader>gco :Gcheckout<cr>
 nnoremap <leader>gci :Gcommit<cr>
 nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gr :Gremove<cr>
+nnoremap <leader>gl :Gitv<cr>
 "}}}
 
 " Basic settings --------------------------------------------------------- {{{
@@ -221,6 +220,16 @@ endif
 
 " Syntax and code completion --------------------------------------------- {{{
 set omnifunc=syntaxcomplete#Complete
+
+" Don't open preview window
+" set completeopt-=preview
+set completeopt=menuone,longest
+
+" Let Enter accept matches
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Map CTRL-X function in insert mode
+inoremap <c-k> <c-x><c-k>
+inoremap <c-]> <c-x>s
 
 " Plugins for code completion -------------------------------------------- {{{
 
@@ -373,15 +382,7 @@ nnoremap <localleader>l :Errors<cr>
 " " let g:vimtex_latexmk_background = 0
 " }}}
 
-" SnipMate: code snippts ------------------------------------------------- {{{
-let g:snips_author='Mariia Fedotenkova'
 " }}}
-
-" }}}
-
-" Don't open preview window
-" set completeopt-=preview
-set completeopt=menuone,longest
 
 " }}}
 
@@ -465,7 +466,7 @@ function! AirlineInit()
   let g:airline_section_y = airline#section#create_right(['ffenc'])
 endfunction
 " Hope to avoid this annoying paste
-:noremap <silent> <Plug>AirlineTablineRefresh :set mod!<CR>
+noremap <silent> <Plug>AirlineTablineRefresh :set mod!<CR>
 " }}}
 
 " Switch syntax highlighting on, when the terminal has colors.
@@ -475,7 +476,7 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-" Descent settings for Terminal and GUI
+" Decent settings for Terminal and GUI
 if has("gui_running")
   if has('macunix')
     set transparency=0                   " No transparency
@@ -599,7 +600,7 @@ nnoremap <silent> <leader>L :setlocal list!<cr>
 " remove trailing white spaces
 nnoremap <leader>W :%s/\s\+$//<CR>
 " Show difference between curent file and original state
-nnoremap <F10> :call ToggleDiffOrig()<cr>
+nnoremap <F5> :call ToggleDiffOrig()<cr>
 
 " Map Ctrl+V to paste in Insert mode
 inoremap <c-v> <c-r>"
@@ -609,18 +610,9 @@ vnoremap <c-c> "+y
 " Search visually selected text
 vnoremap // y/<C-R>"<CR>
 
-" Let Enter accept matches
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Map CTRL-X function in insert mode
-inoremap <c-k> <c-x><c-k>
-inoremap <c-]> <c-x>s
-inoremap <c-l> <c-x><c-l>
-inoremap <c-f> <c-x><c-f>
-
 " Formatting with Q (remember cursor position in normal mode)
 nnoremap Q mlgqip`l
 vnoremap Q gq
-" Reformat line.
 nnoremap ql gqq
 
 " Some abbreviations for common typos
@@ -659,7 +651,7 @@ nnoremap <silent> <leader>aj :SplitjoinJoin<cr>
 let g:argwrap_wrap_closing_brace=0 "also available as per buffer (b:)
 " }}}
 
-" When editing a file, always jump to the last known cursor position ----- {{{
+" File options (cursor position, format options, cwd) -------------------- {{{
 augroup vimrcEx
     au!
     " Don't do it when the position is invalid or when inside an event handler
@@ -687,11 +679,6 @@ augroup END
     " http://spf13.com/post/vim-plugins-nerd-commenter
 let NERDSpaceDelims=1           " adds extra spaces to comment
 let NERDCompactSexyComs=1       " make block comments more compact
-" }}}
-
-" <leader>+"/' to comment a word ----------------------------------------- {{{
-nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
-nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 " }}}
 
 " }}}
