@@ -24,6 +24,8 @@ alias gr='grep'
 alias mkdir="mkdir -p"
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 alias g="git"
 
