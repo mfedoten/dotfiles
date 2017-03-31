@@ -50,6 +50,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'wellle/targets.vim'
 Plugin 'vim-scripts/ReplaceWithRegister'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
@@ -577,22 +578,9 @@ noremap H ^
 noremap L $
 vnoremap L g_
 
-" paste empty line with <leader>o
-nnoremap <leader>o o<Esc>
-nnoremap <leader>O O<Esc>
-
 " remap <c-i> (go to newer position in jump list) to <c-n> (anyway, it's
 " duplicated by j)
 nnoremap <c-n> <c-i>
-
-" <m-j> and <m-k> to drag lines in any mode
-" Thanks to Steve Losh
-noremap ∆ :m+<CR>
-noremap ˚ :m-2<CR>
-inoremap ∆ <Esc>:m+<CR>
-inoremap ˚ <Esc>:m-2<CR>
-vnoremap ∆ :m'>+<CR>gv
-vnoremap ˚ :m-2<CR>gv
 
 " Remove search highlight
 nnoremap <silent> <leader>n :noh<cr>
