@@ -1,5 +1,5 @@
 " This is vimrc file. Mariia Fedotenkova
-" ------------------------------------------------------------------------ {{{
+" ---------------------------------------------------------------------------------------------- {{{
 " Some useful tips, more tricks and other info on vim can be found, e.g:
 " http://learnvimscriptthehardway.stevelosh.com/
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/
@@ -13,7 +13,7 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" Installed plugins ------------------------------------------------------ {{{
+" Installed plugins ---------------------------------------------------------------------------- {{{
 " Install Vundle first:
 " $ mkdir ~/.vim/bundle/Vundle.vim
 " $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -70,9 +70,9 @@ call vundle#end()
 filetype plugin indent on
 " }}}
 
-" Some small functions --------------------------------------------------- {{{
+" Some small functions ------------------------------------------------------------------------- {{{
 
-" Toggle Highlight/Colorbar ---------------------------------------------- {{{
+" Toggle Highlight/Colorbar -------------------------------------------------------------------- {{{
     " Functions which allows to toggle between highlighting excessive
     " characters or placing a color bar. It takes textwidth parameter, if it
     " is set, otherwise set limit to 80.
@@ -114,7 +114,7 @@ augroup CheckForHilight
 augroup END
 " }}}
 
-" DiffOrig --------------------------------------------------------------- {{{
+" DiffOrig ------------------------------------------------------------------------------------- {{{
     " Convenient command to see the difference between the current buffer and
     " the file it was loaded from, thus the changes you made.  Only define it
     " when not defined already.
@@ -135,7 +135,7 @@ function! ToggleDiffOrig()
 endfunction
 " }}}
 
-" Rename current file, thanks to Gary Bernhardt via Ben Orenstein -------- {{{
+" Rename current file, thanks to Gary Bernhardt via Ben Orenstein ------------------------------ {{{
 function! RenameFile()
   let old_name = expand('%')
   let new_name = input('New file name: ', expand('%'), 'file')
@@ -153,7 +153,7 @@ endfunction
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-" Fugitive ----------------------------------------------------------------{{{
+" Fugitive ------------------------------------------------------------------------------------- {{{
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
@@ -163,9 +163,14 @@ nnoremap <leader>gci :Gcommit<cr>
 nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gl :Gitv<cr>
+" fix Gitv folding diffs
+augroup git
+    au!
+    autocmd FileType git :setlocal foldlevel=99
+augroup END
 "}}}
 
-" Basic settings --------------------------------------------------------- {{{
+" Basic settings ------------------------------------------------------------------------------- {{{
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 set ttyfast             " For better display
@@ -218,7 +223,7 @@ endif
 
 " }}}
 
-" Syntax and code completion --------------------------------------------- {{{
+" Syntax and code completion ------------------------------------------------------------------- {{{
 set omnifunc=syntaxcomplete#Complete
 
 " Don't open preview window
@@ -231,9 +236,9 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <c-k> <c-x><c-k>
 inoremap <c-]> <c-x>s
 
-" Plugins for code completion -------------------------------------------- {{{
+" Plugins for code completion ------------------------------------------------------------------ {{{
 
-" SuperTab: allows completion with Tab ----------------------------------- {{{
+" SuperTab: allows completion with Tab --------------------------------------------------------- {{{
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabCompletionContexts = ['s:ContextText','s:ContextDiscover']
 let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
@@ -251,7 +256,7 @@ augroup compl
 augroup END
 " }}}
 
-" YouCompleteMe: code-completion engine----------------------------------- {{{
+" YouCompleteMe: code-completion engine--------------------------------------------------------- {{{
 " " Switch on pop-up menu by default
 " let g:ycm_auto_trigger = 1
 " " Switch off completion in comments
@@ -273,7 +278,7 @@ augroup END
             " \ }
 " }}}
 
-" Clang_complete: C code-completion using clang -------------------------- {{{
+" Clang_complete: C code-completion using clang ------------------------------------------------ {{{
 let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
 let g:clang_complete_patterns = 1
@@ -282,8 +287,8 @@ let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/"
 let g:clang_user_options='|| exit 0'
 " }}}
 
-" Jedi-Vim: code-completion for python ----------------------------------- {{{
-    " Cheat sheet ------------------------------------------------------- {{{
+" Jedi-Vim: code-completion for python --------------------------------------------------------- {{{
+    " Cheat sheet ------------------------------------------------------------------------------ {{{
     " - Completion <C-Space>
     " - Goto assignments <localleader>g (typical goto function)
     " - Goto definitions <localleader>d (follow identifier as far as possible, includes
@@ -307,7 +312,7 @@ let g:jedi#usages_command = "<localleader>N"
 let g:jedi#rename_command = "<localleader>r"
 "}}}
 
-" Syntastic: syntax check -------- --------------------------------------- {{{
+" Syntastic: syntax check -------- ------------------------------------------------------------- {{{
     " Called by <F7>. To enable check in python:
     " $ pip install flake8
 let g:syntastic_always_populate_loc_list = 1
@@ -325,7 +330,7 @@ nnoremap <localleader>G :SyntasticToggleMode<cr>
 nnoremap <localleader>l :Errors<cr>
 " }}}
 
-" vimtex: Plugin for easier LaTeX compilation ---------------------------- {{{
+" vimtex: Plugin for easier LaTeX compilation -------------------------------------------------- {{{
 " let g:tex_flavor = 'latex' " to start .tex-files as latex
 " let g:vimtex_complete_close_braces = 1
 " let g:vimtex_fold_enabled = 1
@@ -386,7 +391,7 @@ nnoremap <localleader>l :Errors<cr>
 
 " }}}
 
-" Files navigation ------------------------------------------------------- {{{
+" Files navigation ----------------------------------------------------------------------------- {{{
 " Enhanced command-line completion
 set wildmenu
 set wildignorecase
@@ -399,8 +404,8 @@ set wildignore+=.hg,.git,.svn
 set wildignore+=*.aux,*.out,*.toc
 set wildignore+=*.DS_Store,*/tmp/*
 
-" NerdTree setup: display file system tree ------------------------------- {{{
-    " Cheat Sheet ------------------------------------------------------- {{{
+" NerdTree setup: display file system tree ----------------------------------------------------- {{{
+    " Cheat Sheet ------------------------------------------------------------------------------ {{{
     " t: Open the selected file in a new tab
     " i: Open the selected file in a horizontal split window
     " s: Open the selected file in a vertical split window
@@ -414,8 +419,8 @@ let NERDTreeChDirMode = 2
 " let NERDTreeIgnore=[ '\.DS_Store' ]
 " }}}
 
-" CTRL-P: fast file navigation ------------------------------------------- {{{
-    " Cheat sheet -------------------------------------------------------- {{{
+" CTRL-P: fast file navigation ----------------------------------------------------------------- {{{
+    " Cheat sheet ------------------------------------------------------------------------------ {{{
     " Press <F5> to purge the cache for the current directory to get new files,
     " remove deleted files and apply new ignore options.
     " Press <c-f> and <c-b> to cycle between modes.
@@ -440,9 +445,9 @@ let g:ctrlp_clear_cache_on_exit = 0    " Keep cash from prev. sessions
 nnoremap <leader>R :call RenameFile()<cr>
 " }}}
 
-" Set appearance --------------------------------------------------------- {{{
+" Set appearance ------------------------------------------------------------------------------- {{{
 
-" Vim-airline ------------------------------------------------------------ {{{
+" Vim-airline ---------------------------------------------------------------------------------- {{{
     " Requires power line fonts. How to get it described here:
     " http://stackoverflow.com/a/19137142/4798992
 set laststatus=2                                   " Enable powerline
@@ -505,7 +510,7 @@ let g:python_highlight_space_errors = 0
 let g:python_highlight_indent_errors = 0
 " }}}
 
-" Some useful mappings and functions ------------------------------------- {{{
+" Some useful mappings and functions ----------------------------------------------------------- {{{
 " Write a file anyway, even if forgot to sudo
 cmap w!! w !sudo tee % >/dev/null
 " Execute selection in vim command line
@@ -620,21 +625,21 @@ iabbrev wiht with
 iabbrev teh the
 iabbrev adn and
 
-" ToggleMouse ------------------------------------------------------------ {{{
+" ToggleMouse ---------------------------------------------------------------------------------- {{{
 " After enabling mouse in vim (with set mouse=a) terminal doesn't control it
 " anymore.  To fix it has a look at this plugin. Mapped manually to <F9>.
 " To fix issues with mouse in Terminal.app see https://bitheap.org/mouseterm/
 " }}}
 
-" Gundo: visualize undo tree --------------------------------------------- {{{
+" Gundo: visualize undo tree ------------------------------------------------------------------- {{{
 nnoremap <F3> :GundoToggle<CR>
 let g:gundo_prefer_python3 = 1
 let g:gundo_width = 40
 let g:gundo_preview_height = 15
 " }}}
 
-" ReplaceWithRegister: don't overwrite a register when replacing text ---- {{{
-    " Cheat sheet -------------------------------------------------------- {{{
+" ReplaceWithRegister: don't overwrite a register when replacing text -------------------------- {{{
+    " Cheat sheet ------------------------------------------------------------------------------ {{{
     " ["x]gr{motion} Replace {motion} text with the contents of register x.
     " ["x]gR         Replace lines with the contents of register x.
     " ["x]gr$        Replace from the cursor position to the end of the line.
@@ -643,7 +648,7 @@ let g:gundo_preview_height = 15
 " xnoremap p <Plug>ReplaceWithRegisterVisual
 " }}}
 
-" argwrap: wrap/unwrap arguments ---- {{{
+" argwrap: wrap/unwrap arguments --------------------------------------------------------------- {{{
 let g:splitjoin_split_mapping = ''
 let g:splitjoin_join_mapping = ''
 nnoremap <silent> <leader>as :SplitjoinSplit<cr>
@@ -651,7 +656,7 @@ nnoremap <silent> <leader>aj :SplitjoinJoin<cr>
 let g:argwrap_wrap_closing_brace=0 "also available as per buffer (b:)
 " }}}
 
-" File options (cursor position, format options, cwd) -------------------- {{{
+" File options (cursor position, format options, cwd) ------------------------------------------ {{{
 augroup vimrcEx
     au!
     " When editing a file, always jump to the last known cursor position.
@@ -669,7 +674,7 @@ augroup vimrcEx
     endif
 
     " For all text and python files set 'textwidth' to 80 characters.
-    autocmd FileType text,python,matlab,vim setlocal textwidth=100
+    autocmd FileType text,python,vim setlocal textwidth=100
     autocmd FileType tex,markdown setlocal spell
     autocmd BufNewFile,BufRead * call ToggleBar()
     " autocmd BufNewFile * let b:dir=expand('%:p:h')
@@ -679,9 +684,9 @@ augroup END
 
 " }}}
 
-" Comments, brackets ----------------------------------------------------- {{{
+" Comments, brackets --------------------------------------------------------------------------- {{{
 
-" NERDCommenter: makes commenting easier --------------------------------- {{{
+" NERDCommenter: makes commenting easier ------------------------------------------------------- {{{
     " http://spf13.com/post/vim-plugins-nerd-commenter
 let NERDSpaceDelims=1           " adds extra spaces to comment
 let NERDCompactSexyComs=1       " make block comments more compact
@@ -689,14 +694,14 @@ let NERDCompactSexyComs=1       " make block comments more compact
 
 " }}}
 
-" Spelling --------------------------------------------------------------- {{{
+" Spelling ------------------------------------------------------------------------------------- {{{
 " Enable spell check with F4"
 nnoremap <F4> :setlocal spell!<CR>
 inoremap <F4> <c-o>:setlocal spell!<CR>
 set dictionary=/usr/share/dict/words
 " }}}
 
-" Foldings --------------------------------------------------------------- {{{
+" Foldings ------------------------------------------------------------------------------------- {{{
 set foldlevelstart=0
 set foldmethod=marker
 set foldmarker={{{,}}}
@@ -731,7 +736,7 @@ set foldtext=MyFoldText()
 let g:markdown_fold_style = 'nested'
 " }}}
 
-" Buffers ---------------------------------------------------------------- {{{
+" Buffers -------------------------------------------------------------------------------------- {{{
 set hidden              " Hides buffer instead of closing it
 set confirm             " Reminds of unsaved buffers on quit
 " Make work with buffers easier
@@ -745,7 +750,7 @@ nnoremap <leader>ba :BA<cr>
 nnoremap <leader>ll :CtrlPBuffer<cr>
 " }}}
 
-" Splits ----------------------------------------------------------------- {{{
+" Splits --------------------------------------------------------------------------------------- {{{
 set splitbelow          " Open new split below by default
 set splitright          " Open new vertical split on the right by default
 " Split the window with shortcuts
@@ -763,7 +768,7 @@ nnoremap <leader>ln :lne<cr>
 nnoremap <leader>lp :lp<cr>
 " }}}
 
-" File type specific options --------------------------------------------- {{{
+" File type specific options ------------------------------------------------------------------- {{{
 " C-family
 augroup ft_c
     au!
@@ -788,6 +793,7 @@ augroup END
 augroup ft_md
     au!
     autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+    autocmd BufNewFile,BufRead *.md call ToggleBar()
 augroup END
 " Markdown
 augroup ft_vim
