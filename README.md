@@ -89,10 +89,21 @@ I found this amazing python script called [show_status](http://blog.mikepearce.n
 Just type `sudo -H pip install thefuck`. Put `eval $(thefuck --alias)` in your `~/.bashrc` or `~/.bash/aliases.bash` or wherever you store your aliases. You can read more on the [GitHub page](https://github.com/nvbn/thefuck).
 
 ### Terminal colors
-`term_colors/` contains different colors for Terminal, iTerm also a config (including colors) for Tilda.
+`extras/` contains different colors for Terminal, iTerm also a config (including colors) for Tilda.
+
+### Tmux & italics
+Tmux don't really support italics out-of-the-box. To fix that go [here](https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/), [here](https://www.reddit.com/r/vim/comments/24g8r8/italics_in_terminal_vim_and_tmux/), or [here](https://jsatk.us/vim-tmux-italics-and-insanity-9a96b69eeca6) get enlightened and run
+
+```
+cd extras/
+tic screen-256color-italic.terminfo
+killall tmux
+```
+
+You should now enjoy italics in your tmux+vim combo, as the rest of the config is in the dotfiles.
 
 
-### Dotfiles
+## Dotfiles
 Next, we need to symlink all files in `home` directory. To do so I at first was using [Dotbot](https://github.com/anishathalye/dotbot#configuration), which is just great: it's clean, lightweight and simple. For more information visit [Dotbot page](https://github.com/anishathalye/dotbot#configuration).
 
 The problem with Dotbot is that it doesn't backup dotfiles in home directory. Instead I decided to use custom script, which always links files but ask user for backup. There are several scenarios:
