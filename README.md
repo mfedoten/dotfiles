@@ -92,7 +92,7 @@ Just type `sudo -H pip install thefuck`. Put `eval $(thefuck --alias)` in your `
 `extras/` contains different colors for Terminal, iTerm also a config (including colors) for Tilda.
 
 ### Tmux & italics
-Tmux don't really support italics out-of-the-box. To fix that go [here](https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/), [here](https://www.reddit.com/r/vim/comments/24g8r8/italics_in_terminal_vim_and_tmux/), or [here](https://jsatk.us/vim-tmux-italics-and-insanity-9a96b69eeca6) get enlightened and run
+Tmux don't really support italics out-of-the-box. To fix that go [here](https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/), [here](https://www.reddit.com/r/vim/comments/24g8r8/italics_in_terminal_vim_and_tmux/), or [here](http://muddygoat.org/articles/italic-terminal-tmux) get enlightened and run
 
 ```
 cd extras/
