@@ -745,10 +745,10 @@ set splitright          " Open new vertical split on the right by default
 nnoremap <leader>vs :vsplit<space>
 nnoremap <leader>s  :split<space>
 " Make navigation between screens easier
-nnoremap <leader>j <c-w>j
-nnoremap <leader>k <c-w>k
-nnoremap <leader>h <c-w>h
-nnoremap <leader>l <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 "Two splits scrolling together
 nnoremap <leader>sb :set scrollbind!<cr>
 " Jump to the next/previous error in quickfix window
