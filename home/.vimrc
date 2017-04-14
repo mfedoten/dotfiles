@@ -154,7 +154,7 @@ endfunction
 
 " First, set the leader keys
 let mapleader = "\<Space>"
-let maplocalleader = "\\"
+let maplocalleader = ","
 
 " Fugitive ------------------------------------------------------------------------------------- {{{
 nnoremap <leader>gd :Gdiff
@@ -465,7 +465,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-" unicode symbols for airline 
+" unicode symbols for airline
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
