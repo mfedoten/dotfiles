@@ -154,7 +154,7 @@ endfunction
 
 " First, set the leader keys
 let mapleader = "\<Space>"
-let maplocalleader = ","
+let maplocalleader = "\\"
 
 " Fugitive ------------------------------------------------------------------------------------- {{{
 nnoremap <leader>gd :Gdiff
@@ -172,6 +172,17 @@ augroup git
     autocmd FileType git :setlocal foldlevel=99
 augroup END
 "}}}
+
+" Tmux ----------------------------------------------------------------------------------------- {{{
+" Tslime: sends portion of text from a vim buffer to a running tmux session -------------------- {{{
+vmap <localleader>t <Plug>SendSelectionToTmux
+nmap <localleader>t <Plug>NormalModeSendToTmux
+nmap <localleader>T <Plug>SetTmuxVars
+let g:tslime_always_current_session = 1
+let g:tslime_always_current_window = 1
+" }}}
+
+" }}}
 
 " Basic settings ------------------------------------------------------------------------------- {{{
 " Allow backspacing over everything in insert mode
@@ -641,10 +652,10 @@ let g:gundo_preview_height = 15
 
 " ReplaceWithRegister: don't overwrite a register when replacing text -------------------------- {{{
     " Cheat sheet ------------------------------------------------------------------------------ {{{
-    " ["x]gr{motion} Replace {motion} text with the contents of register x.
-    " ["x]gR         Replace lines with the contents of register x.
-    " ["x]gr$        Replace from the cursor position to the end of the line.
-    " {Visual}["x]v  Replace the selection with the contents of register x
+    " ["x]gr{motion}  Replace {motion} text with the contents of register x.
+    " ["x]gR          Replace lines with the contents of register x.
+    " ["x]gr$         Replace from the cursor position to the end of the line.
+    " {Visual}["x]gr  Replace the selection with the contents of register x
     " }}}
 " xnoremap p <Plug>ReplaceWithRegisterVisual
 " }}}
