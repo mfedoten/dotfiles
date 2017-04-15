@@ -13,16 +13,14 @@ export LC_ALL='en_US.UTF-8';
 # Set less as default pagerm highlight section titles in manual pages.
 export PAGER=less
 export LESS=-iR
-man() {
-    env LESS_TERMCAP_mb=$'\E[01;31m' \
-    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
-    LESS_TERMCAP_me=$'\E[0m' \
-    LESS_TERMCAP_se=$'\E[0m' \
-    LESS_TERMCAP_so=$'\E[7;48;5;234m' \
-    LESS_TERMCAP_ue=$'\E[0m' \
-    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
-    man "$@"
-}
+export LESS_TERMCAP_mb=$'\E[01;31m' # enter blinking mode - red
+export LESS_TERMCAP_md=$'\E[01;38;5;74m' # enter double-bright mode
+export LESS_TERMCAP_me=$'\E[0m' # turn off all appearance modes (mb, md, so, us)
+export LESS_TERMCAP_se=$'\E[0m' # leave standout mode    
+export LESS_TERMCAP_so=$'\E[7;48;5;234m' # enter standout mode
+export LESS_TERMCAP_ue=$'\E[0m' # leave underline mode
+export LESS_TERMCAP_us=$'\E[04;38;5;146m' # enter underline mode
+
 # don't keep less heistory
 export LESSHISTFILE=/dev/null
 
