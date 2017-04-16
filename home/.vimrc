@@ -37,7 +37,7 @@ Plugin 'nvie/vim-togglemouse'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'scrooloose/nerdcommenter'
 " Plugin 'Valloric/YouCompleteMe'
-Plugin 'jgdavey/tslime.vim'
+Plugin 'sjl/tslime.vim'
 Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -157,7 +157,7 @@ let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
 " Fugitive ------------------------------------------------------------------------------------- {{{
-nnoremap <leader>gd :Gdiff
+nnoremap <leader>gd :Gdiff<space>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gb :Gblame<cr>
@@ -175,11 +175,15 @@ augroup END
 
 " Tmux ----------------------------------------------------------------------------------------- {{{
 " Tslime: sends portion of text from a vim buffer to a running tmux session -------------------- {{{
-vmap <localleader>t <Plug>SendSelectionToTmux
-nmap <localleader>t <Plug>NormalModeSendToTmux
-nmap <localleader>T <Plug>SetTmuxVars
-let g:tslime_always_current_session = 1
-let g:tslime_always_current_window = 1
+let g:tslime_normal_mapping = '<localleader>t'
+let g:tslime_visual_mapping = '<localleader>t'
+let g:tslime_vars_mapping = '<localleader>T'
+let g:tslime_ensure_trailing_newlines=1
+augroup tslime_py
+  autocmd FileType python let g:tslime_ensure_trailing_newlines=2
+augroup END
+" let g:tslime_always_current_session = 1
+" let g:tslime_always_current_window = 1
 " }}}
 
 " }}}
@@ -741,7 +745,7 @@ function! MyFoldText() " Author: Steve Losh {{{
 endfunction " }}}
 set foldtext=MyFoldText()
 
-" SimpylFold settings 
+" SimpylFold settings
 " let g:SimpylFold_docstring_preview=1
 
 " Markdown folding settings
