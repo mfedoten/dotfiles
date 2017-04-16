@@ -10,5 +10,8 @@ set mark-symlinked-directories on
 # More intelligent autocomopletion when cursor is between text
 set skip-completed-text on
 
+# Vi-mode
+set editing-mode vi
+
 # Source /etc/inputrc if exists
 $include /etc/inputrc
