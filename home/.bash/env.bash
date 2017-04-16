@@ -3,6 +3,9 @@
 # Make vim the default editor.
 export EDITOR='vim';
 
+# Use vim also in bash
+# set -o vi
+
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';

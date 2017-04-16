@@ -155,6 +155,7 @@ Here are some other programs I have on my machine. They require mostly manual in
 * [Dropbox](https://www.dropbox.com/install) for quick shares.
 * [Zotero](https://www.zotero.org/download/) as bibliography manager **+** [Better Bib(La)TeX](https://github.com/ZotPlus/zotero-better-bibtex) for decent citation export.
 * [PyCharm](https://www.jetbrains.com/pycharm/) as alternative to Vim, especially for debugging Python.
+* [SonarLint](www.sonarlint.org) for code analysis.
 
 ## Further reading
 If you don't know where to start, what all this mean, what the hell dotfiles are etc. Here are some resources and examples:
@@ -174,5 +175,6 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 - tmux bash completion
 - sort out tslime/jupyter issues
 - add key remap info to extras
-- vi-mode in terminal
-
+- vim mode in jupyter notebooks?
+- reverse search in BASH with vim mode
+- plugins for CtrlP in vim
