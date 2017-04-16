@@ -102,6 +102,7 @@ killall tmux
 
 You should now enjoy italics in your tmux+vim combo, as the rest of the config is in the dotfiles.
 
+### Key Remap
 
 ## Dotfiles
 Next, we need to symlink all files in `home` directory. To do so I at first was using [Dotbot](https://github.com/anishathalye/dotbot#configuration), which is just great: it's clean, lightweight and simple. For more information visit [Dotbot page](https://github.com/anishathalye/dotbot#configuration).
@@ -168,7 +169,10 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
     - [Lars Kappert](https://github.com/webpro/dotfiles)
 
 ## TODO
-- tmux config
 - vim plugins
 - find a good todo tool
+- tmux bash completion
+- sort out tslime/jupyter issues
+- add key remap info to extras
+- vi-mode in terminal
 
