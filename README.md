@@ -175,5 +175,4 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 - tmux bash completion
 - Finish configuring Slimux (or Tslime?) for Jupyter
 - add key remap info to extras
-- vim mode in Jupyter notebooks/console?
 - settings for CtrlP in vim

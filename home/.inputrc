@@ -11,7 +11,7 @@ set mark-symlinked-directories on
 set skip-completed-text on
 
 # Vi-mode
-set editing-mode vi
+# set editing-mode vi
 
 # Source /etc/inputrc if exists
 $include /etc/inputrc

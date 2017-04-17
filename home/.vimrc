@@ -172,6 +172,8 @@ nnoremap <leader>gci :Gcommit<cr>
 nnoremap <leader>gm :Gmove<cr>
 nnoremap <leader>gr :Gremove<cr>
 nnoremap <leader>gl :Gitv<cr>
+" diff in vertical splits
+set diffopt+=vertical
 " fix Gitv folding diffs
 augroup git
     au!
@@ -187,8 +189,16 @@ nnoremap <localleader>tl :SlimuxREPLSendLine<CR>
 nnoremap <localleader>tf :SlimuxREPLSendBuffer<CR>
 nnoremap <localleader>ta :SlimuxShellLast<CR>
 nnoremap <localleader>tk :SlimuxSendKeysLast<CR>
-vnoremap <localleader>i  :<C-w>SlimuxShellRun %cpaste<CR>:
-            \'<,'>SlimuxREPLSendSelection<CR>:SlimuxShellRun --<CR>
+vnoremap <localleader>i  <Esc>:<C-U>SlimuxShellRun %cpaste<CR>gv:sleep 2m<CR>:'<,'>SlimuxREPLSendSelection<CR>:sleep 2m<CR>:SlimuxShellRun --<CR>
+" let g:tslime_normal_mapping = '<localleader>t'
+" let g:tslime_visual_mapping = '<localleader>t'
+" let g:tslime_vars_mapping = '<localleader>T'
+" let g:tslime_ensure_trailing_newlines=1
+" augroup tslime_py
+  " autocmd FileType python let g:tslime_ensure_trailing_newlines=2
+" augroup END
+" " let g:tslime_always_current_session = 1
+" let g:tslime_always_current_window = 1
 " }}}
 
 " }}}
