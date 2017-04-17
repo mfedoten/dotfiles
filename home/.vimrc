@@ -41,8 +41,8 @@ Plugin 'christoomey/vim-tmux-navigator'
 " Plugin 'mfedoten/tslime.vim'
 " Plugin 'tpope/vim-tbone'
 " Plugin 'ervandew/screen'
-Plugin 'epeli/slimux'
-" Plugin 'benmills/vimux'
+" Plugin 'epeli/slimux'
+Plugin 'benmills/vimux'
 " Plugin 'julienr/vimux-pyutils'
 Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
@@ -182,23 +182,15 @@ augroup END
 "}}}
 
 " Tmux ----------------------------------------------------------------------------------------- {{{
-" Slimux: sends portion of text from a vim buffer to a running tmux session -------------------- {{{
-nnoremap <localleader>t  :SlimuxREPLSendParagraph<CR>
-vnoremap <localleader>t  :SlimuxREPLSendSelection<CR>
-nnoremap <localleader>tl :SlimuxREPLSendLine<CR>
-nnoremap <localleader>tf :SlimuxREPLSendBuffer<CR>
-nnoremap <localleader>ta :SlimuxShellLast<CR>
-nnoremap <localleader>tk :SlimuxSendKeysLast<CR>
-vnoremap <localleader>i  <Esc>:<C-U>SlimuxShellRun %cpaste<CR>gv:sleep 2m<CR>:'<,'>SlimuxREPLSendSelection<CR>:sleep 2m<CR>:SlimuxShellRun --<CR>
-" let g:tslime_normal_mapping = '<localleader>t'
-" let g:tslime_visual_mapping = '<localleader>t'
-" let g:tslime_vars_mapping = '<localleader>T'
-" let g:tslime_ensure_trailing_newlines=1
-" augroup tslime_py
-  " autocmd FileType python let g:tslime_ensure_trailing_newlines=2
-" augroup END
-" " let g:tslime_always_current_session = 1
-" let g:tslime_always_current_window = 1
+" Vimux: sends portion of text from a vim buffer to a running tmux session -------------------- {{{
+function! VimuxSlime()
+  call VimuxRunCommand("%cpaste")
+  call VimuxSendText(@r)
+  call VimuxSendKeys("C-D")
+endfunction
+
+vnoremap <localleader>z "ry :call VimuxSlime()<CR>
+
 " }}}
 
 " }}}
