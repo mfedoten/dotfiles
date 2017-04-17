@@ -37,9 +37,13 @@ Plugin 'nvie/vim-togglemouse'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'scrooloose/nerdcommenter'
 " Plugin 'Valloric/YouCompleteMe'
-" Plugin 'sjl/tslime.vim'
+Plugin 'christoomey/vim-tmux-navigator'
+" Plugin 'mfedoten/tslime.vim'
+" Plugin 'tpope/vim-tbone'
 " Plugin 'ervandew/screen'
-Plugin 'benmills/vimux'
+Plugin 'epeli/slimux'
+" Plugin 'benmills/vimux'
+" Plugin 'julienr/vimux-pyutils'
 Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -176,20 +180,15 @@ augroup END
 "}}}
 
 " Tmux ----------------------------------------------------------------------------------------- {{{
-" Tslime: sends portion of text from a vim buffer to a running tmux session -------------------- {{{
-let g:tslime_normal_mapping = '<localleader>t'
-let g:tslime_visual_mapping = '<localleader>t'
-let g:tslime_vars_mapping = '<localleader>T'
-let g:tslime_ensure_trailing_newlines=1
-augroup tslime_py
-  autocmd FileType python let g:tslime_ensure_trailing_newlines=2
-augroup END
-" let g:tslime_always_current_session = 1
-" let g:tslime_always_current_window = 1
-" }}}
-
-" Screen: simulates a split shell in vim using either gnu screen or tmux ----------------------- {{{
-let g:ScreenImpl='Tmux'
+" Slimux: sends portion of text from a vim buffer to a running tmux session -------------------- {{{
+nnoremap <localleader>t  :SlimuxREPLSendParagraph<CR>
+vnoremap <localleader>t  :SlimuxREPLSendSelection<CR>
+nnoremap <localleader>tl :SlimuxREPLSendLine<CR>
+nnoremap <localleader>tf :SlimuxREPLSendBuffer<CR>
+nnoremap <localleader>ta :SlimuxShellLast<CR>
+nnoremap <localleader>tk :SlimuxSendKeysLast<CR>
+vnoremap <localleader>i  :<C-w>SlimuxShellRun %cpaste<CR>:
+            \'<,'>SlimuxREPLSendSelection<CR>:SlimuxShellRun --<CR>
 " }}}
 
 " }}}
@@ -458,7 +457,7 @@ let NERDTreeChDirMode = 2
     " Use <c-z> to mark/unmark multiple files and <c-o> to open them. }}}
 
 let g:ctrlp_cmd = 'CtrlPMRU'           " Start search with recently used files
-let g:ctrlp_by_filename = 0            " Start search with filenames
+let g:ctrlp_by_filename = 1            " Start search with filenames
 let g:ctrlp_working_path_mode = 'c'    " Start search with current directory
 let g:ctrlp_show_hidden = 1            " Search hidden files as well
 let g:ctrlp_follow_symlinks = 1        " Follow symbolic links

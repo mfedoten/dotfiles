@@ -173,8 +173,7 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 - vim plugins
 - find a good todo tool
 - tmux bash completion
-- sort out tslime/jupyter issues
+- Finish configuring Slimux (or Tslime?) for Jupyter
 - add key remap info to extras
-- vim mode in jupyter notebooks?
-- reverse search in BASH with vim mode
-- plugins for CtrlP in vim
+- vim mode in Jupyter notebooks/console?
+- settings for CtrlP in vim
