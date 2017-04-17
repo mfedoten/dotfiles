@@ -182,7 +182,7 @@ augroup END
 "}}}
 
 " Tmux ----------------------------------------------------------------------------------------- {{{
-" Vimux: sends portion of text from a vim buffer to a running tmux session -------------------- {{{
+" Vimux: sends portion of text from a vim buffer to a running tmux session --------------------- {{{
 function! VimuxSlime()
   call VimuxRunCommand("%cpaste")
   call VimuxSendText(@r)
@@ -193,6 +193,10 @@ vnoremap <localleader>z "ry :call VimuxSlime()<CR>
 
 " }}}
 
+" Vim Tmux Navigator: allows to navigate seamlessly between vim and tmux splits ---------------- {{{
+let g:tmux_navigator_save_on_switch = 0
+let g:tmux_navigator_disable_when_zoomed = 1
+"}}}
 " }}}
 
 " Basic settings ------------------------------------------------------------------------------- {{{
