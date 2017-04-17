@@ -37,7 +37,9 @@ Plugin 'nvie/vim-togglemouse'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'scrooloose/nerdcommenter'
 " Plugin 'Valloric/YouCompleteMe'
-Plugin 'sjl/tslime.vim'
+" Plugin 'sjl/tslime.vim'
+" Plugin 'ervandew/screen'
+Plugin 'benmills/vimux'
 Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -184,6 +186,10 @@ augroup tslime_py
 augroup END
 " let g:tslime_always_current_session = 1
 " let g:tslime_always_current_window = 1
+" }}}
+
+" Screen: simulates a split shell in vim using either gnu screen or tmux ----------------------- {{{
+let g:ScreenImpl='Tmux'
 " }}}
 
 " }}}
