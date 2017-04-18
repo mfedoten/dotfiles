@@ -181,7 +181,6 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 ## TODO
 - vim plugins
 - find a good todo tool
-- tmux bash completion
 - Finish configuring Vimux
 - add key remap info to extras
 - settings for CtrlP in vim

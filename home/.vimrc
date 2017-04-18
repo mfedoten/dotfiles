@@ -418,6 +418,23 @@ nnoremap <localleader>l :Errors<cr>
 
 " }}}
 
+" Plugins for code styling --------------------------------------------------------------------- {{{
+" argwrap: wrap/unwrap arguments --------------------------------------------------------------- {{{
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+nnoremap <silent> <leader>as :SplitjoinSplit<cr>
+nnoremap <silent> <leader>aj :SplitjoinJoin<cr>
+let g:argwrap_wrap_closing_brace=0 "also available as per buffer (b:)
+" }}}
+
+" vim-autoformat: plugin for formatting the code ----------------------------------------------- {{{
+let g:formatters_python = ['yapf']
+let g:autoformat_autoindent = 0
+let g:formatter_yapf_style = 'chromium'
+" }}}
+
+" }}}
+
 " }}}
 
 " Files navigation ----------------------------------------------------------------------------- {{{
@@ -673,14 +690,6 @@ let g:gundo_preview_height = 15
     " {Visual}["x]gr  Replace the selection with the contents of register x
     " }}}
 " xnoremap p <Plug>ReplaceWithRegisterVisual
-" }}}
-
-" argwrap: wrap/unwrap arguments --------------------------------------------------------------- {{{
-let g:splitjoin_split_mapping = ''
-let g:splitjoin_join_mapping = ''
-nnoremap <silent> <leader>as :SplitjoinSplit<cr>
-nnoremap <silent> <leader>aj :SplitjoinJoin<cr>
-let g:argwrap_wrap_closing_brace=0 "also available as per buffer (b:)
 " }}}
 
 " File options (cursor position, format options, cwd) ------------------------------------------ {{{

@@ -18,9 +18,10 @@ plotly
 mpld3
 bokeh
 ipympl
-## Checkers
+## Checkers/Formatters
 flake8
 pylint
+yapf
 ## Tests
 pytest
 mock
