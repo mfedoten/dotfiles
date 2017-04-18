@@ -91,7 +91,8 @@ Just type `sudo -H pip install thefuck`. Put `eval $(thefuck --alias)` in your `
 ### Terminal colors
 `extras/` contains different colors for Terminal, iTerm also a config (including colors) for Tilda.
 
-### Tmux & italics
+### Tmux
+#### Italics
 Tmux don't really support italics out-of-the-box. To fix that go [here](https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/), [here](https://www.reddit.com/r/vim/comments/24g8r8/italics_in_terminal_vim_and_tmux/), or [here](http://muddygoat.org/articles/italic-terminal-tmux) get enlightened and run
 
 ```
@@ -102,7 +103,15 @@ killall tmux
 
 You should now enjoy italics in your tmux+vim combo, as the rest of the config is in the dotfiles.
 
-### Key Remap
+#### Bash completion
+There is a bash completion script in `extras` folder, you just need to copy it somewhere sane and source from `bashrc`, which is already done in this dotfiles, assuming you did the following:
+
+```
+sudo mkdir /opt/completions
+sudo cp {extras,/opt/completions}/tmux.completion.bash
+```
+
+## Key Remap
 
 ## Dotfiles
 Next, we need to symlink all files in `home` directory. To do so I at first was using [Dotbot](https://github.com/anishathalye/dotbot#configuration), which is just great: it's clean, lightweight and simple. For more information visit [Dotbot page](https://github.com/anishathalye/dotbot#configuration).

@@ -46,3 +46,10 @@ elif [ -f /usr/share/bash-completion/completions/git ]; then
     . /usr/share/bash-completion/completions/git
     __git_complete g __git_main
 fi
+
+# tmux completion
+if [ -f /opt/completions/tmux.completion.bash ]; then
+    . /opt/completions/tmux.completion.bash
+fi
+
+
