@@ -430,7 +430,7 @@ let g:argwrap_wrap_closing_brace=0 "also available as per buffer (b:)
 " vim-autoformat: plugin for formatting the code ----------------------------------------------- {{{
 let g:formatters_python = ['yapf']
 let g:autoformat_autoindent = 0
-let g:formatter_yapf_style = 'chromium'
+let g:formatter_yapf_style = 'pep8'
 " }}}
 
 " }}}

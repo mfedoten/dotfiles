@@ -111,7 +111,15 @@ sudo mkdir /opt/completions
 sudo cp {extras,/opt/completions}/tmux.completion.bash
 ```
 
-## Key Remap
+### Key Remap
+I got used to Mac keyboard where `~` is located on the bottom row. So to remap it on Ubuntu > 16.04 I had to edit keys values in `/usr/share/X11/xkb/symbols/`. In order not to repeat this procedure again, just do the following:
+```
+sudo cp /usr/share/X11/xkb/symbols/us{,_backup}
+cd extras
+sudo ln -sf keymap_us /usr/share/X11/xkb/symbols/us
+```
+I'm trying not to screw up here, that's why the first line is to create a backup. If something does go wrong just run `sudo cp /usr/share/X11/xkb/symbols/us{backup,}`.
+
 
 ## Dotfiles
 Next, we need to symlink all files in `home` directory. To do so I at first was using [Dotbot](https://github.com/anishathalye/dotbot#configuration), which is just great: it's clean, lightweight and simple. For more information visit [Dotbot page](https://github.com/anishathalye/dotbot#configuration).
@@ -182,6 +190,4 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 - vim plugins
 - find a good todo tool
 - Finish configuring Vimux
-- add key remap info to extras
 - settings for CtrlP in vim
-- remove info/warning in ipython's cpaste
