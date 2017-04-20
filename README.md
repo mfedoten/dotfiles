@@ -88,8 +88,12 @@ I found this amazing python script called [show_status](http://blog.mikepearce.n
 ### The Fuck
 Just type `sudo -H pip install thefuck`. Put `eval $(thefuck --alias)` in your `~/.bashrc` or `~/.bash/aliases.bash` or wherever you store your aliases. You can read more on the [GitHub page](https://github.com/nvbn/thefuck).
 
-### Terminal colors
-`extras/` contains different colors for Terminal, iTerm also a config (including colors) for Tilda.
+### Terminal's
+#### OSX: iTerm and Terminal colors
+`extras/` contains different colors for Terminal, iTerm also a config (including colors).
+
+#### Ubuntu: Tilda's config
+`extras/` folder contains `config_0`, a [Tilda's](https://github.com/lanoxx/tilda) configuration file which should be copied in `~/.config/tilda/`.
 
 ### Tmux
 #### Italics
@@ -110,6 +114,12 @@ There is a bash completion script in `extras` folder, you just need to copy it s
 sudo mkdir /opt/completions
 sudo cp {extras,/opt/completions}/tmux.completion.bash
 ```
+#### Tmux plugin manager
+[tpm](https://github.com/tmux-plugins/tpm) (Tmux Plugin Manager) installs and loads tmux plugins. To install it just run
+```
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+The rest is in `home/.tmux.conf`. To install a new plugin put it in the `.tmux.conf`, source it and press `prefix` + <kbd>I</kbd>.
 
 ### Key Remap
 I got used to Mac keyboard where `~` is located on the bottom row. So to remap it on Ubuntu > 16.04 I had to edit keys values in `/usr/share/X11/xkb/symbols/`. In order not to repeat this procedure again, just do the following:
@@ -170,7 +180,6 @@ Here are some other programs I have on my machine. They require mostly manual in
 * [Chromium](https://www.chromium.org/getting-involved/download-chromium)
 * [Okular](https://okular.kde.org/) to view `pdf` files.
 * [Dropbox](https://www.dropbox.com/install) for quick shares.
-* [Zotero](https://www.zotero.org/download/) as bibliography manager **+** [Better Bib(La)TeX](https://github.com/ZotPlus/zotero-better-bibtex) for decent citation export.
 * [PyCharm](https://www.jetbrains.com/pycharm/) as alternative to Vim, especially for debugging Python.
 * [SonarLint](www.sonarlint.org) for code analysis.
 
@@ -191,3 +200,4 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 - find a good todo tool
 - Finish configuring Vimux
 - settings for CtrlP in vim
+- tmux: copy to / paste from clipboard
