@@ -88,7 +88,7 @@ I found this amazing python script called [show_status](http://blog.mikepearce.n
 ### The Fuck
 Just type `sudo -H pip install thefuck`. Put `eval $(thefuck --alias)` in your `~/.bashrc` or `~/.bash/aliases.bash` or wherever you store your aliases. You can read more on the [GitHub page](https://github.com/nvbn/thefuck).
 
-### Terminal's
+### Terminal
 #### OSX: iTerm and Terminal colors
 `extras/` contains different colors for Terminal, iTerm also a config (including colors).
 
