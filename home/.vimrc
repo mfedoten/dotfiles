@@ -270,7 +270,6 @@ augroup vimrcEx
     autocmd BufNewFile,BufRead * call ToggleBar()
     " autocmd BufNewFile * let b:dir=expand('%:p:h')
     autocmd BufEnter * silent! lcd %:p:h
-    autocmd BufRead,BufNewFile *.conf setfiletype conf
 augroup END
 "}}}
 
