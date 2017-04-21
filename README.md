@@ -201,3 +201,6 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 - Finish configuring Vimux
 - settings for CtrlP in vim
 - tmux: copy to / paste from clipboard
+- tmux-open
+- parse pip requirements
+- check if jedi-vim works fine with virtual env
