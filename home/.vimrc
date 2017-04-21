@@ -185,7 +185,7 @@ function! VimuxSlime()
   call VimuxSendKeys("C-D")
 endfunction
 
-vnoremap <localleader>z "ry :call VimuxSlime()<CR>
+vnoremap <localleader>z "ry :call VimuxSlime()<CR>j
 
 " }}}
 
@@ -214,6 +214,7 @@ set history=500         " Keep 500 lines of command line history
 set undofile            " Undo even after closing and re-openninf a file
 set autoread            " Automatically re-read the file if it has changed
 set scrolloff=999       " Keep cursor centred vertically on the screen
+set iskeyword-=_        " To consider '_' as word break
 set incsearch           " Do incremental searching
 set ignorecase          " To make smart case work
 set smartcase           " Ignore case if search pattern is all lowercase,
@@ -245,6 +246,33 @@ endif
 
 " allows using bash aliases
 " let $BASH_ENV = "$HOME/.bash/aliases.bash:$HOME/.bash/aliases_local.bash:$BASH_ENV"
+
+" File options (cursor position, format options, cwd) ------------------------------------------ {{{
+augroup vimrcEx
+    au!
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).  Also don't do it when the mark
+    " is in the first line, that is the default position when opening a file.
+    autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+    if v:version >= 700
+      au BufLeave * if !&diff | let b:winview = winsaveview() | endif
+      au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
+    endif
+
+    " For all text and python files set 'textwidth' to 80 characters.
+    autocmd FileType text,python,vim setlocal textwidth=100
+    autocmd FileType tex,markdown setlocal spell
+    autocmd BufNewFile,BufRead * call ToggleBar()
+    " autocmd BufNewFile * let b:dir=expand('%:p:h')
+    autocmd BufEnter * silent! lcd %:p:h
+    autocmd BufRead,BufNewFile *.conf setfiletype conf
+augroup END
+"}}}
 
 " }}}
 
@@ -687,32 +715,6 @@ let g:gundo_preview_height = 15
     " }}}
 " xnoremap p <Plug>ReplaceWithRegisterVisual
 " }}}
-
-" File options (cursor position, format options, cwd) ------------------------------------------ {{{
-augroup vimrcEx
-    au!
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid or when inside an event handler
-    " (happens when dropping a file on gvim).  Also don't do it when the mark
-    " is in the first line, that is the default position when opening a file.
-    autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-    if v:version >= 700
-      au BufLeave * if !&diff | let b:winview = winsaveview() | endif
-      au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
-    endif
-
-    " For all text and python files set 'textwidth' to 80 characters.
-    autocmd FileType text,python,vim setlocal textwidth=100
-    autocmd FileType tex,markdown setlocal spell
-    autocmd BufNewFile,BufRead * call ToggleBar()
-    " autocmd BufNewFile * let b:dir=expand('%:p:h')
-    autocmd BufEnter * silent! lcd %:p:h
-augroup END
-"}}}
 
 " }}}
 
