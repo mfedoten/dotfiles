@@ -36,15 +36,14 @@ Plugin 'sjl/gundo.vim'
 Plugin 'nvie/vim-togglemouse'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'scrooloose/nerdcommenter'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
-" Plugin 'julienr/vimux-pyutils'
-Plugin 'ervandew/supertab'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'scrooloose/syntastic'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'ervandew/supertab'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Rip-Rip/clang_complete'
 " Plugin 'lervag/vimtex'
@@ -67,6 +66,7 @@ Plugin 'w0ng/vim-hybrid'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'tomasr/molokai'
 Plugin 'mfedoten/vimberry'
+Plugin 'jacoborus/tender.vim'
 " Plugin 'chrisbra/Colorizer'
 call vundle#end()
 
@@ -288,6 +288,32 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <c-k> <c-x><c-k>
 inoremap <c-]> <c-x>s
 
+" Syntastic: syntax check ---------------------------------------------------------------------- {{{
+    " Called by <F7>. To enable check in python:
+    " $ pip install flake8
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = 'E>'
+let g:syntastic_warning_symbol = 'W>'
+let g:syntastic_loc_list_height = 5
+" let g:syntastic_ignore_files = ['\m\c\.py$']
+let g:syntastic_tex_checkers = ['chktex']
+let g:syntastic_python_checkers = ['flake8']
+nnoremap <F7> :SyntasticCheck<cr>
+nnoremap <localleader>G :SyntasticToggleMode<cr>
+nnoremap <localleader>l :Errors<cr>
+" }}}
+
+" UltiSnips: snippet management for vim -------------------------------------------------------- {{{
+let g:UltiSnipsListSnippets = "<F1>"
+let g:ultisnips_python_style = "google"
+let g:ultisnips_python_quoting_style = "single"
+let g:snips_author = "Mariia Fedotenkova"
+let g:UltiSnipsSnippetDirectories = ["ultisnips", "ultisnips_local"]
+" }}}
+
 " Plugins for code completion ------------------------------------------------------------------ {{{
 
 " SuperTab: allows completion with Tab --------------------------------------------------------- {{{
@@ -363,24 +389,6 @@ let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<localleader>N"
 let g:jedi#rename_command = "<localleader>r"
 "}}}
-
-" Syntastic: syntax check -------- ------------------------------------------------------------- {{{
-    " Called by <F7>. To enable check in python:
-    " $ pip install flake8
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = 'E>'
-let g:syntastic_warning_symbol = 'W>'
-let g:syntastic_loc_list_height = 5
-" let g:syntastic_ignore_files = ['\m\c\.py$']
-let g:syntastic_tex_checkers = ['chktex']
-let g:syntastic_python_checkers = ['flake8']
-nnoremap <F7> :SyntasticCheck<cr>
-nnoremap <localleader>G :SyntasticToggleMode<cr>
-nnoremap <localleader>l :Errors<cr>
-" }}}
 
 " vimtex: Plugin for easier LaTeX compilation -------------------------------------------------- {{{
 " let g:tex_flavor = 'latex' " to start .tex-files as latex
