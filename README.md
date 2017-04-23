@@ -101,7 +101,7 @@ Tmux don't really support italics out-of-the-box. To fix that go [here](https://
 
 ```
 cd extras/
-tic screen-256color-italic.terminfo
+tic tmux.terminfo
 killall tmux
 ```
 
@@ -198,7 +198,7 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 ## TODO
 - vim plugins
 - find a good todo tool
-- Finish configuring Vimux
+- finish configuring Vimux
 - settings for CtrlP in vim
 - tmux: copy to / paste from clipboard
 - tmux-open
