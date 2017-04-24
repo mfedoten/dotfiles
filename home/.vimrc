@@ -612,7 +612,7 @@ if has("gui_running")
 endif
 set background=dark
 colorscheme vimberry
-let g:airline_theme='custom'
+" let g:airline_theme='vimberry'
 
 " Toggle highlighting of excessive characters
 nnoremap <leader>th :call ToggleHighlight()<cr>
