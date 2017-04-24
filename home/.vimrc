@@ -41,8 +41,8 @@ Plugin 'benmills/vimux'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'scrooloose/syntastic'
-" Plugin 'SirVer/ultisnips'
-" Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'ervandew/supertab'
 Plugin 'davidhalter/jedi-vim'
@@ -313,7 +313,7 @@ let g:UltiSnipsListSnippets = "<F1>"
 let g:ultisnips_python_style = "google"
 let g:ultisnips_python_quoting_style = "single"
 let g:snips_author = "Mariia Fedotenkova"
-let g:UltiSnipsSnippetDirectories = ["ultisnips", "ultisnips_local"]
+let g:UltiSnipsSnippetDirectories = ['ultisnips', 'ultisnips_local']
 " }}}
 
 " Plugins for code completion ------------------------------------------------------------------ {{{
