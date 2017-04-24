@@ -54,6 +54,9 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
     alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
+    # Update pip packages
+    alias uppip='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1 | xargs -n1 sudo pip install -U'
+
 elif [[ "$OSTYPE" =~ ^linux ]]; then
     alias pbc='xclip -selection clipboard'
     alias pbp='xclip -selection clipboard -o'
@@ -64,14 +67,13 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
 
     # Update APT, installed packages and locateDB
     alias update='sudo apt-get -qq update; sudo apt-get -qq dist-upgrade; sudo apt autoremove; sudo apt-get autoclean; sudo updatedb'
+
+    # Update pip packages
+    alias uppip='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1 | xargs -n1 pip install -U'
 fi
 
 # Get week number
 alias week='date +%V'
-
-# Update pip packages
-alias uppip='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1 | xargs -n1 sudo pip install -U'
-
 
 
 # Git updates under curent dir
