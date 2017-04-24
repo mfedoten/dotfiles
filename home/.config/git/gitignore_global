@@ -3,3 +3,5 @@
 *.bak
 *.pyc
 .idea/
+.sonarlint/
+.ropeproject/
