@@ -35,6 +35,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'nvie/vim-togglemouse'
 Plugin 'qpkorr/vim-bufkill'
+Plugin 'dr-chip-vim-scripts/ZoomWin'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'benmills/vimux'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -45,9 +46,10 @@ Plugin 'honza/vim-snippets'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'ervandew/supertab'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'python-mode/python-mode'
 Plugin 'Rip-Rip/clang_complete'
 " Plugin 'lervag/vimtex'
-Plugin 'Vimjas/vim-python-pep8-indent'
+" Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'nelstrom/vim-markdown-folding'
@@ -388,7 +390,31 @@ let g:jedi#goto_definitions_command = "<localleader>d"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<localleader>N"
 let g:jedi#rename_command = "<localleader>r"
+let g:jedi#completions_enabled = 1
 "}}}
+
+" PyMode: Python support for vim --------------------------------------------------------------- {{{
+" let g:pymode_paths = []
+let g:pymode_trim_whitespaces = 0
+let g:pymode_options = 0
+let g:pymode_options_max_line_length = 100
+let g:pymode_options_colorcolumn = 0
+let g:pymode_python = 'python3'
+let g:pymode_indent = 0
+let g:pymode_folding = 0
+let g:pymode_motion = 1
+let g:pymode_doc = 0
+let g:pymode_doc_bind = ''
+let g:pymode_virtualenv = 1
+let g:pymode_lint = 0
+let g:pymode_rope = 0
+" let g:pymode_rope_completion = 0
+" let g:pymode_rope_complete_on_dot = 0
+" let g:pymode_rope_completion_bind = ''
+" let g:pymode_rope_goto_definition_bind=''
+let g:pymode_syntax = 0
+" }}}
+
 
 " vimtex: Plugin for easier LaTeX compilation -------------------------------------------------- {{{
 " let g:tex_flavor = 'latex' " to start .tex-files as latex
@@ -511,11 +537,14 @@ let NERDTreeChDirMode = 2
     " Use <c-z> to mark/unmark multiple files and <c-o> to open them. }}}
 
 let g:ctrlp_cmd = 'CtrlPMRU'           " Start search with recently used files
-let g:ctrlp_by_filename = 1            " Start search with filenames
-let g:ctrlp_working_path_mode = 'c'    " Start search with current directory
+let g:ctrlp_by_filename = 0            " Start search with filenames
+let g:ctrlp_working_path_mode = 'ra'   " Start search with current directory
 let g:ctrlp_show_hidden = 1            " Search hidden files as well
 let g:ctrlp_follow_symlinks = 1        " Follow symbolic links
 let g:ctrlp_clear_cache_on_exit = 0    " Keep cash from prev. sessions
+let g:ctrlp_extensions = ['rtscript', 'dir']
+let g:ctrlp_custom_ignore = '.vim/undo\|.vim/backup'
+nnoremap <leader>D :CtrlPDir<cr>
 " }}}
 
 " Rename file from vim
@@ -553,6 +582,8 @@ let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.space = "\ua0"
+
+let g:airline#extensions#tmuxline#enabled = 0
 
 " Add Textwidth and format options to a status line
 function! AirlineInit()
@@ -613,6 +644,7 @@ inoremap <cr> <c-g>u<cr>
 inoremap jk <esc>
 vnoremap jk <esc>
 snoremap jk <esc>
+cnoremap jk <esc>
 
 " Not sure it's a good idea, but let's try it out
 nnoremap ; :

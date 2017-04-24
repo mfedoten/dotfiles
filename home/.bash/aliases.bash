@@ -82,6 +82,9 @@ alias upgit="show_status"
 eval $(thefuck --alias)
 alias fuckit='export THEFUCK_REQUIRE_CONFIRMATION=False; fuck; export THEFUCK_REQUIRE_CONFIRMATION=True'
 
+# Flake8's custom format
+$ flake8 --format='%(path)s:${yellow}%(row)d${reset}: ${red_bold}[%(code)s]${reset} %(text)s'
+
 #############
 # Functions #
 #############

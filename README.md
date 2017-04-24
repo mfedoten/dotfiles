@@ -199,8 +199,9 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 - vim plugins
 - find a good todo tool
 - finish configuring Vimux
-- settings for CtrlP in vim
 - tmux: copy to / paste from clipboard
 - tmux-open
 - parse pip requirements
-- check if jedi-vim works fine with virtual env
+- jedi-vim + venv
+- vim: cd per buffer
+- vim-mode in bash + remap <m-.>
