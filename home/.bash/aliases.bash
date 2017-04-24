@@ -76,7 +76,7 @@ fi
 alias week='date +%V'
 
 # Tree: show all files and hide git dir
-alias tree='tree -a -I ".git"'
+alias gtree='tree -a -I ".git"'
 
 # Git updates under curent dir
 # alias upgit='find . -maxdepth 2 -mindepth 1 -name .git -type d -prune | while read d; do cd $d/..; gecho -e "${Cyan}$PWD ${Color_Off} git pull"; git pull; cd $OLDPWD; done'
