@@ -188,6 +188,7 @@ function! VimuxSlime()
 endfunction
 
 vnoremap <localleader>z "ry :call VimuxSlime()<CR>j
+nnoremap <localleader>v V"ry :call VimuxSendText(@r)<CR>j
 
 " }}}
 
@@ -407,11 +408,25 @@ let g:pymode_doc = 0
 let g:pymode_doc_bind = ''
 let g:pymode_virtualenv = 1
 let g:pymode_lint = 0
-let g:pymode_rope = 0
-" let g:pymode_rope_completion = 0
-" let g:pymode_rope_complete_on_dot = 0
-" let g:pymode_rope_completion_bind = ''
-" let g:pymode_rope_goto_definition_bind=''
+let g:pymode_rope = 1
+let g:pymode_rope_lookup_project = 1
+let g:pymode_rope_show_doc_bind = ''
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_completion_bind = ''
+let g:pymode_rope_autoimport_modules = []
+let g:pymode_rope_goto_definition_bind=''
+let g:pymode_rope_goto_definition_cmd = 'vnew'
+" let g:pymode_rope_rename_bind = '<localleader>rr'
+let g:pymode_rope_rename_bind = ''
+let g:pymode_rope_rename_module_bind = '<localleader>r1r'
+let g:pymode_rope_organize_imports_bind = '<localleader>ro'
+let g:pymode_rope_module_to_package_bind = '<localleader>r1p'
+let g:pymode_rope_extract_method_bind = '<localleader>rm'
+let g:pymode_rope_extract_variable_bind = '<localleader>rl'
+let g:pymode_rope_use_function_bind = '<localleader>ru'
+let g:pymode_rope_move_bind = '<localleader>rv'
+let g:pymode_rope_change_signature_bind = '<localleader>rs'
 let g:pymode_syntax = 0
 " }}}
 
