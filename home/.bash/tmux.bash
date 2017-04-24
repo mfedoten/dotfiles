@@ -3,7 +3,7 @@
 # Display current dir in tmux
 
 rename_tmux_window_to_current_dir() {
-  if [[ -n "$TMUX" ]]; then
+  if [[ "$TERM" =~ 256color && -n "$TMUX" ]]; then
     if [[ "$PWD" != "$LPWD" ]]; then
       LPWD="$PWD"
       tmux rename-window ${PWD//*\//}
