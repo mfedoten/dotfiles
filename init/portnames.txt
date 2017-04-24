@@ -19,3 +19,4 @@ figlet
 fortune
 db48
 shared-mime-info
+tree
