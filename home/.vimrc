@@ -286,7 +286,7 @@ set omnifunc=syntaxcomplete#Complete
 set completeopt=menuone,longest
 
 " Let Enter accept matches
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Map CTRL-X function in insert mode
 inoremap <c-k> <c-x><c-k>
 inoremap <c-]> <c-x>s
@@ -327,7 +327,8 @@ let g:SuperTabContextTextOmniPrecedence = ['&completefunc', '&omnifunc']
 let g:SuperTabMappingBackward = "<c-tab>"
 let g:SuperTabMappingTabLiteral = "<s-tab>"
 let g:SuperTabLongestEnhanced = 1
-let g:SuperTabCrMapping = 0
+let g:SuperTabCrMapping = 1
+let g:SuperTabClosePreviewOnPopupClose = 1
 augroup compl
     au!
     autocmd FileType *
