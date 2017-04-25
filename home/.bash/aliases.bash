@@ -76,6 +76,7 @@ fi
 alias week='date +%V'
 
 # Tree: show all files and hide git dir
+alias tree='tree -aC'
 alias gtree='tree -a -I ".git"'
 
 # Git updates under curent dir
