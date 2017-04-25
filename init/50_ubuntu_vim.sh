@@ -42,6 +42,9 @@ make VIMRUNTIMEDIR=/usr/share/vim/vim80
 # it creates vim into package which you can later remve via dpkg -r
 # (don't forger to change name to smth meaningful, e.g. vim-mfe)
 sudo checkinstall
+# remove build folder
+cd "$SRC_DIR"
+sudo rm -r vim
 # set vim as default editor
 sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
 sudo update-alternatives --set editor /usr/bin/vim

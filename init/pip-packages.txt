@@ -20,7 +20,6 @@ bokeh
 ipympl
 ## Checkers/Formatters
 flake8
-flake8-colors
 pylint
 yapf
 ## Tests
