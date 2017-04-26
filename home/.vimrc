@@ -31,6 +31,7 @@ Plugin 'ciaranm/securemodelines'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
+Plugin 'airblade/vim-rooter'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'nvie/vim-togglemouse'
@@ -271,8 +272,6 @@ augroup vimrcEx
     autocmd FileType text,python,vim setlocal textwidth=100
     autocmd FileType tex,markdown setlocal spell
     autocmd BufNewFile,BufRead * call ToggleBar()
-    " autocmd BufNewFile * let b:dir=expand('%:p:h')
-    autocmd BufEnter * silent! lcd %:p:h
 augroup END
 "}}}
 
@@ -314,7 +313,7 @@ let g:UltiSnipsListSnippets = "<F1>"
 let g:ultisnips_python_style = "google"
 let g:ultisnips_python_quoting_style = "single"
 let g:snips_author = "Mariia Fedotenkova"
-let g:UltiSnipsSnippetDirectories = ['ultisnips', 'ultisnips_local']
+" let g:UltiSnipsSnippetDirectories = ['ultisnips', 'ultisnips_local']
 " }}}
 
 " Plugins for code completion ------------------------------------------------------------------ {{{
@@ -390,6 +389,7 @@ let g:jedi#goto_command = "<localleader>g"
 let g:jedi#goto_assignments_command = "<localleader>a"
 let g:jedi#goto_definitions_command = "<localleader>d"
 let g:jedi#documentation_command = "K"
+let g:jedi#max_doc_height = 30
 let g:jedi#usages_command = "<localleader>N"
 " let g:jedi#rename_command = "<localleader>r"
 let g:jedi#rename_command = ""
@@ -523,6 +523,16 @@ set wildignore+=.hg,.git,.svn
 set wildignore+=*.aux,*.out,*.toc
 set wildignore+=*.DS_Store,*/tmp/*
 
+" Rename file from vim
+nnoremap <leader>R :call RenameFile()<cr>
+
+" Vim-Rooter: change cwd to the project root --------------------------------------------------- {{{
+let g:rooter_change_directory_for_non_project_files = 'current'
+let g:rooter_use_lcd = 1
+let g:rooter_silent_chdir = 1
+" let g:rooter_resolve_links = 1
+" }}}
+
 " NerdTree setup: display file system tree ----------------------------------------------------- {{{
     " Cheat Sheet ------------------------------------------------------------------------------ {{{
     " t: Open the selected file in a new tab
@@ -558,13 +568,28 @@ let g:ctrlp_working_path_mode = 'ra'   " Start search with current directory
 let g:ctrlp_show_hidden = 1            " Search hidden files as well
 let g:ctrlp_follow_symlinks = 1        " Follow symbolic links
 let g:ctrlp_clear_cache_on_exit = 0    " Keep cash from prev. sessions
-let g:ctrlp_extensions = ['rtscript', 'dir']
+let g:ctrlp_extensions = ['rtscript', 'tag', 'buffertag']
 let g:ctrlp_custom_ignore = '.vim/undo\|.vim/backup'
-nnoremap <leader>D :CtrlPDir<cr>
+let g:ctrlp_prompt_mappings = {'ToggleType(1)': ['<c-g>', '<c-up>']} " <c-f> is my tmux prefix
+nnoremap <leader>F :CtrlP<cr>
+nnoremap <leader>T :CtrlPTag<cr>
+nnoremap <leader>tt :CtrlPTag<cr>
 " }}}
 
-" Rename file from vim
-nnoremap <leader>R :call RenameFile()<cr>
+" }}}
+
+" Buffers -------------------------------------------------------------------------------------- {{{
+set hidden              " Hides buffer instead of closing it
+set confirm             " Reminds of unsaved buffers on quit
+" Make work with buffers easier
+nnoremap <leader>ls :ls!<cr>
+nnoremap <silent> <Tab>      :bn<cr>
+nnoremap <silent> <S-Tab>    :bp<cr>
+" Mapping for buffkill
+nnoremap <leader>d  :BD<cr>
+nnoremap <leader>ba :BA<cr>
+" Search open buffers with CtrlP
+nnoremap <leader>ll :CtrlPBuffer<cr>
 " }}}
 
 " Set appearance ------------------------------------------------------------------------------- {{{
@@ -777,8 +802,9 @@ let g:gundo_preview_height = 15
 
 " NERDCommenter: makes commenting easier ------------------------------------------------------- {{{
     " http://spf13.com/post/vim-plugins-nerd-commenter
-let NERDSpaceDelims=1           " adds extra spaces to comment
-let NERDCompactSexyComs=1       " make block comments more compact
+let g:NERDSpaceDelims = 1         " adds extra spaces to comment
+let g:NERDCompactSexyComs = 1     " make block comments more compact
+let g:NERDDefaultAlign = 'start'  " align comment delims at the beginning of the text
 " }}}
 
 " }}}
@@ -825,20 +851,6 @@ set foldtext=MyFoldText()
 let g:markdown_fold_style = 'nested'
 " }}}
 
-" Buffers -------------------------------------------------------------------------------------- {{{
-set hidden              " Hides buffer instead of closing it
-set confirm             " Reminds of unsaved buffers on quit
-" Make work with buffers easier
-nnoremap <leader>ls :ls!<cr>
-nnoremap <silent> <Tab>      :bn<cr>
-nnoremap <silent> <S-Tab>    :bp<cr>
-" Mapping for buffkill
-nnoremap <leader>d  :BD<cr>
-nnoremap <leader>ba :BA<cr>
-" Search open buffers with CtrlP
-nnoremap <leader>ll :CtrlPBuffer<cr>
-" }}}
-
 " Splits --------------------------------------------------------------------------------------- {{{
 set splitbelow          " Open new split below by default
 set splitright          " Open new vertical split on the right by default
@@ -869,6 +881,7 @@ augroup END
 augroup ft_py
     au!
     autocmd FileType python setlocal formatoptions=cqj
+    autocmd FileType python let g:NERDSpaceDelims=0
 augroup END
 " Latex
 augroup ft_tex
