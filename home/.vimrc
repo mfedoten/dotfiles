@@ -189,6 +189,7 @@ function! VimuxSlime()
 endfunction
 
 vnoremap <localleader>z "ry :call VimuxSlime()<CR>j
+vnoremap <localleader>v "ry :call VimuxSendText(@r . "\n")<CR>j
 nnoremap <localleader>v V"ry :call VimuxSendText(@r)<CR>j
 
 " }}}
@@ -578,7 +579,7 @@ let g:ctrlp_custom_ignore = '.vim/undo\|.vim/backup'
 let g:ctrlp_prompt_mappings = {'ToggleType(1)': ['<c-g>', '<c-up>']} " <c-f> is my tmux prefix
 nnoremap <leader>F :CtrlP<cr>
 nnoremap <leader>T :CtrlPTag<cr>
-nnoremap <leader>tt :CtrlPTag<cr>
+nnoremap <leader>tt :CtrlPBufTag<cr>
 " }}}
 
 " }}}

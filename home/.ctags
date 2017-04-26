@@ -6,7 +6,6 @@
 --exclude=doc
 --exclude=*/build/*
 --python-kinds=-i
---append
 --languages=-html
 
 --langdef=markdown
