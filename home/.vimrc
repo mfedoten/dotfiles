@@ -313,7 +313,6 @@ let g:UltiSnipsListSnippets = "<F1>"
 let g:ultisnips_python_style = "google"
 let g:ultisnips_python_quoting_style = "single"
 let g:snips_author = "Mariia Fedotenkova"
-let g:UltiSnipsSnippetDirectories = ['ultisnips', 'ultisnips_custom']
 " }}}
 
 " Plugins for code completion ------------------------------------------------------------------ {{{
@@ -504,6 +503,8 @@ let g:argwrap_wrap_closing_brace=0 "also available as per buffer (b:)
 let g:formatters_python = ['yapf']
 let g:autoformat_autoindent = 0
 let g:formatter_yapf_style = 'pep8'
+vnoremap <F8> :Autoformat<cr>
+nnoremap <F8> :Autoformat<cr>
 " }}}
 
 " }}}
