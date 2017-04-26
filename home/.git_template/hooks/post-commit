@@ -1,2 +1,4 @@
 #!/bin/sh
-echo 'TEST'
+echo "post-commit started"
+
+echo "post-commit finished"
