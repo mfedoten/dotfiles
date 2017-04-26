@@ -1,4 +1,3 @@
-#!/bin/sh
+#!/bin/bash
 echo "post-commit started"
-
 echo "post-commit finished"
