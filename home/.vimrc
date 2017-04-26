@@ -286,7 +286,7 @@ set omnifunc=syntaxcomplete#Complete
 set completeopt=menuone,longest
 
 " Let Enter accept matches
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Map CTRL-X function in insert mode
 inoremap <c-k> <c-x><c-k>
 inoremap <c-]> <c-x>s
@@ -327,7 +327,8 @@ let g:SuperTabContextTextOmniPrecedence = ['&completefunc', '&omnifunc']
 let g:SuperTabMappingBackward = "<c-tab>"
 let g:SuperTabMappingTabLiteral = "<s-tab>"
 let g:SuperTabLongestEnhanced = 1
-let g:SuperTabCrMapping = 0
+let g:SuperTabCrMapping = 1
+let g:SuperTabClosePreviewOnPopupClose = 1
 augroup compl
     au!
     autocmd FileType *
@@ -390,7 +391,8 @@ let g:jedi#goto_assignments_command = "<localleader>a"
 let g:jedi#goto_definitions_command = "<localleader>d"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<localleader>N"
-let g:jedi#rename_command = "<localleader>r"
+" let g:jedi#rename_command = "<localleader>r"
+let g:jedi#rename_command = ""
 let g:jedi#completions_enabled = 1
 "}}}
 
@@ -402,7 +404,7 @@ let g:pymode_options_max_line_length = 100
 let g:pymode_options_colorcolumn = 0
 let g:pymode_python = 'python3'
 let g:pymode_indent = 0
-let g:pymode_folding = 0
+let g:pymode_folding = 1
 let g:pymode_motion = 1
 let g:pymode_doc = 0
 let g:pymode_doc_bind = ''
@@ -417,8 +419,7 @@ let g:pymode_rope_completion_bind = ''
 let g:pymode_rope_autoimport_modules = []
 let g:pymode_rope_goto_definition_bind=''
 let g:pymode_rope_goto_definition_cmd = 'vnew'
-" let g:pymode_rope_rename_bind = '<localleader>rr'
-let g:pymode_rope_rename_bind = ''
+let g:pymode_rope_rename_bind = '<localleader>rr'
 let g:pymode_rope_rename_module_bind = '<localleader>r1r'
 let g:pymode_rope_organize_imports_bind = '<localleader>ro'
 let g:pymode_rope_module_to_package_bind = '<localleader>r1p'

@@ -50,6 +50,8 @@
     checki = check-ignore -v --no-index
     spull = svn rebase
     spush = svn dcommit
+    crandom = !"git commit -m \"$(echo $(curl -s http://whatthecommit.com/index.txt)\" (http://whatthecommit.com)\")\""
+    random = !"git add -A; git commit -am \"$(echo $(curl -s http://whatthecommit.com/index.txt)\" (http://whatthecommit.com)\")\""
 [diff]
 	tool = vimdiff
 

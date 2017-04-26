@@ -206,4 +206,3 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 - jedi-vim + venv
 - vim: cd per buffer
 - vim-mode in bash + remap <m-.>
-- vimberry: change colors in completion pop-up menu
