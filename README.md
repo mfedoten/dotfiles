@@ -205,4 +205,4 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 - parse pip requirements
 - jedi-vim + venv
 - vim: cd per buffer
-<!-- - vim-mode in bash + remap <m-.> -->
+- vim-mode in bash + remap <m-.>
