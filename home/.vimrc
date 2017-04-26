@@ -313,7 +313,7 @@ let g:UltiSnipsListSnippets = "<F1>"
 let g:ultisnips_python_style = "google"
 let g:ultisnips_python_quoting_style = "single"
 let g:snips_author = "Mariia Fedotenkova"
-" let g:UltiSnipsSnippetDirectories = ['ultisnips', 'ultisnips_local']
+let g:UltiSnipsSnippetDirectories = ['ultisnips', 'ultisnips_custom']
 " }}}
 
 " Plugins for code completion ------------------------------------------------------------------ {{{
@@ -523,6 +523,9 @@ set wildignore+=.hg,.git,.svn
 set wildignore+=*.aux,*.out,*.toc
 set wildignore+=*.DS_Store,*/tmp/*
 
+" Ctags (see ~/.git_template)
+set tags+=.git/tags
+
 " Rename file from vim
 nnoremap <leader>R :call RenameFile()<cr>
 
@@ -543,8 +546,9 @@ let g:rooter_silent_chdir = 1
     " R: Refresh thez tree, useful if files change outside of Vim
     " ?: Toggle NERD Tree's quick help }}}
 noremap <F2> :NERDTreeToggle<CR>
-let g:NERDTreeShowHidden=1
-let NERDTreeChDirMode = 2
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeChDirMode = 2
+let g:NERDTreeRespectWildIgnore = 1
 " let NERDTreeIgnore=[ '\.DS_Store' ]
 " }}}
 
