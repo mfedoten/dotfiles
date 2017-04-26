@@ -161,45 +161,6 @@ endfunction
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-" Fugitive ------------------------------------------------------------------------------------- {{{
-nnoremap <leader>gd :Gdiff<space>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gco :Gcheckout<cr>
-nnoremap <leader>gci :Gcommit<cr>
-nnoremap <leader>gm :Gmove<cr>
-nnoremap <leader>gr :Gremove<cr>
-nnoremap <leader>gl :Gitv<cr>
-" diff in vertical splits
-set diffopt+=vertical
-" fix Gitv folding diffs
-augroup git
-    au!
-    autocmd FileType git :setlocal foldlevel=99
-augroup END
-"}}}
-
-" Tmux ----------------------------------------------------------------------------------------- {{{
-" Vimux: sends portion of text from a vim buffer to a running tmux session --------------------- {{{
-function! VimuxSlime()
-  call VimuxRunCommand("%cpaste")
-  call VimuxSendText(@r)
-  call VimuxSendKeys("C-D")
-endfunction
-
-vnoremap <localleader>z "ry :call VimuxSlime()<CR>j
-vnoremap <localleader>v "ry :call VimuxSendText(@r . "\n")<CR>j
-nnoremap <localleader>v V"ry :call VimuxSendText(@r)<CR>j
-
-" }}}
-
-" Vim Tmux Navigator: allows to navigate seamlessly between vim and tmux splits ---------------- {{{
-let g:tmux_navigator_save_on_switch = 0
-let g:tmux_navigator_disable_when_zoomed = 1
-"}}}
-" }}}
-
 " Basic settings ------------------------------------------------------------------------------- {{{
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -276,6 +237,357 @@ augroup vimrcEx
 augroup END
 "}}}
 
+" }}}
+
+" Some useful mappings and functions ----------------------------------------------------------- {{{
+" Write a file anyway, even if forgot to sudo
+cmap w!! w !sudo tee % >/dev/null
+" Execute selection in vim command line
+vnoremap <silent> <leader>ex "xy:@x<cr>
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U or CR after inserting a line break.
+inoremap <c-u> <c-g>u<c-u>
+inoremap <cr> <c-g>u<cr>
+
+" This would reduce the load on the left hand
+inoremap jk <esc>
+vnoremap jk <esc>
+snoremap jk <esc>
+cnoremap jk <esc>
+
+" Not sure it's a good idea, but let's try it out
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
+
+" More logical behavior of Y
+noremap Y y$
+
+" After yanking in visual mode move cursor to the end of yanked text
+vnoremap y y`]
+
+" Play macro at reg. q. Just press qq to record it
+nnoremap <leader>q @q
+" Replay last macro
+nnoremap <leader>a @@
+
+" If a string is wrapped these mappings make navigation easier
+nnoremap j gj
+nnoremap k gk
+onoremap j gj
+onoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+nnoremap gj j
+nnoremap gk k
+onoremap gj j
+onoremap gk k
+vnoremap gj j
+vnoremap gk k
+
+nnoremap 0 g0
+nnoremap $ g$
+onoremap 0 g0
+onoremap $ g$
+vnoremap 0 g0
+vnoremap $ g$
+
+nnoremap g0 0
+nnoremap g$ $
+onoremap g0 0
+onoremap g$ $
+vnoremap g0 0
+vnoremap g$ $
+
+" easier jumps to beginning/end of line
+noremap H ^
+noremap L $
+vnoremap L g_
+
+" remap <c-i> (go to newer position in jump list) to <c-n> (anyway, it's
+" duplicated by j)
+nnoremap <c-n> <c-i>
+
+" Remove search highlight
+nnoremap <silent> <leader>n :noh<cr>
+" Toggle numbers
+nnoremap <silent> <leader>nn :setlocal number!<cr>
+" Toggle paste mode
+nnoremap <silent> <leader>p :setlocal paste!<cr>
+" Toggle show/hide whitespaces
+nnoremap <silent> <leader>L :setlocal list!<cr>
+" remove trailing white spaces
+nnoremap <leader>W :%s/\s\+$//<CR>
+" Show difference between curent file and original state
+nnoremap <F5> :call ToggleDiffOrig()<cr>
+
+" Map Ctrl+V to paste in Insert mode
+inoremap <c-v> <c-r>"
+" Map Ctrl+C to to copy in Visual mode
+vnoremap <c-c> "+y
+
+" Search visually selected text
+vnoremap // y/<C-R>"<CR>
+
+" Formatting with Q (remember cursor position in normal mode)
+nnoremap Q mlgqip`l
+vnoremap Q gq
+nnoremap ql gqq
+
+" Some abbreviations for common typos
+iabbrev wiht with
+iabbrev teh the
+iabbrev adn and
+
+
+" ToggleMouse ---------------------------------------------------------------------------------- {{{
+" After enabling mouse in vim (with set mouse=a) terminal doesn't control it
+" anymore.  To fix it has a look at this plugin. Mapped manually to <F9>.
+" To fix issues with mouse in Terminal.app see https://bitheap.org/mouseterm/
+" }}}
+
+" Gundo: visualize undo tree ------------------------------------------------------------------- {{{
+nnoremap <F3> :GundoToggle<CR>
+let g:gundo_prefer_python3 = 1
+let g:gundo_width = 40
+let g:gundo_preview_height = 15
+" }}}
+
+" ReplaceWithRegister: don't overwrite a register when replacing text -------------------------- {{{
+    " Cheat sheet ------------------------------------------------------------------------------ {{{
+    " ["x]gr{motion}  Replace {motion} text with the contents of register x.
+    " ["x]gR          Replace lines with the contents of register x.
+    " ["x]gr$         Replace from the cursor position to the end of the line.
+    " {Visual}["x]gr  Replace the selection with the contents of register x
+    " }}}
+" xnoremap p <Plug>ReplaceWithRegisterVisual
+" }}}
+
+" }}}
+
+" Files navigation ----------------------------------------------------------------------------- {{{
+" Enhanced command-line completion
+set wildmenu
+set wildignorecase
+" Ignore list
+set wildignore+=*.so,*.swp,*.pyc,*.o,*.obj
+set wildignore+=*.png,*.pdf,*.jpg,*.jpeg,*.bmp,*.gif
+set wildignore+=*.dmg,*.zip
+set wildignore+=*.egg,*.egg-info,*/.Trash/**
+set wildignore+=.hg,.git,.svn
+set wildignore+=*.aux,*.out,*.toc
+set wildignore+=*.DS_Store,*/tmp/*
+
+" Ctags (see ~/.git_template)
+set tags+=.git/tags
+
+" Rename file from vim
+nnoremap <leader>R :call RenameFile()<cr>
+
+" Vim-Rooter: change cwd to the project root --------------------------------------------------- {{{
+let g:rooter_change_directory_for_non_project_files = 'current'
+let g:rooter_use_lcd = 1
+let g:rooter_silent_chdir = 1
+" let g:rooter_resolve_links = 1
+" }}}
+
+" NerdTree setup: display file system tree ----------------------------------------------------- {{{
+    " Cheat Sheet ------------------------------------------------------------------------------ {{{
+    " t: Open the selected file in a new tab
+    " i: Open the selected file in a horizontal split window
+    " s: Open the selected file in a vertical split window
+    " I: Toggle hidden files
+    " m: Show the NERD Tree menu
+    " R: Refresh thez tree, useful if files change outside of Vim
+    " ?: Toggle NERD Tree's quick help }}}
+noremap <F2> :NERDTreeToggle<CR>
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeChDirMode = 2
+let g:NERDTreeRespectWildIgnore = 1
+" let NERDTreeIgnore=[ '\.DS_Store' ]
+" }}}
+
+" CTRL-P: fast file navigation ----------------------------------------------------------------- {{{
+    " Cheat sheet ------------------------------------------------------------------------------ {{{
+    " Press <F5> to purge the cache for the current directory to get new files,
+    " remove deleted files and apply new ignore options.
+    " Press <c-f> and <c-b> to cycle between modes.
+    " Press <c-d> to switch to filename only search instead of full path.
+    " Press <c-r> to switch to regexp mode.
+    " Use <c-j>, <c-k> or the arrow keys to navigate the result list.
+    " Use <c-t> or <c-v>, <c-x> to open the selected entry in a new tab or in a
+    " new split.
+    " Use <c-n>, <c-p> to select the next/previous string in the prompt's history.
+    " Use <c-y> to create a new file and its parent directories.
+    " Use <c-z> to mark/unmark multiple files and <c-o> to open them. }}}
+
+let g:ctrlp_cmd = 'CtrlPMRU'           " Start search with recently used files
+let g:ctrlp_by_filename = 0            " Start search with filenames
+let g:ctrlp_working_path_mode = 'ra'   " Start search with current directory
+let g:ctrlp_show_hidden = 1            " Search hidden files as well
+let g:ctrlp_follow_symlinks = 1        " Follow symbolic links
+let g:ctrlp_clear_cache_on_exit = 0    " Keep cash from prev. sessions
+let g:ctrlp_extensions = ['rtscript', 'tag', 'buffertag']
+let g:ctrlp_custom_ignore = '.vim/undo\|.vim/backup'
+let g:ctrlp_prompt_mappings = {'ToggleType(1)': ['<c-g>', '<c-up>']} " <c-f> is my tmux prefix
+nnoremap <leader>F :CtrlP<cr>
+nnoremap <leader>T :CtrlPTag<cr>
+nnoremap <leader>tt :CtrlPBufTag<cr>
+" }}}
+
+" }}}
+
+" Buffers -------------------------------------------------------------------------------------- {{{
+set hidden              " Hides buffer instead of closing it
+set confirm             " Reminds of unsaved buffers on quit
+" Make work with buffers easier
+nnoremap <leader>ls :ls!<cr>
+nnoremap <silent> <Tab>      :bn<cr>
+nnoremap <silent> <S-Tab>    :bp<cr>
+" Mapping for buffkill
+nnoremap <leader>d  :BD<cr>
+nnoremap <leader>ba :BA<cr>
+" Search open buffers with CtrlP
+nnoremap <leader>ll :CtrlPBuffer<cr>
+" }}}
+
+" Splits --------------------------------------------------------------------------------------- {{{
+set splitbelow          " Open new split below by default
+set splitright          " Open new vertical split on the right by default
+" Split the window with shortcuts
+nnoremap <leader>vs :vsplit<space>
+nnoremap <leader>s  :split<space>
+" Make navigation between screens easier
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+"Two splits scrolling together
+nnoremap <leader>sb :set scrollbind!<cr>
+" Jump to the next/previous error in quickfix window
+nnoremap <leader>ln :lne<cr>
+nnoremap <leader>lp :lp<cr>
+" }}}
+
+" Fugitive ------------------------------------------------------------------------------------- {{{
+nnoremap <leader>gd :Gdiff<space>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gco :Gcheckout<cr>
+nnoremap <leader>gci :Gcommit<cr>
+nnoremap <leader>gm :Gmove<cr>
+nnoremap <leader>gr :Gremove<cr>
+nnoremap <leader>gl :Gitv<cr>
+" diff in vertical splits
+set diffopt+=vertical
+" fix Gitv folding diffs
+augroup git
+    au!
+    autocmd FileType git :setlocal foldlevel=99
+augroup END
+"}}}
+
+" Tmux ----------------------------------------------------------------------------------------- {{{
+" Vimux: sends portion of text from a vim buffer to a running tmux session --------------------- {{{
+function! VimuxSlime()
+  call VimuxRunCommand("%cpaste")
+  call VimuxSendKeys("Enter")
+  call VimuxSendText(@r)
+  call VimuxSendKeys("C-D")
+endfunction
+
+vnoremap <localleader>z "ry :call VimuxSlime()<CR>j
+vnoremap <localleader>v "ry :call VimuxSendText(@r . "\n")<CR>j
+nnoremap <localleader>v V"ry :call VimuxSendText(@r)<CR>j
+
+" }}}
+
+" Vim Tmux Navigator: allows to navigate seamlessly between vim and tmux splits ---------------- {{{
+let g:tmux_navigator_save_on_switch = 0
+let g:tmux_navigator_disable_when_zoomed = 1
+"}}}
+" }}}
+
+" Set appearance ------------------------------------------------------------------------------- {{{
+
+" Vim-airline ---------------------------------------------------------------------------------- {{{
+    " Requires power line fonts. How to get it described here:
+    " http://stackoverflow.com/a/19137142/4798992
+set laststatus=2                                   " Enable powerline
+let g:airline#extensions#tabline#enabled=1         " Enable the list of buffers
+let g:airline#extensions#tabline#fnamemod=':t'     " Show just the filename
+let g:airline#extensions#tabline#buffer_nr_show=1  " Show buffer number
+let g:airline_powerline_fonts=1                    " Use fancy fonts
+" Define separators
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" Change some defaults
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+" unicode symbols for airline
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.maxlinenr = '☰'
+let g:airline_symbols.branch = ''
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.space = "\ua0"
+
+let g:airline#extensions#tmuxline#enabled = 0
+
+" Add Textwidth and format options to a status line
+function! AirlineInit()
+  let g:airline_section_y = airline#section#create_right(['ffenc'])
+endfunction
+" Hope to avoid this annoying paste
+noremap <silent> <Plug>AirlineTablineRefresh :set mod!<CR>
+" }}}
+
+" Switch syntax highlighting on, when the terminal has colors.
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax enable
+  set hlsearch
+endif
+
+" Decent settings for Terminal and GUI
+if has("gui_running")
+  if has('macunix')
+    set transparency=0                   " No transparency
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\:h12 " Fonts for powerline
+  elseif has('unix')
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10 " Fonts for powerline
+  endif
+    set guicursor+=a:blinkon0            " No blinking cursor
+endif
+set background=dark
+colorscheme vimberry
+" let g:airline_theme='vimberry'
+
+" Toggle highlighting of excessive characters
+nnoremap <leader>th :call ToggleHighlight()<cr>
+" Toggle colorcolumn display
+nnoremap <leader>tb :call ToggleBar()<cr>
+" Resize splits when the window is resized
+au VimResized * :wincmd =
+
+" python syntax highlight
+let g:python_highlight_all = 1
+let g:python_highlight_operators = 0
+let g:python_highlight_file_headers_as_comments=1
+let g:python_highlight_space_errors = 0
+let g:python_highlight_indent_errors = 0
 " }}}
 
 " Syntax and code completion ------------------------------------------------------------------- {{{
@@ -512,298 +824,6 @@ nnoremap <F8> :Autoformat<cr>
 
 " }}}
 
-" Files navigation ----------------------------------------------------------------------------- {{{
-" Enhanced command-line completion
-set wildmenu
-set wildignorecase
-" Ignore list
-set wildignore+=*.so,*.swp,*.pyc,*.o,*.obj
-set wildignore+=*.png,*.pdf,*.jpg,*.jpeg,*.bmp,*.gif
-set wildignore+=*.dmg,*.zip
-set wildignore+=*.egg,*.egg-info,*/.Trash/**
-set wildignore+=.hg,.git,.svn
-set wildignore+=*.aux,*.out,*.toc
-set wildignore+=*.DS_Store,*/tmp/*
-
-" Ctags (see ~/.git_template)
-set tags+=.git/tags
-
-" Rename file from vim
-nnoremap <leader>R :call RenameFile()<cr>
-
-" Vim-Rooter: change cwd to the project root --------------------------------------------------- {{{
-let g:rooter_change_directory_for_non_project_files = 'current'
-let g:rooter_use_lcd = 1
-let g:rooter_silent_chdir = 1
-" let g:rooter_resolve_links = 1
-" }}}
-
-" NerdTree setup: display file system tree ----------------------------------------------------- {{{
-    " Cheat Sheet ------------------------------------------------------------------------------ {{{
-    " t: Open the selected file in a new tab
-    " i: Open the selected file in a horizontal split window
-    " s: Open the selected file in a vertical split window
-    " I: Toggle hidden files
-    " m: Show the NERD Tree menu
-    " R: Refresh thez tree, useful if files change outside of Vim
-    " ?: Toggle NERD Tree's quick help }}}
-noremap <F2> :NERDTreeToggle<CR>
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeChDirMode = 2
-let g:NERDTreeRespectWildIgnore = 1
-" let NERDTreeIgnore=[ '\.DS_Store' ]
-" }}}
-
-" CTRL-P: fast file navigation ----------------------------------------------------------------- {{{
-    " Cheat sheet ------------------------------------------------------------------------------ {{{
-    " Press <F5> to purge the cache for the current directory to get new files,
-    " remove deleted files and apply new ignore options.
-    " Press <c-f> and <c-b> to cycle between modes.
-    " Press <c-d> to switch to filename only search instead of full path.
-    " Press <c-r> to switch to regexp mode.
-    " Use <c-j>, <c-k> or the arrow keys to navigate the result list.
-    " Use <c-t> or <c-v>, <c-x> to open the selected entry in a new tab or in a
-    " new split.
-    " Use <c-n>, <c-p> to select the next/previous string in the prompt's history.
-    " Use <c-y> to create a new file and its parent directories.
-    " Use <c-z> to mark/unmark multiple files and <c-o> to open them. }}}
-
-let g:ctrlp_cmd = 'CtrlPMRU'           " Start search with recently used files
-let g:ctrlp_by_filename = 0            " Start search with filenames
-let g:ctrlp_working_path_mode = 'ra'   " Start search with current directory
-let g:ctrlp_show_hidden = 1            " Search hidden files as well
-let g:ctrlp_follow_symlinks = 1        " Follow symbolic links
-let g:ctrlp_clear_cache_on_exit = 0    " Keep cash from prev. sessions
-let g:ctrlp_extensions = ['rtscript', 'tag', 'buffertag']
-let g:ctrlp_custom_ignore = '.vim/undo\|.vim/backup'
-let g:ctrlp_prompt_mappings = {'ToggleType(1)': ['<c-g>', '<c-up>']} " <c-f> is my tmux prefix
-nnoremap <leader>F :CtrlP<cr>
-nnoremap <leader>T :CtrlPTag<cr>
-nnoremap <leader>tt :CtrlPBufTag<cr>
-" }}}
-
-" }}}
-
-" Buffers -------------------------------------------------------------------------------------- {{{
-set hidden              " Hides buffer instead of closing it
-set confirm             " Reminds of unsaved buffers on quit
-" Make work with buffers easier
-nnoremap <leader>ls :ls!<cr>
-nnoremap <silent> <Tab>      :bn<cr>
-nnoremap <silent> <S-Tab>    :bp<cr>
-" Mapping for buffkill
-nnoremap <leader>d  :BD<cr>
-nnoremap <leader>ba :BA<cr>
-" Search open buffers with CtrlP
-nnoremap <leader>ll :CtrlPBuffer<cr>
-" }}}
-
-" Set appearance ------------------------------------------------------------------------------- {{{
-
-" Vim-airline ---------------------------------------------------------------------------------- {{{
-    " Requires power line fonts. How to get it described here:
-    " http://stackoverflow.com/a/19137142/4798992
-set laststatus=2                                   " Enable powerline
-let g:airline#extensions#tabline#enabled=1         " Enable the list of buffers
-let g:airline#extensions#tabline#fnamemod=':t'     " Show just the filename
-let g:airline#extensions#tabline#buffer_nr_show=1  " Show buffer number
-let g:airline_powerline_fonts=1                    " Use fancy fonts
-" Define separators
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-" Change some defaults
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-" unicode symbols for airline
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.maxlinenr = '☰'
-let g:airline_symbols.branch = ''
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = '∄'
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_symbols.space = "\ua0"
-
-let g:airline#extensions#tmuxline#enabled = 0
-
-" Add Textwidth and format options to a status line
-function! AirlineInit()
-  let g:airline_section_y = airline#section#create_right(['ffenc'])
-endfunction
-" Hope to avoid this annoying paste
-noremap <silent> <Plug>AirlineTablineRefresh :set mod!<CR>
-" }}}
-
-" Switch syntax highlighting on, when the terminal has colors.
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax enable
-  set hlsearch
-endif
-
-" Decent settings for Terminal and GUI
-if has("gui_running")
-  if has('macunix')
-    set transparency=0                   " No transparency
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\:h12 " Fonts for powerline
-  elseif has('unix')
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10 " Fonts for powerline
-  endif
-    set guicursor+=a:blinkon0            " No blinking cursor
-endif
-set background=dark
-colorscheme vimberry
-" let g:airline_theme='vimberry'
-
-" Toggle highlighting of excessive characters
-nnoremap <leader>th :call ToggleHighlight()<cr>
-" Toggle colorcolumn display
-nnoremap <leader>tb :call ToggleBar()<cr>
-" Resize splits when the window is resized
-au VimResized * :wincmd =
-
-" python syntax highlight
-let g:python_highlight_all = 1
-let g:python_highlight_operators = 0
-let g:python_highlight_file_headers_as_comments=1
-let g:python_highlight_space_errors = 0
-let g:python_highlight_indent_errors = 0
-" }}}
-
-" Some useful mappings and functions ----------------------------------------------------------- {{{
-" Write a file anyway, even if forgot to sudo
-cmap w!! w !sudo tee % >/dev/null
-" Execute selection in vim command line
-vnoremap <silent> <leader>ex "xy:@x<cr>
-
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U or CR after inserting a line break.
-inoremap <c-u> <c-g>u<c-u>
-inoremap <cr> <c-g>u<cr>
-
-" This would reduce the load on the left hand
-inoremap jk <esc>
-vnoremap jk <esc>
-snoremap jk <esc>
-cnoremap jk <esc>
-
-" Not sure it's a good idea, but let's try it out
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
-
-" More logical behavior of Y
-noremap Y y$
-
-" After yanking in visual mode move cursor to the end of yanked text
-vnoremap y y`]
-
-" Play macro at reg. q. Just press qq to record it
-nnoremap <leader>q @q
-" Replay last macro
-nnoremap <leader>a @@
-
-" If a string is wrapped these mappings make navigation easier
-nnoremap j gj
-nnoremap k gk
-onoremap j gj
-onoremap k gk
-vnoremap j gj
-vnoremap k gk
-
-nnoremap gj j
-nnoremap gk k
-onoremap gj j
-onoremap gk k
-vnoremap gj j
-vnoremap gk k
-
-nnoremap 0 g0
-nnoremap $ g$
-onoremap 0 g0
-onoremap $ g$
-vnoremap 0 g0
-vnoremap $ g$
-
-nnoremap g0 0
-nnoremap g$ $
-onoremap g0 0
-onoremap g$ $
-vnoremap g0 0
-vnoremap g$ $
-
-" easier jumps to beginning/end of line
-noremap H ^
-noremap L $
-vnoremap L g_
-
-" remap <c-i> (go to newer position in jump list) to <c-n> (anyway, it's
-" duplicated by j)
-nnoremap <c-n> <c-i>
-
-" Remove search highlight
-nnoremap <silent> <leader>n :noh<cr>
-" Toggle numbers
-nnoremap <silent> <leader>nn :setlocal number!<cr>
-" Toggle paste mode
-nnoremap <silent> <leader>p :setlocal paste!<cr>
-" Toggle show/hide whitespaces
-nnoremap <silent> <leader>L :setlocal list!<cr>
-" remove trailing white spaces
-nnoremap <leader>W :%s/\s\+$//<CR>
-" Show difference between curent file and original state
-nnoremap <F5> :call ToggleDiffOrig()<cr>
-
-" Map Ctrl+V to paste in Insert mode
-inoremap <c-v> <c-r>"
-" Map Ctrl+C to to copy in Visual mode
-vnoremap <c-c> "+y
-
-" Search visually selected text
-vnoremap // y/<C-R>"<CR>
-
-" Formatting with Q (remember cursor position in normal mode)
-nnoremap Q mlgqip`l
-vnoremap Q gq
-nnoremap ql gqq
-
-" Some abbreviations for common typos
-iabbrev wiht with
-iabbrev teh the
-iabbrev adn and
-
-" ToggleMouse ---------------------------------------------------------------------------------- {{{
-" After enabling mouse in vim (with set mouse=a) terminal doesn't control it
-" anymore.  To fix it has a look at this plugin. Mapped manually to <F9>.
-" To fix issues with mouse in Terminal.app see https://bitheap.org/mouseterm/
-" }}}
-
-" Gundo: visualize undo tree ------------------------------------------------------------------- {{{
-nnoremap <F3> :GundoToggle<CR>
-let g:gundo_prefer_python3 = 1
-let g:gundo_width = 40
-let g:gundo_preview_height = 15
-" }}}
-
-" ReplaceWithRegister: don't overwrite a register when replacing text -------------------------- {{{
-    " Cheat sheet ------------------------------------------------------------------------------ {{{
-    " ["x]gr{motion}  Replace {motion} text with the contents of register x.
-    " ["x]gR          Replace lines with the contents of register x.
-    " ["x]gr$         Replace from the cursor position to the end of the line.
-    " {Visual}["x]gr  Replace the selection with the contents of register x
-    " }}}
-" xnoremap p <Plug>ReplaceWithRegisterVisual
-" }}}
-
-" }}}
-
 " Comments, brackets --------------------------------------------------------------------------- {{{
 
 " NERDCommenter: makes commenting easier ------------------------------------------------------- {{{
@@ -855,24 +875,6 @@ set foldtext=MyFoldText()
 
 " Markdown folding settings
 let g:markdown_fold_style = 'nested'
-" }}}
-
-" Splits --------------------------------------------------------------------------------------- {{{
-set splitbelow          " Open new split below by default
-set splitright          " Open new vertical split on the right by default
-" Split the window with shortcuts
-nnoremap <leader>vs :vsplit<space>
-nnoremap <leader>s  :split<space>
-" Make navigation between screens easier
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-"Two splits scrolling together
-nnoremap <leader>sb :set scrollbind!<cr>
-" Jump to the next/previous error in quickfix window
-nnoremap <leader>ln :lne<cr>
-nnoremap <leader>lp :lp<cr>
 " }}}
 
 " File type specific options ------------------------------------------------------------------- {{{
