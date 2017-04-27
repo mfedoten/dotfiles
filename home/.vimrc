@@ -650,6 +650,7 @@ nnoremap <localleader>l :Errors<cr>
 let g:UltiSnipsListSnippets = "<F1>"
 let g:ultisnips_python_style = "google"
 let g:ultisnips_python_quoting_style = "single"
+let g:ultisnips_python_triple_quoting_style = "double"
 let g:snips_author = "Mariia Fedotenkova"
 " }}}
 
@@ -724,7 +725,8 @@ let g:jedi#popup_select_first = 1
 let g:jedi#popup_on_dot = 0
 let g:jedi#goto_command = "<localleader>g"
 let g:jedi#goto_assignments_command = "<localleader>a"
-let g:jedi#goto_definitions_command = "<localleader>d"
+"let g:jedi#goto_definitions_command = "<localleader>d"
+let g:jedi#goto_definitions_command = ""
 let g:jedi#documentation_command = "K"
 let g:jedi#max_doc_height = 30
 let g:jedi#usages_command = "<localleader>N"
@@ -754,7 +756,7 @@ let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_rope_completion_bind = ''
 let g:pymode_rope_autoimport_modules = []
-let g:pymode_rope_goto_definition_bind=''
+let g:pymode_rope_goto_definition_bind='<localleader>d'
 let g:pymode_rope_goto_definition_cmd = 'vnew'
 let g:pymode_rope_rename_bind = '<localleader>rr'
 let g:pymode_rope_rename_module_bind = '<localleader>r1r'
