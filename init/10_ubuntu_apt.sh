@@ -54,14 +54,13 @@ if (( ${#packages[@]} > 0 )); then
   done
 fi
 
-sudo apt-get autoclean
-
-# Gnome Keyring (http://askubuntu.com/a/776335)
-sudo apt-get install libgnome-keyring-dev
-sudo make --directory=/usr/share/doc/git/contrib/credential/gnome-keyring
-
 # get the latest git
 sudo apt-add-repository ppa:git-core/ppa
 sudo apt-get update
 sudo apt-get install git
 
+# Gnome Keyring (http://askubuntu.com/a/776335)
+sudo apt-get install libgnome-keyring-dev
+sudo make --directory=/usr/share/doc/git/contrib/credential/gnome-keyring
+
+sudo apt-get autoclean

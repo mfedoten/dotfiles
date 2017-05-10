@@ -10,6 +10,7 @@ cowsay
 fortunes
 sl
 tree
+screenfetch
 konsole
 bash-completion
 dconf-editor
