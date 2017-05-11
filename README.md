@@ -22,21 +22,21 @@ sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/
 ```
 
 #### MacPorts
-Next, download and install MacPorts from [here](https://www.macports.org/install.php). After that, run `./init/01_osx_ports.sh` to install all required ports listed in `portnames.txt`.
+Next, download and install MacPorts from [here](https://www.macports.org/install.php). After that, run `./init/10_osx_ports.sh` to install all required ports listed in `portnames.txt`.
 
 #### Upgrade bash
-Depending on the bash shipped with your system, it might be outdated. In order to update it, set a desired version of bash in `./init/bash_update.sh` and then just run the script. It's not really necessary, but some useful features (like auto-completion in vim), won't work on bash versions older than 4.
+Depending on the bash shipped with your system, it might be outdated. In order to update it, set a desired version of bash in `./init/20_osx_bash_update.sh` and then just run the script. It's not really necessary, but some useful features (like auto-completion in vim), won't work on bash versions older than 4.
 
 #### iTerm2
 Switching from Terminal to [iTerm2](https://www.iterm2.com/) is a good idea.
 
 #### OSX defaults
-`./init/03_osx_defaults.sh` sets some nice default settings. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized), printing full path in heading of Finder windows etc.
+`./init/30_osx_defaults.sh` sets some nice default settings. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized), printing full path in heading of Finder windows etc.
 
 ### Ubuntu
 
 #### APT packages
-Running `./init/01_ubuntu_apt.sh` will update APT and installs all packages listed in `init/packages.txt`. Or you can always install the packages manually.
+Running `./init/10_ubuntu_apt.sh` will update APT and installs all packages listed in `init/apt-packages.txt`. Or you can always install the packages manually.
 
 ## Git
 After all packages were installed, it's a good idea to configure git.
@@ -69,7 +69,7 @@ There are several ways to install Python:
 * Install using package managers. **On Ubuntu** using `apt-get` (see [this example](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04). The problem here is that usually it contains older version of Python, but you can try to install it with PPA (an [example](http://askubuntu.com/questions/865554/how-do-i-install-python-3-6-using-apt-get)). **On OSX** you can easily install it with MacPorts. You can run `./init/40_osx_python.sh` to install Python 2.7 and Python 3.6, it also sets `python36` as default `python` and installs pip and PyQt5. **P.S** to check which Python version pip is using run `pip -V`.
 * **Ubuntu:** compile from source. Look [here](https://tecadmin.net/install-python-3-6-ubuntu-linuxmint/), [here](http://stackoverflow.com/questions/8097161/how-would-i-build-python-myself-from-source-code-on-ubuntu), and [here](https://docs.python.org/2/using/unix.html), good luck! **OSX:** install from official [Python's website](https://www.python.org/downloads/)
 
-After finally installing Python and checking that it works without crashing your system, you can now run `./init/50_pip.sh` which will install all packages (+ notebook extensions) from `pip-packages.txt`.
+After finally installing Python and checking that it works without crashing your system, you can now run `./init/41_pip.sh` which will install all packages (+ notebook extensions) from `pip-packages.txt`.
 
 ## Vim
 You can always find the latest(-ish) version of vim either through package manager or form official repo.
@@ -93,7 +93,7 @@ Just type `sudo -H pip install thefuck`. Put `eval $(thefuck --alias)` in your `
 `extras/` contains different colors for Terminal, iTerm also a config (including colors).
 
 #### Ubuntu: Tilda's config
-`extras/` folder contains `config_0`, a [Tilda's](https://github.com/lanoxx/tilda) configuration file which should be copied in `~/.config/tilda/`.
+`extras/` folder contains `config_0`, a [Tilda's](https://github.com/lanoxx/tilda) configuration file which should be copied in `~/.tilda/`.
 
 ### Tmux
 #### Italics
