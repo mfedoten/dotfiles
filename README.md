@@ -125,8 +125,7 @@ The rest is in `home/.tmux.conf`. To install a new plugin put it in the `.tmux.c
 I got used to Mac keyboard where `~` is located on the bottom row. So to remap it on Ubuntu > 16.04 I had to edit keys values in `/usr/share/X11/xkb/symbols/`. In order not to repeat this procedure again, just do the following:
 ```
 sudo cp /usr/share/X11/xkb/symbols/us{,_backup}
-cd extras
-sudo ln -sf keymap_us /usr/share/X11/xkb/symbols/us
+sudo cp extras/keymap_us /usr/share/X11/xkb/symbols/us
 ```
 I'm trying not to screw up here, that's why the first line is to create a backup. If something does go wrong just run `sudo cp /usr/share/X11/xkb/symbols/us{backup,}`.
 
