@@ -11,9 +11,9 @@ fortunes
 sl
 tree
 screenfetch
-konsole
 bash-completion
 dconf-editor
+compizconfig-settings-manager
 ruby-full
 tmux
 checkinstall

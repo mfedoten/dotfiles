@@ -17,7 +17,7 @@ sudo apt-get -qq update
 sudo apt-get -qq dist-upgrade
 
 # Read ports into array
-mapfile -t packages < pkgs.txt
+mapfile -t packages < apt-packages.txt
 
 # Given strings containing space-delimited words A and B, "setdiff A B" will
 # return all words in A that do not exist in B. Arrays in bash are insane
@@ -57,10 +57,10 @@ fi
 # get the latest git
 sudo apt-add-repository ppa:git-core/ppa
 sudo apt-get update
-sudo apt-get install git
+sudo apt-get install -qq git
 
 # Gnome Keyring (http://askubuntu.com/a/776335)
-sudo apt-get install libgnome-keyring-dev
+sudo apt-get install -qq libgnome-keyring-dev
 sudo make --directory=/usr/share/doc/git/contrib/credential/gnome-keyring
 
 sudo apt-get autoclean
