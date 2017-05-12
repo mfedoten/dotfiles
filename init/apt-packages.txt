@@ -19,3 +19,4 @@ tmux
 checkinstall
 tilda
 exuberant-ctags
+smbclient
