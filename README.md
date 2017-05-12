@@ -86,7 +86,13 @@ Now that you have your Vim/MacVim successfully installed, we should install all 
 I found this amazing python script called [show_status](http://blog.mikepearce.net/2010/06/16/git-status-on-multiple-repos/). It will show git status of all git repositories under current dir. The script `./init/60_git_show_status.sh` will download this script from its [github repo](https://github.com/MikePearce/Git-Status) and install it to `/usr/local/bin/`.
 
 ### The Fuck
-Just type `sudo -H pip install thefuck`. Put `eval $(thefuck --alias)` in your `~/.bashrc` or `~/.bash/aliases.bash` or wherever you store your aliases. You can read more on the [GitHub page](https://github.com/nvbn/thefuck).
+Just type 
+```
+sudo apt update
+sudo apt install python3-dev python3-pip
+pip3 install --user thefuck
+```
+Put `eval $(thefuck --alias)` in your `~/.bashrc` or `~/.bash/aliases.bash` or wherever you store your aliases. You can read more on the [GitHub page](https://github.com/nvbn/thefuck).
 
 ### Terminal
 #### OSX: iTerm and Terminal colors
