@@ -55,7 +55,8 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
     # Update pip packages
-    alias uppip='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1 | xargs -n1 sudo pip install -U'
+    alias uppip='pip list --outdated --format=freeze | grep -vE "(^\-e|conda)" | cut -d "=" -f 1 | xargs -n1 pip install -U'
+    
 
 elif [[ "$OSTYPE" =~ ^linux ]]; then
     alias pbc='xclip -selection clipboard'

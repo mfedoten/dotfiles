@@ -33,3 +33,5 @@ line_profiler
 psutil
 ## Show pip dependencies: https://github.com/naiquevin/pipdeptree
 pipdeptree
+## Tool to track/update outdated packages: https://github.com/jgonggrijp/pip-review
+pip-review
