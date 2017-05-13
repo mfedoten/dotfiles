@@ -29,6 +29,7 @@ nose
 ## Documentation
 Sphinx
 ## See CPU load etc.
+line_profiler
 psutil
 ## Show pip dependencies: https://github.com/naiquevin/pipdeptree
 pipdeptree
