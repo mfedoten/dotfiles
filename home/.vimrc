@@ -857,7 +857,6 @@ nnoremap <F8> :Autoformat<cr>
     " http://spf13.com/post/vim-plugins-nerd-commenter
 let g:NERDSpaceDelims = 1         " adds extra spaces to comment
 let g:NERDCompactSexyComs = 1     " make block comments more compact
-let g:NERDDefaultAlign = 'start'  " align comment delims at the beginning of the text
 " }}}
 
 " }}}
