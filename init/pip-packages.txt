@@ -35,3 +35,5 @@ psutil
 pipdeptree
 ## Tool to track/update outdated packages: https://github.com/jgonggrijp/pip-review
 pip-review
+## Tool to generate requirements
+pigar
