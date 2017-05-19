@@ -426,7 +426,7 @@ let g:NERDTreeRespectWildIgnore = 1
 
 let g:ctrlp_cmd = 'CtrlPMRU'           " Start search with recently used files
 let g:ctrlp_by_filename = 0            " Start search with filenames
-let g:ctrlp_working_path_mode = 'ra'   " Start search with current directory
+let g:ctrlp_working_path_mode = 'rwa'   " Start search with current directory
 let g:ctrlp_show_hidden = 1            " Search hidden files as well
 let g:ctrlp_follow_symlinks = 1        " Follow symbolic links
 let g:ctrlp_clear_cache_on_exit = 0    " Keep cash from prev. sessions
