@@ -586,7 +586,6 @@ endfunction
 " Hope to avoid this annoying paste
 noremap <silent> <Plug>AirlineTablineRefresh :set mod!<CR>
 " }}}
-
 " Switch syntax highlighting on, when the terminal has colors.
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
