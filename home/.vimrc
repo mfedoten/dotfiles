@@ -30,6 +30,7 @@ Plugin 'gmarik/vundle'
 Plugin 'ciaranm/securemodelines'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-rooter'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -539,6 +540,14 @@ let g:tmux_navigator_disable_when_zoomed = 1
 
 " Set appearance ------------------------------------------------------------------------------- {{{
 
+" vim-indent-guides ---------------------------------------------------------------------------- {{{
+let g:indent_guides_default_mapping=0
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'text']
+nmap <silent> <Leader>ti <Plug>IndentGuidesToggle
+" }}}
 " Vim-airline ---------------------------------------------------------------------------------- {{{
     " Requires power line fonts. How to get it described here:
     " http://stackoverflow.com/a/19137142/4798992
@@ -578,7 +587,6 @@ endfunction
 " Hope to avoid this annoying paste
 noremap <silent> <Plug>AirlineTablineRefresh :set mod!<CR>
 " }}}
-
 " Switch syntax highlighting on, when the terminal has colors.
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
