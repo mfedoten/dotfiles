@@ -30,6 +30,7 @@ Plugin 'gmarik/vundle'
 Plugin 'ciaranm/securemodelines'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-rooter'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -538,6 +539,13 @@ let g:tmux_navigator_disable_when_zoomed = 1
 " }}}
 
 " Set appearance ------------------------------------------------------------------------------- {{{
+
+" Yggdroot/indentLine -------------------------------------------------------------------------- {{{
+let g:indentLine_setColors = 1
+let g:indentLine_char = '︙'
+let g:indentLine_enabled = 0
+nnoremap <silent> <Leader>ti :IndentLinesToggle<cr>
+" }}}
 
 " Vim-airline ---------------------------------------------------------------------------------- {{{
     " Requires power line fonts. How to get it described here:
