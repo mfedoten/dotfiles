@@ -527,8 +527,8 @@ function! VimuxSlime(text)
   endif
 endfunction
 
-vnoremap <localleader>z "+y :call VimuxSlime(@+)<CR>j
-nnoremap <localleader>z V"+y :call VimuxSlime(@+)<CR>j
+vnoremap <localleader>z "+y :call VimuxSlime(@+)<CR>`]j
+nnoremap <localleader>z V"+y :call VimuxSlime(@+)<CR>`]j
 
 " }}}
 
