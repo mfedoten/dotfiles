@@ -204,10 +204,9 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 - vim plugins
 - find a good todo tool
 - finish configuring Vimux
-- tmux: copy to / paste from clipboard
 - tmux: completion in session names
 - tmux-open
 - parse pip requirements
 - jedi-vim + venv
-- vim: cd per buffer
 - vim-mode in bash + remap <m-.>
+- show git needs push/pull in prompt, suspended jobs too
