@@ -37,7 +37,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 
     # Update MacPorts, installed packages and locateDB
-    alias update='sudo port selfupdate; sudo port upgrade outdated; sudo port clean --all installed; sudo port uninstall --follow-dependencies inactive; LC_ALL='C'; sudo updatedb'
+    alias update='brew update; brew upgrade; brew cleanup;  LC_ALL='C'; sudo updatedb'
 
     # Empty the Trash on all mounted volumes and the main HDD
     # Also, clear Apple’s System Logs to improve shell startup speed
@@ -54,10 +54,6 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
     alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
-    # Update pip packages
-    alias uppip='pip list --outdated --format=freeze | grep -vE "(^\-e|conda)" | cut -d "=" -f 1 | xargs -n1 pip install -U'
-    
-
 elif [[ "$OSTYPE" =~ ^linux ]]; then
     alias pbc='xclip -selection clipboard'
     alias pbp='xclip -selection clipboard -o'
@@ -68,10 +64,10 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
 
     # Update APT, installed packages and locateDB
     alias update='sudo apt-get -qq update; sudo apt-get -qq dist-upgrade; sudo apt autoremove; sudo apt-get autoclean; sudo updatedb'
-
-    # Update pip packages
-    alias uppip='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1 | xargs -n1 pip install -U'
 fi
+
+# Update pip packages
+alias uppip='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1 | xargs -n1 pip install -U'
 
 # Get week number
 alias week='date +%V'
