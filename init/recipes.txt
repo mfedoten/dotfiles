@@ -1,0 +1,23 @@
+git
+git-extras
+coreutils --with-default-names
+findutils --with-default-names
+grep --with-default-names
+wget
+bash-completion
+tmux
+psutils
+llvm
+gcc
+gdb
+cmake
+ImageMagick
+gdk-pixbuf
+pandoc
+cowsay
+figlet
+fortune
+sl
+shared-mime-info
+tree
+ctags

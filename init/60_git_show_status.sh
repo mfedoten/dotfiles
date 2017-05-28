@@ -17,5 +17,5 @@ git clone https://github.com/MikePearce/Git-Status.git
 cd Git-Status
 sudo cp show_status /usr/local/bin
 sudo chmod +x /usr/local/bin/show_status
-cd -
+cd ..
 sudo rm -r Git-Status

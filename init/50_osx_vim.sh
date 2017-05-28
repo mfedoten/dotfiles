@@ -18,8 +18,9 @@ export LDFLAGS=-L/usr/lib
 ./configure --with-features=huge \
             --enable-multibyte \
             --enable-rubyinterp=yes \
+            --enable-pythoninterp=yes \
             --enable-python3interp=yes \
-            --with-python3-config-dir=/opt/local/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/config-3.6m-darwin \
+            --with-python3-config-dir=$HOME/anaconda/lib/python3.6/config-3.6m-x86_64-linux-gnu \
             --enable-perlinterp=yes \
             --enable-luainterp=yes \
             --enable-cscope

@@ -1,0 +1,24 @@
+# Applications
+adobe-acrobat-reader
+avast-mac-security
+dropbox
+firefox
+flux
+google-chrome
+iterm2
+libreoffice
+skim
+skype
+textmate
+transmission
+unrarx
+vlc
+# Quick Look plugins
+qlcolorcode
+qlmarkdown
+qlstephen
+quicklook-csv
+quicklook-json
+quicknfo
+suspicious-package
+webpquicklook

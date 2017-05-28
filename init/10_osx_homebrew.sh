@@ -77,3 +77,41 @@ function brew_install_recipes() {
     done
   fi
 }
+
+
+###########################
+#     INSTALL RECIPES     #
+###########################
+# Read recipes into array
+mapfile -t recipes < recipes.txt
+
+brew_install_recipes
+
+
+#########################
+#     INSTALL CASKS     #
+#########################
+# Ensure the cask keg and recipe are installed.
+kegs=(caskroom/cask)
+brew_tap_kegs
+recipes=(brew-cask)
+brew_install_recipes
+
+# Exit if, for some reason, cask is not installed.
+[[ ! "$(brew ls --versions brew-cask)" ]] && e_error "Brew-cask failed to install." && return 1
+
+# Hack to show the first-run brew-cask password prompt immediately.
+brew cask info this-is-somewhat-annoying 2>/dev/null
+
+# Read casks into array
+mapfile -t casks < casks.txt
+
+casks=($(setdiff "${casks[*]}" "$(brew cask list 2>/dev/null)"))
+if (( ${#casks[@]} > 0 )); then
+  e_header "Installing Homebrew casks: ${casks[*]}"
+  for cask in "${casks[@]}"; do
+    brew cask install $cask
+  done
+  brew cask cleanup
+fi
+

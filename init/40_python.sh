@@ -11,10 +11,31 @@ set -e
 SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SRC_DIR"
 
+# Download the installer
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+    curl -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+elif [[ "$OSTYPE" =~ ^linux ]]; then
+    curl -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+fi
+
+# At the installations specify default location as ~/anaconda
+bash miniconda.sh
+rm miniconda.sh
+
+# Export path for now
+export PATH=$PATH:$HOME/anaconda
+
+# Update conda
+conda update conda
+
+# Install PqQt5 with conda
+conda install qypt
+
 # Install all required packages
 pip install -r pip-packages.txt
 # Upgrade outdated (except conda and packages installed with -e option)
 pip list --outdated --format=freeze | grep -vE '(^\-e|conda)' | cut -d '=' -f 1 | xargs -n1 pip install -U
+
 # Install Notebook extensions
 jupyter nbextension enable --py --sys-prefix ipympl
 sudo `type -p jupyter` nbextension install https://bitbucket.org/ipre/calico/downloads/calico-spell-check-1.0.zip
