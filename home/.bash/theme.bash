@@ -5,8 +5,8 @@
 ###################################
 # Uncomment if you want Cowsay
 # if [[ "$OSTYPE" =~ ^darwin ]]; then
-  # cow_dir=/opt/local/share/cowsay/cows
-  # fort_dir=/opt/local/share/games/fortune
+  # cow_dir=/usr/local/share/cowsay/cows
+  # fort_dir=/usr/local/share/games/fortune
 # elif [[ "$OSTYPE" =~ ^linux ]]; then
   # cow_dir=/usr/share/cowsay/cows
   # fort_dir=/usr/games/fortune
