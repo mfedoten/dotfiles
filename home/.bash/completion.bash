@@ -12,8 +12,8 @@ if ! shopt -oq posix; then
 fi
 
 # Enable completion form MacPorts
-if [ -f $(brew --prefix)/etc/bash_completion.sh ]; then
-    . $(brew --prefix)/etc/bash_completion.sh
+if [ -f /usr/local/etc/bash_completion.sh ]; then
+    . /usr/local/etc/bash_completion.sh
 fi
 
 # Improved commands completion
@@ -39,8 +39,8 @@ _pip_completion()
 }
 complete -o default -F _pip_completion pip
 
-if [ -f $(brew --prefix)/etc/bash_completion.d/git-completion.bash ]; then
-    . $(brew --prefix)/etc/bash_completion.d/git-completion.bash
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+    . /usr/local/etc/bash_completion.d/git-completion.bash
     __git_complete g __git_main
 elif [ -f /usr/share/bash-completion/completions/git ]; then
     . /usr/share/bash-completion/completions/git
