@@ -404,11 +404,7 @@ let g:rooter_silent_chdir = 1
     " m: Show the NERD Tree menu
     " R: Refresh thez tree, useful if files change outside of Vim
     " ?: Toggle NERD Tree's quick help }}}
-noremap <F2> :NERDTreeToggle<CR>
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeChDirMode = 2
-let g:NERDTreeRespectWildIgnore = 1
-" let NERDTreeIgnore=[ '\.DS_Store' ]
+" The mappings and settings are in ~/.vim/after/plugin/nerdtree.vim
 " }}}
 
 " CTRL-P: fast file navigation ----------------------------------------------------------------- {{{
@@ -709,7 +705,8 @@ let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
 let g:clang_complete_patterns = 1
 let g:clang_auto_select = 1
-let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/"
+let g:clang_library_path = "/usr/lib/llvm-3.8/lib/libclang-3.8.so.1"
+"let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/"
 let g:clang_user_options='|| exit 0'
 " }}}
 
@@ -863,7 +860,9 @@ nnoremap <F8> :Autoformat<cr>
 " NERDCommenter: makes commenting easier ------------------------------------------------------- {{{
     " http://spf13.com/post/vim-plugins-nerd-commenter
 let g:NERDSpaceDelims = 1         " adds extra spaces to comment
+let g:NERDDefaultAlign='both'     " align comments to the left
 let g:NERDCompactSexyComs = 1     " make block comments more compact
+let g:NERDCustomDelimiters = {'python': {'left': '#'}} " otherwise two extra spaces in python
 " }}}
 
 " }}}
@@ -922,7 +921,7 @@ augroup END
 augroup ft_py
     au!
     autocmd FileType python setlocal formatoptions=cqj
-    autocmd FileType python let g:NERDSpaceDelims=0
+    " autocmd FileType python let g:NERDSpaceDelims=0
 augroup END
 " Latex
 augroup ft_tex
