@@ -32,7 +32,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
-Plugin 'airblade/vim-rooter'
+" Plugin 'airblade/vim-rooter'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'nvie/vim-togglemouse'
@@ -230,6 +230,9 @@ augroup vimrcEx
       au BufEnter * if exists('b:winview') && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
     endif
 
+    " change CWD to the file's directory
+    set autochdir
+
     " For all text and python files set 'textwidth' to 80 characters.
     autocmd FileType text,python,vim setlocal textwidth=100
     autocmd FileType tex,markdown setlocal spell
@@ -388,9 +391,9 @@ set tags+=.git/tags
 nnoremap <leader>R :call RenameFile()<cr>
 
 " Vim-Rooter: change cwd to the project root --------------------------------------------------- {{{
-let g:rooter_change_directory_for_non_project_files = 'current'
-let g:rooter_use_lcd = 1
-let g:rooter_silent_chdir = 1
+" let g:rooter_change_directory_for_non_project_files = 'current'
+" let g:rooter_use_lcd = 1
+" let g:rooter_silent_chdir = 1
 " let g:rooter_resolve_links = 1
 " }}}
 
