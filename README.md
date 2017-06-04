@@ -21,8 +21,8 @@ Or just install Xcode from Apple store and
 sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/
 ```
 
-#### MacPorts
-Next, download and install MacPorts from [here](https://www.macports.org/install.php). After that, run `./init/10_osx_ports.sh` to install all required ports listed in `portnames.txt`.
+#### HomeBrew
+Next, run `./init/10_osx_homebrew.sh` to download and install Homebrew. and all required packages listed in `recipes.txt`.
 
 #### Upgrade bash
 Depending on the bash shipped with your system, it might be outdated. In order to update it, set a desired version of bash in `./init/20_osx_bash_update.sh` and then just run the script. It's not really necessary, but some useful features (like auto-completion in vim), won't work on bash versions older than 4.
