@@ -595,9 +595,9 @@ endif
 if has("gui_running")
   if has('macunix')
     set transparency=0                   " No transparency
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\:h12 " Fonts for powerline
+    set guifont=Menlo\ Regular\ for\ Powerline\:h12 " Fonts for powerline
   elseif has('unix')
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10 " Fonts for powerline
+    set guifont=Menlo\ Regular\ for\ Powerline\ 10 " Fonts for powerline
   endif
     set guicursor+=a:blinkon0            " No blinking cursor
 endif

@@ -15,10 +15,10 @@ cd "$SRC_DIR"
 if [[ ! -d $HOME/.vim/bundle/vundle ]]; then
     echo "Installing Vundle..."
     git clone https://github.com/VundleVim/Vundle.vim $HOME/.vim/bundle/vundle
-    vim +PluginInstall +qall
 else
     echo 'Vundle is already installed'
 fi
+vim +PluginInstall +qall
 
 # Install Powerline fonts
 cd "$SRC_DIR"

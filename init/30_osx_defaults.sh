@@ -34,14 +34,14 @@ defaults write com.apple.systemuiserver menuExtras -array \
 	"/System/Library/CoreServices/Menu Extras/Battery.menu" \
 	"/System/Library/CoreServices/Menu Extras/Clock.menu"
 
-# Set highlight color to purpel
+# Set highlight color to purple
 defaults write NSGlobalDomain AppleHighlightColor -string "0.913700 0.721600 1.000000"
 
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
 # Always show scrollbars
-defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
 # Increase window resize speed for Cocoa applications
@@ -71,7 +71,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write com.apple.CrashReporter DialogType -string "none"
 
 # Disable Notification Center and remove the menu bar icon
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
@@ -100,13 +100,13 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
 
-# Set Desktop as the default location for new Finder windows
+# Set Documents as the default location for new Finder windows
 # For other paths, use `PfDe` and `file:///full/path/here/`
 defaults write com.apple.finder NewWindowTarget -string "PfLo"
-defaults write com.apple.finder NewWindowTargetPath -string "file:///Applications/"
+defaults write com.apple.finder NewWindowTargetPath -string "file:///Documents/"
 
 # Show icons for hard drives, servers, and removable media on the desktop
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
@@ -181,7 +181,6 @@ tell application "Terminal"
 	local windowID
 	set themeNameSL to "Solarized Light"
 	set themeNameSD to "Solarized Dark"
-    set themeNameSea to "Seafoam"
 
 	(* Store the IDs of all the open terminal windows. *)
 	set initialOpenedWindows to id of every window
@@ -189,25 +188,19 @@ tell application "Terminal"
     (* Open the custom theme (light) so that it gets added to the list
 	   of available terminal themes (note: this will open two
 	   additional terminal windows). *)
-	do shell script "open '$DOTFILES_DIR/term_colors/" & themeNameSL & ".terminal'"
+	do shell script "open '$DOTFILES_DIR/extras/" & themeNameSL & ".terminal'"
 
 	(* Wait a little bit to ensure that the custom theme is added. *)
 	delay 1
 
 	(* Now add dark theme. *)
-	do shell script "open '$DOTFILES_DIR/term_colors/" & themeNameSD & ".terminal'"
+	do shell script "open '$DOTFILES_DIR/extras/" & themeNameSD & ".terminal'"
 
 	(* Wait a little bit to ensure that the custom theme is added. *)
 	delay 1
 
-    (* Repeat for the remaining themes*)
-	do shell script "open '$DOTFILES_DIR/term_colors/" & themeNameHyb & ".terminal'"
-	delay 1
-	do shell script "open '$DOTFILES_DIR/term_colors/" & themeNameSea & ".terminal'"
-	delay 1
-
 	(* Set the custom theme as the default terminal theme. *)
-	set default settings to settings set themeNameHyb
+	set default settings to settings set themeNameSD
 
 	(* Get the IDs of all the currently opened terminal windows. *)
 	set allOpenedWindows to id of every window
@@ -223,7 +216,7 @@ tell application "Terminal"
 		   to remove the need to close them in order for the custom
 		   theme to be applied. *)
 		else
-			set current settings of tabs of (every window whose id is windowID) to settings set themeName
+			set current settings of tabs of (every window whose id is windowID) to settings set themeNameSD
 		end if
 
 	end repeat
@@ -233,18 +226,15 @@ end tell
 EOD
 
 # Install the Solarized Dark theme for iTerm
-open "${DOTFILES_DIR}/term_colors/Solarized Dark.itermcolors"
-open "${DOTFILES_DIR}/term_colors/Solarized Light.itermcolors"
-open "${DOTFILES_DIR}/term_colors/Seafoam Pastel.itermcolors"
-open "${DOTFILES_DIR}/term_colors/Monokai.itermcolors"
-open "${DOTFILES_DIR}/term_colors/Novel.itermcolors"
+open "${DOTFILES_DIR}/extras/Solarized Dark.itermcolors"
+open "${DOTFILES_DIR}/extras/Solarized Light.itermcolors"
+open "${DOTFILES_DIR}/extras/Monokai.itermcolors"
+open "${DOTFILES_DIR}/extras/Novel.itermcolors"
 
-# Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
-
-# Always reopen windows from last session
-defaults write com.apple.Terminal NSQuitAlwaysKeepsWindows -bool true
-defaults write com.googlecode.iterm2 NSQuitAlwaysKeepsWindows -bool true
+# Specify the preferences directory
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${DOTFILES_DIR}/extras"
+# Tell iTerm2 to use the custom preferences in the directory
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
 ###############################################################################
 # Time Machine                                                                #
@@ -259,7 +249,7 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Use `~/Downloads//Torrents` to store incomplete downloads
 defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
-defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads"
+defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Torrents"
 
 # Prompt for confirmation before downloading
 defaults write org.m0k.transmission DownloadAsk -bool true

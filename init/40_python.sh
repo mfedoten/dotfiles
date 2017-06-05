@@ -23,13 +23,13 @@ bash miniconda.sh
 rm miniconda.sh
 
 # Export path for now
-export PATH=$PATH:$HOME/anaconda
+export PATH=$HOME/anaconda/bin:$PATH
 
 # Update conda
 conda update conda
 
 # Install PqQt5 with conda
-conda install qypt
+conda install pyqt
 
 # Install all required packages
 pip install -r pip-packages.txt
