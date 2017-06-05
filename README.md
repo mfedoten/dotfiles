@@ -22,13 +22,10 @@ sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/
 ```
 
 #### HomeBrew
-Next, run `./init/10_osx_homebrew.sh` to download and install Homebrew. and all required packages listed in `recipes.txt`.
+Next, run `./init/10_osx_homebrew.sh` to download and install Homebrew and all the packages`. `./init/12_osx_brew_casks.sh` will install the casks.
 
 #### Upgrade bash
 Depending on the bash shipped with your system, it might be outdated. In order to update it, set a desired version of bash in `./init/20_osx_bash_update.sh` and then just run the script. It's not really necessary, but some useful features (like auto-completion in vim), won't work on bash versions older than 4.
-
-#### iTerm2
-Switching from Terminal to [iTerm2](https://www.iterm2.com/) is a good idea.
 
 #### OSX defaults
 `./init/30_osx_defaults.sh` sets some nice default settings. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized), printing full path in heading of Finder windows etc.
@@ -46,7 +43,7 @@ P.S. on Ubuntu you might want to install a more recent version of git via [PPA](
 Add your credentials:
 ```
 git config --global user.name "Your Name"
-git config --global user.email yourname@example.com
+git config --global user.email "yourname@example.com"
 ```
 Check if you have SSH installed:
 ```
@@ -65,11 +62,11 @@ And now add it to the [list of recognized keys](https://github.com/settings/keys
 
 ## Python
 There are several ways to install Python:
-* Install with [Anaconda](https://docs.continuum.io/anaconda/).
+* Install with [Miniconda](https://conda.io/miniconda.html) or [Anaconda](https://docs.continuum.io/anaconda/).
 * Install using package managers. **On Ubuntu** using `apt-get` (see [this example](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04). The problem here is that usually it contains older version of Python, but you can try to install it with PPA (an [example](http://askubuntu.com/questions/865554/how-do-i-install-python-3-6-using-apt-get)). **On OSX** you can easily install it with MacPorts. You can run `./init/40_osx_python.sh` to install Python 2.7 and Python 3.6, it also sets `python36` as default `python` and installs pip and PyQt5. **P.S** to check which Python version pip is using run `pip -V`.
 * **Ubuntu:** compile from source. Look [here](https://tecadmin.net/install-python-3-6-ubuntu-linuxmint/), [here](http://stackoverflow.com/questions/8097161/how-would-i-build-python-myself-from-source-code-on-ubuntu), and [here](https://docs.python.org/2/using/unix.html), good luck! **OSX:** install from official [Python's website](https://www.python.org/downloads/)
 
-After finally installing Python and checking that it works without crashing your system, you can now run `./init/41_pip.sh` which will install all packages (+ notebook extensions) from `pip-packages.txt`.
+I decided to go wiht Miniconda installation for now, so `./init/40_pip.sh` will fetch and install python allong wiht all pip packages (+ notebook extensions) from `pip-packages.txt`.
 
 ## Vim
 You can always find the latest(-ish) version of vim either through package manager or form official repo.
@@ -96,23 +93,12 @@ Put `eval $(thefuck --alias)` in your `~/.bashrc` or `~/.bash/aliases.bash` or w
 
 ### Terminal
 #### OSX: iTerm and Terminal colors
-`extras/` contains different colors for Terminal, iTerm also a config (including colors).
+`extras/` contains different colors for Terminal/iTerm2, and a config file for iTerm.
 
 #### Ubuntu: Tilda's config
 `extras/` folder contains `config_0`, a [Tilda's](https://github.com/lanoxx/tilda) configuration file which should be copied in `~/.tilda/`.
 
 ### Tmux
-#### Italics
-Tmux don't really support italics out-of-the-box. To fix that go [here](https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/), [here](https://www.reddit.com/r/vim/comments/24g8r8/italics_in_terminal_vim_and_tmux/), or [here](http://muddygoat.org/articles/italic-terminal-tmux) get enlightened and run
-
-```
-cd extras/
-tic tmux.terminfo
-killall tmux
-```
-
-You should now enjoy italics in your tmux+vim combo, as the rest of the config is in the dotfiles.
-
 #### Bash completion
 There is a bash completion script in `extras` folder, you just need to copy it somewhere sane and source from `bashrc`, which is already done in this dotfiles, assuming you did the following:
 
@@ -126,6 +112,21 @@ sudo cp {extras,/opt/completions}/tmux.completion.bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 The rest is in `home/.tmux.conf`. To install a new plugin put it in the `.tmux.conf`, source it and press `prefix` + <kbd>I</kbd>.
+
+#### Italics
+Italics are not necessarily supported out-of-the-box in all terminals. To fix that go [here](https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/), [here](https://www.reddit.com/r/vim/comments/24g8r8/italics_in_terminal_vim_and_tmux/), or [here](http://muddygoat.org/articles/italic-terminal-tmux) get enlightened and run
+
+```
+cd extras/
+tic xterm-256color-italic.terminfo
+tic tmux.terminfo
+killall tmux
+```
+
+You should now enjoy italics in your tmux+vim+iterm combo, as the rest of the config is in the dotfiles.
+
+### Menlo font
+`extras` also contains a folder with Menlo font patched for Powerline, install as described [here](https://github.com/abertsch/Menlo-for-Powerline).
 
 ### Key Remap
 I got used to Mac keyboard where `~` is located on the bottom row. So to remap it on Ubuntu > 16.04 I had to edit keys values in `/usr/share/X11/xkb/symbols/`. In order not to repeat this procedure again, just do the following:
@@ -170,17 +171,6 @@ Like that the script will output each command it's executing prepended with plus
 ## Other programs
 Here are some other programs I have on my machine. They require mostly manual installation, which pretty straightforward. I also included links to download pages / instructions how to install.
 
-### OSX
-* [MacTex](https://tug.org/mactex/). I prefer manual installation from [here](https://tug.org/mactex/mactex-download.html). It will install TexLive to `/usr/local/` and add `/Applications/TeX` with some GUI programs like BibDesk, TeXShop etc., which can be uninstalled if not needed.
-* [Google Chrome](https://www.google.com/chrome/browser/desktop/) and [Firefox](https://www.mozilla.org/en-US/firefox/new/).
-* [Acrobat Reader](https://get.adobe.com/reader/) to view `pdf` files and [Skim](http://skim-app.sourceforge.net/) to work with latex: latexmk constant preview + Skim is a killer.
-* [Dropbox](https://www.dropbox.com/install) for quick shares.
-* To work with LaTex document normally I use Vim + [LaTeX-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) + [Skim](http://skim-app.sourceforge.net/), but if I need GUI I prefer [TexStudio](http://www.texstudio.org/) or [TexMaker](http://www.xm1math.net/texmaker/download.html#macosx).
-* [Zotero](https://www.zotero.org/download/) as bibliography manager **+** [Better Bib(La)TeX](https://github.com/ZotPlus/zotero-better-bibtex) for decent citation export.
-* [Jumpcut](http://jumpcut.sourceforge.net/) is a small but useful tool to keep your Cut/Copy history.
-* [TexMate](http://macromates.com/download) as alternative to Vim.
-* [DefaltApp](http://www.rubicode.com/Software/Bundles.html#RCDefaultApp) very usefull if you want to set default app for a group of different files, instead of "Get info" for each specific filetype you can configure all filetypes, which should be open with a particular app.
-
 ### Ubuntu
 * [Chromium](https://www.chromium.org/getting-involved/download-chromium)
 * [Okular](https://okular.kde.org/) to view `pdf` files.
@@ -203,10 +193,10 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 ## TODO
 - vim plugins
 - find a good todo tool
-- finish configuring Vimux
+- finish configuring Vimux for IPython
 - tmux: completion in session names
 - tmux-open
 - parse pip requirements
 - jedi-vim + venv
-- vim-mode in bash + remap <m-.>
+- vim-mode in bash + remap <M-.>
 - show git needs push/pull in prompt, suspended jobs too
