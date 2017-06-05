@@ -93,23 +93,12 @@ Put `eval $(thefuck --alias)` in your `~/.bashrc` or `~/.bash/aliases.bash` or w
 
 ### Terminal
 #### OSX: iTerm and Terminal colors
-`extras/` contains different colors for Terminal, iTerm also a config (including colors).
+`extras/` contains different colors for Terminal/iTerm2, and a config file for iTerm.
 
 #### Ubuntu: Tilda's config
 `extras/` folder contains `config_0`, a [Tilda's](https://github.com/lanoxx/tilda) configuration file which should be copied in `~/.tilda/`.
 
 ### Tmux
-#### Italics
-Tmux don't really support italics out-of-the-box. To fix that go [here](https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/), [here](https://www.reddit.com/r/vim/comments/24g8r8/italics_in_terminal_vim_and_tmux/), or [here](http://muddygoat.org/articles/italic-terminal-tmux) get enlightened and run
-
-```
-cd extras/
-tic tmux.terminfo
-killall tmux
-```
-
-You should now enjoy italics in your tmux+vim combo, as the rest of the config is in the dotfiles.
-
 #### Bash completion
 There is a bash completion script in `extras` folder, you just need to copy it somewhere sane and source from `bashrc`, which is already done in this dotfiles, assuming you did the following:
 
@@ -123,6 +112,21 @@ sudo cp {extras,/opt/completions}/tmux.completion.bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 The rest is in `home/.tmux.conf`. To install a new plugin put it in the `.tmux.conf`, source it and press `prefix` + <kbd>I</kbd>.
+
+#### Italics
+Italics are not necessarily supported out-of-the-box in all terminals. To fix that go [here](https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/), [here](https://www.reddit.com/r/vim/comments/24g8r8/italics_in_terminal_vim_and_tmux/), or [here](http://muddygoat.org/articles/italic-terminal-tmux) get enlightened and run
+
+```
+cd extras/
+tic xterm-256color-italic.terminfo
+tic tmux.terminfo
+killall tmux
+```
+
+You should now enjoy italics in your tmux+vim+iterm combo, as the rest of the config is in the dotfiles.
+
+### Menlo font
+`extras` also contains a folder with Menlo font patched for Powerline, install as described [here](https://github.com/abertsch/Menlo-for-Powerline).
 
 ### Key Remap
 I got used to Mac keyboard where `~` is located on the bottom row. So to remap it on Ubuntu > 16.04 I had to edit keys values in `/usr/share/X11/xkb/symbols/`. In order not to repeat this procedure again, just do the following:
