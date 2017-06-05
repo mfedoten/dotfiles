@@ -2,11 +2,6 @@
 
 Here are my dotfiles, an attempt to make process of setting up new machine less painful.
 
-The whole process consist of three parts:
-- Manually install some applications / set some defaults.
-- Run scripts to install some of the important stuff, like MacPorts/APT packages, Python etc.
-- Link dotfiles from this repository to dotfiles in my home folder.
-
 ## Start here
 Download this repo and follow the instruction below to start setting your environment. These instructions differ slightly for Linux and OSX, so choose the one below.
 
@@ -30,10 +25,11 @@ Depending on the bash shipped with your system, it might be outdated. In order t
 #### OSX defaults
 `./init/30_osx_defaults.sh` sets some nice default settings. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized), printing full path in heading of Finder windows etc.
 
-### Ubuntu
 
+### Ubuntu
 #### APT packages
 Running `./init/10_ubuntu_apt.sh` will update APT and installs all packages listed in `init/apt-packages.txt`. Or you can always install the packages manually.
+
 
 ## Git
 After all packages were installed, it's a good idea to configure git.
@@ -69,8 +65,10 @@ There are several ways to install Python:
 I decided to go wiht Miniconda installation for now, so `./init/40_pip.sh` will fetch and install python allong wiht all pip packages (+ notebook extensions) from `pip-packages.txt`.
 
 ## Vim
-You can always find the latest(-ish) version of vim either through package manager or form official repo.
-In case you want to compile it manually, here's what you ought to do. Run either `./init/50_osx_vim.sh` or `./init/50_ubuntu_vim.sh` based on your system. **Don't forget to change Python's config dir to match your python**. More info on how to compile vim from source on OSX can be found [here](http://tartley.com/?p=1355), for Ubuntu check [here](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source) and [here](https://gist.github.com/odiumediae/3b22d09b62e9acb7788baf6fdbb77cf8). On Ubuntu it's a good idea to use `sudo checkinstall` instead of `sudo make install`, then you can easily deinstall your vim with `dpkg -r [compiled-vim]` and don't forget to change package's name to something meaningfull when checkinstall asks you to.
+On Ubuntu, you can always find the latest(-ish) version of vim either through package manager or form official repo.
+In case you want to compile it manually, here's what you ought to do. Run either `./init/50_osx_vim.sh` or `./init/50_ubuntu_vim.sh` based on your system. **Don't forget to change Python's config dir to match your python**. More info on how to compile vim from source on OSX can be found [here](http://tartley.com/?p=1355), for Ubuntu check [here](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source) and [here](https://gist.github.com/odiumediae/3b22d09b62e9acb7788baf6fdbb77cf8).
+
+On Ubuntu it's a good idea to use `sudo checkinstall` instead of `sudo make install`, then you can easily deinstall your vim with `dpkg -r [compiled-vim]` and don't forget to change package's name to something meaningfull when checkinstall asks you to.
 
 **P.S.** when compiling vim with both python2 and python3, well [they don't play nicely](http://stackoverflow.com/a/23656675), so you'll probably have to choose either of them. Or [google it](http://unix.stackexchange.com/questions/305415/enabling-python3-on-vim-in-fedora-24).
 
@@ -89,10 +87,15 @@ sudo apt update
 sudo apt install python3-dev python3-pip
 pip3 install --user thefuck
 ```
+or on OSX
+```
+pip install thefuck
+```
+
 Put `eval $(thefuck --alias)` in your `~/.bashrc` or `~/.bash/aliases.bash` or wherever you store your aliases. You can read more on the [GitHub page](https://github.com/nvbn/thefuck).
 
 ### Terminal
-#### OSX: iTerm and Terminal colors
+#### OSX: iTerm and Terminal settings
 `extras/` contains different colors for Terminal/iTerm2, and a config file for iTerm.
 
 #### Ubuntu: Tilda's config
@@ -138,19 +141,13 @@ I'm trying not to screw up here, that's why the first line is to create a backup
 
 
 ## Dotfiles
-Next, we need to symlink all files in `home` directory. To do so I at first was using [Dotbot](https://github.com/anishathalye/dotbot#configuration), which is just great: it's clean, lightweight and simple. For more information visit [Dotbot page](https://github.com/anishathalye/dotbot#configuration).
-
-The problem with Dotbot is that it doesn't backup dotfiles in home directory. Instead I decided to use custom script, which always links files but ask user for backup. There are several scenarios:
+Next, we need to symlink all files in `home` directory. I have a custom script, which always links files but ask user for backup. There are several scenarios:
 - file already exist and is linked to a dotfile in your repository -> nothing happens.
 - file exists and it is identical to your dotfiles -> file is replaced with symlink, no backup.
 - file exist and differs from your dotfile -> file is symlinked to your dotfile, user is prompted to confirm backup.
 - file doesn't exist -> symbolic link is created.
 
-The script is mostly based on Simon Eskildsen's [linker.sh script](https://github.com/Sirupsen/dotfiles/blob/master/linker.sh), which is totally great. I just added two modifications.
-
-First one is files backup. And second is that this script copies files recursively, instead of just linking the whole folder and overwriting its contents. I decided to do so because I prefer to have some "local" configuration, specific to each machine (e.g. `PATH` might be different). To do so I keep them locally on each machine, append `_local` to the names and add this suffix to `.gitignore`, that way they are still linked, but not overwritten. Ok, I understand that it's not the best way to do version control and that there are more [sophisticated ways](http://www.anishathalye.com/2014/08/03/managing-your-dotfiles/#local-customization). Maybe later I'll fix this, one day, I guess.. Another fix I want to do is to think of the way how to create backup directories at the moment of backup. For now it creates `backups` directory with all subfolders in the very beginning. It's done so that structure of `~` would be preserved and dotfiles wouldn't just be scattered over `backups` dir.
-
-Before linking files from you repository the scripts first checks dotfiles in your home `~/` directory for broken links and deletes them.
+The script is mostly based on Simon Eskildsen's [linker.sh script](https://github.com/Sirupsen/dotfiles/blob/master/linker.sh), to which I added few modifications. Before linking files from you repository the scripts first checks dotfiles in your home `~/` directory for broken links and deletes them.
 
 To link all dotfiles in your repository just type in:
 ```
@@ -158,7 +155,7 @@ To link all dotfiles in your repository just type in:
 ```
 
 ## Warning
-All this scripts worked fine for me, but might not work on your machine, so proceed with care. Never copy anything blindly, check what is inside and adjust to your needs. Each script will exit as soon as any command in the scrip fails. If you want to see what it's doing, in the beginning of each script (around `line 8`) you should find the following:
+All this scripts worked fine for me, but might not work on your machine, so proceed with care. Never copy anything blindly, check what is inside and adjust to your workflow. Each script will exit as soon as any command in the scrip fails. If you want to see what is being executed, in the beginning of each script (around `line 8`) you should find the following:
 ```
 set -e
 ```
