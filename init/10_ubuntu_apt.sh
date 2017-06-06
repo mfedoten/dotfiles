@@ -41,6 +41,7 @@ packages=(
   exuberant-ctags
   smbclient
   samba
+  okular
 )
 
 

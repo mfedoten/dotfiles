@@ -17,7 +17,7 @@ sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/
 ```
 
 #### HomeBrew
-Next, run `./init/10_osx_homebrew.sh` to download and install Homebrew and all the packages`. `./init/12_osx_brew_casks.sh` will install the casks.
+Next, run `./init/10_osx_homebrew.sh` to download and install Homebrew and all the packages`. `./init/11_osx_brew_casks.sh` will install the casks.
 
 #### Upgrade bash
 Depending on the bash shipped with your system, it might be outdated. In order to update it, set a desired version of bash in `./init/20_osx_bash_update.sh` and then just run the script. It's not really necessary, but some useful features (like auto-completion in vim), won't work on bash versions older than 4.
@@ -164,16 +164,6 @@ change it to:
 set -ex
 ```
 Like that the script will output each command it's executing prepended with pluses.
-
-## Other programs
-Here are some other programs I have on my machine. They require mostly manual installation, which pretty straightforward. I also included links to download pages / instructions how to install.
-
-### Ubuntu
-* [Chromium](https://www.chromium.org/getting-involved/download-chromium)
-* [Okular](https://okular.kde.org/) to view `pdf` files.
-* [Dropbox](https://www.dropbox.com/install) for quick shares.
-* [PyCharm](https://www.jetbrains.com/pycharm/) as alternative to Vim, especially for debugging Python.
-* [SonarLint](www.sonarlint.org) for code analysis.
 
 ## Further reading
 If you don't know where to start, what all this mean, what the hell dotfiles are etc. Here are some resources and examples:

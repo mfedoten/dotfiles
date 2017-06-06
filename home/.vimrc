@@ -457,18 +457,15 @@ nnoremap <leader>ll :CtrlPBuffer<cr>
 set splitbelow          " Open new split below by default
 set splitright          " Open new vertical split on the right by default
 " Split the window with shortcuts
-nnoremap <leader>vs :vsplit<space>
-nnoremap <leader>s  :split<space>
+nnoremap <leader>v :vsplit<space>
+nnoremap <leader>s :split<space>
 " Make navigation between screens easier
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 "Two splits scrolling together
-nnoremap <leader>sb :set scrollbind!<cr>
-" Jump to the next/previous error in quickfix window
-nnoremap <leader>ln :lne<cr>
-nnoremap <leader>lp :lp<cr>
+" nnoremap <leader>sb :set scrollbind!<cr>
 " }}}
 
 " Fugitive ------------------------------------------------------------------------------------- {{{

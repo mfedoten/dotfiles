@@ -52,6 +52,7 @@ casks=(
   quicknfo
   suspicious-package
   webpquicklook
+  google-chrome-stable
 )
 e_header "Installing Homebrew casks: ${casks[*]}"
 brew cask install "${casks[@]}"
