@@ -34,6 +34,7 @@ packages=(
   bash-completion
   dconf-editor
   compizconfig-settings-manager
+  compiz-plugins
   ruby-full
   tmux
   checkinstall
