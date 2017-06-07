@@ -854,7 +854,10 @@ nnoremap <F8> :Autoformat<cr>
 
 " }}}
 
-" Comments, brackets --------------------------------------------------------------------------- {{{
+" Comments, brackets, text objects, etc. ------------------------------------------------------- {{{
+" vim-targets {{{
+let g:targets_seekRanges = 'cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
+" }}}
 
 " NERDCommenter: makes commenting easier ------------------------------------------------------- {{{
     " http://spf13.com/post/vim-plugins-nerd-commenter
