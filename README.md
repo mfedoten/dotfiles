@@ -181,8 +181,6 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 - vim plugins
 - find a good todo tool
 - finish configuring Vimux for IPython
-- tmux: completion in session names
-- tmux-open
 - parse pip requirements
 - jedi-vim + venv
 - vim-mode in bash + remap <M-.>
