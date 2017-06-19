@@ -67,7 +67,7 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
 fi
 
 # Update pip packages
-alias uppip='pip list --outdated | grep -v "^\-e" | cut -d " " -f 1 | xargs -n1 pip install -U'
+alias uppip='pip list --outdated --format=freeze | grep -vE "(^\-e|conda)" | cut -d '=' -f 1 | xargs -n1 pip install -U'
 
 # Get week number
 alias week='date +%V'
