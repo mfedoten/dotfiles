@@ -38,5 +38,6 @@ pip list --outdated --format=freeze | grep -vE '(^\-e|conda)' | cut -d '=' -f 1 
 
 # Install Notebook extensions
 jupyter nbextension enable --py --sys-prefix ipympl
+jupyter nbextension enable --py --sys-prefix widgetsnbextension
 sudo `type -p jupyter` nbextension install https://bitbucket.org/ipre/calico/downloads/calico-spell-check-1.0.zip
 jupyter nbextension enable calico-spell-check
