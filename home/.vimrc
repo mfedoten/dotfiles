@@ -246,7 +246,7 @@ augroup END
 " Write a file anyway, even if forgot to sudo
 cmap w!! w !sudo tee % >/dev/null
 " Execute selection in vim command line
-vnoremap <silent> <leader>ex "xy:@x<cr>
+vnoremap <silent> <leader>X "xy:@x<cr>
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U or CR after inserting a line break.
@@ -490,29 +490,8 @@ augroup END
 " Tmux ----------------------------------------------------------------------------------------- {{{
 " Vimux: sends portion of text from a vim buffer to a running tmux session --------------------- {{{
 let g:VimuxUseNearest = 1
-"function! VimuxSlime()
-"  call VimuxRunCommand("%cpaste")
-"  call VimuxSendKeys("Enter")
-"  call VimuxSendText(@r)
-"  call VimuxSendKeys("C-D")
-"endfunction
-
-"function! Send_To_Tmux(text) {{{
-"  let l:a = split(a:text, '\n\zs' )
-"  if len(l:a) > 1
-"      for line in a
-"        call VimuxSendText(line . "\n")
-"        sleep 2m
-"      endfor
-"      call VimuxSendKeys("Enter")
-"  else
-"      call VimuxSendText(l:a[0] . "\n")
-"  endif
-"endfunction }}}
-
-"vnoremap <localleader>z "ry :call VimuxSlime(@r)<CR>j
-"vnoremap <localleader>v "ry :call VimuxSendText(@r . "\n")<CR>j
-"nnoremap <localleader>v V"ry :call VimuxSendText(@r)<CR>j
+let g:VimuxOrientation = 'h'
+let g:VimuxHeight = 40
 
 function! VimuxSlime(text)
   if len(split(a:text, '\n\zs')) > 1
@@ -524,6 +503,7 @@ endfunction
 
 vnoremap <localleader>z "+y :call VimuxSlime(@+)<CR>`]j
 nnoremap <localleader>z V"+y :call VimuxSlime(@+)<CR>`]j
+nnoremap <localleader>V :VimuxRunCommand('ipython')<CR>
 
 " }}}
 
