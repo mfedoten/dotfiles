@@ -626,6 +626,7 @@ let g:syntastic_python_checkers = ['flake8']
 nnoremap <F7> :SyntasticCheck<cr>
 nnoremap <localleader>G :SyntasticToggleMode<cr>
 nnoremap <localleader>l :Errors<cr>
+let g:syntastic_enable_highlighting = 0
 " }}}
 
 " UltniSnips: snippet management for vim ------------------------------------------------------- {{{
