@@ -46,6 +46,7 @@
     br = branch
     up = rebase
     apply-ignore = !git ls-files -ci --exclude-standard -z | xargs -0r git rm --cached
+    ignored = !git ls-files -ci --exclude-standard
     checki = check-ignore -v --no-index
     spull = svn rebase
     spush = svn dcommit
