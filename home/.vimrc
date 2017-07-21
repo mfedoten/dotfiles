@@ -47,10 +47,10 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'python-mode/python-mode'
+" Plugin 'python-mode/python-mode'
 Plugin 'Rip-Rip/clang_complete'
 " Plugin 'lervag/vimtex'
-" Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'nelstrom/vim-markdown-folding'
@@ -721,37 +721,37 @@ let g:jedi#completions_enabled = 1
 
 " PyMode: Python support for vim --------------------------------------------------------------- {{{
 " let g:pymode_paths = []
-let g:pymode_trim_whitespaces = 0
-let g:pymode_options = 0
-let g:pymode_options_max_line_length = 100
-let g:pymode_options_colorcolumn = 0
-let g:pymode_python = 'python3'
-let g:pymode_indent = 0
-let g:pymode_folding = 0
-let g:pymode_motion = 1
-let g:pymode_doc = 0
-let g:pymode_doc_bind = ''
-let g:pymode_virtualenv = 1
-let g:pymode_lint = 0
-let g:pymode_rope = 0
-let g:pymode_rope_lookup_project = 1
-let g:pymode_rope_show_doc_bind = ''
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_rope_completion_bind = ''
-let g:pymode_rope_autoimport_modules = []
-let g:pymode_rope_goto_definition_bind=''
-let g:pymode_rope_goto_definition_cmd = 'vnew'
-let g:pymode_rope_rename_bind = '<localleader>rr'
-let g:pymode_rope_rename_module_bind = '<localleader>r1r'
-let g:pymode_rope_organize_imports_bind = '<localleader>ro'
-let g:pymode_rope_module_to_package_bind = '<localleader>r1p'
-let g:pymode_rope_extract_method_bind = '<localleader>rm'
-let g:pymode_rope_extract_variable_bind = '<localleader>rl'
-let g:pymode_rope_use_function_bind = '<localleader>ru'
-let g:pymode_rope_move_bind = '<localleader>rv'
-let g:pymode_rope_change_signature_bind = '<localleader>rs'
-let g:pymode_syntax = 0
+" let g:pymode_trim_whitespaces = 0
+" let g:pymode_options = 0
+" let g:pymode_options_max_line_length = 100
+" let g:pymode_options_colorcolumn = 0
+" let g:pymode_python = 'python3'
+" let g:pymode_indent = 0
+" let g:pymode_folding = 0
+" let g:pymode_motion = 1
+" let g:pymode_doc = 0
+" let g:pymode_doc_bind = ''
+" let g:pymode_virtualenv = 1
+" let g:pymode_lint = 0
+" let g:pymode_rope = 0
+" let g:pymode_rope_lookup_project = 1
+" let g:pymode_rope_show_doc_bind = ''
+" let g:pymode_rope_completion = 0
+" let g:pymode_rope_complete_on_dot = 0
+" let g:pymode_rope_completion_bind = ''
+" let g:pymode_rope_autoimport_modules = []
+" let g:pymode_rope_goto_definition_bind=''
+" let g:pymode_rope_goto_definition_cmd = 'vnew'
+" let g:pymode_rope_rename_bind = '<localleader>rr'
+" let g:pymode_rope_rename_module_bind = '<localleader>r1r'
+" let g:pymode_rope_organize_imports_bind = '<localleader>ro'
+" let g:pymode_rope_module_to_package_bind = '<localleader>r1p'
+" let g:pymode_rope_extract_method_bind = '<localleader>rm'
+" let g:pymode_rope_extract_variable_bind = '<localleader>rl'
+" let g:pymode_rope_use_function_bind = '<localleader>ru'
+" let g:pymode_rope_move_bind = '<localleader>rv'
+" let g:pymode_rope_change_signature_bind = '<localleader>rs'
+" let g:pymode_syntax = 0
 " }}}
 
 
