@@ -28,6 +28,7 @@ packages=(
   imagemagick
   cowsay
   fortunes
+  ppa-purge
   sl
   tree
   screenfetch
