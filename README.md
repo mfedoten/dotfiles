@@ -62,7 +62,7 @@ There are several ways to install Python:
 * Install using package managers. **On Ubuntu** using `apt-get` (see [this example](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04). The problem here is that usually it contains older version of Python, but you can try to install it with PPA (an [example](http://askubuntu.com/questions/865554/how-do-i-install-python-3-6-using-apt-get)). **On OSX** you can easily install it with MacPorts. You can run `./init/40_osx_python.sh` to install Python 2.7 and Python 3.6, it also sets `python36` as default `python` and installs pip and PyQt5. **P.S** to check which Python version pip is using run `pip -V`.
 * **Ubuntu:** compile from source. Look [here](https://tecadmin.net/install-python-3-6-ubuntu-linuxmint/), [here](http://stackoverflow.com/questions/8097161/how-would-i-build-python-myself-from-source-code-on-ubuntu), and [here](https://docs.python.org/2/using/unix.html), good luck! **OSX:** install from official [Python's website](https://www.python.org/downloads/)
 
-I decided to go wiht Miniconda installation for now, so `./init/40_pip.sh` will fetch and install python allong wiht all pip packages (+ notebook extensions) from `pip-packages.txt`.
+I decided to go wiht Miniconda installation for now, so `./init/40_python.sh` will fetch and install python allong wiht all pip packages (+ notebook extensions) from `pip-packages.txt`.
 
 ## Vim
 On Ubuntu, you can always find the latest(-ish) version of vim either through package manager or form official repo.
