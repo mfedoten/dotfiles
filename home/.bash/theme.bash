@@ -23,7 +23,7 @@ if [ ! -f $HOME/.bash-git-prompt/gitprompt.sh ]; then
     # Slightly changed prom by Mathias Bynens https://github.com/mathiasbynens/dotfiles/blob/master/.bash_prompt
     prompt_git() {
         local s='';
-        local p="${Cyan}";
+        local p="${Green}";
         local curr_branch='';
 
         # Check if the current directory is in a Git repository.
@@ -77,7 +77,7 @@ if [ ! -f $HOME/.bash-git-prompt/gitprompt.sh ]; then
     echo \$T \`"
 
     PS1="\[$Blue\]\w   "; # working directory
-    PS1+="\$(prompt_git \"\[$IWhite\]\")"; # Git repository details
+    PS1+="\$(prompt_git \"\[$IBlack\]\")"; # Git repository details
     PS1+="\n";  # new line
     PS1+="\[$PCT\]❯ \[$Color_Off\]" # '$' and reset color
 
