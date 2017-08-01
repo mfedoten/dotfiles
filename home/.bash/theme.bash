@@ -45,6 +45,7 @@ if [ ! -f $HOME/.bash-git-prompt/gitprompt.sh ]; then
                     s+="⁎";
                 fi;
 
+                # git remote update &>/dev/null
                 upstream_branch='@{u}';
                 local_branch=$(git rev-parse @);
                 remote_branch=$(git rev-parse @{u});
