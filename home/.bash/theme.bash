@@ -23,7 +23,7 @@ if [ ! -f $HOME/.bash-git-prompt/gitprompt.sh ]; then
     # Slightly changed prom by Mathias Bynens https://github.com/mathiasbynens/dotfiles/blob/master/.bash_prompt
     prompt_git() {
         local s='';
-        local branchName='';
+        local curr_branch='';
 
         # Check if the current directory is in a Git repository.
         if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
@@ -41,9 +41,20 @@ if [ ! -f $HOME/.bash-git-prompt/gitprompt.sh ]; then
 
                 # Check for uncommitted changes in the index.
                 if [[ $(git status --porcelain 2>/dev/null | wc -l) > 0 ]]; then
-                    s+="${Red}\u200A✗";
+                    s+="⁎  ";
                 else
-                    s+="${Green}\u200A✔";
+                    s+="✔  ";
+                fi;
+
+                upstream_branch='@{u}';
+                local_branch=$(git rev-parse @);
+                remote_branch=$(git rev-parse "$upstream_branch");
+                base=$(git merge-base @ "$upstream_branch");
+                if [ $local_branch = $base ]; then
+                    s+="${Cyan}⇣";
+                fi;
+                if [ $remote_branch = $base ]; then
+                    s+="${Cyan}⇡";
                 fi;
 
             fi;
@@ -51,11 +62,14 @@ if [ ! -f $HOME/.bash-git-prompt/gitprompt.sh ]; then
             # Get the short symbolic ref.
             # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
             # Otherwise, just give up.
-            branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+            curr_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
                 git rev-parse --short HEAD 2> /dev/null || \
                 echo '(unknown)')";
+            curr_remote=$(git config branch.$curr_branch.remote);
+            curr_merge_branch=$(git config branch.$curr_branch.merge | cut -d / -f 3);
+            a=($(git rev-list --left-right --count $curr_branch...$curr_remote))
 
-            echo -e "${1}${branchName}${s}";
+            echo -e "${1}${curr_branch}${s}";
         else
             return;
         fi;
@@ -68,6 +82,7 @@ if [ ! -f $HOME/.bash-git-prompt/gitprompt.sh ]; then
     PS1+="\$(prompt_git \"\[$IWhite\]\")"; # Git repository details
     PS1+="\n";  # new line
     PS1+="\[$PCT\]❯ \[$Color_Off\]" # '$' and reset color
+
 fi
 
 # Dircolors
