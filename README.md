@@ -185,4 +185,3 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
 - jedi-vim + venv
 - vim-mode in bash + remap <M-.>
 - show git needs push/pull in prompt, suspended jobs too
-
