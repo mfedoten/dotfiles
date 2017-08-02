@@ -165,7 +165,6 @@ set -ex
 ```
 Like that the script will output each command it's executing prepended with pluses.
 
-
 ## Further reading
 If you don't know where to start, what all this mean, what the hell dotfiles are etc. Here are some resources and examples:
 * [A nice introduction on dotfiles.](https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789)
@@ -177,7 +176,6 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
     - [Steve Losh](https://bitbucket.org/sjl/dotfiles/src)
     - [cowboy](https://github.com/cowboy/dotfiles)
     - [Lars Kappert](https://github.com/webpro/dotfiles)
-
 
 ## TODO
 - vim plugins
