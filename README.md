@@ -16,6 +16,7 @@ Or just install Xcode from Apple store and
 sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/
 ```
 
+
 #### HomeBrew
 Next, run `./init/10_osx_homebrew.sh` to download and install Homebrew and all the packages`. `./init/11_osx_brew_casks.sh` will install the casks.
 
