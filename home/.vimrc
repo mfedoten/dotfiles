@@ -587,6 +587,8 @@ if (has("termguicolors"))
   let g:quantum_italics=1
   colorscheme quantum
   let g:airline_theme='quantum'
+  hi Folded guibg=#1f292e gui=italic cterm=italic
+  hi ColorColumn guibg=#1f2b30
 else
   colorscheme vimberry
 endif
