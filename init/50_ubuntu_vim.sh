@@ -26,6 +26,7 @@ cd vim
 # python 2 and 3 don't play nicely, better to choose one version
 ./configure --with-features=huge \
             --enable-multibyte \
+            --enable-terminal \
             --enable-rubyinterp=yes \
             --enable-python3interp=yes \
             --with-python3-config-dir=$HOME/anaconda/lib/python3.6/config-3.6m-x86_64-linux-gnu \

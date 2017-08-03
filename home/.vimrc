@@ -62,14 +62,15 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
 Plugin 'vim-python/python-syntax'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'endel/vim-github-colorscheme'
 Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'w0ng/vim-hybrid'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'tomasr/molokai'
 Plugin 'mfedoten/vimberry'
 Plugin 'jacoborus/tender.vim'
+Plugin 'ayu-theme/ayu-vim'
+Plugin 'cocopon/iceberg.vim'
+Plugin 'tyrannicaltoucan/vim-quantum'
 " Plugin 'chrisbra/Colorizer'
 call vundle#end()
 
@@ -574,13 +575,21 @@ if has("gui_running")
     set transparency=0                   " No transparency
     set guifont=Menlo\ Regular\ for\ Powerline\:h12 " Fonts for powerline
   elseif has('unix')
-    set guifont=Menlo\ Regular\ for\ Powerline\ 10 " Fonts for powerline
+    set guifont=Menlo\ for\ Powerline\ 10 " Fonts for powerline
   endif
     set guicursor+=a:blinkon0            " No blinking cursor
 endif
 set background=dark
-colorscheme vimberry
-" let g:airline_theme='vimberry'
+if (has("termguicolors"))
+  set termguicolors
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  let g:quantum_italics=1
+  colorscheme quantum
+  let g:airline_theme='quantum'
+else
+  colorscheme vimberry
+endif
 
 " Toggle highlighting of excessive characters
 nnoremap <leader>th :call ToggleHighlight()<cr>
@@ -928,4 +937,3 @@ augroup ft_vim
     autocmd FileType vim setlocal sts=2
 augroup END
 " }}}
-
