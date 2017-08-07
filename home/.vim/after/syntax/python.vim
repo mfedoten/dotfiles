@@ -3,5 +3,5 @@ syn region pythonDocstring  start=+^\s*[uU]\?[rR]\?'''+ end=+'''+ keepend exclud
 
 syn match MyPyTodo contained "\v<(FIXME|NOTE|TODO|OPTIMIZE|XXX|todo|Todo)" containedin=pythonComment
 
-hi def link pythonDocstring Comment
+hi def link pythonDocstring pythonComment
 hi def link MyPyTodo pythonTodo

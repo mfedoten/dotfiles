@@ -584,11 +584,7 @@ if (has("termguicolors"))
   set termguicolors
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  let g:quantum_italics=1
-  colorscheme quantum
-  let g:airline_theme='quantum'
-  hi Folded guibg=#1f292e gui=italic cterm=italic
-  hi ColorColumn guibg=#1f2b30
+  colorscheme iceberg
 else
   colorscheme vimberry
 endif
