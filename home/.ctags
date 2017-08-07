@@ -5,6 +5,7 @@
 --exclude=tmp
 --exclude=doc
 --exclude=*/build/*
+--exclude=ext/**
 --python-kinds=-i
 --languages=-html
 
