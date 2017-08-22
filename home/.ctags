@@ -3,7 +3,7 @@
 --exclude=.git
 --exclude=log
 --exclude=tmp
---exclude=doc
+--exclude=docs/**
 --exclude=*/build/*
 --exclude=ext/**
 --python-kinds=-i
