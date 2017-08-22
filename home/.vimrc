@@ -307,8 +307,8 @@ vnoremap g0 0
 vnoremap g$ $
 
 " easier jumps to beginning/end of line
-noremap H ^
-noremap L $
+noremap H g^
+noremap L g$
 vnoremap L g_
 
 " remap <c-i> (go to newer position in jump list) to <c-n> (anyway, it's
@@ -587,6 +587,11 @@ if (has("termguicolors"))
   colorscheme iceberg
 else
   colorscheme vimberry
+endif
+if &term =~ '256color'
+  " Disable Background Color Erase (BCE) so that color schemes
+  " work properly when Vim is used inside tmux and GNU screen.
+  set t_ut=
 endif
 
 " Toggle highlighting of excessive characters
