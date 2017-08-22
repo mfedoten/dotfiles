@@ -171,7 +171,7 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
-# Use a modified version of the Solarized Dark theme by default in Terminal.app
+# Add colorschemes to Terminal.app
 osascript <<EOD
 
 tell application "Terminal"
@@ -181,6 +181,7 @@ tell application "Terminal"
 	local windowID
 	set themeNameSL to "Solarized Light"
 	set themeNameSD to "Solarized Dark"
+	set themeNameIce to "Iceberg"
 
 	(* Store the IDs of all the open terminal windows. *)
 	set initialOpenedWindows to id of every window
@@ -199,8 +200,14 @@ tell application "Terminal"
 	(* Wait a little bit to ensure that the custom theme is added. *)
 	delay 1
 
+	(* Now add Iceberg theme. *)
+	do shell script "open '$DOTFILES_DIR/extras/" & themeNameIce & ".terminal'"
+
+	(* Wait a little bit to ensure that the custom theme is added. *)
+	delay 1
+
 	(* Set the custom theme as the default terminal theme. *)
-	set default settings to settings set themeNameSD
+	set default settings to settings set themeNameIce
 
 	(* Get the IDs of all the currently opened terminal windows. *)
 	set allOpenedWindows to id of every window
@@ -226,13 +233,14 @@ end tell
 EOD
 
 # Install the Solarized Dark theme for iTerm
-open "${DOTFILES_DIR}/extras/Solarized Dark.itermcolors"
-open "${DOTFILES_DIR}/extras/Solarized Light.itermcolors"
-open "${DOTFILES_DIR}/extras/Monokai.itermcolors"
-open "${DOTFILES_DIR}/extras/Novel.itermcolors"
+open "${DOTFILES_DIR}/extras/terminals/Iceberg.itermcolors"
+open "${DOTFILES_DIR}/extras/terminals/Solarized Dark.itermcolors"
+open "${DOTFILES_DIR}/extras/terminals/Solarized Light.itermcolors"
+open "${DOTFILES_DIR}/extras/terminals/Monokai.itermcolors"
+open "${DOTFILES_DIR}/extras/terminals/Novel.itermcolors"
 
 # Specify the preferences directory
-defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${DOTFILES_DIR}/extras"
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${DOTFILES_DIR}/extras/terminals"
 # Tell iTerm2 to use the custom preferences in the directory
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
