@@ -19,6 +19,8 @@ fi
 # Improved commands completion
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
+bind '"\e[1;3D": backward-word'
+bind '"\e[1;3C": forward-word'
 
 # Ignore duplicate entries in command history
 export HISTCONTROL=ignoredups
