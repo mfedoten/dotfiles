@@ -17,12 +17,15 @@ cd macvim/src
 export LDFLAGS=-L/usr/lib
 ./configure --with-features=huge \
             --enable-multibyte \
+            --enable-terminal \
             --enable-rubyinterp=yes \
+            --enable-pythoninterp=no \
             --enable-python3interp=yes \
             --with-python3-config-dir=$HOME/anaconda/lib/python3.6/config-3.6m-darwin \
             --enable-perlinterp=yes \
             --enable-luainterp=yes \
-            --enable-cscope
+            --enable-cscope \
+            --with-x
 make
 mv MacVim/build/Release/MacVim.app /Applications
 cd "$SRC_DIR"

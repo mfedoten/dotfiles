@@ -1702,6 +1702,8 @@
 	</dict>
 	<key>HideActivityIndicator</key>
 	<false/>
+	<key>HideMenuBarInFullscreen</key>
+	<true/>
 	<key>HideScrollbar</key>
 	<true/>
 	<key>HideTab</key>
@@ -1763,11 +1765,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>628 271 524 307 0 0 1440 877 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>269 95 606 456 0 0 1440 900 </string>
+	<string>269 90 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>321 251 796 474 0 0 1440 900 </string>
+	<string>321 332 770 382 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 123 1440 754 0 0 1440 877 </string>
+	<string>450 33 990 844 0 0 1440 877 </string>
 	<key>NeverWarnAboutPossibleOverrides</key>
 	<true/>
 	<key>NeverWarnAboutPossibleOverrides_selection</key>
@@ -2009,7 +2011,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>300</integer>
+			<integer>30</integer>
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Color</key>
@@ -2442,7 +2444,7 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>Working Directory</key>
 			<string>/Users/mariia</string>
 		</dict>
@@ -3877,6 +3879,8 @@
 	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>8462B28C-4405-4720-8C67-0396951AF282</string>
+	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
+	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -3924,6 +3928,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/mariia/Documents/Code/dotfiles/extras</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>QuitWhenAllWindowsClosed</key>
@@ -3937,7 +3943,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-08-15T22:55:55Z</date>
+	<date>2017-08-31T20:23:12Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowBookmarkName</key>
