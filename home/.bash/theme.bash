@@ -49,11 +49,11 @@ prompt_git() {
             local_branch=$(git rev-parse @);
             remote_branch=$(git rev-parse @{u});
             base=$(git merge-base @ @{u});
-            if [ $local_branch = $remote_branch ]; then
+            if [[ $local_branch = $remote_branch ]]; then
                 p+="";
-            elif [ $local_branch = $base ]; then
+            elif [[ $local_branch = $base ]]; then
                 p+="⇣";
-            elif [ $remote_branch = $base ]; then
+            elif [[ $remote_branch = $base ]]; then
                 p+="⇡";
             else
                 p+="⇣⇡"
