@@ -47,11 +47,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
 Plugin 'davidhalter/jedi-vim'
-" Plugin 'python-mode/python-mode'
 Plugin 'Rip-Rip/clang_complete'
-" Plugin 'lervag/vimtex'
 Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'wellle/targets.vim'
@@ -71,6 +68,8 @@ Plugin 'jacoborus/tender.vim'
 Plugin 'ayu-theme/ayu-vim'
 Plugin 'cocopon/iceberg.vim'
 Plugin 'tyrannicaltoucan/vim-quantum'
+" Plugin 'lervag/vimtex'
+" Plugin 'python-mode/python-mode'
 " Plugin 'chrisbra/Colorizer'
 call vundle#end()
 
@@ -828,14 +827,6 @@ let g:jedi#completions_enabled = 1
 " }}}
 
 " Plugins for code styling --------------------------------------------------------------------- {{{
-" argwrap: wrap/unwrap arguments --------------------------------------------------------------- {{{
-let g:splitjoin_split_mapping = ''
-let g:splitjoin_join_mapping = ''
-nnoremap <silent> <leader>as :SplitjoinSplit<cr>
-nnoremap <silent> <leader>aj :SplitjoinJoin<cr>
-let g:argwrap_wrap_closing_brace=0 "also available as per buffer (b:)
-" }}}
-
 " vim-autoformat: plugin for formatting the code ----------------------------------------------- {{{
 let g:formatters_python = ['yapf']
 let g:autoformat_autoindent = 0
