@@ -243,6 +243,8 @@ augroup END
 " }}}
 
 " Some useful mappings and functions ----------------------------------------------------------- {{{
+" Print file's full path
+command PWD echo expand('%:p')
 " Write a file anyway, even if forgot to sudo
 cmap w!! w !sudo tee % >/dev/null
 " Execute selection in vim command line
