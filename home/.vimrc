@@ -249,6 +249,11 @@ command PWD echo expand('%:p')
 cmap w!! w !sudo tee % >/dev/null
 " Execute selection in vim command line
 vnoremap <silent> <leader>X "xy:@x<cr>
+" Format Windows files to human format
+command WIN %s//\r/g
+" Format ugly json
+command Json %!python -m json.tool
+command Xml %s/></>\r</g | normal gg=G
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U or CR after inserting a line break.
