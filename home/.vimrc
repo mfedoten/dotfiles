@@ -704,8 +704,11 @@ let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
 let g:clang_complete_patterns = 1
 let g:clang_auto_select = 1
-let g:clang_library_path = "/usr/lib/llvm-3.8/lib/libclang-3.8.so.1"
-"let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/"
+if has('macunix')
+  let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/"
+elseif has('unix')
+  let g:clang_library_path = "/usr/lib/llvm-3.8/lib/libclang-3.8.so.1"
+endif
 let g:clang_user_options='|| exit 0'
 " }}}
 
