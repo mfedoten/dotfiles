@@ -31,6 +31,7 @@ Plugin 'ciaranm/securemodelines'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
+Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-rooter'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -591,6 +592,7 @@ if (has("termguicolors"))
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   colorscheme iceberg
+  let g:airline_theme = 'iceberg'
   let &t_ut=""
 else
   colorscheme vimberry
