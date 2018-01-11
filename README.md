@@ -97,10 +97,10 @@ Put `eval $(thefuck --alias)` in your `~/.bashrc` or `~/.bash/aliases.bash` or w
 
 ### Terminal
 #### OSX: iTerm and Terminal settings
-`extras/` contains different colors for Terminal/iTerm2, and a config file for iTerm.
+`extras/terminals` contains different colors for Terminal/iTerm2, and a config file for iTerm.
 
-#### Ubuntu: Tilda's config
-`extras/` folder contains `config_0`, a [Tilda's](https://github.com/lanoxx/tilda) configuration file which should be copied in `~/.tilda/`.
+#### Ubuntu: Tilix's config
+In local dotfiles for Ubuntu you can find [Iceberg](https://cocopon.github.io/iceberg.vim/) color scheme for [Tilix](https://gnunn1.github.io/tilix-web/) terminal emulator.
 
 ### Tmux
 #### Bash completion
@@ -179,8 +179,5 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
     - [Lars Kappert](https://github.com/webpro/dotfiles)
 
 ## TODO
-- vim plugins
-- find a good todo tool
-- finish configuring Vimux for IPython
 - jedi-vim + venv
 - vim-mode in bash + remap <M-.>
