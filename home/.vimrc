@@ -936,11 +936,17 @@ augroup ft_md
     autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
     autocmd BufNewFile,BufRead *.md call ToggleBar()
 augroup END
-" Markdown
+" Vim
 augroup ft_vim
     au!
     autocmd FileType vim setlocal fo=cq
     autocmd FileType vim setlocal sw=2
     autocmd FileType vim setlocal sts=2
 augroup END
+" Makefile: do not expand tabs to spaces
+augroup ft_make
+    au!
+    autocmd FileType make setlocal noexpandtab
+augroup END
+           
 " }}}
