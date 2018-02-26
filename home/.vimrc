@@ -502,6 +502,8 @@ let g:VimuxOrientation = 'h'
 let g:VimuxHeight = 40
 
 function! VimuxSlime(text)
+  call VimuxSendKeys("q")
+  call VimuxSendKeys("C-u")
   if len(split(a:text, '\n\zs')) > 1
     call VimuxSendText("%paste\n")
   else

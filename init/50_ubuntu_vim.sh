@@ -24,6 +24,8 @@ cd "$SRC_DIR"
 git clone https://github.com/vim/vim.git
 cd vim
 # python 2 and 3 don't play nicely, better to choose one version
+export CC=clang
+export CCX=clang++
 ./configure --with-features=huge \
             --enable-multibyte \
             --enable-terminal \
@@ -39,7 +41,7 @@ cd vim
             --with-compiledby="Mariia Fedotenkova <maria.fedotenkova@gmail.com>" \
             --prefix=/usr
 
-make VIMRUNTIMEDIR=/usr/share/vim/vim80    
+make VIMRUNTIMEDIR=/usr/share/vim/vim80 gcc   
 # it creates vim into package which you can later remve via dpkg -r
 # (don't forger to change name to smth meaningful, e.g. vim-mfe)
 sudo checkinstall

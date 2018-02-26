@@ -18,6 +18,7 @@ sudo apt-get -qq dist-upgrade
 
 # Read ports into array
 packages=(
+  clang
   coreutils
   findutils
   build-essential
