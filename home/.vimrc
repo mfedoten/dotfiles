@@ -14,65 +14,54 @@
 set nocompatible
 
 " Installed plugins ---------------------------------------------------------------------------- {{{
-" Install Vundle first:
-" $ mkdir ~/.vim/bundle/Vundle.vim
-" $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-" Required by Vundle
-filetype off
-
-" let Vundle manage Vundle (required!)
-set rtp+=~/.vim/bundle/vundle/
-
-" The bundles you install will be listed here, between begin/end
-call vundle#begin()
-Plugin 'gmarik/vundle'
-Plugin 'ciaranm/securemodelines'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Yggdroot/indentLine'
-Plugin 'mileszs/ack.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'airblade/vim-rooter'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'sjl/gundo.vim'
-Plugin 'nvie/vim-togglemouse'
-Plugin 'qpkorr/vim-bufkill'
-Plugin 'dr-chip-vim-scripts/ZoomWin'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'benmills/vimux'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'scrooloose/syntastic'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'ervandew/supertab'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'Rip-Rip/clang_complete'
-Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'nelstrom/vim-markdown-folding'
-Plugin 'wellle/targets.vim'
-Plugin 'vim-scripts/ReplaceWithRegister'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
-Plugin 'vim-python/python-syntax'
-Plugin 'endel/vim-github-colorscheme'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'tomasr/molokai'
-Plugin 'mfedoten/vimberry'
-Plugin 'jacoborus/tender.vim'
-Plugin 'ayu-theme/ayu-vim'
-Plugin 'cocopon/iceberg.vim'
-Plugin 'tyrannicaltoucan/vim-quantum'
-" Plugin 'lervag/vimtex'
-" Plugin 'python-mode/python-mode'
-" Plugin 'chrisbra/Colorizer'
-call vundle#end()
+" The plugins you install will be listed here, between begin/end
+call plug#begin()
+Plug 'ciaranm/securemodelines'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'airblade/vim-rooter'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'sjl/gundo.vim'
+Plug 'nvie/vim-togglemouse'
+Plug 'qpkorr/vim-bufkill'
+Plug 'dr-chip-vim-scripts/ZoomWin'
+Plug 'scrooloose/nerdcommenter'
+Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'Chiel92/vim-autoformat'
+Plug 'scrooloose/syntastic'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'Rip-Rip/clang_complete'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'tmhedberg/SimpylFold'
+Plug 'nelstrom/vim-markdown-folding'
+Plug 'wellle/targets.vim'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'gregsexton/gitv'
+Plug 'vim-python/python-syntax'
+Plug 'endel/vim-github-colorscheme'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'nanotech/jellybeans.vim'
+Plug 'tomasr/molokai'
+Plug 'mfedoten/vimberry'
+Plug 'jacoborus/tender.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'cocopon/iceberg.vim'
+Plug 'tyrannicaltoucan/vim-quantum'
+" Plug 'lervag/vimtex'
+" Plug 'python-mode/python-mode'
+" Plug 'chrisbra/Colorizer'
+call plug#end()
 
 " Enable file type detection - required.
 " Also load indent files, to automatically do language-dependent indenting.

@@ -13,17 +13,18 @@ cd "$SRC_DIR"
 
 # Install Vundle and plugins listed in ~/.vimrc
 if [[ ! -d $HOME/.vim/bundle/vundle ]]; then
-    echo "Installing Vundle..."
-    git clone https://github.com/VundleVim/Vundle.vim $HOME/.vim/bundle/vundle
+    echo "Installing Vim-Plug..."
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 else
     echo 'Vundle is already installed'
 fi
-vim +PluginInstall +qall
+vim +PlugInstall +qall
 
 # Install Powerline fonts
-# cd "$SRC_DIR"
-# git clone https://github.com/powerline/fonts
-# cd fonts
-# ./install.sh
-# cd "$SRC_DIR"
-# sudo rm -r fonts
+cd "$SRC_DIR"
+git clone https://github.com/powerline/fonts
+cd fonts
+./install.sh
+cd "$SRC_DIR"
+sudo rm -r fonts
