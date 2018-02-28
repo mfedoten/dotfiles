@@ -19,7 +19,7 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
 fi
 
 # At the installations specify default location as ~/anaconda
-bash miniconda.sh
+bash miniconda.sh -b -p $HOME/anaconda
 rm miniconda.sh
 
 # Export path for now
