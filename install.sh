@@ -45,9 +45,10 @@ for file in $(find -L $homedir -type f ! -name '.DS_Store' | cut -sd / -f 2-); d
     echo "~/$file exists and was identical to your dotfile. No need in backup. Overriding with symlink."
     symlink $path $target
   elif [[ -a $target ]]; then
-    read -p "~/$file exists and differs from your dotfile. Will be symlinked. Backup?  [yn]" -n 1
-    if [[ $REPLY =~ [yY]* ]]; then
-        sudo cp -r $target "$backdir/$file"
+    read -p "~/$file exists and differs from your dotfile. Will be symlinked. Backup?  [Yn]" -n 1
+    echo
+    if [[ $REPLY =~ [yY] ]] || [[ -z $REPLY ]]; then
+        sudo cp -r $target "$backdir/$file";
     fi
     symlink $path $target
     echo ""
