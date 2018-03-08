@@ -42,6 +42,7 @@ packages=(
   exuberant-ctags
   smbclient
   samba
+  ack-grep
   cifs-utils
   okular
 )
@@ -57,7 +58,7 @@ sudo apt-add-repository ppa:git-core/ppa
 sudo apt-get update
 sudo apt-get install -qq git
 
-# install tilix 
+# install tilix
 sudo add-apt-repository ppa:webupd8team/terminix
 sudo apt-get update
 sudo apt-get install -yqq tilix
@@ -65,19 +66,5 @@ sudo apt-get install -yqq tilix
 # Gnome Keyring (http://askubuntu.com/a/776335)
 sudo apt-get install -qq libgnome-keyring-dev
 sudo make --directory=/usr/share/doc/git/contrib/credential/gnome-keyring
-
-VERSION=2.5
-sudo apt-get -y remove tmux
-sudo apt-get -y install wget tar libevent-dev libncurses-dev
-wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz
-tar xf tmux-${VERSION}.tar.gz
-rm -f tmux-${VERSION}.tar.gz
-cd tmux-${VERSION}
-./configure
-make
-sudo make install
-cd -
-sudo rm -rf /usr/local/src/tmux-*
-sudo mv tmux-${VERSION} /usr/local/src
 
 sudo apt-get autoclean
