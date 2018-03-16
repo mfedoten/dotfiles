@@ -1,5 +1,5 @@
 [user]
-    name = Mariia Fedotenkova
+    name = mfedoten
     email = maria.fedotenkova@gmail.com
 
 [core]
@@ -36,7 +36,7 @@
     ac = !git add . && git commit
     acm = !git add . && git commit -m
     l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(bold white)- %an %Creset, %ar%Creset'
-    lg = log --color --graph --all --pretty=format:'%C(yellow)%h%Creset -%C(bold blue)%d%Creset %s %C(cyan)(%cd)%Creset %C(bold white)<%an>%Creset%n' --abbrev-commit --date=relative
+    lg = log --color --graph --pretty=format:'%C(yellow)%h%Creset -%C(bold blue)%d%Creset %s %C(cyan)(%cd)%Creset %C(bold white)<%an>%Creset%n' --abbrev-commit --date=relative
     lsg = log --color --graph --all --pretty=format:'%C(yellow)%h%Creset -%C(bold blue)%d%Creset %s %C(cyan)(%cd)%Creset %C(bold white)<%an>%Creset%n' --abbrev-commit --date=relative --stat
     history = log --color --pretty=format:'%C(yellow)%h%Creset -%C(bold blue)%d%Creset %s %C(cyan)(%cd)%Creset %C(bold white)<%an>%Creset%n' --date=local --follow
     full-history = log --color --pretty=format:'%n%C(yellow)%h%Creset -%C(bold blue)%d%Creset %s %C(cyan)(%cd)%Creset %C(bold white)<%an>%Creset' --follow -p
