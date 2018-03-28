@@ -47,8 +47,8 @@ prompt_git() {
             # git remote update &>/dev/null
             upstream_branch='@{u}';
             local_branch=$(git rev-parse @);
-            remote_branch=$(git rev-parse @{u});
-            base=$(git merge-base @ @{u});
+            remote_branch=$(git rev-parse @{u} 2>/dev/null);
+            base=$(git merge-base @ @{u} 2>/dev/null);
             if [[ $local_branch = $remote_branch ]]; then
                 p+="";
             elif [[ $local_branch = $base ]]; then
