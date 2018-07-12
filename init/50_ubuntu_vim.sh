@@ -41,7 +41,7 @@ export CCX=clang++
             --with-compiledby="Mariia Fedotenkova <maria.fedotenkova@gmail.com>" \
             --prefix=/usr
 
-make VIMRUNTIMEDIR=/usr/share/vim/vim80
+make VIMRUNTIMEDIR=/usr/share/vim/vim81
 # it creates vim into package which you can later remve via dpkg -r
 # (don't forger to change name to smth meaningful, e.g. vim-mfe)
 sudo checkinstall

@@ -14,7 +14,7 @@ cd "$SRC_DIR"
 # Install tmux
 echo -e "\n\033[1mInstalling TMUX\033[0m"
 
-VERSION=2.6
+VERSION=2.7
 sudo apt-get -y remove tmux
 sudo apt-get -y install wget tar libevent-dev libncurses-dev
 wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz
