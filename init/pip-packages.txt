@@ -5,9 +5,6 @@ pandas
 scikit-learn
 ## Jupyter notebooks
 jupyter
-ipywidgets
-ipympl
-bqplot
 ## Pandas optional dependencies
 numexpr
 bottleneck
@@ -15,16 +12,13 @@ bottleneck
 Pillow
 ## Plots etc.
 matplotlib
-palettable
 seaborn
-ggplot
-plotly
 bokeh
-# mpld3
 ## Checkers/Formatters
 flake8
 pylint
 yapf
+jedi
 ## Tests
 pytest
 mock
@@ -32,11 +26,8 @@ nose
 ## Documentation
 Sphinx
 ## See CPU load etc.
-line_profiler
 psutil
 ## Show pip dependencies: https://github.com/naiquevin/pipdeptree
 pipdeptree
 ## Tool to track/update outdated packages: https://github.com/jgonggrijp/pip-review
 pip-review
-## Tool to generate requirements
-pigar

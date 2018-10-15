@@ -22,7 +22,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'airblade/vim-rooter'
+" Plug 'airblade/vim-rooter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sjl/gundo.vim'
 Plug 'nvie/vim-togglemouse'
@@ -240,7 +240,7 @@ cmap w!! w !sudo tee % >/dev/null
 " Execute selection in vim command line
 vnoremap <silent> <leader>X "xy:@x<cr>
 " Format Windows files to human format
-command WIN %s//\r/g
+command Win %s//\r/g
 " Format ugly json
 command Json %!python -m json.tool
 command Xml %s/></>\r</g | normal gg=G
