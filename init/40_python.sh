@@ -30,6 +30,7 @@ conda update conda
 
 # Install PqQt5 with conda
 conda install pyqt
+conda install argcomplete
 
 # Install all required packages
 pip install -r pip-packages.txt

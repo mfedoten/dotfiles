@@ -32,3 +32,8 @@ shopt -s cdspell
 
 # Notify immediatly on bg job completion
 set -o notify
+
+# Anaconda stuff
+if [ -f "$HOME/anaconda/etc/profile.d/conda.sh" ]; then
+    . $HOME/anaconda/etc/profile.d/conda.sh
+fi

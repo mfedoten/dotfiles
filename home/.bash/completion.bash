@@ -54,4 +54,5 @@ if [ -f /opt/completions/tmux.completion.bash ]; then
     . /opt/completions/tmux.completion.bash
 fi
 
-
+# conda TAB completion
+eval "$(register-python-argcomplete conda)"
