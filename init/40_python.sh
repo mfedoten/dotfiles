@@ -23,14 +23,14 @@ bash miniconda.sh -b -p $HOME/anaconda
 rm miniconda.sh
 
 # Export path for now
-export PATH=$HOME/anaconda/bin:$PATH
+. $HOME/anaconda/etc/profile.d/conda.sh
 
 # Update conda
 conda update conda
 
 # Install PqQt5 with conda
+conda activate
 conda install pyqt
-conda install argcomplete
 
 # Install all required packages
 pip install -r pip-packages.txt
@@ -40,3 +40,5 @@ pip list --outdated --format=freeze | grep -vE '(^\-e|conda)' | cut -d '=' -f 1 
 # Install Notebook extensions
 sudo `type -p jupyter` nbextension install https://bitbucket.org/ipre/calico/downloads/calico-spell-check-1.0.zip
 jupyter nbextension enable calico-spell-check
+
+conda deactivate
