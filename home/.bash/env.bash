@@ -36,4 +36,5 @@ set -o notify
 # Anaconda stuff
 if [ -f "$HOME/anaconda/etc/profile.d/conda.sh" ]; then
     . $HOME/anaconda/etc/profile.d/conda.sh
+    conda activate
 fi
