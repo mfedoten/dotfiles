@@ -26,11 +26,17 @@ rm miniconda.sh
 . $HOME/anaconda/etc/profile.d/conda.sh
 
 # Update conda
+conda activate
+conda install pip jedi -y
+pip install -U pip
 conda update conda
 
+# Create a new development environment
+conda create -n dev -y
+conda activate dev
+
 # Install PqQt5 with conda
-conda activate
-conda install pyqt
+conda install pip pyqt -y
 
 # Install all required packages
 pip install -r pip-packages.txt
@@ -41,4 +47,6 @@ pip list --outdated --format=freeze | grep -vE '(^\-e|conda)' | cut -d '=' -f 1 
 sudo `type -p jupyter` nbextension install https://bitbucket.org/ipre/calico/downloads/calico-spell-check-1.0.zip
 jupyter nbextension enable calico-spell-check
 
+# deactivate the env and install jedi for the root env
 conda deactivate
+
