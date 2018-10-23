@@ -504,7 +504,7 @@ endfunction
 
 vnoremap <localleader>z "+y :call VimuxSlime(@+)<CR>`]j
 nnoremap <localleader>z V"+y :call VimuxSlime(@+)<CR>`]j
-nnoremap <localleader>V :VimuxRunCommand('ipython')<CR>
+nnoremap <localleader>V :VimuxRunCommand('conda activate ' . $CONDA_DEFAULT_ENV . '; ipython')<CR>
 
 " }}}
 
