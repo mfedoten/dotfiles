@@ -11,11 +11,11 @@ set -e
 SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SRC_DIR"
 
-# Download the installer
+# Download the installer (change version to latest if you want the lates python instead of 3.6)
 if [[ "$OSTYPE" =~ ^darwin ]]; then
-    curl -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+    curl -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-4.4.10-MacOSX-x86_64.sh
 elif [[ "$OSTYPE" =~ ^linux ]]; then
-    curl -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    curl -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-4.4.10-Linux-x86_64.sh
 fi
 
 # At the installations specify default location as ~/anaconda
@@ -32,8 +32,8 @@ pip install -U pip
 conda update conda
 
 # Create a new development environment
-conda create -n dev -y
-conda activate dev
+conda create -n py36 python=3.6 -y
+conda activate py36
 
 # Install PqQt5 with conda
 conda install pip pyqt -y

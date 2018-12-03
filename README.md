@@ -18,7 +18,7 @@ sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/
 
 
 #### HomeBrew
-Next, run `./init/10_osx_homebrew.sh` to download and install Homebrew and all the packages`. `./init/11_osx_brew_casks.sh` will install the casks.
+Next, run `./init/10_osx_homebrew.sh` to download and install Homebrew and all the packages. `./init/11_osx_brew_casks.sh` will install the casks.
 
 #### Upgrade bash
 Depending on the bash shipped with your system, it might be outdated. In order to update it, set a desired version of bash in `./init/20_osx_bash_update.sh` and then just run the script. It's not really necessary, but some useful features (like auto-completion in vim), won't work on bash versions older than 4.
@@ -123,7 +123,6 @@ Italics are not necessarily supported out-of-the-box in all terminals. To fix th
 ```
 cd extras/
 tic xterm-256color-italic.terminfo
-tic tmux.terminfo
 killall tmux
 ```
 

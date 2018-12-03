@@ -23,7 +23,7 @@ brew tap caskroom/cask
 brew tap caskroom/versions
 
 # Exit if, for some reason, cask is not installed.
-[[ ! "$(brew cask --version)" ]] && e_error "Brew-cask failed to install." && return
+[[ ! "$(brew cask)" ]] && e_error "Brew-cask failed to install." && return
 
 # Hack to show the first-run brew-cask password prompt immediately.
 #brew cask info this-is-somewhat-annoying 2>/dev/null
@@ -44,15 +44,6 @@ casks=(
   transmission
   unrarx
   vlc
-  qlcolorcode
-  qlmarkdown
-  qlstephen
-  quicklook-csv
-  quicklook-json
-  quicknfo
-  suspicious-package
-  webpquicklook
-  google-chrome-stable
 )
 e_header "Installing Homebrew casks: ${casks[*]}"
 brew cask install "${casks[@]}"

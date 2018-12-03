@@ -47,10 +47,6 @@ recipe=(
   ImageMagick
   gdk-pixbuf
   pandoc
-  cowsay
-  figlet
-  fortune
-  sl
   shared-mime-info
   tree
   ctags
