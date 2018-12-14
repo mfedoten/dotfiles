@@ -80,10 +80,6 @@ alias gtree='tree -I ".git"'
 # alias upgit='find . -maxdepth 2 -mindepth 1 -name .git -type d -prune | while read d; do cd $d/..; gecho -e "${Cyan}$PWD ${Color_Off} git pull"; git pull; cd $OLDPWD; done'
 alias upgit="show_status"
 
-# The Fuck
-eval $(thefuck --alias)
-alias fuckit='export THEFUCK_REQUIRE_CONFIRMATION=False; fuck; export THEFUCK_REQUIRE_CONFIRMATION=True'
-
 # Flake8's custom format
 alias flake8="flake8 --format='%(path)s:%(row)d: [%(code)s] %(text)s'"
 
