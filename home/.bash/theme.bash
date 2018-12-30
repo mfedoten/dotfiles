@@ -3,21 +3,6 @@
 ###################################
 # Modification of bash appearance #
 ###################################
-# Uncomment if you want Cowsay
-# if [[ "$OSTYPE" =~ ^darwin ]]; then
-  # cow_dir=/usr/local/share/cowsay/cows
-  # fort_dir=/usr/local/share/games/fortune
-# elif [[ "$OSTYPE" =~ ^linux ]]; then
-  # cow_dir=/usr/share/cowsay/cows
-  # fort_dir=/usr/games/fortune
-# fi
-
-# if [ -x $cow_dir -a -x $fort_dir ]; then
-  # # echo -e "\e[1;37m$(cowsay -f $(ls $cow_dir | shuf -n1 | \
-    # # cut -d. -f1) $(whatis $(ls /bin) 2>/dev/null | shuf -n1))\e[00m"
-  # fortune | cowsay -f $(ls $cow_dir | shuf -n1 | cut -d. -f1)
-# fi
-
 # Customize bash promt.
 # Slightly changed prom by Mathias Bynens https://github.com/mathiasbynens/dotfiles/blob/master/.bash_prompt
 prompt_git() {

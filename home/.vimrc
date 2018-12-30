@@ -58,9 +58,7 @@ Plug 'jacoborus/tender.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'tyrannicaltoucan/vim-quantum'
-" Plug 'cjrh/vim-conda'
 " Plug 'lervag/vimtex'
-" Plug 'python-mode/python-mode'
 " Plug 'chrisbra/Colorizer'
 call plug#end()
 
@@ -504,7 +502,11 @@ endfunction
 
 vnoremap <localleader>z "+y :call VimuxSlime(@+)<CR>`]j
 nnoremap <localleader>z V"+y :call VimuxSlime(@+)<CR>`]j
-nnoremap <localleader>V :VimuxRunCommand('conda activate ' . $CONDA_DEFAULT_ENV . '; ipython')<CR>
+if has('macunix')
+  nnoremap <localleader>V :VimuxRunCommand('ipython')<CR>
+elseif has('unix')
+  nnoremap <localleader>V :VimuxRunCommand('conda activate ' . $CONDA_DEFAULT_ENV . '; ipython')<CR>
+endif
 
 " }}}
 

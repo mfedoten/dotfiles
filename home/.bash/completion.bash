@@ -11,9 +11,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Enable completion form MacPorts
+# Enable completion form Brew
 if [ -f /usr/local/etc/bash_completion.sh ]; then
     . /usr/local/etc/bash_completion.sh
+#elif [ -f /usr/local/etc/bash_completion ]; then
+#    . /usr/local/etc/bash_completion
 fi
 
 # Improved commands completion

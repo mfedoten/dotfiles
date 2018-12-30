@@ -3,7 +3,7 @@
 # Make vim the default editor.
 export EDITOR='vim';
 
-# Use vim also in bash
+# Use vim in bash also
 # set -o vi
 
 # Prefer US English and use UTF-8.
@@ -32,9 +32,3 @@ shopt -s cdspell
 
 # Notify immediatly on bg job completion
 set -o notify
-
-# Anaconda stuff
-if [ -f "$HOME/anaconda/etc/profile.d/conda.sh" ]; then
-    . $HOME/anaconda/etc/profile.d/conda.sh
-    conda activate
-fi

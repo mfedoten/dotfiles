@@ -14,18 +14,19 @@ cd "$SRC_DIR"
 # Compile MacVim from source
 git clone https://github.com/macvim-dev/macvim
 cd macvim/src
-export LDFLAGS=-L/usr/lib
-./configure --with-features=huge \
+export LDFLAGS=-L/usr/local/lib
+CC=clang ./configure --with-features=huge \
             --enable-multibyte \
             --enable-terminal \
             --enable-rubyinterp=yes \
             --enable-pythoninterp=no \
             --enable-python3interp=yes \
-            --with-python3-config-dir=$HOME/anaconda/lib/python3.6/config-3.6m-darwin \
+            --with-python3-config-dir=/usr/local/Frameworks/Python.framework/Versions/3.7/lib/python3.7/config-3.7m-darwin \
             --enable-perlinterp=yes \
             --enable-luainterp=yes \
+			--with-lua-prefix=/usr/local \
             --enable-cscope \
-            --with-x
+			--enable-fail-if-missing
 make
 mv MacVim/build/Release/MacVim.app /Applications
 cd "$SRC_DIR"

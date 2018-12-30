@@ -19,4 +19,4 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # allows using aliases in non-login non-interactive shells
-export BASH_ENV="$HOME/.bash/aliases.bash:$HOME/.bash/aliases_local.bash:$BASH_ENV"
+# export BASH_ENV="$HOME/.bash/aliases.bash:$HOME/.bash/aliases_local.bash:$BASH_ENV"

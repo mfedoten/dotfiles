@@ -12,11 +12,7 @@ SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SRC_DIR"
 
 # Download the installer (change version to latest if you want the lates python instead of 3.6)
-if [[ "$OSTYPE" =~ ^darwin ]]; then
-    curl -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-4.4.10-MacOSX-x86_64.sh
-elif [[ "$OSTYPE" =~ ^linux ]]; then
-    curl -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-4.4.10-Linux-x86_64.sh
-fi
+curl -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-4.4.10-Linux-x86_64.sh
 
 # At the installations specify default location as ~/anaconda
 bash miniconda.sh -b -p $HOME/anaconda
@@ -49,4 +45,3 @@ jupyter nbextension enable calico-spell-check
 
 # deactivate the env and install jedi for the root env
 conda deactivate
-

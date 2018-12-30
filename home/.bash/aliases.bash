@@ -29,43 +29,6 @@ alias .....='cd ../../../..'
 
 alias g="git"
 
-if [[ "$OSTYPE" =~ ^darwin ]]; then
-    alias pbc='pbcopy'
-    alias o='open'
-    alias oo='open .'
-    alias ot="open -a /Applications/TextMate.app"
-    alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-
-    # Update MacPorts, installed packages and locateDB
-    alias update='brew update; brew upgrade; brew cleanup;  LC_ALL='C'; sudo updatedb'
-
-    # Empty the Trash on all mounted volumes and the main HDD
-    # Also, clear Apple’s System Logs to improve shell startup speed
-    alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
-
-    # Flush Directory Service cache
-    alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
-
-    # Hide/show all desktop icons (useful when presenting)
-    alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-    alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
-    # Show/hide hidden files in Finder
-    alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-    alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
-elif [[ "$OSTYPE" =~ ^linux ]]; then
-    alias pbc='xclip -selection clipboard'
-    alias pbp='xclip -selection clipboard -o'
-    alias o='xdg-open'
-    alias oo='nautilus .'
-    alias on='nautilus'
-    alias ge="gedit"
-
-    # Update APT, installed packages and locateDB
-    alias update='sudo apt-get -qq update; sudo apt-get -qq dist-upgrade; sudo apt autoremove; sudo apt-get autoclean; sudo updatedb'
-fi
-
 # Update pip packages
 alias uppip='pip list --outdated --format=freeze | grep -vE "(^\-e|conda)" | cut -d '=' -f 1 | xargs -n1 pip install -U'
 
@@ -79,10 +42,6 @@ alias gtree='tree -I ".git"'
 # Git updates under curent dir
 # alias upgit='find . -maxdepth 2 -mindepth 1 -name .git -type d -prune | while read d; do cd $d/..; gecho -e "${Cyan}$PWD ${Color_Off} git pull"; git pull; cd $OLDPWD; done'
 alias upgit="show_status"
-
-# The Fuck
-eval $(thefuck --alias)
-alias fuckit='export THEFUCK_REQUIRE_CONFIRMATION=False; fuck; export THEFUCK_REQUIRE_CONFIRMATION=True'
 
 # Flake8's custom format
 alias flake8="flake8 --format='%(path)s:%(row)d: [%(code)s] %(text)s'"
