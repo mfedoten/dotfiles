@@ -22,9 +22,9 @@ fi
 vim +PlugInstall +qall
 
 # Install Powerline fonts
-#cd "$SRC_DIR"
-#git clone https://github.com/powerline/fonts
-#cd fonts
-#./install.sh
-#cd "$SRC_DIR"
-#sudo rm -r fonts
+cd "$SRC_DIR"
+git clone https://github.com/powerline/fonts
+cd fonts
+./install.sh
+cd "$SRC_DIR"
+sudo rm -r fonts
