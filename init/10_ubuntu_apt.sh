@@ -46,6 +46,7 @@ packages=(
   cifs-utils
   okular
   gnome-shell-extensions
+  chrome-gnome-shell
 )
 
 
