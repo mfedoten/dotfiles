@@ -45,6 +45,7 @@ packages=(
   ack-grep
   cifs-utils
   okular
+  gnome-shell-extensions
 )
 
 
