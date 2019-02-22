@@ -28,6 +28,7 @@ pip install -U pip
 conda update conda
 
 # Create a new development environment
+# todo: create from yaml file
 conda create -n py36 python=3.6 -y
 conda activate py36
 
