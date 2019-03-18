@@ -704,7 +704,7 @@ let g:clang_auto_select = 1
 if has('macunix')
   let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/"
 elseif has('unix')
-  let g:clang_library_path = "/usr/lib/llvm-3.8/lib/libclang-3.8.so.1"
+  let g:clang_library_path = "/usr/lib/llvm-6.0/lib/libclang-6.0.so.1"
 endif
 let g:clang_user_options='|| exit 0'
 " }}}
