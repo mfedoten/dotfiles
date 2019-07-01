@@ -502,11 +502,7 @@ endfunction
 
 vnoremap <localleader>z "+y :call VimuxSlime(@+)<CR>`]j
 nnoremap <localleader>z V"+y :call VimuxSlime(@+)<CR>`]j
-if has('macunix')
-  nnoremap <localleader>V :VimuxRunCommand('ipython')<CR>
-elseif has('unix')
-  nnoremap <localleader>V :VimuxRunCommand('conda activate ' . $CONDA_DEFAULT_ENV . '; ipython')<CR>
-endif
+nnoremap <localleader>V :VimuxRunCommand('ipython')<CR>
 
 " }}}
 
