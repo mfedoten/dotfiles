@@ -500,9 +500,20 @@ function! VimuxSlime(text)
   endif
 endfunction
 
+function! VimuxIpythonVenv()
+  if !empty($VIRTUAL_ENV)
+    call VimuxOpenRunner()
+    let env_name = $VIRTUAL_ENV
+    call VimuxRunCommand('source ' . env_name . '/bin/activate')
+    call VimuxSendKeys("C-f C-l")
+  endif
+  VimuxRunCommand('ipython')
+endfunction
+
 vnoremap <localleader>z "+y :call VimuxSlime(@+)<CR>`]j
 nnoremap <localleader>z V"+y :call VimuxSlime(@+)<CR>`]j
 nnoremap <localleader>V :VimuxRunCommand('ipython')<CR>
+" nnoremap <localleader>V :call VimuxIpython()<CR>
 
 " }}}
 
@@ -939,5 +950,5 @@ augroup ft_make
     au!
     autocmd FileType make setlocal noexpandtab
 augroup END
-           
+
 " }}}
