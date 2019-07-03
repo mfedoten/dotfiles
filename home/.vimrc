@@ -510,6 +510,7 @@ function! VimuxIpythonVenv()
   VimuxRunCommand('ipython')
 endfunction
 
+nnoremap <localleader>vo :call VimuxOpenRunner()<CR>
 vnoremap <localleader>z "+y :call VimuxSlime(@+)<CR>`]j
 nnoremap <localleader>z V"+y :call VimuxSlime(@+)<CR>`]j
 if has('macunix')
