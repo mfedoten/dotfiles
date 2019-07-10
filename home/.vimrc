@@ -847,9 +847,11 @@ let g:jedi#completions_enabled = 1
 
 " Plugins for code styling --------------------------------------------------------------------- {{{
 " vim-autoformat: plugin for formatting the code ----------------------------------------------- {{{
-let g:formatters_python = ['yapf']
+let g:formatters_python = ['black']
 let g:autoformat_autoindent = 0
-let g:formatter_yapf_style = 'pep8'
+let g:autoformat_retab = 1
+let g:autoformat_remove_trailing_spaces = 1
+" let g:formatter_yapf_style = 'pep8'
 vnoremap <F8> :Autoformat<cr>
 nnoremap <F8> :Autoformat<cr>
 " }}}
@@ -927,6 +929,8 @@ augroup END
 augroup ft_py
     au!
     autocmd FileType python setlocal formatoptions=cqj
+    autocmd FileType python setlocal tw=88
+    autocmd FileType python setlocal iskeyword+=_
     " autocmd FileType python let g:NERDSpaceDelims=0
 augroup END
 " Latex
