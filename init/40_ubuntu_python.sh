@@ -21,16 +21,19 @@ rm miniconda.sh
 # Export path for now
 . $HOME/miniconda3/etc/profile.d/conda.sh
 
+# Pin python version to 3.6
+echo "python 3.6.*" > $HOME/miniconda3/conda-meta/pinned
+
 # Update conda
 conda activate
-conda install pip jedi -y
+conda install pip jedi black -y
 pip install -U pip
 
 # Create a new development environment
 # todo: create from yaml file
-#conda update conda
-#conda create -n py36 python=3.6 -y
-#conda activate py36
+conda update conda
+conda create -n py36 python=3.6 -y
+conda activate py36
 
 # Install PqQt5 with conda
 conda install pip pyqt -y
