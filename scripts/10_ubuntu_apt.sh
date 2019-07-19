@@ -27,16 +27,10 @@ packages=(
   curl
   xclip
   imagemagick
-  cowsay
-  fortunes
   ppa-purge
-  sl
   tree
   screenfetch
   bash-completion
-  dconf-editor
-  compizconfig-settings-manager
-  compiz-plugins
   ruby-full
   checkinstall
   exuberant-ctags
@@ -45,6 +39,8 @@ packages=(
   ack-grep
   cifs-utils
   okular
+  gnome-shell-extensions
+  chrome-gnome-shell
 )
 
 

@@ -13,11 +13,11 @@ Pillow
 ## Plots etc.
 matplotlib
 seaborn
-bokeh
 ## Checkers/Formatters
 flake8
 pylint
-yapf
+# yapf
+black
 jedi
 ## Tests
 pytest

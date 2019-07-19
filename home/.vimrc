@@ -22,7 +22,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
-" Plug 'airblade/vim-rooter'
+Plug 'airblade/vim-rooter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sjl/gundo.vim'
 Plug 'nvie/vim-togglemouse'
@@ -33,7 +33,7 @@ Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Chiel92/vim-autoformat'
 Plug 'scrooloose/syntastic'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
@@ -74,40 +74,40 @@ filetype plugin indent on
     " characters or placing a color bar. It takes textwidth parameter, if it
     " is set, otherwise set limit to 80.
 function! ToggleHighlight()
-    if !exists('b:ExcessHighlight')
-        setlocal colorcolumn=0
-        highlight Excess ctermbg=DarkGrey guibg=Black
-        if &tw > 0
-            let b:ExcessHighlight = matchadd('Excess', '\%>'.&tw.'v.\+', -1)
-        else
-            let b:ExcessHighlight = matchadd('Excess', '\%>80v.\+', -1)
-        endif
+ if !exists('b:ExcessHighlight')
+    setlocal colorcolumn=0
+    highlight Excess ctermbg=DarkGrey guibg=Black
+    if &tw > 0
+        let b:ExcessHighlight = matchadd('Excess', '\%>'.&tw.'v.\+', -1)
     else
-        call matchdelete(b:ExcessHighlight)
-        unlet b:ExcessHighlight
+        let b:ExcessHighlight = matchadd('Excess', '\%>80v.\+', -1)
     endif
+  else
+    call matchdelete(b:ExcessHighlight)
+    unlet b:ExcessHighlight
+  endif
 endfunction
 
 function! ToggleBar()
-    if &colorcolumn=="0" || empty(&colorcolumn)
-        "highlight ColorColumn ctermbg=DarkGrey guibg=Black
-        if exists('b:ExcessHighlight')
-            call ToggleHighlight()
-        endif
-        if &tw > 0
-            setlocal colorcolumn=+1
-        else
-            setlocal colorcolumn=80
-        endif
-    else
-        setlocal colorcolumn=0
+  if &colorcolumn=="0" || empty(&colorcolumn)
+    "highlight ColorColumn ctermbg=DarkGrey guibg=Black
+    if exists('b:ExcessHighlight')
+      call ToggleHighlight()
     endif
+    if &tw > 0
+      setlocal colorcolumn=+1
+    else
+      setlocal colorcolumn=80
+    endif
+  else
+    setlocal colorcolumn=0
+  endif
 endfunction
 
 augroup CheckForHilight
-    autocmd!
-    autocmd BufWinLeave * let b:m=getmatches() | call clearmatches()
-    autocmd BufWinEnter * if exists('b:ExcessHighlight')&&exists('b:m') | call setmatches(b:m) | endif
+  autocmd!
+  autocmd BufWinLeave * let b:m=getmatches() | call clearmatches()
+  autocmd BufWinEnter * if exists('b:ExcessHighlight')&&exists('b:m') | call setmatches(b:m) | endif
 augroup END
 " }}}
 
@@ -123,11 +123,11 @@ if !exists(":DiffOrig")
 endif
 " Map a function to show/hide changes in the current file
 function! ToggleDiffOrig()
-    if !exists('g:diffline')
-        DiffOrig
-    else
-        exe "q | diffoff | norm! ".g:diffline."G"
-        unlet g:diffline
+  if !exists('g:diffline')
+    DiffOrig
+  else
+    exe "q | diffoff | norm! ".g:diffline."G"
+    unlet g:diffline
     endif
 endfunction
 " }}}
@@ -190,13 +190,13 @@ set undodir=~/.vim/undo//
 
 " Creeate directories if don't exist already
 if !isdirectory(expand(&undodir))
-    call mkdir(expand(&undodir), "p")
+  call mkdir(expand(&undodir), "p")
 endif
 if !isdirectory(expand(&backupdir))
-    call mkdir(expand(&backupdir), "p")
+  call mkdir(expand(&backupdir), "p")
 endif
 if !isdirectory(expand(&directory))
-    call mkdir(expand(&directory), "p")
+  call mkdir(expand(&directory), "p")
 endif
 
 " allows using bash aliases
@@ -389,7 +389,7 @@ nnoremap <leader>R :call RenameFile()<cr>
 " Vim-Rooter: change cwd to the project root --------------------------------------------------- {{{
 let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_use_lcd = 1
-let g:rooter_silent_chdir = 1
+let g:rooter_silent_chdir = 0
 let g:rooter_manual_only = 1
 " let g:rooter_resolve_links = 1
 " }}}
@@ -479,8 +479,8 @@ nnoremap <leader>gl :Gitv<cr>
 set diffopt+=vertical
 " fix Gitv folding diffs
 augroup git
-    au!
-    autocmd FileType git :setlocal foldlevel=99
+  au!
+  autocmd FileType git :setlocal foldlevel=99
 augroup END
 "}}}
 
@@ -500,6 +500,17 @@ function! VimuxSlime(text)
   endif
 endfunction
 
+function! VimuxIpythonVenv()
+  if !empty($VIRTUAL_ENV)
+    call VimuxOpenRunner()
+    let env_name = $VIRTUAL_ENV
+    call VimuxRunCommand('source ' . env_name . '/bin/activate')
+    call VimuxSendKeys("C-f C-l")
+  endif
+  VimuxRunCommand('ipython')
+endfunction
+
+nnoremap <localleader>vo :call VimuxOpenRunner()<CR>
 vnoremap <localleader>z "+y :call VimuxSlime(@+)<CR>`]j
 nnoremap <localleader>z V"+y :call VimuxSlime(@+)<CR>`]j
 if has('macunix')
@@ -507,6 +518,7 @@ if has('macunix')
 elseif has('unix')
   nnoremap <localleader>V :VimuxRunCommand('conda activate ' . $CONDA_DEFAULT_ENV . '; ipython')<CR>
 endif
+" nnoremap <localleader>V :call VimuxIpython()<CR>
 
 " }}}
 
@@ -538,7 +550,7 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 " Change some defaults
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 " unicode symbols for airline
 let g:airline_left_sep = ''
@@ -666,11 +678,11 @@ let g:SuperTabLongestEnhanced = 1
 let g:SuperTabCrMapping = 1
 let g:SuperTabClosePreviewOnPopupClose = 1
 augroup compl
-    au!
-    autocmd FileType *
-        \ if &omnifunc != '' |
-        \   call SuperTabChain(&omnifunc, "<c-p>") |
-        \ endif
+  au!
+  autocmd FileType *
+      \ if &omnifunc != '' |
+      \   call SuperTabChain(&omnifunc, "<c-p>") |
+      \ endif
 augroup END
 " }}}
 
@@ -704,7 +716,7 @@ let g:clang_auto_select = 1
 if has('macunix')
   let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/"
 elseif has('unix')
-  let g:clang_library_path = "/usr/lib/llvm-3.8/lib/libclang-3.8.so.1"
+  let g:clang_library_path = "/usr/lib/llvm-6.0/lib/libclang-6.0.so.1"
 endif
 let g:clang_user_options='|| exit 0'
 " }}}
@@ -835,9 +847,11 @@ let g:jedi#completions_enabled = 1
 
 " Plugins for code styling --------------------------------------------------------------------- {{{
 " vim-autoformat: plugin for formatting the code ----------------------------------------------- {{{
-let g:formatters_python = ['yapf']
+let g:formatters_python = ['black']
 let g:autoformat_autoindent = 0
-let g:formatter_yapf_style = 'pep8'
+let g:autoformat_retab = 1
+let g:autoformat_remove_trailing_spaces = 1
+" let g:formatter_yapf_style = 'pep8'
 vnoremap <F8> :Autoformat<cr>
 nnoremap <F8> :Autoformat<cr>
 " }}}
@@ -880,19 +894,19 @@ nnoremap z, zMzvzz
 nnoremap zM zMzz
 " Function to change text displayed in folds, much cleaner.
 function! MyFoldText() " Author: Steve Losh {{{
-    let line = getline(v:foldstart)
+  let line = getline(v:foldstart)
 
-    let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
-    let foldedlinecount = v:foldend - v:foldstart
+  let nucolwidth = &fdc + &number * &numberwidth
+  let windowwidth = winwidth(0) - nucolwidth - 3
+  let foldedlinecount = v:foldend - v:foldstart
 
-    " expand tabs into spaces
-    let onetab = strpart('          ', 0, &tabstop)
-    let line = substitute(line, '\t', onetab, 'g')
+  " expand tabs into spaces
+  let onetab = strpart('          ', 0, &tabstop)
+  let line = substitute(line, '\t', onetab, 'g')
 
-    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+  let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+  let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+  return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
 set foldtext=MyFoldText()
 
@@ -906,42 +920,52 @@ let g:markdown_fold_style = 'nested'
 " File type specific options ------------------------------------------------------------------- {{{
 " C-family
 augroup ft_c
-    au!
-    autocmd FileType c setlocal foldmethod=syntax foldnestmax=2
-    autocmd FileType c setlocal formatoptions=croq1j
-    autocmd FileType c setlocal comments-=:// comments+=fb://
+  au!
+  autocmd FileType c setlocal foldmethod=syntax foldnestmax=2
+  autocmd FileType c setlocal formatoptions=croq1j
+  autocmd FileType c setlocal comments-=:// comments+=fb://
 augroup END
 " Python
 augroup ft_py
-    au!
-    autocmd FileType python setlocal formatoptions=cqj
-    " autocmd FileType python let g:NERDSpaceDelims=0
+  au!
+  autocmd FileType python setlocal formatoptions=cqj
+  autocmd FileType python setlocal tw=88
+  autocmd FileType python setlocal iskeyword+=_
+  " autocmd FileType python let g:NERDSpaceDelims=0
 augroup END
 " Latex
 augroup ft_tex
-    au!
-    autocmd FileType tex setlocal tw=100
-    autocmd FileType tex setlocal dictionary=~/.vim/dictionaries/tex
-    autocmd FileType tex setlocal complete+=k
-    autocmd FileType tex setlocal fo+=j
+  au!
+  autocmd FileType tex setlocal tw=100
+  autocmd FileType tex setlocal dictionary=~/.vim/dictionaries/tex
+  autocmd FileType tex setlocal complete+=k
+  autocmd FileType tex setlocal fo+=j
 augroup END
 " Markdown
 augroup ft_md
-    au!
-    autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-    autocmd BufNewFile,BufRead *.md call ToggleBar()
+  au!
+  autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+  autocmd BufNewFile,BufRead *.md call ToggleBar()
 augroup END
 " Vim
 augroup ft_vim
-    au!
-    autocmd FileType vim setlocal fo=cq
-    autocmd FileType vim setlocal sw=2
-    autocmd FileType vim setlocal sts=2
+  au!
+  autocmd FileType vim setlocal fo=cq
+  autocmd FileType vim setlocal sw=2
+  autocmd FileType vim setlocal sts=2
 augroup END
 " Makefile: do not expand tabs to spaces
 augroup ft_make
-    au!
-    autocmd FileType make setlocal noexpandtab
+  au!
+  autocmd FileType make setlocal noexpandtab
 augroup END
-           
+" JSON
+augroup ft_json
+  au!
+  autocmd FileType json setlocal foldmethod=syntax
+  autocmd FileType json setlocal foldlevelstart=1
+  autocmd FileType json setlocal ts=4
+  autocmd FileType json setlocal sw=2
+  autocmd FileType json setlocal sts=2
+augroup END
 " }}}
