@@ -575,7 +575,7 @@ endif
 if has("gui_running")
   if has('macunix')
     set transparency=0                   " No transparency
-    set guifont=Menlo\ Regular\ for\ Powerline\:h12 " Fonts for powerline
+    set guifont=Menlo\ Regular\ for\ Powerline\:h11 " Fonts for powerline
   elseif has('unix')
     set guifont=Menlo\ for\ Powerline\ 10 " Fonts for powerline
   endif
