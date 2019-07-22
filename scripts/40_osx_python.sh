@@ -15,13 +15,20 @@ cd "$SRC_DIR"
 brew install python
 
 # Install PqQt5 with brew
+echo -e "\n\033[1mInstalling Python 3\033[0m"
 brew install pyqt5 --with-python
 
 # Install all required packages
+echo -e "\n\033[1mInstalling Python packages\033[0m"
 pip3 install -r pip-packages.txt
+
 # Upgrade outdated (except conda and packages installed with -e option)
+set +e
+echo -e "\n\033[1mUpgrade outdated packages\033[0m"
 pip3 list --outdated --format=freeze | grep -vE '(^\-e|conda)' | cut -d '=' -f 1 | xargs -n1 pip install -U
+set -e
 
 # Install Notebook extensions
+echo -e "\n\033[1mInstall Notebook extensions\033[0m"
 sudo `type -p jupyter` nbextension install https://bitbucket.org/ipre/calico/downloads/calico-spell-check-1.0.zip
 jupyter nbextension enable calico-spell-check

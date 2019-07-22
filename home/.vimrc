@@ -233,7 +233,9 @@ augroup END
 
 " Some useful mappings and functions ----------------------------------------------------------- {{{
 " Print file's full path
-command PWD echo expand('%:p')
+command Fpath echo expand('%:p')
+" Total number of search matched
+command Nmatch %s///gn
 " Write a file anyway, even if forgot to sudo
 cmap w!! w !sudo tee % >/dev/null
 " Execute selection in vim command line
@@ -242,6 +244,7 @@ vnoremap <silent> <leader>X "xy:@x<cr>
 command Win %s//\r/g
 " Format ugly json
 command Json %!python -m json.tool
+" Format ugly xml
 command Xml %s/></>\r</g | normal gg=G
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
@@ -500,25 +503,11 @@ function! VimuxSlime(text)
   endif
 endfunction
 
-function! VimuxIpythonVenv()
-  if !empty($VIRTUAL_ENV)
-    call VimuxOpenRunner()
-    let env_name = $VIRTUAL_ENV
-    call VimuxRunCommand('source ' . env_name . '/bin/activate')
-    call VimuxSendKeys("C-f C-l")
-  endif
-  VimuxRunCommand('ipython')
-endfunction
-
 nnoremap <localleader>vo :call VimuxOpenRunner()<CR>
 vnoremap <localleader>z "+y :call VimuxSlime(@+)<CR>`]j
 nnoremap <localleader>z V"+y :call VimuxSlime(@+)<CR>`]j
-if has('macunix')
-  nnoremap <localleader>V :VimuxRunCommand('ipython')<CR>
-elseif has('unix')
-  nnoremap <localleader>V :VimuxRunCommand('conda activate ' . $CONDA_DEFAULT_ENV . '; ipython')<CR>
-endif
-" nnoremap <localleader>V :call VimuxIpython()<CR>
+nnoremap <localleader>V :VimuxRunCommand('ipython')<CR>
+nnoremap <localleader>Vv :VimuxRunCommand('conda activate ' . $CONDA_DEFAULT_ENV . '; ipython')<CR>
 
 " }}}
 
