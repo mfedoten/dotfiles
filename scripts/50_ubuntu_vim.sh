@@ -23,6 +23,14 @@ sudo apt-get remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common vim-
 cd "$SRC_DIR"
 git clone https://github.com/vim/vim.git
 cd vim
+
+# python3 config dir
+if [ "$#" -eq 0 ] ; then
+    CONFIG_DIR="$HOME/miniconda3/lib/python3.6/config-3.6m-x86_64-linux-gnu";
+else
+    CONFIG_DIR=$1;
+fi
+
 # python 2 and 3 don't play nicely, better to choose one version
 export CC=clang
 export CCX=clang++
@@ -31,7 +39,7 @@ export CCX=clang++
             --enable-terminal \
             --enable-rubyinterp=yes \
             --enable-python3interp=yes \
-            --with-python3-config-dir=$HOME/miniconda3/lib/python3.6/config-3.6m-x86_64-linux-gnu \
+            --with-python3-config-dir=$CONFIG_DIR \
             --enable-perlinterp=yes \
             --enable-luainterp=yes \
             --enable-cscope \

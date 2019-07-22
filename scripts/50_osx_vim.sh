@@ -14,6 +14,14 @@ cd "$SRC_DIR"
 # Compile MacVim from source
 git clone https://github.com/macvim-dev/macvim
 cd macvim/src
+
+# python3 config dir
+if [ "$#" -eq 0 ] ; then
+    CONFIG_DIR="/usr/local/Frameworks/Python.framework/Versions/3.7/lib/python3.7/config-3.7m-darwin";
+else
+    CONFIG_DIR=$1;
+fi
+
 export LDFLAGS=-L/usr/local/lib
 CC=clang ./configure --with-features=huge \
             --enable-multibyte \
@@ -21,7 +29,7 @@ CC=clang ./configure --with-features=huge \
             --enable-rubyinterp=yes \
             --enable-pythoninterp=no \
             --enable-python3interp=yes \
-            --with-python3-config-dir=/usr/local/Frameworks/Python.framework/Versions/3.7/lib/python3.7/config-3.7m-darwin \
+            --with-python3-config-dir=$CONFIG_DIR \
             --enable-perlinterp=yes \
             --enable-luainterp=yes \
 			--with-lua-prefix=/usr/local \
