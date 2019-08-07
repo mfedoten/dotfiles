@@ -172,6 +172,7 @@ set scrolloff=999       " Keep cursor centred vertically on the screen
 set iskeyword-=_        " To consider '_' as word break
 set incsearch           " Do incremental searching
 set ignorecase          " To make smart case work
+set shortmess-=S         " Show current numer of search match
 set smartcase           " Ignore case if search pattern is all lowercase,
                         "    case-sensitive otherwise
 
@@ -387,14 +388,15 @@ set wildignore+=*.DS_Store,*/tmp/*
 set tags+=.git/tags
 
 " Rename file from vim
-nnoremap <leader>R :call RenameFile()<cr>
+nnoremap <localleader>R :call RenameFile()<cr>
 
 " Vim-Rooter: change cwd to the project root --------------------------------------------------- {{{
 let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_use_lcd = 1
 let g:rooter_silent_chdir = 0
 let g:rooter_manual_only = 1
-" let g:rooter_resolve_links = 1
+let g:rooter_resolve_links = 1
+nnoremap <leader>R :Rooter<cr>
 " }}}
 
 " NerdTree setup: display file system tree ----------------------------------------------------- {{{
@@ -503,11 +505,22 @@ function! VimuxSlime(text)
   endif
 endfunction
 
-nnoremap <localleader>vo :call VimuxOpenRunner()<CR>
+function! VimuxIpythonVenv()
+  if !empty($VIRTUAL_ENV)
+    let env_name = $VIRTUAL_ENV
+    call VimuxOpenRunner()
+    call VimuxRunCommand('workon $(basename ' . env_name . ')')
+    call VimuxSendKeys("C-f C-l")
+  endif
+  VimuxRunCommand('ipython')
+endfunction
+
 vnoremap <localleader>z "+y :call VimuxSlime(@+)<CR>`]j
 nnoremap <localleader>z V"+y :call VimuxSlime(@+)<CR>`]j
+nnoremap <localleader>vo :call VimuxOpenRunner()<CR>
+nnoremap <localleader>vc :VimuxRunCommand('conda activate ' . $CONDA_DEFAULT_ENV . '; ipython')<CR>
+nnoremap <localleader>vv :call VimuxIpythonVenv()<CR>
 nnoremap <localleader>V :VimuxRunCommand('ipython')<CR>
-nnoremap <localleader>Vv :VimuxRunCommand('conda activate ' . $CONDA_DEFAULT_ENV . '; ipython')<CR>
 
 " }}}
 

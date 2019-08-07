@@ -32,3 +32,6 @@ shopt -s cdspell
 
 # Notify immediatly on bg job completion
 set -o notify
+
+# Disable XON/XOFF and use C-s for forward history sarch (C-r for backward)
+stty -ixon
