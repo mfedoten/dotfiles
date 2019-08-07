@@ -21,6 +21,9 @@
 [push]
     default = simple # [ matching | simple ]
 
+[rebase]
+    autoStash = true
+
 [repack]
     usedeltabaseoffset = true # >git 1.5
 
