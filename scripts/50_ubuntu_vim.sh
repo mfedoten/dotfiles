@@ -26,7 +26,7 @@ cd vim
 
 # python3 config dir
 if [ "$#" -eq 0 ] ; then
-    CONFIG_DIR="$HOME/miniconda3/lib/python3.6/config-3.6m-x86_64-linux-gnu";
+    CONFIG_DIR="$HOME/miniconda3/lib/python3.8/config-3.8-x86_64-linux-gnu";
 else
     CONFIG_DIR=$1;
 fi
@@ -49,7 +49,7 @@ export CCX=clang++
             --with-compiledby="Mariia Fedotenkova <maria.fedotenkova@gmail.com>" \
             --prefix=/usr
 
-make VIMRUNTIMEDIR=/usr/share/vim/vim81
+make VIMRUNTIMEDIR=/usr/share/vim/vim82
 # it creates vim into package which you can later remve via dpkg -r
 # (don't forger to change name to smth meaningful, e.g. vim-mfe)
 sudo checkinstall

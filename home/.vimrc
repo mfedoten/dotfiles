@@ -31,6 +31,7 @@ Plug 'dr-chip-vim-scripts/ZoomWin'
 Plug 'scrooloose/nerdcommenter'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'Chiel92/vim-autoformat'
 Plug 'scrooloose/syntastic'
 " Plug 'SirVer/ultisnips'
@@ -409,6 +410,7 @@ nnoremap <leader>R :Rooter<cr>
     " R: Refresh thez tree, useful if files change outside of Vim
     " ?: Toggle NERD Tree's quick help }}}
 " The mappings and settings are in ~/.vim/after/plugin/nerdtree.vim
+let NERDTreeChDirMode = 1
 " }}}
 
 " CTRL-P: fast file navigation ----------------------------------------------------------------- {{{
@@ -427,7 +429,7 @@ nnoremap <leader>R :Rooter<cr>
 
 let g:ctrlp_cmd = 'CtrlPMRU'           " Start search with recently used files
 let g:ctrlp_by_filename = 0            " Start search with filenames
-let g:ctrlp_working_path_mode = 'rwa'   " Start search with current directory
+let g:ctrlp_working_path_mode = 'rwa'  " Start search with current directory
 let g:ctrlp_show_hidden = 1            " Search hidden files as well
 let g:ctrlp_follow_symlinks = 1        " Follow symbolic links
 let g:ctrlp_clear_cache_on_exit = 0    " Keep cash from prev. sessions
@@ -511,6 +513,11 @@ function! VimuxIpythonVenv()
     call VimuxOpenRunner()
     call VimuxRunCommand('workon $(basename ' . env_name . ')')
     call VimuxSendKeys("C-f C-l")
+  elseif !empty($CONDA_DEFAULT_ENV)
+    let env_name = $CONDA_DEFAULT_ENV
+    call VimuxOpenRunner()
+    call VimuxRunCommand('conda activate ' . env_name )
+    call VimuxSendKeys("C-f C-l")
   endif
   VimuxRunCommand('ipython')
 endfunction
@@ -518,7 +525,6 @@ endfunction
 vnoremap <localleader>z "+y :call VimuxSlime(@+)<CR>`]j
 nnoremap <localleader>z V"+y :call VimuxSlime(@+)<CR>`]j
 nnoremap <localleader>vo :call VimuxOpenRunner()<CR>
-nnoremap <localleader>vc :VimuxRunCommand('conda activate ' . $CONDA_DEFAULT_ENV . '; ipython')<CR>
 nnoremap <localleader>vv :call VimuxIpythonVenv()<CR>
 nnoremap <localleader>V :VimuxRunCommand('ipython')<CR>
 
@@ -967,7 +973,7 @@ augroup ft_json
   autocmd FileType json setlocal foldmethod=syntax
   autocmd FileType json setlocal foldlevelstart=1
   autocmd FileType json setlocal ts=4
-  autocmd FileType json setlocal sw=2
-  autocmd FileType json setlocal sts=2
+  autocmd FileType json setlocal sw=4
+  autocmd FileType json setlocal sts=4
 augroup END
 " }}}

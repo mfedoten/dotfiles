@@ -38,7 +38,7 @@
     ca = commit --amend # careful
     ac = !git add . && git commit
     acm = !git add . && git commit -m
-    l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(bold white)- %an %Creset, %ar%Creset'
+    l = log --graph --color --all --pretty=format:'%C(yellow)%h%C(bold cyan)%d%Creset %s %C(bold white)- %an %Creset, %ar%Creset'
     lg = log --color --graph --pretty=format:'%C(yellow)%h%Creset -%C(bold blue)%d%Creset %s %C(cyan)(%cd)%Creset %C(bold white)<%an>%Creset%n' --abbrev-commit --date=relative
     lsg = log --color --graph --all --pretty=format:'%C(yellow)%h%Creset -%C(bold blue)%d%Creset %s %C(cyan)(%cd)%Creset %C(bold white)<%an>%Creset%n' --abbrev-commit --date=relative --stat
     history = log --color --pretty=format:'%C(yellow)%h%Creset -%C(bold blue)%d%Creset %s %C(cyan)(%cd)%Creset %C(bold white)<%an>%Creset%n' --date=local --follow
@@ -48,9 +48,12 @@
     co = checkout
     br = branch
     up = rebase
+    check-ignored = check-ignore -v --no-index
     apply-ignore = !git ls-files -ci --exclude-standard -z | xargs -0r git rm --cached
-    ignored = !git ls-files -ci --exclude-standard
-    checki = check-ignore -v --no-index
+    show-ignored = !git ls-files -ci --exclude-standard
+    show-skiped = !git ls-files -v | grep '^S'
+    skip = !git update-index --skip-worktree
+    unskip = !git update-index --no-skip-worktree
     spull = svn rebase
     spush = svn dcommit
     crandom = !"git commit -m \"$(echo $(curl -s http://whatthecommit.com/index.txt)\" (http://whatthecommit.com)\")\""
