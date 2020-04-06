@@ -12,12 +12,12 @@ SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SRC_DIR"
 
 # Install Vundle and plugins listed in ~/.vimrc
-if [[ ! -d $HOME/.vim/bundle/vundle ]]; then
+if [[ ! -f $HOME/.vim/autoload/plug.vim ]]; then
     echo "Installing Vim-Plug..."
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 else
-    echo 'Vundle is already installed'
+    echo 'Vim-plug is already installed'
 fi
 vim +PlugInstall +qall
 
