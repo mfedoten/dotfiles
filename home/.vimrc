@@ -236,6 +236,8 @@ augroup END
 " Some useful mappings and functions ----------------------------------------------------------- {{{
 " Print file's full path
 command Fpath echo expand('%:p')
+" Insert full file path
+nnoremap <Leader>fn "=expand("%:p")<CR>p
 " Total number of search matched
 command Nmatch %s///gn
 " Write a file anyway, even if forgot to sudo
@@ -393,7 +395,7 @@ nnoremap <localleader>R :call RenameFile()<cr>
 
 " Vim-Rooter: change cwd to the project root --------------------------------------------------- {{{
 let g:rooter_change_directory_for_non_project_files = 'current'
-let g:rooter_use_lcd = 1
+let g:rooter_cd_cmd="lcd"
 let g:rooter_silent_chdir = 0
 let g:rooter_manual_only = 1
 let g:rooter_resolve_links = 1

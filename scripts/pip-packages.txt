@@ -17,6 +17,7 @@ seaborn
 flake8
 pylint
 # yapf
+neovim
 black
 jedi
 ## Tests
