@@ -503,10 +503,11 @@ function! VimuxSlime(text)
   call VimuxSendKeys("q")
   call VimuxSendKeys("C-u")
   if len(split(a:text, '\n\zs')) > 1
-    call VimuxSendText("%paste\n")
+    call VimuxSendText("%paste")
   else
-    call VimuxSendText(a:text . "\n")
+    call VimuxSendText(a:text)
   endif
+  call VimuxSendKeys("Enter")
 endfunction
 
 function! VimuxIpythonVenv()
