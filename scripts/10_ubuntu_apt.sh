@@ -32,10 +32,7 @@ packages=(
   screenfetch
   bash-completion
   ruby-full
-  checkinstall
   exuberant-ctags
-  smbclient
-  samba
   ack-grep
   cifs-utils
   okular

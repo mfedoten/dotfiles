@@ -18,18 +18,18 @@ sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/
 
 
 #### HomeBrew
-Next, run `./init/10_osx_homebrew.sh` to download and install Homebrew and all the packages. `./init/11_osx_brew_casks.sh` will install the casks.
+Next, run `./scripts/10_osx_homebrew.sh` to download and install Homebrew and all the packages. `./scripts/11_osx_brew_casks.sh` will install the casks.
 
 #### Upgrade bash
-Depending on the bash shipped with your system, it might be outdated. In order to update it, set a desired version of bash in `./init/20_osx_bash_update.sh` and then just run the script. It's not really necessary, but some useful features (like auto-completion in vim), won't work on bash versions older than 4.
+Depending on the bash shipped with your system, it might be outdated. In order to update it, set a desired version of bash in `./scripts/20_osx_bash_update.sh` and then just run the script. It's not really necessary, but some useful features (like auto-completion in vim), won't work on bash versions older than 4.
 
 #### OSX defaults
-`./init/30_osx_defaults.sh` sets some nice default settings. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized), printing full path in heading of Finder windows etc.
+`./scripts/30_osx_defaults.sh` sets some nice default settings. It also sets Terminal/iTerm colors to [Solarized theme](http://ethanschoonover.com/solarized), printing full path in heading of Finder windows etc.
 
 
 ### Ubuntu
 #### APT packages
-Running `./init/10_ubuntu_apt.sh` will update APT and installs all packages listed in `init/apt-packages.txt`. Or you can always install the packages manually.
+Running `./scripts/10_ubuntu_apt.sh` will update APT and installs all packages listed in `scripts/apt-packages.txt`. Or you can always install the packages manually.
 
 
 ## Git
@@ -60,26 +60,26 @@ And now add it to the [list of recognized keys](https://github.com/settings/keys
 ## Python
 There are several ways to install Python:
 * Install with [Miniconda](https://conda.io/miniconda.html) or [Anaconda](https://docs.continuum.io/anaconda/).
-* Install using package managers. **On Ubuntu** using `apt-get` (see [this example](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04). The problem here is that usually it contains older version of Python, but you can try to install it with PPA (an [example](http://askubuntu.com/questions/865554/how-do-i-install-python-3-6-using-apt-get)). **On OSX** you can easily install it with MacPorts. You can run `./init/40_osx_python.sh` to install Python 2.7 and Python 3.6, it also sets `python36` as default `python` and installs pip and PyQt5. **P.S** to check which Python version pip is using run `pip -V`.
+* Install using package managers. **On Ubuntu** using `apt-get` (see [this example](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04). The problem here is that usually it contains older version of Python, but you can try to install it with PPA (an [example](http://askubuntu.com/questions/865554/how-do-i-install-python-3-6-using-apt-get)). **On OSX** you can easily install it with MacPorts. You can run `./scripts/40_osx_python.sh` to install Python 2.7 and Python 3.6, it also sets `python36` as default `python` and installs pip and PyQt5. **P.S** to check which Python version pip is using run `pip -V`.
 * **Ubuntu:** compile from source. Look [here](https://tecadmin.net/install-python-3-6-ubuntu-linuxmint/), [here](http://stackoverflow.com/questions/8097161/how-would-i-build-python-myself-from-source-code-on-ubuntu), and [here](https://docs.python.org/2/using/unix.html), good luck! **OSX:** install from official [Python's website](https://www.python.org/downloads/)
 
-I decided to go wiht Miniconda installation for now, so `./init/40_python.sh` will fetch and install python allong wiht all pip packages (+ notebook extensions) from `pip-packages.txt`.
+I decided to go wiht Miniconda installation for now, so `./scripts/40_python_conda.sh` will fetch and install python allong wiht all pip packages (+ notebook extensions) from `pip-packages.txt`.
 
 ## Vim
 On Ubuntu, you can always find the latest(-ish) version of vim either through package manager or form official repo.
-In case you want to compile it manually, here's what you ought to do. Run either `./init/50_osx_vim.sh` or `./init/50_ubuntu_vim.sh` based on your system. **Don't forget to change Python's config dir to match your python**. More info on how to compile vim from source on OSX can be found [here](http://tartley.com/?p=1355), for Ubuntu check [here](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source) and [here](https://gist.github.com/odiumediae/3b22d09b62e9acb7788baf6fdbb77cf8).
+In case you want to compile it manually, here's what you ought to do. Run either `./scripts/50_osx_vim.sh` or `./scripts/50_ubuntu_vim.sh` based on your system. **Don't forget to change Python's config dir to match your python**. More info on how to compile vim from source on OSX can be found [here](http://tartley.com/?p=1355), for Ubuntu check [here](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source) and [here](https://gist.github.com/odiumediae/3b22d09b62e9acb7788baf6fdbb77cf8).
 
 On Ubuntu it's a good idea to use `sudo checkinstall` instead of `sudo make install`, then you can easily deinstall your vim with `dpkg -r [compiled-vim]` and don't forget to change package's name to something meaningfull when checkinstall asks you to.
 
 **P.S.** when compiling vim with both python2 and python3, well [they don't play nicely](http://stackoverflow.com/a/23656675), so you'll probably have to choose either of them. Or [google it](http://unix.stackexchange.com/questions/305415/enabling-python3-on-vim-in-fedora-24).
 
-Now that you have your Vim/MacVim successfully installed, we should install all of our precious plugins through `./init/51_vundle.sh`. What it does, it installs [Vundle](https://github.com/VundleVim/Vundle.vim) and all plugins listed in `~/.vimrc`. The script also installs [pre-patched fonts for Powerline](https://github.com/powerline/fonts) to work with [vim-airline](https://github.com/bling/vim-airline), you just have to specify the right font in your terminal/iTerm/MacVim etc. settings after installation.
+Now that you have your Vim/MacVim successfully installed, we should install all of our precious plugins through `./scripts/51_vundle.sh`. What it does, it installs [Vundle](https://github.com/VundleVim/Vundle.vim) and all plugins listed in `~/.vimrc`. The script also installs [pre-patched fonts for Powerline](https://github.com/powerline/fonts) to work with [vim-airline](https://github.com/bling/vim-airline), you just have to specify the right font in your terminal/iTerm/MacVim etc. settings after installation.
 
 
 ## Extras
 
 ### Git status
-I found this amazing python script called [show_status](http://blog.mikepearce.net/2010/06/16/git-status-on-multiple-repos/). It will show git status of all git repositories under current dir. The script `./init/60_git_show_status.sh` will download this script from its [github repo](https://github.com/MikePearce/Git-Status) and install it to `/usr/local/bin/`.
+I found this amazing python script called [show_status](http://blog.mikepearce.net/2010/06/16/git-status-on-multiple-repos/). It will show git status of all git repositories under current dir. The script `./scripts/60_git_show_status.sh` will download this script from its [github repo](https://github.com/MikePearce/Git-Status) and install it to `/usr/local/bin/`.
 
 ### Terminal
 #### OSX: iTerm and Terminal settings

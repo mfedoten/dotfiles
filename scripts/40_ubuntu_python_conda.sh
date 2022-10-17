@@ -12,8 +12,8 @@ SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SRC_DIR"
 
 # Download the installer (change version to latest if you want the lates python instead of 3.6)
-# curl -o miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-4.4.10-Linux-x86_64.sh
-curl -o miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+curl -o miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-py38_4.12.0-Linux-x86_64.sh
+# curl -o miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 # At the installations agree to user agreement (or whatever)
 bash miniconda.sh -b
@@ -42,7 +42,7 @@ conda install pip pyqt -y
 # Install all required packages
 pip install -r pip-packages.txt
 # Upgrade outdated (except conda and packages installed with -e option)
-pip list --outdated --format=freeze | grep -vE '(^\-e|conda)' | cut -d '=' -f 1 | xargs -n1 pip install -U
+pip list --outdated | grep -vE '(^\-e|conda)' | cut -d '=' -f 1 | xargs -n1 pip install -U
 
 # Install Notebook extensions
 sudo `type -p jupyter` nbextension install https://bitbucket.org/ipre/calico/downloads/calico-spell-check-1.0.zip
