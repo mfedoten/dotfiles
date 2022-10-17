@@ -515,12 +515,13 @@ function! VimuxIpythonVenv()
     let env_name = $VIRTUAL_ENV
     call VimuxOpenRunner()
     call VimuxRunCommand('workon $(basename ' . env_name . ')')
-    call VimuxSendKeys("C-f C-l")
+    call VimuxRunCommand('clear')
   elseif !empty($CONDA_DEFAULT_ENV)
     let env_name = $CONDA_DEFAULT_ENV
     call VimuxOpenRunner()
     call VimuxRunCommand('conda activate ' . env_name )
-    call VimuxSendKeys("C-f C-l")
+    " call VimuxSendKeys("C-f C-l")
+    call VimuxRunCommand('clear')
   endif
   VimuxRunCommand('ipython')
 endfunction
