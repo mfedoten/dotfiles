@@ -121,9 +121,10 @@ You should now enjoy italics in your tmux+vim+iterm combo, as the rest of the co
 I got used to Mac keyboard where `~` is located on the bottom row. So to remap it on Ubuntu > 16.04 I had to edit keys values in `/usr/share/X11/xkb/symbols/`. In order not to repeat this procedure again, just do the following:
 ```
 sudo cp /usr/share/X11/xkb/symbols/us{,.backup}
-sudo cp extras/keymap_us_ubuntu_1804 /usr/share/X11/xkb/symbols/us
+sudo cp extras/keymap_us_ubuntu_2204 /usr/share/X11/xkb/symbols/us
 ```
-I'm trying not to screw up here, that's why the first line is to create a backup. If something does go wrong just run `sudo cp /usr/share/X11/xkb/symbols/us{backup,}`.
+This will only change symbols for English (Macintosh) keyboard, if you're using a different keyboard you should find the corresponding section in the `us` file and remap the `<LSGT>` symbol.
+The first line is to create a backup. If something does go wrong just run `sudo cp /usr/share/X11/xkb/symbols/us{backup,}`.
 
 
 ## Dotfiles
@@ -163,6 +164,3 @@ If you don't know where to start, what all this mean, what the hell dotfiles are
     - [cowboy](https://github.com/cowboy/dotfiles)
     - [Lars Kappert](https://github.com/webpro/dotfiles)
 
-## TODO
-- jedi-vim + venv
-- vim-mode in bash + remap <M-.>
