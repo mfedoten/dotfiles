@@ -38,7 +38,9 @@ Plug 'scrooloose/syntastic'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'Rip-Rip/clang_complete'
+Plug 'xavierd/clang_complete'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'preservim/tagbar'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'tmhedberg/SimpylFold'
 Plug 'nelstrom/vim-markdown-folding'
@@ -50,14 +52,13 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
 Plug 'vim-python/python-syntax'
-Plug 'endel/vim-github-colorscheme'
+" light colorschemes
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'nanotech/jellybeans.vim'
-Plug 'tomasr/molokai'
-Plug 'mfedoten/vimberry'
-Plug 'jacoborus/tender.vim'
-Plug 'ayu-theme/ayu-vim'
+" dark colorschemes
 Plug 'cocopon/iceberg.vim'
+Plug 'nanotech/jellybeans.vim'
+Plug 'jacoborus/tender.vim'
+Plug 'mfedoten/vimberry'
 Plug 'tyrannicaltoucan/vim-quantum'
 " Plug 'lervag/vimtex'
 " Plug 'chrisbra/Colorizer'
@@ -170,7 +171,7 @@ set history=500         " Keep 500 lines of command line history
 set undofile            " Undo even after closing and re-openninf a file
 set autoread            " Automatically re-read the file if it has changed
 set scrolloff=999       " Keep cursor centred vertically on the screen
-set iskeyword-=_        " To consider '_' as word break
+set iskeyword+=_        " Don't consider '_' as word break
 set incsearch           " Do incremental searching
 set ignorecase          " To make smart case work
 set shortmess-=S         " Show current numer of search match
@@ -388,7 +389,9 @@ set wildignore+=*.aux,*.out,*.toc
 set wildignore+=*.DS_Store,*/tmp/*
 
 " Ctags (see ~/.git_template)
+" set tags+=../tags
 set tags+=.git/tags
+set tags+=~/.cache/ctags/tags
 
 " Rename file from vim
 nnoremap <localleader>R :call RenameFile()<cr>
@@ -553,6 +556,14 @@ nnoremap <silent> <Leader>ti :IndentLinesToggle<cr>
     " Requires power line fonts. How to get it described here:
     " http://stackoverflow.com/a/19137142/4798992
 set laststatus=2                                   " Enable powerline
+" Extensions I don't want to load
+" let g:airline#extensions#disable_rtp_load = 1
+" let g:airline_extensions = ['whitespace']
+let g:airline#extensions#keymap#enabled = 0
+let g:airline#extensions#searchcount#enabled = 0
+let g:airline#extensions#wordcount#enabled = 0
+
+" Tabline config
 let g:airline#extensions#tabline#enabled=1         " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod=':t'     " Show just the filename
 let g:airline#extensions#tabline#buffer_nr_show=1  " Show buffer number
@@ -564,7 +575,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-" unicode symbols for airline
+" Unicode symbols for airline
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -725,12 +736,24 @@ let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
 let g:clang_complete_patterns = 1
 let g:clang_auto_select = 1
+" change jump to declaration and back keys so they don't override default tag navigation
+let g:clang_jumpto_declaration_key='<localleader>d'
 if has('macunix')
   let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/"
 elseif has('unix')
   let g:clang_library_path = "/usr/lib/llvm-14/lib/libclang-14.so.1"
 endif
 let g:clang_user_options='|| exit 0'
+" }}}
+
+" Vim-Gutentags: automatic ctags generation ---------------------------------------------------- {{{
+let g:gutentags_cache_dir='~/.cache/ctags'
+let g:gutentags_define_advanced_commands = 1
+let g:gutentags_resolve_symlinks=1
+" }}}
+
+" Tagbar: a class outline viewer for Vim ------------------------------------------------------- {{{
+nnoremap <F6> :TagbarToggle<CR>
 " }}}
 
 " Jedi-Vim: code-completion for python --------------------------------------------------------- {{{
@@ -879,9 +902,10 @@ let g:targets_seekRanges = 'cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll r
 
 " NERDCommenter: makes commenting easier ------------------------------------------------------- {{{
     " http://spf13.com/post/vim-plugins-nerd-commenter
+let g:NERDCommentWholeLinesInVMode = 2
 let g:NERDSpaceDelims = 1         " adds extra spaces to comment
 let g:NERDDefaultAlign='both'     " align comments to the left
-let g:NERDCompactSexyComs = 1     " make block comments more compact
+let g:NERDCompactSexyComs = 0     " make block comments less compact
 let g:NERDCustomDelimiters = {'python': {'left': '#'}} " otherwise two extra spaces in python
 " }}}
 
@@ -942,7 +966,6 @@ augroup ft_py
   au!
   autocmd FileType python setlocal formatoptions=cqj
   autocmd FileType python setlocal tw=88
-  autocmd FileType python setlocal iskeyword+=_
   " autocmd FileType python let g:NERDSpaceDelims=0
 augroup END
 " Latex

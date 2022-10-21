@@ -8,6 +8,7 @@
 --exclude=ext/**
 --python-kinds=-i
 --languages=-html
+--extra=+q
 
 --langdef=markdown
 --langmap=markdown:.md
