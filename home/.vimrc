@@ -753,7 +753,9 @@ let g:gutentags_resolve_symlinks=1
 " }}}
 
 " Tagbar: a class outline viewer for Vim ------------------------------------------------------- {{{
-nnoremap <F6> :TagbarToggle<CR>
+nnoremap <F6> :TagbarToggle -fc<CR>
+let g:tagbar_show_tag_count = 1
+" let g:tagbar_position='topleft vertical'
 " }}}
 
 " Jedi-Vim: code-completion for python --------------------------------------------------------- {{{
