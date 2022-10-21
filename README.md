@@ -63,17 +63,26 @@ There are several ways to install Python:
 * Install using package managers. **On Ubuntu** using `apt-get` (see [this example](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04). The problem here is that usually it contains older version of Python, but you can try to install it with PPA (an [example](http://askubuntu.com/questions/865554/how-do-i-install-python-3-6-using-apt-get)). **On OSX** you can easily install it with MacPorts. You can run `./scripts/40_osx_python.sh` to install Python 2.7 and Python 3.6, it also sets `python36` as default `python` and installs pip and PyQt5. **P.S** to check which Python version pip is using run `pip -V`.
 * **Ubuntu:** compile from source. Look [here](https://tecadmin.net/install-python-3-6-ubuntu-linuxmint/), [here](http://stackoverflow.com/questions/8097161/how-would-i-build-python-myself-from-source-code-on-ubuntu), and [here](https://docs.python.org/2/using/unix.html), good luck! **OSX:** install from official [Python's website](https://www.python.org/downloads/)
 
-I decided to go wiht Miniconda installation for now, so `./scripts/40_python_conda.sh` will fetch and install python allong wiht all pip packages (+ notebook extensions) from `pip-packages.txt`.
+I decided to go with Miniconda installation for now, so `./scripts/40_python_conda.sh` will fetch and install python along with all pip packages (+ notebook extensions) from `pip-packages.txt`.
 
 ## Vim
-On Ubuntu, you can always find the latest(-ish) version of vim either through package manager or form official repo.
-In case you want to compile it manually, here's what you ought to do. Run either `./scripts/50_osx_vim.sh` or `./scripts/50_ubuntu_vim.sh` based on your system. **Don't forget to change Python's config dir to match your python**. More info on how to compile vim from source on OSX can be found [here](http://tartley.com/?p=1355), for Ubuntu check [here](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source) and [here](https://gist.github.com/odiumediae/3b22d09b62e9acb7788baf6fdbb77cf8).
+On Ubuntu, you can always find the latest(-ish) version of vim either through package manager or form official repo. Normally, just installing latest GUI vim will have all the features you need. You can install it with
+
+```
+sudo apt install vim-gui-common
+```
+
+It is done already in the `./scripts/10_ubuntu_apt.sh`, no need to run it again.
+
+Now that you have your Vim/MacVim successfully installed, we should install all of our precious plugins through `./scripts/51_vundle.sh`. What it does, it installs [Vundle](https://github.com/VundleVim/Vundle.vim) and all plugins listed in `~/.vimrc`. The script also installs [pre-patched fonts for Powerline](https://github.com/powerline/fonts) to work with [vim-airline](https://github.com/bling/vim-airline), you just have to specify the right font in your terminal/iTerm/MacVim etc. settings after installation.
+
+#### Manual Vim install
+
+In case you like suffering and want to compile it manually, here's what you ought to do. Run either `./scripts/50_osx_vim.sh` or `./scripts/50_ubuntu_vim.sh` based on your system. **Don't forget to change Python's config dir to match your python**. More info on how to compile vim from source on OSX can be found [here](http://tartley.com/?p=1355), for Ubuntu check [here](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source) and [here](https://gist.github.com/odiumediae/3b22d09b62e9acb7788baf6fdbb77cf8).
 
 On Ubuntu it's a good idea to use `sudo checkinstall` instead of `sudo make install`, then you can easily deinstall your vim with `dpkg -r [compiled-vim]` and don't forget to change package's name to something meaningfull when checkinstall asks you to.
 
 **P.S.** when compiling vim with both python2 and python3, well [they don't play nicely](http://stackoverflow.com/a/23656675), so you'll probably have to choose either of them. Or [google it](http://unix.stackexchange.com/questions/305415/enabling-python3-on-vim-in-fedora-24).
-
-Now that you have your Vim/MacVim successfully installed, we should install all of our precious plugins through `./scripts/51_vundle.sh`. What it does, it installs [Vundle](https://github.com/VundleVim/Vundle.vim) and all plugins listed in `~/.vimrc`. The script also installs [pre-patched fonts for Powerline](https://github.com/powerline/fonts) to work with [vim-airline](https://github.com/bling/vim-airline), you just have to specify the right font in your terminal/iTerm/MacVim etc. settings after installation.
 
 
 ## Extras

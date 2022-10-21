@@ -18,6 +18,7 @@ sudo apt-get -qq dist-upgrade
 
 # Read ports into array
 packages=(
+  vim-gui-common
   clang
   coreutils
   findutils
@@ -32,7 +33,7 @@ packages=(
   screenfetch
   bash-completion
   ruby-full
-  exuberant-ctags
+  universal-ctags
   ack-grep
   cifs-utils
   okular
