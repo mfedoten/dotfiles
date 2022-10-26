@@ -63,7 +63,7 @@ There are several ways to install Python:
 * Install using package managers. **On Ubuntu** using `apt-get` (see [this example](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04). The problem here is that usually it contains older version of Python, but you can try to install it with PPA (an [example](http://askubuntu.com/questions/865554/how-do-i-install-python-3-6-using-apt-get)). **On OSX** you can easily install it with MacPorts. You can run `./scripts/40_osx_python.sh` to install Python 2.7 and Python 3.6, it also sets `python36` as default `python` and installs pip and PyQt5. **P.S** to check which Python version pip is using run `pip -V`.
 * **Ubuntu:** compile from source. Look [here](https://tecadmin.net/install-python-3-6-ubuntu-linuxmint/), [here](http://stackoverflow.com/questions/8097161/how-would-i-build-python-myself-from-source-code-on-ubuntu), and [here](https://docs.python.org/2/using/unix.html), good luck! **OSX:** install from official [Python's website](https://www.python.org/downloads/)
 
-I decided to go with Miniconda installation for now, so `./scripts/40_python_conda.sh` will fetch and install python along with all pip packages (+ notebook extensions) from `pip-packages.txt`.
+I decided to go with Miniconda installation for now, so `./scripts/40_ubuntu_python_conda.sh` (or `40_osx_python.sh` on OSX) will fetch and install python along with all pip packages (+ notebook extensions) from `pip-packages.txt`.
 
 ## Vim
 On Ubuntu, you can always find the latest(-ish) version of vim either through package manager or form official repo. Normally, just installing latest GUI vim will have all the features you need. You can install it with
@@ -84,6 +84,20 @@ On Ubuntu it's a good idea to use `sudo checkinstall` instead of `sudo make inst
 
 **P.S.** when compiling vim with both python2 and python3, well [they don't play nicely](http://stackoverflow.com/a/23656675), so you'll probably have to choose either of them. Or [google it](http://unix.stackexchange.com/questions/305415/enabling-python3-on-vim-in-fedora-24).
 
+
+## Dotfiles
+Next, we need to symlink all files in `home` directory. I have a custom script, which always links files but ask user for backup. There are several scenarios:
+- file already exist and is linked to a dotfile in your repository -> nothing happens.
+- file exists and it is identical to your dotfiles -> file is replaced with symlink, no backup.
+- file exist and differs from your dotfile -> file is symlinked to your dotfile, user is prompted to confirm backup.
+- file doesn't exist -> symbolic link is created.
+
+The script is mostly based on Simon Eskildsen's [linker.sh script](https://github.com/Sirupsen/dotfiles/blob/master/linker.sh), to which I added few modifications. Before linking files from you repository the scripts first checks dotfiles in your home `~/` directory for broken links and deletes them.
+
+To link all dotfiles in your repository just type in:
+```
+./install.sh
+```
 
 ## Extras
 
@@ -135,20 +149,6 @@ sudo cp extras/keymap_us_ubuntu_2204 /usr/share/X11/xkb/symbols/us
 This will only change symbols for English (Macintosh) keyboard, if you're using a different keyboard you should find the corresponding section in the `us` file and remap the `<LSGT>` symbol.
 The first line is to create a backup. If something does go wrong just run `sudo cp /usr/share/X11/xkb/symbols/us{backup,}`.
 
-
-## Dotfiles
-Next, we need to symlink all files in `home` directory. I have a custom script, which always links files but ask user for backup. There are several scenarios:
-- file already exist and is linked to a dotfile in your repository -> nothing happens.
-- file exists and it is identical to your dotfiles -> file is replaced with symlink, no backup.
-- file exist and differs from your dotfile -> file is symlinked to your dotfile, user is prompted to confirm backup.
-- file doesn't exist -> symbolic link is created.
-
-The script is mostly based on Simon Eskildsen's [linker.sh script](https://github.com/Sirupsen/dotfiles/blob/master/linker.sh), to which I added few modifications. Before linking files from you repository the scripts first checks dotfiles in your home `~/` directory for broken links and deletes them.
-
-To link all dotfiles in your repository just type in:
-```
-./install.sh
-```
 
 ## Warning
 All this scripts worked fine for me, but might not work on your machine, so proceed with care. Never copy anything blindly, check what is inside and adjust to your workflow. Each script will exit as soon as any command in the scrip fails. If you want to see what is being executed, in the beginning of each script (around `line 8`) you should find the following:

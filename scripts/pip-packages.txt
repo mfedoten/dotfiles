@@ -5,6 +5,7 @@ pandas
 scikit-learn
 ## Jupyter notebooks
 jupyter
+ipython
 ## Pandas optional dependencies
 numexpr
 bottleneck

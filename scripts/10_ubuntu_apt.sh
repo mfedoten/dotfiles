@@ -18,47 +18,40 @@ sudo apt-get -qq dist-upgrade
 
 # Read ports into array
 packages=(
-  vim-gui-common
+  ack-grep
+  arc-theme
+  bash-completion
+  build-essential
+  cifs-utils
   clang
   coreutils
-  findutils
-  build-essential
-  psutils
-  htop
   curl
-  xclip
+  findutils
+  gnome-tweaks
+  gnome-shell-extension-manager
+  htop
   imagemagick
   ppa-purge
-  tree
-  screenfetch
-  bash-completion
+  psutils
   ruby-full
+  screenfetch
+  tilix
+  tmux
+  tree
   universal-ctags
-  ack-grep
-  cifs-utils
-  okular
-  gnome-shell-extensions
-  chrome-gnome-shell
+  vim-gui-common
+  xclip
 )
 
 
 echo -e "\n\033[1mInstalling APT packages: ${packages[*]}\033[0m"
 for package in "${packages[@]}"; do
-  sudo apt-get -qq install "$package"
+  sudo apt -yqq install "$package"
 done
 
 # get the latest git
-sudo apt-add-repository ppa:git-core/ppa
+sudo apt-add-repository -y ppa:git-core/ppa
 sudo apt-get update
-sudo apt-get install -qq git
-
-# install tilix
-sudo add-apt-repository ppa:webupd8team/terminix
-sudo apt-get update
-sudo apt-get install -yqq tilix
-
-# Gnome Keyring (http://askubuntu.com/a/776335)
-sudo apt-get install -qq libgnome-keyring-dev
-sudo make --directory=/usr/share/doc/git/contrib/credential/gnome-keyring
+sudo apt-get install -yqq git
 
 sudo apt-get autoclean
