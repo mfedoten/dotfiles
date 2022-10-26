@@ -64,6 +64,3 @@
 
 [include]
     path = config_local
-
-[init]
-	templatedir = ~/.git_template

@@ -392,6 +392,7 @@ set wildignore+=*.DS_Store,*/tmp/*
 " set tags+=../tags
 set tags+=.git/tags
 set tags+=~/.cache/ctags/tags
+set tags+=tags;/
 
 " Rename file from vim
 nnoremap <localleader>R :call RenameFile()<cr>
