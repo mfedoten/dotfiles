@@ -558,17 +558,15 @@ nnoremap <silent> <Leader>ti :IndentLinesToggle<cr>
     " http://stackoverflow.com/a/19137142/4798992
 set laststatus=2                                   " Enable powerline
 " Extensions I don't want to load
-" let g:airline#extensions#disable_rtp_load = 1
-" let g:airline_extensions = ['whitespace']
 let g:airline#extensions#keymap#enabled = 0
 let g:airline#extensions#searchcount#enabled = 0
 let g:airline#extensions#wordcount#enabled = 0
+let g:airline#extensions#tmuxline#enabled = 0
 
 " Tabline config
 let g:airline#extensions#tabline#enabled=1         " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod=':t'     " Show just the filename
 let g:airline#extensions#tabline#buffer_nr_show=1  " Show buffer number
-let g:airline_powerline_fonts=1                    " Use fancy fonts
 " Define separators
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -576,6 +574,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+let g:airline_powerline_fonts=1                    " Use fancy fonts
 " Unicode symbols for airline
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -590,8 +589,6 @@ let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.space = "\ua0"
-
-let g:airline#extensions#tmuxline#enabled = 0
 
 " Add Textwidth and format options to a status line
 function! AirlineInit()

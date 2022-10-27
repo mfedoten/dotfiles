@@ -28,3 +28,11 @@ cd fonts
 ./install.sh
 cd "$SRC_DIR"
 sudo rm -r fonts
+# Install Menlo font
+if [ ! -d $HOME/.local/share/fonts ]; then
+  mkdir -p $HOME/.local/share/fonts
+fi
+git clone https://github.com/abertsch/Menlo-for-Powerline
+cp Menlo-for-Powerline/*.ttf $HOME/.local/share/fonts
+fc-cache -vf $HOME/.local/share/fonts
+sudo rm -r Menlo-for-Powerline

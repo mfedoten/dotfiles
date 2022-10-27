@@ -30,6 +30,7 @@ conda activate
 conda install pip jedi black -y
 pip install -U pip
 conda update conda
+conda install -c conda-forge conda-bash-completion
 
 # Create a new development environment
 # todo: create from yaml file

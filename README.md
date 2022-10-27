@@ -138,7 +138,7 @@ killall tmux
 You should now enjoy italics in your tmux+vim+iterm combo, as the rest of the config is in the dotfiles.
 
 ### Menlo font
-`extras` also contains a folder with Menlo font patched for Powerline, install as described [here](https://github.com/abertsch/Menlo-for-Powerline).
+Normally, running `./scripts/51_vimplug.sh` should install Menlo font patched for Powerline, if it wasn't just follow the steps described [here](https://github.com/abertsch/Menlo-for-Powerline).
 
 ### Key Remap
 I got used to Mac keyboard where `~` is located on the bottom row. So to remap it on Ubuntu > 16.04 I had to edit keys values in `/usr/share/X11/xkb/symbols/`. In order not to repeat this procedure again, just do the following:

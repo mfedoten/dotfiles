@@ -59,4 +59,8 @@ if [ -f /opt/completions/tmux.completion.bash ]; then
     . /opt/completions/tmux.completion.bash
 fi
 
+# conda completion
+if [[ -r $HOME/miniconda3/etc/profile.d/bash_completion.sh ]]; then
+    . $HOME/miniconda3/etc/profile.d/bash_completion.sh
+fi
 
