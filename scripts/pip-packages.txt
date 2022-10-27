@@ -15,8 +15,7 @@ Pillow
 matplotlib
 seaborn
 ## Checkers/Formatters
-# Use older version of flake8 since they made updates to config management
-flake8==3.9.2
+flake8
 pylint
 # yapf
 neovim

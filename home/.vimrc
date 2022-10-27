@@ -675,6 +675,7 @@ let g:syntastic_loc_list_height = 5
 " let g:syntastic_ignore_files = ['\m\c\.py$']
 let g:syntastic_tex_checkers = ['chktex']
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = "--config=$HOME/.config/flake8"
 nnoremap <F7> :SyntasticCheck<cr>
 nnoremap <localleader>G :SyntasticToggleMode<cr>
 nnoremap <localleader>l :Errors<cr>
