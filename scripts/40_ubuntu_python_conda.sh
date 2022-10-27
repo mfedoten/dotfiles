@@ -22,7 +22,7 @@ rm miniconda.sh
 # Export path for now
 . $HOME/miniconda3/etc/profile.d/conda.sh
 
-# Pin python version to 3.6
+# Pin python version to 3.8
 echo "python 3.8.*" > $HOME/miniconda3/conda-meta/pinned
 
 # Update conda
