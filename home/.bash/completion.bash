@@ -60,7 +60,9 @@ if [ -f /opt/completions/tmux.completion.bash ]; then
 fi
 
 # conda completion
-if [[ -r $HOME/miniconda3/etc/profile.d/bash_completion.sh ]]; then
-    . $HOME/miniconda3/etc/profile.d/bash_completion.sh
+# if [[ -r $CONDA_PREFIX/etc/profile.d/bash_completion.sh ]]; then
+#     source $CONDA_RPREFIX/etc/profile.d/bash_completion.sh
+# fi
+if [ -f $CONDA_PREFIX/share/bash-completion/completions/conda ]; then
+    . $CONDA_PREFIX/share/bash-completion/completions/conda
 fi
-
