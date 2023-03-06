@@ -8,3 +8,5 @@ c.InteractiveShell.colors = 'neutral'
 
 c.IPCompleter.greedy = False
 c.IPCompleter.use_jedi = True
+
+c.TerminalInteractiveShell.autosuggestions_provider = 'AutoSuggestFromHistory'
