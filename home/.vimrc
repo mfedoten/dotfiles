@@ -52,6 +52,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
 Plug 'vim-python/python-syntax'
+Plug 'bfrg/vim-cpp-modern'
 " light colorschemes
 Plug 'NLKNguyen/papercolor-theme'
 " dark colorschemes
@@ -692,7 +693,7 @@ let g:snips_author = "Mariia Fedotenkova"
 " SuperTab: allows completion with Tab --------------------------------------------------------- {{{
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabCompletionContexts = ['s:ContextText','s:ContextDiscover']
-let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>", "&completefunc:<c-x><c-]>"]
 let g:SuperTabContextTextOmniPrecedence = ['&completefunc', '&omnifunc']
 let g:SuperTabMappingBackward = "<c-tab>"
 let g:SuperTabMappingTabLiteral = "<s-tab>"
@@ -908,6 +909,7 @@ let g:NERDSpaceDelims = 1         " adds extra spaces to comment
 let g:NERDDefaultAlign='both'     " align comments to the left
 let g:NERDCompactSexyComs = 0     " make block comments less compact
 let g:NERDCustomDelimiters = {'python': {'left': '#'}} " otherwise two extra spaces in python
+let g:NERDAltDelims_c = 1
 " }}}
 
 " }}}
@@ -959,8 +961,10 @@ let g:markdown_fold_style = 'nested'
 augroup ft_c
   au!
   autocmd FileType c setlocal foldmethod=syntax foldnestmax=2
+  autocmd FileType c setlocal tabstop=2 shiftwidth=2
   autocmd FileType c setlocal formatoptions=croq1j
   autocmd FileType c setlocal comments-=:// comments+=fb://
+  autocmd FileType c let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>", "&completefunc:<c-x><c-]>"]
 augroup END
 " Python
 augroup ft_py
