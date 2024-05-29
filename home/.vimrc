@@ -960,11 +960,11 @@ let g:markdown_fold_style = 'nested'
 " C-family
 augroup ft_c
   au!
-  autocmd FileType c setlocal foldmethod=syntax foldnestmax=2
-  autocmd FileType c setlocal tabstop=2 shiftwidth=2
-  autocmd FileType c setlocal formatoptions=croq1j
-  autocmd FileType c setlocal comments-=:// comments+=fb://
-  autocmd FileType c let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>", "&completefunc:<c-x><c-]>"]
+  autocmd FileType c,cpp setlocal foldmethod=syntax foldnestmax=2
+  autocmd FileType c,cpp setlocal tabstop=2 shiftwidth=2
+  autocmd FileType c,cpp setlocal formatoptions=croq1j
+  autocmd FileType c,cpp setlocal comments-=:// comments+=fb://
+  autocmd FileType c,cpp let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>", "&completefunc:<c-x><c-]>"]
 augroup END
 " Python
 augroup ft_py
